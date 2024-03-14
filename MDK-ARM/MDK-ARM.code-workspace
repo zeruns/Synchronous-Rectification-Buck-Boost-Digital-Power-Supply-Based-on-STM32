@@ -2,15 +2,12 @@
     "folders": [
         {
             "path": "."
-        },
-        {
-            "name": "Buck-Boost",
-            "path": ".."
         }
     ],
     "settings": {
         "files.associations": {
-            "oled.h": "c"
+            "oled.h": "c",
+            "gpio.h": "c"
         }
     },
     "extensions": {}

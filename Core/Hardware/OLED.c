@@ -20,8 +20,8 @@
 
 /*
  * 本程序由zeruns二次修改
- * 修改内容：	增加支持硬件I2C，可通过修改宏定义来选择是否启用硬件I2C
- * 修改日期：	2024.2.25
+ * 修改内容：	从标准库版改成HAL库版，增加支持硬件I2C，可通过修改宏定义来选择是否启用硬件I2C
+ * 修改日期：	2024.3.15
  * 博客：		https://blog.zeruns.tech
  * B站主页：	https://space.bilibili.com/8320520
 */
@@ -38,9 +38,10 @@
 /*
 选择OLED驱动方式，默认使用硬件I2C。如果要用软件I2C就将硬件I2C那行的宏定义注释掉，将软件I2C那行的注释取消。
 不能同时两个都同时取消注释！
+在stm32cubemx中初始化时需要将SCL和SDA引脚的user lable分别设置为I2C3_SCL和I2C3_SDA。
 */
-//#define OLED_USE_HW_I2C		// 硬件I2C
-#define OLED_USE_SW_I2C	// 软件I2C
+#define OLED_USE_HW_I2C		// 硬件I2C
+//#define OLED_USE_SW_I2C	// 软件I2C
 
 /*引脚定义，可在此处修改I2C通信引脚*/
 #define OLED_SCL            I2C3_SCL_Pin // SCL
@@ -51,14 +52,14 @@
 /*STM32F103芯片的硬件I2C1: PB6 -- SCL; PB7 -- SDA */
 
 /*I2C接口，定义OLED屏使用哪个I2C接口*/
-#define OLED_I2C     I2C3
-#define OLED_I2C_RCC RCC_APB1Periph_I2C1
+#define OLED_I2C     hi2c3
+extern I2C_HandleTypeDef hi2c3;	//HAL库使用，指定硬件IIC接口
 
 /*OLED从机地址*/
 #define OLED_ADDRESS 0x3C << 1	// 0x3C是OLED的7位地址，左移1位最后位做读写位变成0x78
 
 /*I2C超时时间*/
-#define OLED_I2C_TIMEOUT 1000
+#define OLED_I2C_TIMEOUT 10
 /*软件I2C用的延时时间，下面数值为170MHz主频要延时的值，如果你的主频不一样可以修改一下，100MHz以内的主频改成0就行*/
 #define Delay_time 3
 
@@ -168,19 +169,10 @@ void OLED_GPIO_Init(void)
         for (j = 0; j < 1000; j++)
             ;
     }
-#ifdef OLED_USE_HW_I2C
-    RCC_APB1PeriphClockCmd(OLED_I2C_RCC, ENABLE); 	// 使能I2C1时钟
-#endif
+#ifdef OLED_USE_SW_I2C
     __HAL_RCC_GPIOC_CLK_ENABLE();		// 使能GPIOC时钟
     __HAL_RCC_GPIOA_CLK_ENABLE();       // 使能GPIOA时钟
-
 	GPIO_InitTypeDef GPIO_InitStruct = {0};              // 定义结构体配置GPIO
-#ifdef OLED_USE_HW_I2C
-    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_OD;     // 设置GPIO模式为复用开漏模式，需接上拉电阻
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;    // 设置GPIO速度为50MHz
-    GPIO_InitStructure.GPIO_Pin   = OLED_SCL | OLED_SDA; // 设置引脚为OLED_SCL和OLED_SDA
-    GPIO_Init(OLED_GPIO, &GPIO_InitStructure);           // 初始化GPIO
-#elif defined(OLED_USE_SW_I2C)
  	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;	        // 设置GPIO模式为开漏输出模式
     GPIO_InitStruct.Pull = GPIO_PULLUP;                 // 内部上拉电阻
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;  // 设置GPIO速度为高速
@@ -193,20 +185,6 @@ void OLED_GPIO_Init(void)
 	/*释放SCL和SDA*/
 	OLED_W_SCL(1);
 	OLED_W_SDA(1);
-#endif
-
-#ifdef OLED_USE_HW_I2C
-    I2C_DeInit(OLED_I2C);                                                     // 将外设I2C寄存器重设为缺省值
-    I2C_InitTypeDef I2C_InitStructure;                                        // 定义结构体配置I2C
-    I2C_InitStructure.I2C_Mode                = I2C_Mode_I2C;                 // 工作模式
-    I2C_InitStructure.I2C_DutyCycle           = I2C_DutyCycle_2;              // 时钟占空比，Tlow/Thigh = 2
-    I2C_InitStructure.I2C_OwnAddress1         = 0x30;                         // 主机的I2C地址,用不到则随便写，无影响
-    I2C_InitStructure.I2C_Ack                 = I2C_Ack_Enable;               // 使能应答位
-    I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; // 设置地址长度7位
-    I2C_InitStructure.I2C_ClockSpeed          = 600000;// 设置I2C时钟频率，600kHz，建议设置400kHz(比较稳定)，实测在STM32F103上最高可以跑1.3MHz，在AIR32F103上最高只能跑600kHz。
-    I2C_Init(OLED_I2C, &I2C_InitStructure);                                   // 初始化I2C
-
-    I2C_Cmd(OLED_I2C, ENABLE); // 使能I2C
 #endif
 }
 
@@ -221,14 +199,7 @@ void OLED_GPIO_Init(void)
  */
 void OLED_I2C_Start(void)
 {
-#ifdef OLED_USE_HW_I2C
-    for(uint16_t i = 0; I2C_GetFlagStatus(OLED_I2C, I2C_FLAG_BUSY) && i < OLED_I2C_TIMEOUT; i++);	// 判断IIC总线是否忙碌
-    I2C_GenerateSTART(OLED_I2C, ENABLE); 				// 发送起始信号
-    // 检查I2C的事件。事件（Event）是指I2C1状态发生变化时产生的信号。这里检查EV5（表示主模式）事件，直到其发生。这表示I2C已经成功切换到Master模式。
-    for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) && i < OLED_I2C_TIMEOUT; i++);
-    I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter); // 发送7位地址，I2C通信进入发送模式。
-    for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) && i < OLED_I2C_TIMEOUT; i++); // 检测EV6事件，判断I2C通信是否进入发送模式
-#elif defined(OLED_USE_SW_I2C)
+#ifdef OLED_USE_SW_I2C
 	OLED_W_SDA(1);		//释放SDA，确保SDA为高电平
 	OLED_W_SCL(1);		//释放SCL，确保SCL为高电平
 	OLED_W_SDA(0);		//在SCL高电平期间，拉低SDA，产生起始信号
@@ -243,9 +214,7 @@ void OLED_I2C_Start(void)
  */
 void OLED_I2C_Stop(void)
 {
-#ifdef OLED_USE_HW_I2C
-    I2C_GenerateSTOP(OLED_I2C, ENABLE); // 关闭I2C1总线
-#elif defined(OLED_USE_SW_I2C)
+#ifdef OLED_USE_SW_I2C
 	OLED_W_SDA(0);		//拉低SDA，确保SDA为低电平
 	OLED_W_SCL(1);		//释放SCL，使SCL呈现高电平
 	OLED_W_SDA(1);		//在SCL高电平期间，释放SDA，产生终止信号
@@ -259,11 +228,7 @@ void OLED_I2C_Stop(void)
  */
 void OLED_I2C_SendByte(uint8_t Byte)
 {
-#ifdef OLED_USE_HW_I2C
-    I2C_SendData(OLED_I2C, Byte);	// 发送一个字节
-	// 检测EV8_2事件，判断I2C是否发送完成
-    for(uint16_t i = 0; I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED) != 1 && i < OLED_I2C_TIMEOUT; i++);
-#elif defined(OLED_USE_SW_I2C)
+#ifdef OLED_USE_SW_I2C
 	uint8_t i;
 	/*循环8次，主机依次发送数据的每一位*/
 	for (i = 0; i < 8; i++)
@@ -286,13 +251,16 @@ void OLED_I2C_SendByte(uint8_t Byte)
  */
 void OLED_WriteCommand(uint8_t Command)
 {
-    OLED_I2C_Start();           // I2C起始
 #ifdef OLED_USE_SW_I2C
+    OLED_I2C_Start();           // I2C起始
 	OLED_I2C_SendByte(0x78);		//发送OLED的I2C从机地址
-#endif
 	OLED_I2C_SendByte(0x00);	//控制字节，给0x00，表示即将写命令
     OLED_I2C_SendByte(Command); // 写入指定的命令
     OLED_I2C_Stop();            // I2C终止
+#elif defined(OLED_USE_HW_I2C)
+    uint8_t TxData[2] = {0x00, Command};
+    HAL_I2C_Master_Transmit(&OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
+#endif 
 }
 
 /**
@@ -304,17 +272,25 @@ void OLED_WriteCommand(uint8_t Command)
 void OLED_WriteData(uint8_t *Data, uint8_t Count)
 {
     uint8_t i;
-
-    OLED_I2C_Start();        // I2C起始
 #ifdef OLED_USE_SW_I2C
+    OLED_I2C_Start();        // I2C起始
 	OLED_I2C_SendByte(0x78);		//发送OLED的I2C从机地址
-#endif
+
     OLED_I2C_SendByte(0x40); // 控制字节，给0x40，表示即将写数据
     /*循环Count次，进行连续的数据写入*/
     for (i = 0; i < Count; i++) {
         OLED_I2C_SendByte(Data[i]); // 依次发送Data的每一个数据
     }
     OLED_I2C_Stop(); // I2C终止
+#elif defined(OLED_USE_HW_I2C)
+    uint8_t TxData[Count + 1]; // 分配一个新的数组，大小是Count + 1
+    TxData[0] = 0x40; // 起始字节
+    // 将Data指向的数据复制到TxData数组的剩余部分
+    for (i = 0; i < Count; i++) {
+        TxData[i + 1] = Data[i];
+    }
+    HAL_I2C_Master_Transmit(&OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
+#endif    
 }
 
 /*********************通信协议*/

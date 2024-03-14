@@ -1,6 +1,7 @@
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o
 ./build/Buck-Boost/.obj/__/Core/Src/gpio.o
+./build/Buck-Boost/.obj/__/Core/Src/i2c.o
 ./build/Buck-Boost/.obj/__/Core/Src/main.o
 ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_hal_msp.o
 ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_it.o
@@ -15,6 +16,8 @@
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_i2c.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_i2c_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.o
