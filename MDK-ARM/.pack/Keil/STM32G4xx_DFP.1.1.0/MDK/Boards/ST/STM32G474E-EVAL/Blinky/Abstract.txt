@@ -1,0 +1,24 @@
+The 'Blinky' project is a simple CMSIS RTOS2 based example for
+ST 'STM32G474QE' microcontroller using ST 'STM32G474E-EVAL' Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS).
+
+Example functionality:
+ - Clock Settings:
+   - HSI     =           16 MHz
+   - SYSCLK  =          170 MHz
+
+ - 4 LEDs blink with fixed speed.
+ - blinking is paused while holding down USER button.
+
+
+The Blinky program is available in different targets:
+ - Debug:
+   - Compiler optimization Level 1
+   - Enabled Event Recorder
+   - Keil RTX5 variant 'Source'
+ - Release:
+   - Compiler optimization Level 3
+   - Keil RTX5 variant 'Library'
+
+Note:
+ CubeMX configuration is taken from 'CubeMX Board Selector: STM32G474E-EVAL' 

@@ -1,0 +1,113 @@
+{
+    "name": "Buck-Boost",
+    "target": "Buck-Boost",
+    "toolchain": "AC6",
+    "toolchainLocation": "D:\\Keil_v5\\ARM\\ARMCLANG",
+    "toolchainCfgFile": "c:\\Users\\67667\\.vscode\\extensions\\cl.eide-3.15.1\\res\\data\\models\\win32/arm.v6.model.json",
+    "buildMode": "fast|multhread",
+    "showRepathOnLog": true,
+    "threadNum": 12,
+    "rootDir": "e:\\Electronic\\Project\\开关电源\\基于STM32的Buck-Boost型数字电源\\Buck-Boost\\MDK-ARM",
+    "dumpPath": "build\\Buck-Boost",
+    "outDir": "build\\Buck-Boost",
+    "ram": 131072,
+    "rom": 524288,
+    "incDirs": [
+        "../Core/Inc",
+        "../Drivers/STM32G4xx_HAL_Driver/Inc",
+        "../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy",
+        "../Drivers/CMSIS/Device/ST/STM32G4xx/Include",
+        "../Drivers/CMSIS/Include",
+        "RTE/_Buck-Boost",
+        "../Core/Hardware"
+    ],
+    "libDirs": [],
+    "defines": [
+        "USE_HAL_DRIVER",
+        "STM32G474xx"
+    ],
+    "sourceList": [
+        "../Core/Hardware/OLED.c",
+        "../Core/Hardware/OLED_Data.c",
+        "../Core/Src/gpio.c",
+        "../Core/Src/main.c",
+        "../Core/Src/stm32g4xx_hal_msp.c",
+        "../Core/Src/stm32g4xx_it.c",
+        "../Core/Src/system_stm32g4xx.c",
+        "../Core/Src/tim.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c",
+        "startup_stm32g474xx.s"
+    ],
+    "sourceParams": {},
+    "sourceParamsMtime": 1710182275738.811,
+    "options": {
+        "version": 3,
+        "beforeBuildTasks": [],
+        "afterBuildTasks": [],
+        "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable",
+            "microcontroller-cpu": "cortex-m4-sp",
+            "microcontroller-fpu": "cortex-m4-sp",
+            "microcontroller-float": "cortex-m4-sp",
+            "target": "cortex-m4-sp"
+        },
+        "c/cpp-compiler": {
+            "optimization": "level-3",
+            "language-c": "c99",
+            "language-cpp": "c++11",
+            "warnings": "ac5-like-warnings"
+        },
+        "asm-compiler": {
+            "$use": "asm-auto"
+        },
+        "linker": {
+            "output-format": "elf",
+            "misc-controls": "--diag_suppress=L6329",
+            "link-scatter": [
+                "\"e:/Electronic/Project/开关电源/基于STM32的Buck-Boost型数字电源/Buck-Boost/MDK-ARM/build/Buck-Boost/Buck-Boost.sct\""
+            ]
+        }
+    },
+    "env": {
+        "workspaceFolder": "e:\\Electronic\\Project\\开关电源\\基于STM32的Buck-Boost型数字电源\\Buck-Boost\\MDK-ARM",
+        "workspaceFolderBasename": "MDK-ARM",
+        "OutDir": "e:\\Electronic\\Project\\开关电源\\基于STM32的Buck-Boost型数字电源\\Buck-Boost\\MDK-ARM\\build\\Buck-Boost",
+        "OutDirRoot": "build",
+        "OutDirBase": "build\\Buck-Boost",
+        "ProjectName": "Buck-Boost",
+        "ConfigName": "Buck-Boost",
+        "ProjectRoot": "e:\\Electronic\\Project\\开关电源\\基于STM32的Buck-Boost型数字电源\\Buck-Boost\\MDK-ARM",
+        "ExecutableName": "e:\\Electronic\\Project\\开关电源\\基于STM32的Buck-Boost型数字电源\\Buck-Boost\\MDK-ARM\\build\\Buck-Boost\\Buck-Boost",
+        "SYS_Platform": "win32",
+        "SYS_DirSep": "\\",
+        "SYS_DirSeparator": "\\",
+        "SYS_PathSep": ";",
+        "SYS_PathSeparator": ";",
+        "SYS_EOL": "\r\n",
+        "ToolchainRoot": "D:\\Keil_v5\\ARM\\ARMCLANG"
+    },
+    "sha": {
+        "c/cpp-defines": "30065415386b899f98409ccb9eb4b144",
+        "beforeBuildTasks": "d751713988987e9331980363e24189ce",
+        "afterBuildTasks": "d751713988987e9331980363e24189ce",
+        "global": "3ae75cac734e7a166338bea4b35ae2e0",
+        "c/cpp-compiler": "f6095cd5c590b877e19937fddc45f96d",
+        "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
+        "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
+    }
+}
