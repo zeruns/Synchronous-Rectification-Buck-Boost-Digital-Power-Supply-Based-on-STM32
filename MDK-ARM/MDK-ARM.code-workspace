@@ -1,0 +1,17 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "name": "Buck-Boost",
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "oled.h": "c"
+        }
+    },
+    "extensions": {}
+}

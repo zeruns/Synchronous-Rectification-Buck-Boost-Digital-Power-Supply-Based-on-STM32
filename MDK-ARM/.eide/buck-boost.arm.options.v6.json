@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "beforeBuildTasks": [],
+    "afterBuildTasks": [],
+    "global": {
+        "use-microLIB": true,
+        "output-debug-info": "enable"
+    },
+    "c/cpp-compiler": {
+        "optimization": "level-3",
+        "language-c": "c99",
+        "language-cpp": "c++11",
+        "warnings": "ac5-like-warnings"
+    },
+    "asm-compiler": {
+        "$use": "asm-auto"
+    },
+    "linker": {
+        "output-format": "elf",
+        "misc-controls": "--diag_suppress=L6329"
+    }
+}

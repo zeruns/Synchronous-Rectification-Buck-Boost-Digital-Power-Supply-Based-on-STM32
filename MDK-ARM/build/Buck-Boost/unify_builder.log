@@ -1,0 +1,1032 @@
+[2024-03-12 02:43:00]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_OscConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(STACK).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_ClockConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_ControlVoltageScaling).
+Error: L6406E: No space in execution regions with .ANY selector matching gpio.o(i.MX_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.SystemClock_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_InitTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_msp.o(i.HAL_MspInit).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_SYSTICK_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriorityGrouping).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching memseta.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.__NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_NMI_IRQHandler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(i.SystemInit).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.constdata).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_IncTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_DisableUCPDDeadBattery).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_EnableCSS).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.main).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_GetTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_WritePin).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.NMI_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SysTick_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.BusFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.DebugMon_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.HardFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.MemManage_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.PendSV_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SVC_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.UsageFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_CSSCallback).
+Error: L6407E: Sections of aggregate size 0x1084 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 39 error messages.
+
+
+[2024-03-12 02:43:10]	[done]
+	build successfully !
+
+[2024-03-12 02:43:20]	[done]
+	build successfully !
+
+[2024-03-12 02:43:39]	[done]
+	build successfully !
+
+[2024-03-12 02:44:01]	compilation failed at : "i:\HAL\Buck-Boost\MDK-ARM\startup_stm32g474xx.s", exit code: 1
+command: 
+  "C:\Users\67667\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -x assembler-with-cpp -mthumb -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I.cmsis/include -IRTE/_Buck-Boost -I.eide/deps -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -g --specs=nosys.specs --specs=nano.specs -o ./build/Buck-Boost/.obj/startup_stm32g474xx.o -MMD ./startup_stm32g474xx.s
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./startup_stm32g474xx.s: Assembler messages:
+./startup_stm32g474xx.s:1: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:2: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:3: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:4: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:5: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:6: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:7: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:8: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:9: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:10: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:11: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:12: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:13: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:14: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:15: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:16: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:17: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:18: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:19: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:20: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:21: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:22: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:23: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:24: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:26: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:27: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:29: Error: bad instruction `amount of memory(in bytes)allocated for Stack'
+./startup_stm32g474xx.s:30: Error: bad instruction `tailor this value to your application needs'
+./startup_stm32g474xx.s:31: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:32: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:33: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:35: Error: bad instruction `stack_size EQU 0x400'
+./startup_stm32g474xx.s:37: Error: bad instruction `area STACK,NOINIT,READWRITE,ALIGN=3'
+./startup_stm32g474xx.s:38: Error: bad instruction `stack_mem SPACE Stack_Size'
+./startup_stm32g474xx.s:39: Error: bad instruction `__initial_sp'
+./startup_stm32g474xx.s:42: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:43: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:44: Error: junk at end of line, first unrecognized character is `<'
+./startup_stm32g474xx.s:46: Error: bad instruction `heap_size EQU 0x200'
+./startup_stm32g474xx.s:48: Error: bad instruction `area HEAP,NOINIT,READWRITE,ALIGN=3'
+./startup_stm32g474xx.s:49: Error: bad instruction `__heap_base'
+./startup_stm32g474xx.s:50: Error: bad instruction `heap_mem SPACE Heap_Size'
+./startup_stm32g474xx.s:51: Error: bad instruction `__heap_limit'
+./startup_stm32g474xx.s:53: Error: bad instruction `preserve8'
+./startup_stm32g474xx.s:54: Error: bad instruction `thumb'
+./startup_stm32g474xx.s:57: Error: bad instruction `vector Table Mapped to Address 0 at Reset'
+./startup_stm32g474xx.s:58: Error: bad instruction `area RESET,DATA,READONLY'
+./startup_stm32g474xx.s:59: Error: bad instruction `export __Vectors'
+./startup_stm32g474xx.s:60: Error: bad instruction `export __Vectors_End'
+./startup_stm32g474xx.s:61: Error: bad instruction `export __Vectors_Size'
+./startup_stm32g474xx.s:63: Error: bad instruction `__vectors DCD __initial_sp'
+./startup_stm32g474xx.s:63: Error: bad instruction `top of Stack'
+./startup_stm32g474xx.s:64: Error: bad instruction `dcd Reset_Handler'
+./startup_stm32g474xx.s:64: Error: bad instruction `reset Handler'
+./startup_stm32g474xx.s:65: Error: bad instruction `dcd NMI_Handler'
+./startup_stm32g474xx.s:65: Error: bad instruction `nmi Handler'
+./startup_stm32g474xx.s:66: Error: bad instruction `dcd HardFault_Handler'
+./startup_stm32g474xx.s:66: Error: bad instruction `hard Fault Handler'
+./startup_stm32g474xx.s:67: Error: bad instruction `dcd MemManage_Handler'
+./startup_stm32g474xx.s:67: Error: bad instruction `mpu Fault Handler'
+./startup_stm32g474xx.s:68: Error: bad instruction `dcd BusFault_Handler'
+./startup_stm32g474xx.s:68: Error: bad instruction `bus Fault Handler'
+./startup_stm32g474xx.s:69: Error: bad instruction `dcd UsageFault_Handler'
+./startup_stm32g474xx.s:69: Error: bad instruction `usage Fault Handler'
+./startup_stm32g474xx.s:70: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:70: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:71: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:71: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:72: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:72: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:73: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:73: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:74: Error: bad instruction `dcd SVC_Handler'
+./startup_stm32g474xx.s:74: Error: bad instruction `svcall Handler'
+./startup_stm32g474xx.s:75: Error: bad instruction `dcd DebugMon_Handler'
+./startup_stm32g474xx.s:75: Error: bad instruction `debug Monitor Handler'
+./startup_stm32g474xx.s:76: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:76: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:77: Error: bad instruction `dcd PendSV_Handler'
+./startup_stm32g474xx.s:77: Error: bad instruction `pendsv Handler'
+./startup_stm32g474xx.s:78: Error: bad instruction `dcd SysTick_Handler'
+./startup_stm32g474xx.s:78: Error: bad instruction `systick Handler'
+./startup_stm32g474xx.s:80: Error: bad instruction `external Interrupts'
+./startup_stm32g474xx.s:81: Error: bad instruction `dcd WWDG_IRQHandler'
+./startup_stm32g474xx.s:81: Error: bad instruction `window WatchDog'
+./startup_stm32g474xx.s:82: Error: bad instruction `dcd PVD_PVM_IRQHandler'
+./startup_stm32g474xx.s:82: Error: bad instruction `pvd/PVM1/PVM2/PVM3/PVM4 through EXTI Line detection'
+./startup_stm32g474xx.s:83: Error: bad instruction `dcd RTC_TAMP_LSECSS_IRQHandler'
+./startup_stm32g474xx.s:83: Error: bad instruction `rtc, TAMP and RCC LSE_CSS through the EXTI line'
+./startup_stm32g474xx.s:84: Error: bad instruction `dcd RTC_WKUP_IRQHandler'
+./startup_stm32g474xx.s:84: Error: bad instruction `rtc Wakeup through the EXTI line'
+./startup_stm32g474xx.s:85: Error: bad instruction `dcd FLASH_IRQHandler'
+./startup_stm32g474xx.s:85: Error: bad instruction `flash'
+./startup_stm32g474xx.s:86: Error: bad instruction `dcd RCC_IRQHandler'
+./startup_stm32g474xx.s:86: Error: bad instruction `rcc'
+./startup_stm32g474xx.s:87: Error: bad instruction `dcd EXTI0_IRQHandler'
+./startup_stm32g474xx.s:87: Error: bad instruction `exti Line0'
+./startup_stm32g474xx.s:88: Error: bad instruction `dcd EXTI1_IRQHandler'
+./startup_stm32g474xx.s:88: Error: bad instruction `exti Line1'
+./startup_stm32g474xx.s:89: Error: bad instruction `dcd EXTI2_IRQHandler'
+./startup_stm32g474xx.s:89: Error: bad instruction `exti Line2'
+./startup_stm32g474xx.s:90: Error: bad instruction `dcd EXTI3_IRQHandler'
+./startup_stm32g474xx.s:90: Error: bad instruction `exti Line3'
+./startup_stm32g474xx.s:91: Error: bad instruction `dcd EXTI4_IRQHandler'
+./startup_stm32g474xx.s:91: Error: bad instruction `exti Line4'
+./startup_stm32g474xx.s:92: Error: bad instruction `dcd DMA1_Channel1_IRQHandler'
+./startup_stm32g474xx.s:92: Error: bad instruction `dma1 Channel 1'
+./startup_stm32g474xx.s:93: Error: bad instruction `dcd DMA1_Channel2_IRQHandler'
+./startup_stm32g474xx.s:93: Error: bad instruction `dma1 Channel 2'
+./startup_stm32g474xx.s:94: Error: bad instruction `dcd DMA1_Channel3_IRQHandler'
+./startup_stm32g474xx.s:94: Error: bad instruction `dma1 Channel 3'
+./startup_stm32g474xx.s:95: Error: bad instruction `dcd DMA1_Channel4_IRQHandler'
+./startup_stm32g474xx.s:95: Error: bad instruction `dma1 Channel 4'
+./startup_stm32g474xx.s:96: Error: bad instruction `dcd DMA1_Channel5_IRQHandler'
+./startup_stm32g474xx.s:96: Error: bad instruction `dma1 Channel 5'
+./startup_stm32g474xx.s:97: Error: bad instruction `dcd DMA1_Channel6_IRQHandler'
+./startup_stm32g474xx.s:97: Error: bad instruction `dma1 Channel 6'
+./startup_stm32g474xx.s:98: Error: bad instruction `dcd DMA1_Channel7_IRQHandler'
+./startup_stm32g474xx.s:98: Error: bad instruction `dma1 Channel 7'
+./startup_stm32g474xx.s:99: Error: bad instruction `dcd ADC1_2_IRQHandler'
+./startup_stm32g474xx.s:99: Error: bad instruction `adc1 and ADC2'
+./startup_stm32g474xx.s:100: Error: bad instruction `dcd USB_HP_IRQHandler'
+./startup_stm32g474xx.s:100: Error: bad instruction `usb Device High Priority'
+./startup_stm32g474xx.s:101: Error: bad instruction `dcd USB_LP_IRQHandler'
+./startup_stm32g474xx.s:101: Error: bad instruction `usb Device Low Priority'
+./startup_stm32g474xx.s:102: Error: bad instruction `dcd FDCAN1_IT0_IRQHandler'
+./startup_stm32g474xx.s:102: Error: bad instruction `fdcan1 interrupt line 0'
+./startup_stm32g474xx.s:103: Error: bad instruction `dcd FDCAN1_IT1_IRQHandler'
+./startup_stm32g474xx.s:103: Error: bad instruction `fdcan1 interrupt line 1'
+./startup_stm32g474xx.s:104: Error: bad instruction `dcd EXTI9_5_IRQHandler'
+./startup_stm32g474xx.s:104: Error: bad instruction `external Line[9:5]s'
+./startup_stm32g474xx.s:105: Error: bad instruction `dcd TIM1_BRK_TIM15_IRQHandler'
+./startup_stm32g474xx.s:105: Error: bad instruction `tim1 Break,Transition error,Index error and TIM15'
+./startup_stm32g474xx.s:106: Error: bad instruction `dcd TIM1_UP_TIM16_IRQHandler'
+./startup_stm32g474xx.s:106: Error: bad instruction `tim1 Update and TIM16'
+./startup_stm32g474xx.s:107: Error: bad instruction `dcd TIM1_TRG_COM_TIM17_IRQHandler'
+./startup_stm32g474xx.s:107: Error: bad instruction `tim1 Trigger,Commutation,Direction change,Index and TIM17'
+./startup_stm32g474xx.s:108: Error: bad instruction `dcd TIM1_CC_IRQHandler'
+./startup_stm32g474xx.s:108: Error: bad instruction `tim1 Capture Compare'
+./startup_stm32g474xx.s:109: Error: bad instruction `dcd TIM2_IRQHandler'
+./startup_stm32g474xx.s:109: Error: bad instruction `tim2'
+./startup_stm32g474xx.s:110: Error: bad instruction `dcd TIM3_IRQHandler'
+./startup_stm32g474xx.s:110: Error: bad instruction `tim3'
+./startup_stm32g474xx.s:111: Error: bad instruction `dcd TIM4_IRQHandler'
+./startup_stm32g474xx.s:111: Error: bad instruction `tim4'
+./startup_stm32g474xx.s:112: Error: bad instruction `dcd I2C1_EV_IRQHandler'
+./startup_stm32g474xx.s:112: Error: bad instruction `i2c1 Event'
+./startup_stm32g474xx.s:113: Error: bad instruction `dcd I2C1_ER_IRQHandler'
+./startup_stm32g474xx.s:113: Error: bad instruction `i2c1 Error'
+./startup_stm32g474xx.s:114: Error: bad instruction `dcd I2C2_EV_IRQHandler'
+./startup_stm32g474xx.s:114: Error: bad instruction `i2c2 Event'
+./startup_stm32g474xx.s:115: Error: bad instruction `dcd I2C2_ER_IRQHandler'
+./startup_stm32g474xx.s:115: Error: bad instruction `i2c2 Error'
+./startup_stm32g474xx.s:116: Error: bad instruction `dcd SPI1_IRQHandler'
+./startup_stm32g474xx.s:116: Error: bad instruction `spi1'
+./startup_stm32g474xx.s:117: Error: bad instruction `dcd SPI2_IRQHandler'
+./startup_stm32g474xx.s:117: Error: bad instruction `spi2'
+./startup_stm32g474xx.s:118: Error: bad instruction `dcd USART1_IRQHandler'
+./startup_stm32g474xx.s:118: Error: bad instruction `usart1'
+./startup_stm32g474xx.s:119: Error: bad instruction `dcd USART2_IRQHandler'
+./startup_stm32g474xx.s:119: Error: bad instruction `usart2'
+./startup_stm32g474xx.s:120: Error: bad instruction `dcd USART3_IRQHandler'
+./startup_stm32g474xx.s:120: Error: bad instruction `usart3'
+./startup_stm32g474xx.s:121: Error: bad instruction `dcd EXTI15_10_IRQHandler'
+./startup_stm32g474xx.s:121: Error: bad instruction `external Line[15:10]'
+./startup_stm32g474xx.s:122: Error: bad instruction `dcd RTC_Alarm_IRQHandler'
+./startup_stm32g474xx.s:122: Error: bad instruction `rtc Alarm(A and B)through EXTI Line'
+./startup_stm32g474xx.s:123: Error: bad instruction `dcd USBWakeUp_IRQHandler'
+./startup_stm32g474xx.s:123: Error: bad instruction `usb Wakeup through EXTI line'
+./startup_stm32g474xx.s:124: Error: bad instruction `dcd TIM8_BRK_IRQHandler'
+./startup_stm32g474xx.s:124: Error: bad instruction `tim8 Break,Transition error and Index error Interrupt'
+./startup_stm32g474xx.s:125: Error: bad instruction `dcd TIM8_UP_IRQHandler'
+./startup_stm32g474xx.s:125: Error: bad instruction `tim8 Update Interrupt'
+./startup_stm32g474xx.s:126: Error: bad instruction `dcd TIM8_TRG_COM_IRQHandler'
+./startup_stm32g474xx.s:126: Error: bad instruction `tim8 Trigger,Commutation,Direction change and Index Interrupt'
+./startup_stm32g474xx.s:127: Error: bad instruction `dcd TIM8_CC_IRQHandler'
+./startup_stm32g474xx.s:127: Error: bad instruction `tim8 Capture Compare Interrupt'
+./startup_stm32g474xx.s:128: Error: bad instruction `dcd ADC3_IRQHandler'
+./startup_stm32g474xx.s:128: Error: bad instruction `adc3'
+./startup_stm32g474xx.s:129: Error: bad instruction `dcd FMC_IRQHandler'
+./startup_stm32g474xx.s:129: Error: bad instruction `fmc'
+./startup_stm32g474xx.s:130: Error: bad instruction `dcd LPTIM1_IRQHandler'
+./startup_stm32g474xx.s:130: Error: bad instruction `lp TIM1 interrupt'
+./startup_stm32g474xx.s:131: Error: bad instruction `dcd TIM5_IRQHandler'
+./startup_stm32g474xx.s:131: Error: bad instruction `tim5'
+./startup_stm32g474xx.s:132: Error: bad instruction `dcd SPI3_IRQHandler'
+./startup_stm32g474xx.s:132: Error: bad instruction `spi3'
+./startup_stm32g474xx.s:133: Error: bad instruction `dcd UART4_IRQHandler'
+./startup_stm32g474xx.s:133: Error: bad instruction `uart4'
+./startup_stm32g474xx.s:134: Error: bad instruction `dcd UART5_IRQHandler'
+./startup_stm32g474xx.s:134: Error: bad instruction `uart5'
+./startup_stm32g474xx.s:135: Error: bad instruction `dcd TIM6_DAC_IRQHandler'
+./startup_stm32g474xx.s:135: Error: bad instruction `tim6 and DAC1&3 underrun errors'
+./startup_stm32g474xx.s:136: Error: bad instruction `dcd TIM7_DAC_IRQHandler'
+./startup_stm32g474xx.s:136: Error: bad instruction `tim7 and DAC2&4 underrun errors'
+./startup_stm32g474xx.s:137: Error: bad instruction `dcd DMA2_Channel1_IRQHandler'
+./startup_stm32g474xx.s:137: Error: bad instruction `dma2 Channel 1'
+./startup_stm32g474xx.s:138: Error: bad instruction `dcd DMA2_Channel2_IRQHandler'
+./startup_stm32g474xx.s:138: Error: bad instruction `dma2 Channel 2'
+./startup_stm32g474xx.s:139: Error: bad instruction `dcd DMA2_Channel3_IRQHandler'
+./startup_stm32g474xx.s:139: Error: bad instruction `dma2 Channel 3'
+./startup_stm32g474xx.s:140: Error: bad instruction `dcd DMA2_Channel4_IRQHandler'
+./startup_stm32g474xx.s:140: Error: bad instruction `dma2 Channel 4'
+./startup_stm32g474xx.s:141: Error: bad instruction `dcd DMA2_Channel5_IRQHandler'
+./startup_stm32g474xx.s:141: Error: bad instruction `dma2 Channel 5'
+./startup_stm32g474xx.s:142: Error: bad instruction `dcd ADC4_IRQHandler'
+./startup_stm32g474xx.s:142: Error: bad instruction `adc4'
+./startup_stm32g474xx.s:143: Error: bad instruction `dcd ADC5_IRQHandler'
+./startup_stm32g474xx.s:143: Error: bad instruction `adc5'
+./startup_stm32g474xx.s:144: Error: bad instruction `dcd UCPD1_IRQHandler'
+./startup_stm32g474xx.s:144: Error: bad instruction `ucpd1'
+./startup_stm32g474xx.s:145: Error: bad instruction `dcd COMP1_2_3_IRQHandler'
+./startup_stm32g474xx.s:145: Error: bad instruction `comp1, COMP2 and COMP3'
+./startup_stm32g474xx.s:146: Error: bad instruction `dcd COMP4_5_6_IRQHandler'
+./startup_stm32g474xx.s:146: Error: bad instruction `comp4, COMP5 and COMP6'
+./startup_stm32g474xx.s:147: Error: bad instruction `dcd COMP7_IRQHandler'
+./startup_stm32g474xx.s:147: Error: bad instruction `comp7'
+./startup_stm32g474xx.s:148: Error: bad instruction `dcd HRTIM1_Master_IRQHandler'
+./startup_stm32g474xx.s:148: Error: bad instruction `hrtim Master Timer global Interrupts'
+./startup_stm32g474xx.s:149: Error: bad instruction `dcd HRTIM1_TIMA_IRQHandler'
+./startup_stm32g474xx.s:149: Error: bad instruction `hrtim Timer A global Interrupt'
+./startup_stm32g474xx.s:150: Error: bad instruction `dcd HRTIM1_TIMB_IRQHandler'
+./startup_stm32g474xx.s:150: Error: bad instruction `hrtim Timer B global Interrupt'
+./startup_stm32g474xx.s:151: Error: bad instruction `dcd HRTIM1_TIMC_IRQHandler'
+./startup_stm32g474xx.s:151: Error: bad instruction `hrtim Timer C global Interrupt'
+./startup_stm32g474xx.s:152: Error: bad instruction `dcd HRTIM1_TIMD_IRQHandler'
+./startup_stm32g474xx.s:152: Error: bad instruction `hrtim Timer D global Interrupt'
+./startup_stm32g474xx.s:153: Error: bad instruction `dcd HRTIM1_TIME_IRQHandler'
+./startup_stm32g474xx.s:153: Error: bad instruction `hrtim Timer E global Interrupt'
+./startup_stm32g474xx.s:154: Error: bad instruction `dcd HRTIM1_FLT_IRQHandler'
+./startup_stm32g474xx.s:154: Error: bad instruction `hrtim Fault global Interrupt'
+./startup_stm32g474xx.s:155: Error: bad instruction `dcd HRTIM1_TIMF_IRQHandler'
+./startup_stm32g474xx.s:155: Error: bad instruction `hrtim Timer F global Interrupt'
+./startup_stm32g474xx.s:156: Error: bad instruction `dcd CRS_IRQHandler'
+./startup_stm32g474xx.s:156: Error: bad instruction `crs Interrupt'
+./startup_stm32g474xx.s:157: Error: bad instruction `dcd SAI1_IRQHandler'
+./startup_stm32g474xx.s:157: Error: bad instruction `serial Audio Interface 1 global interrupt'
+./startup_stm32g474xx.s:158: Error: bad instruction `dcd TIM20_BRK_IRQHandler'
+./startup_stm32g474xx.s:158: Error: bad instruction `tim20 Break,Transition error and Index error'
+./startup_stm32g474xx.s:159: Error: bad instruction `dcd TIM20_UP_IRQHandler'
+./startup_stm32g474xx.s:159: Error: bad instruction `tim20 Update'
+./startup_stm32g474xx.s:160: Error: bad instruction `dcd TIM20_TRG_COM_IRQHandler'
+./startup_stm32g474xx.s:160: Error: bad instruction `tim20 Trigger,Commutation,Direction change and Index'
+./startup_stm32g474xx.s:161: Error: bad instruction `dcd TIM20_CC_IRQHandler'
+./startup_stm32g474xx.s:161: Error: bad instruction `tim20 Capture Compare'
+./startup_stm32g474xx.s:162: Error: bad instruction `dcd FPU_IRQHandler'
+./startup_stm32g474xx.s:162: Error: bad instruction `fpu'
+./startup_stm32g474xx.s:163: Error: bad instruction `dcd I2C4_EV_IRQHandler'
+./startup_stm32g474xx.s:163: Error: bad instruction `i2c4 event'
+./startup_stm32g474xx.s:164: Error: bad instruction `dcd I2C4_ER_IRQHandler'
+./startup_stm32g474xx.s:164: Error: bad instruction `i2c4 error'
+./startup_stm32g474xx.s:165: Error: bad instruction `dcd SPI4_IRQHandler'
+./startup_stm32g474xx.s:165: Error: bad instruction `spi4'
+./startup_stm32g474xx.s:166: Error: bad instruction `dcd 0'
+./startup_stm32g474xx.s:166: Error: bad instruction `reserved'
+./startup_stm32g474xx.s:167: Error: bad instruction `dcd FDCAN2_IT0_IRQHandler'
+./startup_stm32g474xx.s:167: Error: bad instruction `fdcan2 interrupt line 0'
+./startup_stm32g474xx.s:168: Error: bad instruction `dcd FDCAN2_IT1_IRQHandler'
+./startup_stm32g474xx.s:168: Error: bad instruction `fdcan2 interrupt line 1'
+./startup_stm32g474xx.s:169: Error: bad instruction `dcd FDCAN3_IT0_IRQHandler'
+./startup_stm32g474xx.s:169: Error: bad instruction `fdcan3 interrupt line 0'
+./startup_stm32g474xx.s:170: Error: bad instruction `dcd FDCAN3_IT1_IRQHandler'
+./startup_stm32g474xx.s:170: Error: bad instruction `fdcan3 interrupt line 1'
+./startup_stm32g474xx.s:171: Error: bad instruction `dcd RNG_IRQHandler'
+./startup_stm32g474xx.s:171: Error: bad instruction `rng global interrupt'
+./startup_stm32g474xx.s:172: Error: bad instruction `dcd LPUART1_IRQHandler'
+./startup_stm32g474xx.s:172: Error: bad instruction `lp UART 1 interrupt'
+./startup_stm32g474xx.s:173: Error: bad instruction `dcd I2C3_EV_IRQHandler'
+./startup_stm32g474xx.s:173: Error: bad instruction `i2c3 Event'
+./startup_stm32g474xx.s:174: Error: bad instruction `dcd I2C3_ER_IRQHandler'
+./startup_stm32g474xx.s:174: Error: bad instruction `i2c3 Error'
+./startup_stm32g474xx.s:175: Error: bad instruction `dcd DMAMUX_OVR_IRQHandler'
+./startup_stm32g474xx.s:175: Error: bad instruction `dmamux overrun global interrupt'
+./startup_stm32g474xx.s:176: Error: bad instruction `dcd QUADSPI_IRQHandler'
+./startup_stm32g474xx.s:176: Error: bad instruction `quadspi'
+./startup_stm32g474xx.s:177: Error: bad instruction `dcd DMA1_Channel8_IRQHandler'
+./startup_stm32g474xx.s:177: Error: bad instruction `dma1 Channel 8'
+./startup_stm32g474xx.s:178: Error: bad instruction `dcd DMA2_Channel6_IRQHandler'
+./startup_stm32g474xx.s:178: Error: bad instruction `dma2 Channel 6'
+./startup_stm32g474xx.s:179: Error: bad instruction `dcd DMA2_Channel7_IRQHandler'
+./startup_stm32g474xx.s:179: Error: bad instruction `dma2 Channel 7'
+./startup_stm32g474xx.s:180: Error: bad instruction `dcd DMA2_Channel8_IRQHandler'
+./startup_stm32g474xx.s:180: Error: bad instruction `dma2 Channel 8'
+./startup_stm32g474xx.s:181: Error: bad instruction `dcd CORDIC_IRQHandler'
+./startup_stm32g474xx.s:181: Error: bad instruction `cordic'
+./startup_stm32g474xx.s:182: Error: bad instruction `dcd FMAC_IRQHandler'
+./startup_stm32g474xx.s:182: Error: bad instruction `fmac'
+./startup_stm32g474xx.s:184: Error: bad instruction `__vectors_end'
+./startup_stm32g474xx.s:186: Error: bad instruction `__vectors_size EQU __Vectors_End-__Vectors'
+./startup_stm32g474xx.s:188: Error: bad instruction `area |.text|,CODE,READONLY'
+./startup_stm32g474xx.s:190: Error: bad instruction `reset handler'
+./startup_stm32g474xx.s:191: Error: bad instruction `reset_handler PROC'
+./startup_stm32g474xx.s:192: Error: bad instruction `export Reset_Handler [WEAK]'
+./startup_stm32g474xx.s:193: Error: bad instruction `import SystemInit'
+./startup_stm32g474xx.s:194: Error: bad instruction `import __main'
+./startup_stm32g474xx.s:200: Error: bad instruction `endp'
+./startup_stm32g474xx.s:202: Error: bad instruction `dummy Exception Handlers(infinite loops which can be modified)'
+./startup_stm32g474xx.s:204: Error: bad instruction `nmi_handler PROC'
+./startup_stm32g474xx.s:205: Error: bad instruction `export NMI_Handler [WEAK]'
+./startup_stm32g474xx.s:207: Error: bad instruction `endp'
+./startup_stm32g474xx.s:208: Error: bad instruction `hardfault_handler PROC'
+./startup_stm32g474xx.s:210: Error: bad instruction `export HardFault_Handler [WEAK]'
+./startup_stm32g474xx.s:212: Error: bad instruction `endp'
+./startup_stm32g474xx.s:213: Error: bad instruction `memmanage_handler PROC'
+./startup_stm32g474xx.s:215: Error: bad instruction `export MemManage_Handler [WEAK]'
+./startup_stm32g474xx.s:217: Error: bad instruction `endp'
+./startup_stm32g474xx.s:218: Error: bad instruction `busfault_handler PROC'
+./startup_stm32g474xx.s:220: Error: bad instruction `export BusFault_Handler [WEAK]'
+./startup_stm32g474xx.s:222: Error: bad instruction `endp'
+./startup_stm32g474xx.s:223: Error: bad instruction `usagefault_handler PROC'
+./startup_stm32g474xx.s:225: Error: bad instruction `export UsageFault_Handler [WEAK]'
+./startup_stm32g474xx.s:227: Error: bad instruction `endp'
+./startup_stm32g474xx.s:228: Error: bad instruction `svc_handler PROC'
+./startup_stm32g474xx.s:229: Error: bad instruction `export SVC_Handler [WEAK]'
+./startup_stm32g474xx.s:231: Error: bad instruction `endp'
+./startup_stm32g474xx.s:232: Error: bad instruction `debugmon_handler PROC'
+./startup_stm32g474xx.s:234: Error: bad instruction `export DebugMon_Handler [WEAK]'
+./startup_stm32g474xx.s:236: Error: bad instruction `endp'
+./startup_stm32g474xx.s:237: Error: bad instruction `pendsv_handler PROC'
+./startup_stm32g474xx.s:238: Error: bad instruction `export PendSV_Handler [WEAK]'
+./startup_stm32g474xx.s:240: Error: bad instruction `endp'
+./startup_stm32g474xx.s:241: Error: bad instruction `systick_handler PROC'
+./startup_stm32g474xx.s:242: Error: bad instruction `export SysTick_Handler [WEAK]'
+./startup_stm32g474xx.s:244: Error: bad instruction `endp'
+./startup_stm32g474xx.s:246: Error: bad instruction `default_handler PROC'
+./startup_stm32g474xx.s:248: Error: bad instruction `export WWDG_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:249: Error: bad instruction `export PVD_PVM_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:250: Error: bad instruction `export RTC_TAMP_LSECSS_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:251: Error: bad instruction `export RTC_WKUP_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:252: Error: bad instruction `export FLASH_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:253: Error: bad instruction `export RCC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:254: Error: bad instruction `export EXTI0_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:255: Error: bad instruction `export EXTI1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:256: Error: bad instruction `export EXTI2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:257: Error: bad instruction `export EXTI3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:258: Error: bad instruction `export EXTI4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:259: Error: bad instruction `export DMA1_Channel1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:260: Error: bad instruction `export DMA1_Channel2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:261: Error: bad instruction `export DMA1_Channel3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:262: Error: bad instruction `export DMA1_Channel4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:263: Error: bad instruction `export DMA1_Channel5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:264: Error: bad instruction `export DMA1_Channel6_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:265: Error: bad instruction `export DMA1_Channel7_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:266: Error: bad instruction `export ADC1_2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:267: Error: bad instruction `export USB_HP_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:268: Error: bad instruction `export USB_LP_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:269: Error: bad instruction `export FDCAN1_IT0_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:270: Error: bad instruction `export FDCAN1_IT1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:271: Error: bad instruction `export EXTI9_5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:272: Error: bad instruction `export TIM1_BRK_TIM15_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:273: Error: bad instruction `export TIM1_UP_TIM16_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:274: Error: bad instruction `export TIM1_TRG_COM_TIM17_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:275: Error: bad instruction `export TIM1_CC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:276: Error: bad instruction `export TIM2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:277: Error: bad instruction `export TIM3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:278: Error: bad instruction `export TIM4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:279: Error: bad instruction `export I2C1_EV_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:280: Error: bad instruction `export I2C1_ER_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:281: Error: bad instruction `export I2C2_EV_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:282: Error: bad instruction `export I2C2_ER_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:283: Error: bad instruction `export SPI1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:284: Error: bad instruction `export SPI2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:285: Error: bad instruction `export USART1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:286: Error: bad instruction `export USART2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:287: Error: bad instruction `export USART3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:288: Error: bad instruction `export EXTI15_10_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:289: Error: bad instruction `export RTC_Alarm_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:290: Error: bad instruction `export USBWakeUp_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:291: Error: bad instruction `export TIM8_BRK_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:292: Error: bad instruction `export TIM8_UP_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:293: Error: bad instruction `export TIM8_TRG_COM_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:294: Error: bad instruction `export TIM8_CC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:295: Error: bad instruction `export ADC3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:296: Error: bad instruction `export FMC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:297: Error: bad instruction `export LPTIM1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:298: Error: bad instruction `export TIM5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:299: Error: bad instruction `export SPI3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:300: Error: bad instruction `export UART4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:301: Error: bad instruction `export UART5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:302: Error: bad instruction `export TIM6_DAC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:303: Error: bad instruction `export TIM7_DAC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:304: Error: bad instruction `export DMA2_Channel1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:305: Error: bad instruction `export DMA2_Channel2_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:306: Error: bad instruction `export DMA2_Channel3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:307: Error: bad instruction `export DMA2_Channel4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:308: Error: bad instruction `export DMA2_Channel5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:309: Error: bad instruction `export ADC4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:310: Error: bad instruction `export ADC5_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:311: Error: bad instruction `export UCPD1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:312: Error: bad instruction `export COMP1_2_3_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:313: Error: bad instruction `export COMP4_5_6_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:314: Error: bad instruction `export COMP7_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:315: Error: bad instruction `export HRTIM1_Master_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:316: Error: bad instruction `export HRTIM1_TIMA_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:317: Error: bad instruction `export HRTIM1_TIMB_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:318: Error: bad instruction `export HRTIM1_TIMC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:319: Error: bad instruction `export HRTIM1_TIMD_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:320: Error: bad instruction `export HRTIM1_TIME_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:321: Error: bad instruction `export HRTIM1_FLT_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:322: Error: bad instruction `export HRTIM1_TIMF_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:323: Error: bad instruction `export CRS_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:324: Error: bad instruction `export SAI1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:325: Error: bad instruction `export TIM20_BRK_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:326: Error: bad instruction `export TIM20_UP_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:327: Error: bad instruction `export TIM20_TRG_COM_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:328: Error: bad instruction `export TIM20_CC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:329: Error: bad instruction `export FPU_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:330: Error: bad instruction `export I2C4_EV_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:331: Error: bad instruction `export I2C4_ER_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:332: Error: bad instruction `export SPI4_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:333: Error: bad instruction `export FDCAN2_IT0_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:334: Error: bad instruction `export FDCAN2_IT1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:335: Error: bad instruction `export FDCAN3_IT0_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:336: Error: bad instruction `export FDCAN3_IT1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:337: Error: bad instruction `export RNG_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:338: Error: bad instruction `export LPUART1_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:339: Error: bad instruction `export I2C3_EV_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:340: Error: bad instruction `export I2C3_ER_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:341: Error: bad instruction `export DMAMUX_OVR_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:342: Error: bad instruction `export QUADSPI_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:343: Error: bad instruction `export DMA1_Channel8_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:344: Error: bad instruction `export DMA2_Channel6_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:345: Error: bad instruction `export DMA2_Channel7_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:346: Error: bad instruction `export DMA2_Channel8_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:347: Error: bad instruction `export CORDIC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:348: Error: bad instruction `export FMAC_IRQHandler [WEAK]'
+./startup_stm32g474xx.s:350: Error: bad instruction `wwdg_irqhandler'
+./startup_stm32g474xx.s:351: Error: bad instruction `pvd_pvm_irqhandler'
+./startup_stm32g474xx.s:352: Error: bad instruction `rtc_tamp_lsecss_irqhandler'
+./startup_stm32g474xx.s:353: Error: bad instruction `rtc_wkup_irqhandler'
+./startup_stm32g474xx.s:354: Error: bad instruction `flash_irqhandler'
+./startup_stm32g474xx.s:355: Error: bad instruction `rcc_irqhandler'
+./startup_stm32g474xx.s:356: Error: bad instruction `exti0_irqhandler'
+./startup_stm32g474xx.s:357: Error: bad instruction `exti1_irqhandler'
+./startup_stm32g474xx.s:358: Error: bad instruction `exti2_irqhandler'
+./startup_stm32g474xx.s:359: Error: bad instruction `exti3_irqhandler'
+./startup_stm32g474xx.s:360: Error: bad instruction `exti4_irqhandler'
+./startup_stm32g474xx.s:361: Error: bad instruction `dma1_channel1_irqhandler'
+./startup_stm32g474xx.s:362: Error: bad instruction `dma1_channel2_irqhandler'
+./startup_stm32g474xx.s:363: Error: bad instruction `dma1_channel3_irqhandler'
+./startup_stm32g474xx.s:364: Error: bad instruction `dma1_channel4_irqhandler'
+./startup_stm32g474xx.s:365: Error: bad instruction `dma1_channel5_irqhandler'
+./startup_stm32g474xx.s:366: Error: bad instruction `dma1_channel6_irqhandler'
+./startup_stm32g474xx.s:367: Error: bad instruction `dma1_channel7_irqhandler'
+./startup_stm32g474xx.s:368: Error: bad instruction `adc1_2_irqhandler'
+./startup_stm32g474xx.s:369: Error: bad instruction `usb_hp_irqhandler'
+./startup_stm32g474xx.s:370: Error: bad instruction `usb_lp_irqhandler'
+./startup_stm32g474xx.s:371: Error: bad instruction `fdcan1_it0_irqhandler'
+./startup_stm32g474xx.s:372: Error: bad instruction `fdcan1_it1_irqhandler'
+./startup_stm32g474xx.s:373: Error: bad instruction `exti9_5_irqhandler'
+./startup_stm32g474xx.s:374: Error: bad instruction `tim1_brk_tim15_irqhandler'
+./startup_stm32g474xx.s:375: Error: bad instruction `tim1_up_tim16_irqhandler'
+./startup_stm32g474xx.s:376: Error: bad instruction `tim1_trg_com_tim17_irqhandler'
+./startup_stm32g474xx.s:377: Error: bad instruction `tim1_cc_irqhandler'
+./startup_stm32g474xx.s:378: Error: bad instruction `tim2_irqhandler'
+./startup_stm32g474xx.s:379: Error: bad instruction `tim3_irqhandler'
+./startup_stm32g474xx.s:380: Error: bad instruction `tim4_irqhandler'
+./startup_stm32g474xx.s:381: Error: bad instruction `i2c1_ev_irqhandler'
+./startup_stm32g474xx.s:382: Error: bad instruction `i2c1_er_irqhandler'
+./startup_stm32g474xx.s:383: Error: bad instruction `i2c2_ev_irqhandler'
+./startup_stm32g474xx.s:384: Error: bad instruction `i2c2_er_irqhandler'
+./startup_stm32g474xx.s:385: Error: bad instruction `spi1_irqhandler'
+./startup_stm32g474xx.s:386: Error: bad instruction `spi2_irqhandler'
+./startup_stm32g474xx.s:387: Error: bad instruction `usart1_irqhandler'
+./startup_stm32g474xx.s:388: Error: bad instruction `usart2_irqhandler'
+./startup_stm32g474xx.s:389: Error: bad instruction `usart3_irqhandler'
+./startup_stm32g474xx.s:390: Error: bad instruction `exti15_10_irqhandler'
+./startup_stm32g474xx.s:391: Error: bad instruction `rtc_alarm_irqhandler'
+./startup_stm32g474xx.s:392: Error: bad instruction `usbwakeup_irqhandler'
+./startup_stm32g474xx.s:393: Error: bad instruction `tim8_brk_irqhandler'
+./startup_stm32g474xx.s:394: Error: bad instruction `tim8_up_irqhandler'
+./startup_stm32g474xx.s:395: Error: bad instruction `tim8_trg_com_irqhandler'
+./startup_stm32g474xx.s:396: Error: bad instruction `tim8_cc_irqhandler'
+./startup_stm32g474xx.s:397: Error: bad instruction `adc3_irqhandler'
+./startup_stm32g474xx.s:398: Error: bad instruction `fmc_irqhandler'
+./startup_stm32g474xx.s:399: Error: bad instruction `lptim1_irqhandler'
+./startup_stm32g474xx.s:400: Error: bad instruction `tim5_irqhandler'
+./startup_stm32g474xx.s:401: Error: bad instruction `spi3_irqhandler'
+./startup_stm32g474xx.s:402: Error: bad instruction `uart4_irqhandler'
+./startup_stm32g474xx.s:403: Error: bad instruction `uart5_irqhandler'
+./startup_stm32g474xx.s:404: Error: bad instruction `tim6_dac_irqhandler'
+./startup_stm32g474xx.s:405: Error: bad instruction `tim7_dac_irqhandler'
+./startup_stm32g474xx.s:406: Error: bad instruction `dma2_channel1_irqhandler'
+./startup_stm32g474xx.s:407: Error: bad instruction `dma2_channel2_irqhandler'
+./startup_stm32g474xx.s:408: Error: bad instruction `dma2_channel3_irqhandler'
+./startup_stm32g474xx.s:409: Error: bad instruction `dma2_channel4_irqhandler'
+./startup_stm32g474xx.s:410: Error: bad instruction `dma2_channel5_irqhandler'
+./startup_stm32g474xx.s:411: Error: bad instruction `adc4_irqhandler'
+./startup_stm32g474xx.s:412: Error: bad instruction `adc5_irqhandler'
+./startup_stm32g474xx.s:413: Error: bad instruction `ucpd1_irqhandler'
+./startup_stm32g474xx.s:414: Error: bad instruction `comp1_2_3_irqhandler'
+./startup_stm32g474xx.s:415: Error: bad instruction `comp4_5_6_irqhandler'
+./startup_stm32g474xx.s:416: Error: bad instruction `comp7_irqhandler'
+./startup_stm32g474xx.s:417: Error: bad instruction `hrtim1_master_irqhandler'
+./startup_stm32g474xx.s:418: Error: bad instruction `hrtim1_tima_irqhandler'
+./startup_stm32g474xx.s:419: Error: bad instruction `hrtim1_timb_irqhandler'
+./startup_stm32g474xx.s:420: Error: bad instruction `hrtim1_timc_irqhandler'
+./startup_stm32g474xx.s:421: Error: bad instruction `hrtim1_timd_irqhandler'
+./startup_stm32g474xx.s:422: Error: bad instruction `hrtim1_time_irqhandler'
+./startup_stm32g474xx.s:423: Error: bad instruction `hrtim1_flt_irqhandler'
+./startup_stm32g474xx.s:424: Error: bad instruction `hrtim1_timf_irqhandler'
+./startup_stm32g474xx.s:425: Error: bad instruction `crs_irqhandler'
+./startup_stm32g474xx.s:426: Error: bad instruction `sai1_irqhandler'
+./startup_stm32g474xx.s:427: Error: bad instruction `tim20_brk_irqhandler'
+./startup_stm32g474xx.s:428: Error: bad instruction `tim20_up_irqhandler'
+./startup_stm32g474xx.s:429: Error: bad instruction `tim20_trg_com_irqhandler'
+./startup_stm32g474xx.s:430: Error: bad instruction `tim20_cc_irqhandler'
+./startup_stm32g474xx.s:431: Error: bad instruction `fpu_irqhandler'
+./startup_stm32g474xx.s:432: Error: bad instruction `i2c4_ev_irqhandler'
+./startup_stm32g474xx.s:433: Error: bad instruction `i2c4_er_irqhandler'
+./startup_stm32g474xx.s:434: Error: bad instruction `spi4_irqhandler'
+./startup_stm32g474xx.s:435: Error: bad instruction `fdcan2_it0_irqhandler'
+./startup_stm32g474xx.s:436: Error: bad instruction `fdcan2_it1_irqhandler'
+./startup_stm32g474xx.s:437: Error: bad instruction `fdcan3_it0_irqhandler'
+./startup_stm32g474xx.s:438: Error: bad instruction `fdcan3_it1_irqhandler'
+./startup_stm32g474xx.s:439: Error: bad instruction `rng_irqhandler'
+./startup_stm32g474xx.s:440: Error: bad instruction `lpuart1_irqhandler'
+./startup_stm32g474xx.s:441: Error: bad instruction `i2c3_ev_irqhandler'
+./startup_stm32g474xx.s:442: Error: bad instruction `i2c3_er_irqhandler'
+./startup_stm32g474xx.s:443: Error: bad instruction `dmamux_ovr_irqhandler'
+./startup_stm32g474xx.s:444: Error: bad instruction `quadspi_irqhandler'
+./startup_stm32g474xx.s:445: Error: bad instruction `dma1_channel8_irqhandler'
+./startup_stm32g474xx.s:446: Error: bad instruction `dma2_channel6_irqhandler'
+./startup_stm32g474xx.s:447: Error: bad instruction `dma2_channel7_irqhandler'
+./startup_stm32g474xx.s:448: Error: bad instruction `dma2_channel8_irqhandler'
+./startup_stm32g474xx.s:449: Error: bad instruction `cordic_irqhandler'
+./startup_stm32g474xx.s:450: Error: bad instruction `fmac_irqhandler'
+./startup_stm32g474xx.s:454: Error: bad instruction `endp'
+./startup_stm32g474xx.s:456: Error: bad instruction `align'
+./startup_stm32g474xx.s:458: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:459: Error: bad instruction `user Stack and Heap initialization'
+./startup_stm32g474xx.s:460: Error: junk at end of line, first unrecognized character is `*'
+./startup_stm32g474xx.s:461: Error: bad instruction `__microlib'
+./startup_stm32g474xx.s:463: Error: bad instruction `export __initial_sp'
+./startup_stm32g474xx.s:464: Error: bad instruction `export __heap_base'
+./startup_stm32g474xx.s:465: Error: bad instruction `export __heap_limit'
+./startup_stm32g474xx.s:467: Error: bad instruction `else'
+./startup_stm32g474xx.s:469: Error: bad instruction `import __use_two_region_memory'
+./startup_stm32g474xx.s:470: Error: bad instruction `export __user_initial_stackheap'
+./startup_stm32g474xx.s:472: Error: bad instruction `__user_initial_stackheap'
+./startup_stm32g474xx.s:475: Error: syntax error -- `ldr R1,=(Stack_Mem+Stack_Size)'
+./startup_stm32g474xx.s:476: Error: syntax error -- `ldr R2,=(Heap_Mem+Heap_Size)'
+./startup_stm32g474xx.s:480: Error: bad instruction `align'
+./startup_stm32g474xx.s:482: Error: bad instruction `endif'
+./startup_stm32g474xx.s:484: Error: bad instruction `end'
+
+[2024-03-12 02:44:16]	[done]
+	build successfully !
+
+[2024-03-12 02:45:36]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_OscConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(STACK).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_ClockConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_ControlVoltageScaling).
+Error: L6406E: No space in execution regions with .ANY selector matching gpio.o(i.MX_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.SystemClock_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_InitTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_msp.o(i.HAL_MspInit).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_SYSTICK_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriorityGrouping).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching memseta.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.__NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_NMI_IRQHandler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(i.SystemInit).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.constdata).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_IncTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_DisableUCPDDeadBattery).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_EnableCSS).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.main).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_GetTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_WritePin).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.NMI_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SysTick_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.BusFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.DebugMon_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.HardFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.MemManage_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.PendSV_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SVC_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.UsageFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_CSSCallback).
+Error: L6407E: Sections of aggregate size 0x1084 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 39 error messages.
+
+
+[2024-03-12 02:45:41]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_OscConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(STACK).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_ClockConfig).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_ControlVoltageScaling).
+Error: L6406E: No space in execution regions with .ANY selector matching gpio.o(i.MX_GPIO_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.SystemClock_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_InitTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_msp.o(i.HAL_MspInit).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_SYSTICK_Config).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.HAL_NVIC_SetPriorityGrouping).
+Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32g474xx.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching memseta.o(.text).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_cortex.o(i.__NVIC_SetPriority).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_Init).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_NMI_IRQHandler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(i.SystemInit).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.constdata).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_IncTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_pwr_ex.o(i.HAL_PWREx_DisableUCPDDeadBattery).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_EnableCSS).
+Error: L6406E: No space in execution regions with .ANY selector matching main.o(i.main).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(i.HAL_GetTick).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_gpio.o(i.HAL_GPIO_WritePin).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.NMI_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SysTick_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching system_stm32g4xx.o(.data).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.BusFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.DebugMon_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.HardFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.MemManage_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.PendSV_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.SVC_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_it.o(i.UsageFault_Handler).
+Error: L6406E: No space in execution regions with .ANY selector matching stm32g4xx_hal_rcc.o(i.HAL_RCC_CSSCallback).
+Error: L6407E: Sections of aggregate size 0x1084 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 39 error messages.
+
+
+[2024-03-12 02:48:53]	[done]
+	build successfully !
+
+[2024-03-14 17:41:38]	[done]
+	build successfully !
+
+[2024-03-14 17:45:02]	[done]
+	build successfully !
+
+[2024-03-14 18:35:26]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_TIM2_Init (referred from main.o).
+Error: L6218E: Undefined symbol htim2 (referred from stm32g4xx_it.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+
+
+[2024-03-14 18:35:59]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_TIM2_Init (referred from main.o).
+Error: L6218E: Undefined symbol htim2 (referred from stm32g4xx_it.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+
+
+[2024-03-14 18:36:50]	[done]
+	build successfully !
+
+[2024-03-14 18:40:01]	[done]
+	build successfully !
+
+[2024-03-14 18:40:42]	[done]
+	build successfully !
+
+[2024-03-14 18:42:59]	[done]
+	build successfully !
+
+[2024-03-14 18:49:31]	[done]
+	build successfully !
+
+[2024-03-14 18:52:12]	[done]
+	build successfully !
+
+[2024-03-14 18:54:34]	[done]
+	build successfully !
+
+[2024-03-14 18:55:18]	[done]
+	build successfully !
+
+[2024-03-14 18:55:48]	[done]
+	build successfully !
+
+[2024-03-14 18:56:33]	[done]
+	build successfully !
+
+[2024-03-14 18:56:57]	[done]
+	build successfully !
+
+[2024-03-14 18:57:06]	[done]
+	build successfully !
+
+[2024-03-14 18:58:51]	[done]
+	build successfully !
+
+[2024-03-14 18:59:12]	[done]
+	build successfully !
+
+[2024-03-14 18:59:44]	[done]
+	build successfully !
+
+[2024-03-14 19:37:28]	[done]
+	build successfully !
+
+[2024-03-14 19:38:37]	[done]
+	build successfully !
+
+[2024-03-14 19:39:35]	[done]
+	build successfully !
+
+[2024-03-14 19:42:47]	[done]
+	build successfully !
+
+[2024-03-14 19:43:09]	[done]
+	build successfully !
+
+[2024-03-14 19:43:33]	[done]
+	build successfully !
+
+[2024-03-14 19:44:13]	[done]
+	build successfully !
+
+[2024-03-14 19:44:36]	[done]
+	build successfully !
+
+[2024-03-14 19:45:04]	[done]
+	build successfully !
+
+[2024-03-14 19:50:40]	[done]
+	build successfully !
+
+[2024-03-14 19:51:28]	[done]
+	build successfully !
+
+[2024-03-14 19:52:33]	[done]
+	build successfully !
+
+[2024-03-14 20:59:39]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED_Data.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.o --no_depend_system_headers --depend .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.d .\..\Core\Hardware\OLED_Data.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Core\Hardware\OLED_Data.c", line 336: Error:  #8: missing closing quote
+  	"锛?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 337: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 340: Error:  #8: missing closing quote
+  	"銆?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 341: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 344: Error:  #8: missing closing quote
+  	"浣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 345: Error:  #253: expected a ","
+  	0x00,0x80,0x60,0xF8,0x07,0x40,0x20,0x18,0x0F,0x08,0xC8,0x08,0x08,0x28,0x18,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 348: Error:  #8: missing closing quote
+  	"濂?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 349: Error:  #253: expected a ","
+  	0x10,0x10,0xF0,0x1F,0x10,0xF0,0x00,0x80,0x82,0x82,0xE2,0x92,0x8A,0x86,0x80,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 352: Error:  #8: missing closing quote
+  	"涓?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 353: Error:  #253: expected a ","
+  	0x20,0x20,0x20,0xFE,0x20,0x20,0xFF,0x20,0x20,0x20,0xFF,0x20,0x20,0x20,0x20,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 356: Error:  #8: missing closing quote
+  	"鐣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 357: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0xFE,0x92,0x92,0x92,0xFE,0x92,0x92,0x92,0xFE,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 363: Error:  #144: a value of type "char *" cannot be used to initialize an entity of type "uint8_t"
+  	"",		
+  	^
+.\..\Core\Hardware\OLED_Data.c: 0 warnings, 13 errors
+
+[2024-03-14 21:00:52]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED_Data.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.o --no_depend_system_headers --depend .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.d .\..\Core\Hardware\OLED_Data.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Core\Hardware\OLED_Data.c", line 336: Error:  #8: missing closing quote
+  	"锛?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 337: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 340: Error:  #8: missing closing quote
+  	"銆?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 341: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 344: Error:  #8: missing closing quote
+  	"浣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 345: Error:  #253: expected a ","
+  	0x00,0x80,0x60,0xF8,0x07,0x40,0x20,0x18,0x0F,0x08,0xC8,0x08,0x08,0x28,0x18,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 348: Error:  #8: missing closing quote
+  	"濂?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 349: Error:  #253: expected a ","
+  	0x10,0x10,0xF0,0x1F,0x10,0xF0,0x00,0x80,0x82,0x82,0xE2,0x92,0x8A,0x86,0x80,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 352: Error:  #8: missing closing quote
+  	"涓?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 353: Error:  #253: expected a ","
+  	0x20,0x20,0x20,0xFE,0x20,0x20,0xFF,0x20,0x20,0x20,0xFF,0x20,0x20,0x20,0x20,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 356: Error:  #8: missing closing quote
+  	"鐣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 357: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0xFE,0x92,0x92,0x92,0xFE,0x92,0x92,0x92,0xFE,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 363: Error:  #144: a value of type "char *" cannot be used to initialize an entity of type "uint8_t"
+  	"",		
+  	^
+.\..\Core\Hardware\OLED_Data.c: 0 warnings, 13 errors
+
+[2024-03-14 21:00:58]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED_Data.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCC\bin\armcc.exe" -c --apcs=interwork -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx --cpu Cortex-M4.fp --li --c99 -D__MICROLIB -O3 --split_sections --diag_suppress=1 --diag_suppress=1295 -g -o .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.o --no_depend_system_headers --depend .\build\Buck-Boost\.obj\__\Core\Hardware\OLED_Data.d .\..\Core\Hardware\OLED_Data.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+".\..\Core\Hardware\OLED_Data.c", line 336: Error:  #8: missing closing quote
+  	"锛?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 337: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 340: Error:  #8: missing closing quote
+  	"銆?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 341: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 344: Error:  #8: missing closing quote
+  	"浣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 345: Error:  #253: expected a ","
+  	0x00,0x80,0x60,0xF8,0x07,0x40,0x20,0x18,0x0F,0x08,0xC8,0x08,0x08,0x28,0x18,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 348: Error:  #8: missing closing quote
+  	"濂?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 349: Error:  #253: expected a ","
+  	0x10,0x10,0xF0,0x1F,0x10,0xF0,0x00,0x80,0x82,0x82,0xE2,0x92,0x8A,0x86,0x80,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 352: Error:  #8: missing closing quote
+  	"涓?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 353: Error:  #253: expected a ","
+  	0x20,0x20,0x20,0xFE,0x20,0x20,0xFF,0x20,0x20,0x20,0xFF,0x20,0x20,0x20,0x20,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 356: Error:  #8: missing closing quote
+  	"鐣?",
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 357: Error:  #253: expected a ","
+  	0x00,0x00,0x00,0xFE,0x92,0x92,0x92,0xFE,0x92,0x92,0x92,0xFE,0x00,0x00,0x00,0x00,
+  	^
+".\..\Core\Hardware\OLED_Data.c", line 363: Error:  #144: a value of type "char *" cannot be used to initialize an entity of type "uint8_t"
+  	"",		
+  	^
+.\..\Core\Hardware\OLED_Data.c: 0 warnings, 13 errors
+
+[2024-03-14 21:01:27]	[done]
+	build successfully !
+
+[2024-03-14 21:01:49]	[done]
+	build successfully !
+
+[2024-03-14 21:02:49]	[done]
+	build successfully !
+
+[2024-03-14 21:03:26]	[done]
+	build successfully !
+
+[2024-03-14 21:03:47]	[done]
+	build successfully !
+
+[2024-03-14 21:10:49]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:26:10: fatal error: 'OLED.h' file not found
+   26 | #include "OLED.h"
+      |          ^~~~~~~~
+1 error generated.
+
+[2024-03-14 21:10:54]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:26:10: fatal error: 'OLED.h' file not found
+   26 | #include "OLED.h"
+      |          ^~~~~~~~
+1 error generated.
+
+[2024-03-14 21:13:26]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:26:10: fatal error: 'OLED.h' file not found
+   26 | #include "OLED.h"
+      |          ^~~~~~~~
+1 error generated.
+
+[2024-03-14 21:51:39]	[done]
+	build successfully !
+
+[2024-03-14 21:52:28]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:196:2: error: call to undeclared function 'Delay_ms'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  196 |         Delay_ms(1500);
+      |         ^
+1 error generated.
+
+[2024-03-14 21:52:40]	[done]
+	build successfully !
+
+[2024-03-14 21:58:23]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:214:4: error: call to undeclared function 'Delay_ms'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  214 |                         Delay_ms(1000);
+      |                         ^
+1 error generated.
+
+[2024-03-14 21:58:31]	[done]
+	build successfully !
+
