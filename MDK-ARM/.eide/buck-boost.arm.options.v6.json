@@ -7,7 +7,7 @@
         "output-debug-info": "enable"
     },
     "c/cpp-compiler": {
-        "optimization": "level-3",
+        "optimization": "level-balanced",
         "language-c": "c99",
         "language-cpp": "c++11",
         "warnings": "ac5-like-warnings"

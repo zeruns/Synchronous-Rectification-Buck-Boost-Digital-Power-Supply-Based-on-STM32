@@ -22,7 +22,7 @@
             "executable": "build\\Buck-Boost\\Buck-Boost.elf",
             "runToEntryPoint": "main",
             "configFiles": [
-                "interface/stlink.cfg",
+                "interface/cmsis-dap.cfg",
                 "target/stm32g4x.cfg"
             ],
             "svdFile": ".pack/Keil/STM32G4xx_DFP.1.1.0/CMSIS/SVD/STM32G474xx.svd"

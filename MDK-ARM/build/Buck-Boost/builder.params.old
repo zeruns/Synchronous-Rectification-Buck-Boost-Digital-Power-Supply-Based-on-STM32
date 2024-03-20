@@ -70,7 +70,7 @@
             "target": "cortex-m4-sp"
         },
         "c/cpp-compiler": {
-            "optimization": "level-3",
+            "optimization": "level-balanced",
             "language-c": "c99",
             "language-cpp": "c++11",
             "warnings": "ac5-like-warnings"
@@ -109,7 +109,7 @@
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "d751713988987e9331980363e24189ce",
         "global": "3ae75cac734e7a166338bea4b35ae2e0",
-        "c/cpp-compiler": "f6095cd5c590b877e19937fddc45f96d",
+        "c/cpp-compiler": "cfdb6cbf772ad14cb47bc3ca4752530b",
         "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
         "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
     }

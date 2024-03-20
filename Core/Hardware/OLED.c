@@ -21,7 +21,7 @@
 /*
  * 本程序由zeruns二次修改
  * 修改内容：	从标准库版改成HAL库版，增加支持硬件I2C，可通过修改宏定义来选择是否启用硬件I2C
- * 修改日期：	2024.3.15
+ * 修改日期：	2024.3.16
  * 博客：		https://blog.zeruns.tech
  * B站主页：	https://space.bilibili.com/8320520
 */
@@ -38,9 +38,9 @@
 /*
 选择OLED驱动方式，默认使用硬件I2C。如果要用软件I2C就将硬件I2C那行的宏定义注释掉，将软件I2C那行的注释取消。
 不能同时两个都同时取消注释！
-在stm32cubemx中初始化时需要将SCL和SDA引脚的user lable分别设置为I2C3_SCL和I2C3_SDA。
+在stm32cubemx中初始化时需要将SCL和SDA引脚的"user lable"分别设置为I2C3_SCL和I2C3_SDA。
 */
-#define OLED_USE_HW_I2C		// 硬件I2C
+#define OLED_USE_HW_I2C	// 硬件I2C
 //#define OLED_USE_SW_I2C	// 软件I2C
 
 /*引脚定义，可在此处修改I2C通信引脚*/
@@ -49,11 +49,13 @@
 #define OLED_SCL_GPIO_Port  I2C3_SCL_GPIO_Port
 #define OLED_SDA_GPIO_Port  I2C3_SDA_GPIO_Port
 
-/*STM32F103芯片的硬件I2C1: PB6 -- SCL; PB7 -- SDA */
+/*STM32G474芯片的硬件I2C3: PA8 -- SCL; PC9 -- SDA */
 
+#ifdef OLED_USE_HW_I2C
 /*I2C接口，定义OLED屏使用哪个I2C接口*/
-#define OLED_I2C     hi2c3
-extern I2C_HandleTypeDef hi2c3;	//HAL库使用，指定硬件IIC接口
+#define OLED_I2C            hi2c3
+extern  I2C_HandleTypeDef   hi2c3;	//HAL库使用，指定硬件IIC接口
+#endif
 
 /*OLED从机地址*/
 #define OLED_ADDRESS 0x3C << 1	// 0x3C是OLED的7位地址，左移1位最后位做读写位变成0x78
@@ -135,10 +137,10 @@ void OLED_W_SCL(uint8_t BitValue)
 }
 
 /**
-  * 函    数：OLED写SDA高低电平
-  * 参    数：要写入SDA的电平值，范围：0/1
-  * 返 回 值：无
-  * 说    明：当上层函数需要写SDA时，此函数会被调用
+  * @brief OLED写SDA高低电平
+  * @param 要写入SDA的电平值，范围：0/1
+  * @return 无
+  * @note 当上层函数需要写SDA时，此函数会被调用
   *           用户需要根据参数传入的值，将SDA置为高电平或者低电平
   *           当参数传入0时，置SDA为低电平，当参数传入1时，置SDA为高电平
   */
@@ -162,7 +164,7 @@ void OLED_W_SDA(uint8_t BitValue)
  */
 void OLED_GPIO_Init(void)
 {
-    uint32_t i, j;
+    volatile uint32_t i, j;
 
     /*在初始化前，加入适量延时，待OLED供电稳定*/
     for (i = 0; i < 1000; i++) {
@@ -245,9 +247,9 @@ void OLED_I2C_SendByte(uint8_t Byte)
 }
 
 /**
- * 函    数：OLED写命令
- * 参    数：Command 要写入的命令值，范围：0x00~0xFF
- * 返 回 值：无
+ * @brief OLED写命令
+ * @param Command 要写入的命令值，范围：0x00~0xFF
+ * @return 无
  */
 void OLED_WriteCommand(uint8_t Command)
 {
@@ -264,10 +266,10 @@ void OLED_WriteCommand(uint8_t Command)
 }
 
 /**
- * 函    数：OLED写数据
- * 参    数：Data 要写入数据的起始地址
- * 参    数：Count 要写入数据的数量
- * 返 回 值：无
+ * @brief OLED写数据
+ * @param Data 要写入数据的起始地址
+ * @param Count 要写入数据的数量
+ * @return 无
  */
 void OLED_WriteData(uint8_t *Data, uint8_t Count)
 {
@@ -298,10 +300,10 @@ void OLED_WriteData(uint8_t *Data, uint8_t Count)
 /*硬件配置*********************/
 
 /**
- * 函    数：OLED初始化
- * 参    数：无
- * 返 回 值：无
- * 说    明：使用前，需要调用此初始化函数
+ * @brief OLED初始化
+ * @param 无
+ * @return 无
+ * @note 使用前，需要调用此初始化函数
  */
 void OLED_Init(void)
 {
@@ -351,11 +353,11 @@ void OLED_Init(void)
 }
 
 /**
- * 函    数：OLED设置显示光标位置
- * 参    数：Page 指定光标所在的页，范围：0~7
- * 参    数：X 指定光标所在的X轴坐标，范围：0~127
- * 返 回 值：无
- * 说    明：OLED默认的Y轴，只能8个Bit为一组写入，即1页等于8个Y轴坐标
+ * @brief OLED设置显示光标位置
+ * @param Page 指定光标所在的页，范围：0-7
+ * @param X 指定光标所在的X轴坐标，范围：0-127
+ * @return 无
+ * @note OLED默认的Y轴，只能8个Bit为一组写入，即1页等于8个Y轴坐标
  */
 void OLED_SetCursor(uint8_t Page, uint8_t X)
 {
@@ -378,10 +380,10 @@ void OLED_SetCursor(uint8_t Page, uint8_t X)
 /*工具函数仅供内部部分函数使用*/
 
 /**
- * 函    数：次方函数
- * 参    数：X 底数
- * 参    数：Y 指数
- * 返 回 值：等于X的Y次方
+ * @brief 次方函数
+ * @param X 底数
+ * @param Y 指数
+ * @return 等于X的Y次方
  */
 uint32_t OLED_Pow(uint32_t X, uint32_t Y)
 {
@@ -394,11 +396,11 @@ uint32_t OLED_Pow(uint32_t X, uint32_t Y)
 }
 
 /**
- * 函    数：判断指定点是否在指定多边形内部
- * 参    数：nvert 多边形的顶点数
- * 参    数：vertx verty 包含多边形顶点的x和y坐标的数组
- * 参    数：testx testy 测试点的X和y坐标
- * 返 回 值：指定点是否在指定多边形内部，1：在内部，0：不在内部
+ * @brief 判断指定点是否在指定多边形内部
+ * @param nvert 多边形的顶点数
+ * @param vertx verty 包含多边形顶点的x和y坐标的数组
+ * @param testx testy 测试点的X和y坐标
+ * @return 指定点是否在指定多边形内部，1：在内部，0：不在内部
  */
 uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty, int16_t testx, int16_t testy)
 {
@@ -416,11 +418,11 @@ uint8_t OLED_pnpoly(uint8_t nvert, int16_t *vertx, int16_t *verty, int16_t testx
 }
 
 /**
- * 函    数：判断指定点是否在指定角度内部
- * 参    数：X Y 指定点的坐标
- * 参    数：StartAngle EndAngle 起始角度和终止角度，范围：-180~180
+ * @brief 判断指定点是否在指定角度内部
+ * @param X Y 指定点的坐标
+ * @param StartAngle EndAngle 起始角度和终止角度，范围：-180-180
  *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
- * 返 回 值：指定点是否在指定角度内部，1：在内部，0：不在内部
+ * @return 指定点是否在指定角度内部，1：在内部，0：不在内部
  */
 uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngle)
 {
@@ -447,10 +449,10 @@ uint8_t OLED_IsInAngle(int16_t X, int16_t Y, int16_t StartAngle, int16_t EndAngl
 /*功能函数*********************/
 
 /**
- * 函    数：将OLED显存数组更新到OLED屏幕
- * 参    数：无
- * 返 回 值：无
- * 说    明：所有的显示函数，都只是对OLED显存数组进行读写
+ * @brief 将OLED显存数组更新到OLED屏幕
+ * @param 无
+ * @return 无
+ * @note 所有的显示函数，都只是对OLED显存数组进行读写
  *           随后调用OLED_Update函数或OLED_UpdateArea函数
  *           才会将显存数组的数据发送到OLED硬件，进行显示
  *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -468,15 +470,15 @@ void OLED_Update(void)
 }
 
 /**
- * 函    数：将OLED显存数组部分更新到OLED屏幕
- * 参    数：X 指定区域左上角的横坐标，范围：0~127
- * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
- * 参    数：Width 指定区域的宽度，范围：0~128
- * 参    数：Height 指定区域的高度，范围：0~64
- * 返 回 值：无
- * 说    明：此函数会至少更新参数指定的区域
+ * @brief 将OLED显存数组部分更新到OLED屏幕
+ * @param X 指定区域左上角的横坐标，范围：0-127
+ * @param Y 指定区域左上角的纵坐标，范围：0-63
+ * @param Width 指定区域的宽度，范围：0-128
+ * @param Height 指定区域的高度，范围：0-64
+ * @return 无
+ * @note 此函数会至少更新参数指定的区域
  *           如果更新区域Y轴只包含部分页，则同一页的剩余部分会跟随一起更新
- * 说    明：所有的显示函数，都只是对OLED显存数组进行读写
+ * @note 所有的显示函数，都只是对OLED显存数组进行读写
  *           随后调用OLED_Update函数或OLED_UpdateArea函数
  *           才会将显存数组的数据发送到OLED硬件，进行显示
  *           故调用显示函数后，要想真正地呈现在屏幕上，还需调用更新函数
@@ -502,10 +504,10 @@ void OLED_UpdateArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 }
 
 /**
- * 函    数：将OLED显存数组全部清零
- * 参    数：无
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief 将OLED显存数组全部清零
+ * @param 无
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_Clear(void)
 {
@@ -520,13 +522,13 @@ void OLED_Clear(void)
 }
 
 /**
- * 函    数：将OLED显存数组部分清零
- * 参    数：X 指定区域左上角的横坐标，范围：0~127
- * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
- * 参    数：Width 指定区域的宽度，范围：0~128
- * 参    数：Height 指定区域的高度，范围：0~64
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief 将OLED显存数组部分清零
+ * @param X 指定区域左上角的横坐标，范围：0-127
+ * @param Y 指定区域左上角的纵坐标，范围：0-63
+ * @param Width 指定区域的宽度，范围：0-128
+ * @param Height 指定区域的高度，范围：0-64
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ClearArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 {
@@ -548,10 +550,10 @@ void OLED_ClearArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 }
 
 /**
- * 函    数：将OLED显存数组全部取反
- * 参    数：无
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief 将OLED显存数组全部取反
+ * @param 无
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_Reverse(void)
 {
@@ -566,13 +568,13 @@ void OLED_Reverse(void)
 }
 
 /**
- * 函    数：将OLED显存数组部分取反
- * 参    数：X 指定区域左上角的横坐标，范围：0~127
- * 参    数：Y 指定区域左上角的纵坐标，范围：0~63
- * 参    数：Width 指定区域的宽度，范围：0~128
- * 参    数：Height 指定区域的高度，范围：0~64
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief 将OLED显存数组部分取反
+ * @param X 指定区域左上角的横坐标，范围：0-127
+ * @param Y 指定区域左上角的纵坐标，范围：0-63
+ * @param Width 指定区域的宽度，范围：0-128
+ * @param Height 指定区域的高度，范围：0-64
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ReverseArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 {
@@ -594,15 +596,15 @@ void OLED_ReverseArea(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height)
 }
 
 /**
- * 函    数：OLED显示一个字符
- * 参    数：X 指定字符左上角的横坐标，范围：0~127
- * 参    数：Y 指定字符左上角的纵坐标，范围：0~63
- * 参    数：Char 指定要显示的字符，范围：ASCII码可见字符
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示一个字符
+ * @param X 指定字符左上角的横坐标，范围：0-127
+ * @param Y 指定字符左上角的纵坐标，范围：0-63
+ * @param Char 指定要显示的字符，范围：ASCII码可见字符
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowChar(uint8_t X, uint8_t Y, char Char, uint8_t FontSize)
 {
@@ -618,15 +620,15 @@ void OLED_ShowChar(uint8_t X, uint8_t Y, char Char, uint8_t FontSize)
 }
 
 /**
- * 函    数：OLED显示字符串
- * 参    数：X 指定字符串左上角的横坐标，范围：0~127
- * 参    数：Y 指定字符串左上角的纵坐标，范围：0~63
- * 参    数：String 指定要显示的字符串，范围：ASCII码可见字符组成的字符串
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示字符串
+ * @param X 指定字符串左上角的横坐标，范围：0-127
+ * @param Y 指定字符串左上角的纵坐标，范围：0-63
+ * @param String 指定要显示的字符串，范围：ASCII码可见字符组成的字符串
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize)
 {
@@ -639,16 +641,16 @@ void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize)
 }
 
 /**
- * 函    数：OLED显示数字（十进制，正整数）
- * 参    数：X 指定数字左上角的横坐标，范围：0~127
- * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
- * 参    数：Number 指定要显示的数字，范围：0~4294967295
- * 参    数：Length 指定数字的长度，范围：0~10
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示数字（十进制，正整数）
+ * @param X 指定数字左上角的横坐标，范围：0-127
+ * @param Y 指定数字左上角的纵坐标，范围：0-63
+ * @param Number 指定要显示的数字，范围：0-4294967295
+ * @param Length 指定数字的长度，范围：0-10
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t FontSize)
 {
@@ -663,16 +665,16 @@ void OLED_ShowNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t
 }
 
 /**
- * 函    数：OLED显示有符号数字（十进制，整数）
- * 参    数：X 指定数字左上角的横坐标，范围：0~127
- * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
- * 参    数：Number 指定要显示的数字，范围：-2147483648~2147483647
- * 参    数：Length 指定数字的长度，范围：0~10
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示有符号数字（十进制，整数）
+ * @param X 指定数字左上角的横坐标，范围：0-127
+ * @param Y 指定数字左上角的纵坐标，范围：0-63
+ * @param Number 指定要显示的数字，范围：-2147483648-2147483647
+ * @param Length 指定数字的长度，范围：0-10
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowSignedNum(uint8_t X, uint8_t Y, int32_t Number, uint8_t Length, uint8_t FontSize)
 {
@@ -699,16 +701,16 @@ void OLED_ShowSignedNum(uint8_t X, uint8_t Y, int32_t Number, uint8_t Length, ui
 }
 
 /**
- * 函    数：OLED显示十六进制数字（十六进制，正整数）
- * 参    数：X 指定数字左上角的横坐标，范围：0~127
- * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
- * 参    数：Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
- * 参    数：Length 指定数字的长度，范围：0~8
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示十六进制数字（十六进制，正整数）
+ * @param X 指定数字左上角的横坐标，范围：0~127
+ * @param Y 指定数字左上角的纵坐标，范围：0~63
+ * @param Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
+ * @param Length 指定数字的长度，范围：0~8
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowHexNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t FontSize)
 {
@@ -733,16 +735,16 @@ void OLED_ShowHexNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint
 }
 
 /**
- * 函    数：OLED显示二进制数字（二进制，正整数）
- * 参    数：X 指定数字左上角的横坐标，范围：0~127
- * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
- * 参    数：Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
- * 参    数：Length 指定数字的长度，范围：0~16
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示二进制数字（二进制，正整数）
+ * @param X 指定数字左上角的横坐标，范围：0~127
+ * @param Y 指定数字左上角的纵坐标，范围：0~63
+ * @param Number 指定要显示的数字，范围：0x00000000~0xFFFFFFFF
+ * @param Length 指定数字的长度，范围：0~16
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowBinNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint8_t FontSize)
 {
@@ -757,17 +759,17 @@ void OLED_ShowBinNum(uint8_t X, uint8_t Y, uint32_t Number, uint8_t Length, uint
 }
 
 /**
- * 函    数：OLED显示浮点数字（十进制，小数）
- * 参    数：X 指定数字左上角的横坐标，范围：0~127
- * 参    数：Y 指定数字左上角的纵坐标，范围：0~63
- * 参    数：Number 指定要显示的数字，范围：-4294967295.0~4294967295.0
- * 参    数：IntLength 指定数字的整数位长度，范围：0~10
- * 参    数：FraLength 指定数字的小数位长度，范围：0~9，小数进行四舍五入显示
- * 参    数：FontSize 指定字体大小
+ * @brief OLED显示浮点数字（十进制，小数）
+ * @param X 指定数字左上角的横坐标，范围：0-127
+ * @param Y 指定数字左上角的纵坐标，范围：0-63
+ * @param Number 指定要显示的数字，范围：-4294967295.0-4294967295.0
+ * @param IntLength 指定数字的整数位长度，范围：0-10
+ * @param FraLength 指定数字的小数位长度，范围：0-9，小数进行四舍五入显示
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
- *                 OLED_6X8		宽6像素，高8像素
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ *                  OLED_6X8	    宽6像素，高8像素
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowFloatNum(uint8_t X, uint8_t Y, double Number, uint8_t IntLength, uint8_t FraLength, uint8_t FontSize)
 {
@@ -800,14 +802,14 @@ void OLED_ShowFloatNum(uint8_t X, uint8_t Y, double Number, uint8_t IntLength, u
 }
 
 /**
- * 函    数：OLED显示汉字串
- * 参    数：X 指定汉字串左上角的横坐标，范围：0~127
- * 参    数：Y 指定汉字串左上角的纵坐标，范围：0~63
- * 参    数：Chinese 指定要显示的汉字串，范围：必须全部为汉字或者全角字符，不要加入任何半角字符
+ * @brief OLED显示汉字串
+ * @param X 指定汉字串左上角的横坐标，范围：0-127
+ * @param Y 指定汉字串左上角的纵坐标，范围：0-63
+ * @param Chinese 指定要显示的汉字串，范围：必须全部为汉字或者全角字符，不要加入任何半角字符
  *           显示的汉字需要在OLED_Data.c里的OLED_CF16x16数组定义
  *           未找到指定汉字时，会显示默认图形（一个方框，内部一个问号）
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese)
 {
@@ -842,14 +844,14 @@ void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese)
 }
 
 /**
- * 函    数：OLED显示图像
- * 参    数：X 指定图像左上角的横坐标，范围：0~127
- * 参    数：Y 指定图像左上角的纵坐标，范围：0~63
- * 参    数：Width 指定图像的宽度，范围：0~128
- * 参    数：Height 指定图像的高度，范围：0~64
- * 参    数：Image 指定要显示的图像
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief OLED显示图像
+ * @param X 指定图像左上角的横坐标，范围：0-127
+ * @param Y 指定图像左上角的纵坐标，范围：0-63
+ * @param Width 指定图像的宽度，范围：0-128
+ * @param Height 指定图像的高度，范围：0-64
+ * @param Image 指定要显示的图像
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const uint8_t *Image)
 {
@@ -885,16 +887,16 @@ void OLED_ShowImage(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, const u
 }
 
 /**
- * 函    数：OLED使用printf函数打印格式化字符串
- * 参    数：X 指定格式化字符串左上角的横坐标，范围：0~127
- * 参    数：Y 指定格式化字符串左上角的纵坐标，范围：0~63
- * 参    数：FontSize 指定字体大小
+ * @brief OLED使用printf函数打印格式化字符串
+ * @param X 指定格式化字符串左上角的横坐标，范围：0-127
+ * @param Y 指定格式化字符串左上角的纵坐标，范围：0-63
+ * @param FontSize 指定字体大小
  *           范围：OLED_8X16		宽8像素，高16像素
  *                 OLED_6X8		宽6像素，高8像素
- * 参    数：format 指定要显示的格式化字符串，范围：ASCII码可见字符组成的字符串
- * 参    数：... 格式化字符串参数列表
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @param format 指定要显示的格式化字符串，范围：ASCII码可见字符组成的字符串
+ * @param ... 格式化字符串参数列表
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_Printf(uint8_t X, uint8_t Y, uint8_t FontSize, char *format, ...)
 {
@@ -907,11 +909,11 @@ void OLED_Printf(uint8_t X, uint8_t Y, uint8_t FontSize, char *format, ...)
 }
 
 /**
- * 函    数：OLED在指定位置画一个点
- * 参    数：X 指定点的横坐标，范围：0~127
- * 参    数：Y 指定点的纵坐标，范围：0~63
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief OLED在指定位置画一个点
+ * @param X 指定点的横坐标，范围：0-127
+ * @param Y 指定点的纵坐标，范围：0-63
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawPoint(uint8_t X, uint8_t Y)
 {
@@ -924,10 +926,10 @@ void OLED_DrawPoint(uint8_t X, uint8_t Y)
 }
 
 /**
- * 函    数：OLED获取指定位置点的值
- * 参    数：X 指定点的横坐标，范围：0~127
- * 参    数：Y 指定点的纵坐标，范围：0~63
- * 返 回 值：指定位置点是否处于点亮状态，1：点亮，0：熄灭
+ * @brief OLED获取指定位置点的值
+ * @param X 指定点的横坐标，范围：0-127
+ * @param Y 指定点的纵坐标，范围：0-63
+ * @return 指定位置点是否处于点亮状态，1：点亮，0：熄灭
  */
 uint8_t OLED_GetPoint(uint8_t X, uint8_t Y)
 {
@@ -944,13 +946,13 @@ uint8_t OLED_GetPoint(uint8_t X, uint8_t Y)
 }
 
 /**
- * 函    数：OLED画线
- * 参    数：X0 指定一个端点的横坐标，范围：0~127
- * 参    数：Y0 指定一个端点的纵坐标，范围：0~63
- * 参    数：X1 指定另一个端点的横坐标，范围：0~127
- * 参    数：Y1 指定另一个端点的纵坐标，范围：0~63
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @brief OLED画线
+ * @param X0 指定一个端点的横坐标，范围：0-127
+ * @param Y0 指定一个端点的纵坐标，范围：0-63
+ * @param X1 指定另一个端点的横坐标，范围：0-127
+ * @param Y1 指定另一个端点的纵坐标，范围：0-63
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
 {
@@ -1076,16 +1078,16 @@ void OLED_DrawLine(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1)
 }
 
 /**
- * 函    数：OLED矩形
- * 参    数：X 指定矩形左上角的横坐标，范围：0~127
- * 参    数：Y 指定矩形左上角的纵坐标，范围：0~63
- * 参    数：Width 指定矩形的宽度，范围：0~128
- * 参    数：Height 指定矩形的高度，范围：0~64
- * 参    数：IsFilled 指定矩形是否填充
+ * @brief OLED矩形
+ * @param X 指定矩形左上角的横坐标，范围：0~127
+ * @param Y 指定矩形左上角的纵坐标，范围：0~63
+ * @param Width 指定矩形的宽度，范围：0~128
+ * @param Height 指定矩形的高度，范围：0~64
+ * @param IsFilled 指定矩形是否填充
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawRectangle(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, uint8_t IsFilled)
 {
@@ -1116,18 +1118,18 @@ void OLED_DrawRectangle(uint8_t X, uint8_t Y, uint8_t Width, uint8_t Height, uin
 }
 
 /**
- * 函    数：OLED三角形
- * 参    数：X0 指定第一个端点的横坐标，范围：0~127
- * 参    数：Y0 指定第一个端点的纵坐标，范围：0~63
- * 参    数：X1 指定第二个端点的横坐标，范围：0~127
- * 参    数：Y1 指定第二个端点的纵坐标，范围：0~63
- * 参    数：X2 指定第三个端点的横坐标，范围：0~127
- * 参    数：Y2 指定第三个端点的纵坐标，范围：0~63
- * 参    数：IsFilled 指定三角形是否填充
+ * @brief OLED三角形
+ * @param X0 指定第一个端点的横坐标，范围：0-127
+ * @param Y0 指定第一个端点的纵坐标，范围：0-63
+ * @param X1 指定第二个端点的横坐标，范围：0-127
+ * @param Y1 指定第二个端点的纵坐标，范围：0-63
+ * @param X2 指定第三个端点的横坐标，范围：0-127
+ * @param Y2 指定第三个端点的纵坐标，范围：0-63
+ * @param IsFilled 指定三角形是否填充
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X2, uint8_t Y2, uint8_t IsFilled)
 {
@@ -1171,15 +1173,15 @@ void OLED_DrawTriangle(uint8_t X0, uint8_t Y0, uint8_t X1, uint8_t Y1, uint8_t X
 }
 
 /**
- * 函    数：OLED画圆
- * 参    数：X 指定圆的圆心横坐标，范围：0~127
- * 参    数：Y 指定圆的圆心纵坐标，范围：0~63
- * 参    数：Radius 指定圆的半径，范围：0~255
- * 参    数：IsFilled 指定圆是否填充
+ * @brief OLED画圆
+ * @param X 指定圆的圆心横坐标，范围：0~127
+ * @param Y 指定圆的圆心纵坐标，范围：0~63
+ * @param Radius 指定圆的半径，范围：0~255
+ * @param IsFilled 指定圆是否填充
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
 {
@@ -1250,16 +1252,16 @@ void OLED_DrawCircle(uint8_t X, uint8_t Y, uint8_t Radius, uint8_t IsFilled)
 }
 
 /**
- * 函    数：OLED画椭圆
- * 参    数：X 指定椭圆的圆心横坐标，范围：0~127
- * 参    数：Y 指定椭圆的圆心纵坐标，范围：0~63
- * 参    数：A 指定椭圆的横向半轴长度，范围：0~255
- * 参    数：B 指定椭圆的纵向半轴长度，范围：0~255
- * 参    数：IsFilled 指定椭圆是否填充
+ * @brief OLED画椭圆
+ * @param X 指定椭圆的圆心横坐标，范围：0~127
+ * @param Y 指定椭圆的圆心纵坐标，范围：0~63
+ * @param A 指定椭圆的横向半轴长度，范围：0~255
+ * @param B 指定椭圆的纵向半轴长度，范围：0~255
+ * @param IsFilled 指定椭圆是否填充
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFilled)
 {
@@ -1353,19 +1355,19 @@ void OLED_DrawEllipse(uint8_t X, uint8_t Y, uint8_t A, uint8_t B, uint8_t IsFill
 }
 
 /**
- * 函    数：OLED画圆弧
- * 参    数：X 指定圆弧的圆心横坐标，范围：0~127
- * 参    数：Y 指定圆弧的圆心纵坐标，范围：0~63
- * 参    数：Radius 指定圆弧的半径，范围：0~255
- * 参    数：StartAngle 指定圆弧的起始角度，范围：-180~180
+ * @brief OLED画圆弧
+ * @param X 指定圆弧的圆心横坐标，范围：0~127
+ * @param Y 指定圆弧的圆心纵坐标，范围：0~63
+ * @param Radius 指定圆弧的半径，范围：0~255
+ * @param StartAngle 指定圆弧的起始角度，范围：-180~180
  *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
- * 参    数：EndAngle 指定圆弧的终止角度，范围：-180~180
+ * @param EndAngle 指定圆弧的终止角度，范围：-180~180
  *           水平向右为0度，水平向左为180度或-180度，下方为正数，上方为负数，顺时针旋转
- * 参    数：IsFilled 指定圆弧是否填充，填充后为扇形
+ * @param IsFilled 指定圆弧是否填充，填充后为扇形
  *           范围：OLED_UNFILLED		不填充
  *                 OLED_FILLED			填充
- * 返 回 值：无
- * 说    明：调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
+ * @return 无
+ * @note 调用此函数后，要想真正地呈现在屏幕上，还需调用更新函数
  */
 void OLED_DrawArc(uint8_t X, uint8_t Y, uint8_t Radius, int16_t StartAngle, int16_t EndAngle, uint8_t IsFilled)
 {
