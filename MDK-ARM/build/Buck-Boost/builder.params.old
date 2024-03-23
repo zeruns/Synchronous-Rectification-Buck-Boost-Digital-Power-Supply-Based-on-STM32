@@ -18,8 +18,8 @@
         "../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy",
         "../Drivers/CMSIS/Device/ST/STM32G4xx/Include",
         "../Drivers/CMSIS/Include",
-        "RTE/_Buck-Boost",
-        "../Core/Hardware"
+        "../Core/Hardware",
+        "RTE/_Buck-Boost"
     ],
     "libDirs": [],
     "defines": [
@@ -29,6 +29,9 @@
     "sourceList": [
         "../Core/Hardware/OLED.c",
         "../Core/Hardware/OLED_Data.c",
+        "../Core/Src/adc.c",
+        "../Core/Src/dma.c",
+        "../Core/Src/function.c",
         "../Core/Src/gpio.c",
         "../Core/Src/i2c.c",
         "../Core/Src/main.c",
@@ -36,7 +39,10 @@
         "../Core/Src/stm32g4xx_it.c",
         "../Core/Src/system_stm32g4xx.c",
         "../Core/Src/tim.c",
+        "../Core/Src/usart.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c",
@@ -53,6 +59,9 @@
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c",
         "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c",
+        "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.c",
         "startup_stm32g474xx.s"
     ],
     "sourceParams": {},
@@ -62,7 +71,6 @@
         "beforeBuildTasks": [],
         "afterBuildTasks": [],
         "global": {
-            "use-microLIB": true,
             "output-debug-info": "enable",
             "microcontroller-cpu": "cortex-m4-sp",
             "microcontroller-fpu": "cortex-m4-sp",
@@ -73,6 +81,8 @@
             "optimization": "level-balanced",
             "language-c": "c99",
             "language-cpp": "c++11",
+            "one-elf-section-per-function": true,
+            "short-enums#wchar": true,
             "warnings": "ac5-like-warnings"
         },
         "asm-compiler": {
@@ -108,8 +118,8 @@
         "c/cpp-defines": "30065415386b899f98409ccb9eb4b144",
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "d751713988987e9331980363e24189ce",
-        "global": "3ae75cac734e7a166338bea4b35ae2e0",
-        "c/cpp-compiler": "cfdb6cbf772ad14cb47bc3ca4752530b",
+        "global": "81d1ffc9e8caa8b65f598e4ed7e43ba0",
+        "c/cpp-compiler": "759215c9a8250e0e82a1e477577d3f0f",
         "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
         "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
     }

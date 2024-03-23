@@ -3,13 +3,14 @@
     "beforeBuildTasks": [],
     "afterBuildTasks": [],
     "global": {
-        "use-microLIB": true,
         "output-debug-info": "enable"
     },
     "c/cpp-compiler": {
         "optimization": "level-balanced",
         "language-c": "c99",
         "language-cpp": "c++11",
+        "one-elf-section-per-function": true,
+        "short-enums#wchar": true,
         "warnings": "ac5-like-warnings"
     },
     "asm-compiler": {

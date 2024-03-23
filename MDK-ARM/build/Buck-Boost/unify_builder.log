@@ -1,454 +1,751 @@
-[2024-03-14 23:47:46]	[done]
-	build successfully !
+[2024-03-22 01:00:31]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
 
-[2024-03-14 23:53:55]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
+
+[2024-03-22 01:00:51]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:03:45]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:04:03]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:05:29]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Drivers\STM32G4xx_HAL_Driver\Src\stm32g4xx_hal_usart.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.o -MMD ./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c
    at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Hardware/OLED.c:179:5: error: use of undeclared identifier 'GPIO_InitStructure'; did you mean 'GPIO_InitStruct'?
-  179 |     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_OD;     // 设置GPIO模式为复用开漏模式，需接上拉电阻
-      |     ^~~~~~~~~~~~~~~~~~
-      |     GPIO_InitStruct
-./../Core/Hardware/OLED.c:177:19: note: 'GPIO_InitStruct' declared here
-  177 |         GPIO_InitTypeDef GPIO_InitStruct = {0};              // 定义结构体配置GPIO
-      |                          ^
-./../Core/Hardware/OLED.c:179:24: error: no member named 'GPIO_Mode' in 'GPIO_InitTypeDef'
-  179 |     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_OD;     // 设置GPIO模式为复用开漏模式，需接上拉电阻
-      |     ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:179:37: error: use of undeclared identifier 'GPIO_Mode_AF_OD'
-  179 |     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_OD;     // 设置GPIO模式为复用开漏模式，需接上拉电阻
-      |                                     ^
-./../Core/Hardware/OLED.c:180:5: error: use of undeclared identifier 'GPIO_InitStructure'; did you mean 'GPIO_InitStruct'?
-  180 |     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;    // 设置GPIO速度为50MHz
-      |     ^~~~~~~~~~~~~~~~~~
-      |     GPIO_InitStruct
-./../Core/Hardware/OLED.c:177:19: note: 'GPIO_InitStruct' declared here
-  177 |         GPIO_InitTypeDef GPIO_InitStruct = {0};              // 定义结构体配置GPIO
-      |                          ^
-./../Core/Hardware/OLED.c:180:24: error: no member named 'GPIO_Speed' in 'GPIO_InitTypeDef'
-  180 |     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;    // 设置GPIO速度为50MHz
-      |     ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:180:37: error: use of undeclared identifier 'GPIO_Speed_50MHz'
-  180 |     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;    // 设置GPIO速度为50MHz
-      |                                     ^
-./../Core/Hardware/OLED.c:181:5: error: use of undeclared identifier 'GPIO_InitStructure'; did you mean 'GPIO_InitStruct'?
-  181 |     GPIO_InitStructure.GPIO_Pin   = OLED_SCL | OLED_SDA; // 设置引脚为OLED_SCL和OLED_SDA
-      |     ^~~~~~~~~~~~~~~~~~
-      |     GPIO_InitStruct
-./../Core/Hardware/OLED.c:177:19: note: 'GPIO_InitStruct' declared here
-  177 |         GPIO_InitTypeDef GPIO_InitStruct = {0};              // 定义结构体配置GPIO
-      |                          ^
-./../Core/Hardware/OLED.c:181:24: error: no member named 'GPIO_Pin' in 'GPIO_InitTypeDef'
-  181 |     GPIO_InitStructure.GPIO_Pin   = OLED_SCL | OLED_SDA; // 设置引脚为OLED_SCL和OLED_SDA
-      |     ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:182:5: error: call to undeclared function 'GPIO_Init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  182 |     GPIO_Init(OLED_GPIO, &GPIO_InitStructure);           // 初始化GPIO
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:187:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  187 | static void USART_EndTransfer(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:196:55: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  196 | static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+      |                                                       UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:198:42: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  198 | static HAL_StatusTypeDef USART_SetConfig(USART_HandleTypeDef *husart);
+      |                                          ^~~~~~~~~~~~~~~~~~~
+      |                                          UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:199:47: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  199 | static HAL_StatusTypeDef USART_CheckIdleState(USART_HandleTypeDef *husart);
+      |                                               ^~~~~~~~~~~~~~~~~~~
+      |                                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:200:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  200 | static void USART_TxISR_8BIT(USART_HandleTypeDef *husart);
+      |                              ^~~~~~~~~~~~~~~~~~~
+      |                              UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:201:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  201 | static void USART_TxISR_16BIT(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:202:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  202 | static void USART_TxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+      |                                     UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:203:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  203 | static void USART_TxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                      ^~~~~~~~~~~~~~~~~~~
+      |                                      UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:204:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  204 | static void USART_EndTransmit_IT(USART_HandleTypeDef *husart);
+      |                                  ^~~~~~~~~~~~~~~~~~~
+      |                                  UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:205:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  205 | static void USART_RxISR_8BIT(USART_HandleTypeDef *husart);
+      |                              ^~~~~~~~~~~~~~~~~~~
+      |                              UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:206:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  206 | static void USART_RxISR_16BIT(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:207:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  207 | static void USART_RxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+      |                                     UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:208:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  208 | static void USART_RxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                      ^~~~~~~~~~~~~~~~~~~
+      |                                      UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:278:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  278 | HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart)
+      |                                  ^~~~~~~~~~~~~~~~~~~
+      |                                  UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:15: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
+  289 |   if (husart->State == HAL_USART_STATE_RESET)
+      |               ^~~~~
+      |               gState
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
+  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
+      |                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:24: error: use of undeclared identifier 'HAL_USART_STATE_RESET'; did you mean 'HAL_DMA_STATE_RESET'?
+  289 |   if (husart->State == HAL_USART_STATE_RESET)
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+      |                        HAL_DMA_STATE_RESET
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:81:3: note: 'HAL_DMA_STATE_RESET' declared here
+   81 |   HAL_DMA_STATE_RESET             = 0x00U,  /*!< DMA not yet initialized or disabled    */
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: error: call to undeclared function 'HAL_USART_MspInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  306 |     HAL_USART_MspInit(husart);
       |     ^
-./../Core/Hardware/OLED.c:182:15: error: use of undeclared identifier 'OLED_GPIO'
-  182 |     GPIO_Init(OLED_GPIO, &GPIO_InitStructure);           // 初始化GPIO
-      |               ^
-./../Core/Hardware/OLED.c:182:27: error: use of undeclared identifier 'GPIO_InitStructure'
-  182 |     GPIO_Init(OLED_GPIO, &GPIO_InitStructure);           // 初始化GPIO
-      |                           ^
-./../Core/Hardware/OLED.c:199:5: error: call to undeclared function 'I2C_DeInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  199 |     I2C_DeInit(OLED_I2C);                                                     // 将外设I2C寄存器重设为缺省值
-      |     ^
-./../Core/Hardware/OLED.c:199:5: note: did you mean 'HAL_DeInit'?
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal.h:522:19: note: 'HAL_DeInit' declared here
-  522 | HAL_StatusTypeDef HAL_DeInit(void);
-      |                   ^
-./../Core/Hardware/OLED.c:201:23: error: no member named 'I2C_Mode' in 'I2C_InitTypeDef'
-  201 |     I2C_InitStructure.I2C_Mode                = I2C_Mode_I2C;                 // 工作模式
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:201:49: error: use of undeclared identifier 'I2C_Mode_I2C'
-  201 |     I2C_InitStructure.I2C_Mode                = I2C_Mode_I2C;                 // 工作模式
-      |                                                 ^
-./../Core/Hardware/OLED.c:202:23: error: no member named 'I2C_DutyCycle' in 'I2C_InitTypeDef'
-  202 |     I2C_InitStructure.I2C_DutyCycle           = I2C_DutyCycle_2;              // 时钟占空比，Tlow/Thigh = 2
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:202:49: error: use of undeclared identifier 'I2C_DutyCycle_2'
-  202 |     I2C_InitStructure.I2C_DutyCycle           = I2C_DutyCycle_2;              // 时钟占空比，Tlow/Thigh = 2
-      |                                                 ^
-./../Core/Hardware/OLED.c:203:23: error: no member named 'I2C_OwnAddress1' in 'I2C_InitTypeDef'; did you mean 'OwnAddress1'?
-  203 |     I2C_InitStructure.I2C_OwnAddress1         = 0x30;                         // 主机的I2C地址,用不到则随便写，无影响
-      |                       ^~~~~~~~~~~~~~~
-      |                       OwnAddress1
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:53:12: note: 'OwnAddress1' declared here
-   53 |   uint32_t OwnAddress1;         /*!< Specifies the first device own address.
-      |            ^
-./../Core/Hardware/OLED.c:204:23: error: no member named 'I2C_Ack' in 'I2C_InitTypeDef'
-  204 |     I2C_InitStructure.I2C_Ack                 = I2C_Ack_Enable;               // 使能应答位
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:204:49: error: use of undeclared identifier 'I2C_Ack_Enable'
-  204 |     I2C_InitStructure.I2C_Ack                 = I2C_Ack_Enable;               // 使能应答位
-      |                                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: note: did you mean 'HAL_UART_MspInit'?
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:1612:6: note: 'HAL_UART_MspInit' declared here
+ 1612 | void HAL_UART_MspInit(UART_HandleTypeDef *huart);
+      |      ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:11: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
+  310 |   husart->State = HAL_USART_STATE_BUSY;
+      |           ^~~~~
+      |           gState
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
+  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
+      |                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:19: error: use of undeclared identifier 'HAL_USART_STATE_BUSY'; did you mean 'HAL_DMA_STATE_BUSY'?
+  310 |   husart->State = HAL_USART_STATE_BUSY;
+      |                   ^~~~~~~~~~~~~~~~~~~~
+      |                   HAL_DMA_STATE_BUSY
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:83:3: note: 'HAL_DMA_STATE_BUSY' declared here
+   83 |   HAL_DMA_STATE_BUSY              = 0x02U,  /*!< DMA process is ongoing                 */
+      |   ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
 
-[2024-03-14 23:56:43]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
+[2024-03-22 01:05:39]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Drivers\STM32G4xx_HAL_Driver\Src\stm32g4xx_hal_usart.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.o -MMD ./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c
    at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Hardware/OLED.c:201:5: error: call to undeclared function 'I2C_DeInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  201 |     I2C_DeInit(OLED_I2C);                                                     // 将外设I2C寄存器重设为缺省值
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:187:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  187 | static void USART_EndTransfer(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:196:55: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  196 | static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
+      |                                                       ^~~~~~~~~~~~~~~~~~~
+      |                                                       UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:198:42: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  198 | static HAL_StatusTypeDef USART_SetConfig(USART_HandleTypeDef *husart);
+      |                                          ^~~~~~~~~~~~~~~~~~~
+      |                                          UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:199:47: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  199 | static HAL_StatusTypeDef USART_CheckIdleState(USART_HandleTypeDef *husart);
+      |                                               ^~~~~~~~~~~~~~~~~~~
+      |                                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:200:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  200 | static void USART_TxISR_8BIT(USART_HandleTypeDef *husart);
+      |                              ^~~~~~~~~~~~~~~~~~~
+      |                              UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:201:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  201 | static void USART_TxISR_16BIT(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:202:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  202 | static void USART_TxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+      |                                     UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:203:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  203 | static void USART_TxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                      ^~~~~~~~~~~~~~~~~~~
+      |                                      UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:204:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  204 | static void USART_EndTransmit_IT(USART_HandleTypeDef *husart);
+      |                                  ^~~~~~~~~~~~~~~~~~~
+      |                                  UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:205:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  205 | static void USART_RxISR_8BIT(USART_HandleTypeDef *husart);
+      |                              ^~~~~~~~~~~~~~~~~~~
+      |                              UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:206:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  206 | static void USART_RxISR_16BIT(USART_HandleTypeDef *husart);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:207:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  207 | static void USART_RxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+      |                                     UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:208:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  208 | static void USART_RxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
+      |                                      ^~~~~~~~~~~~~~~~~~~
+      |                                      UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:278:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
+  278 | HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart)
+      |                                  ^~~~~~~~~~~~~~~~~~~
+      |                                  UART_HandleTypeDef
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
+  289 | } UART_HandleTypeDef;
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:15: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
+  289 |   if (husart->State == HAL_USART_STATE_RESET)
+      |               ^~~~~
+      |               gState
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
+  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
+      |                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:24: error: use of undeclared identifier 'HAL_USART_STATE_RESET'; did you mean 'HAL_DMA_STATE_RESET'?
+  289 |   if (husart->State == HAL_USART_STATE_RESET)
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+      |                        HAL_DMA_STATE_RESET
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:81:3: note: 'HAL_DMA_STATE_RESET' declared here
+   81 |   HAL_DMA_STATE_RESET             = 0x00U,  /*!< DMA not yet initialized or disabled    */
+      |   ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: error: call to undeclared function 'HAL_USART_MspInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  306 |     HAL_USART_MspInit(husart);
       |     ^
-./../Core/Hardware/OLED.c:201:5: note: did you mean 'HAL_DeInit'?
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal.h:522:19: note: 'HAL_DeInit' declared here
-  522 | HAL_StatusTypeDef HAL_DeInit(void);
-      |                   ^
-./../Core/Hardware/OLED.c:203:23: error: no member named 'I2C_Mode' in 'I2C_InitTypeDef'
-  203 |     I2C_InitStructure.I2C_Mode                = I2C_Mode_I2C;                 // 工作模式
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:203:49: error: use of undeclared identifier 'I2C_Mode_I2C'
-  203 |     I2C_InitStructure.I2C_Mode                = I2C_Mode_I2C;                 // 工作模式
-      |                                                 ^
-./../Core/Hardware/OLED.c:204:23: error: no member named 'I2C_DutyCycle' in 'I2C_InitTypeDef'
-  204 |     I2C_InitStructure.I2C_DutyCycle           = I2C_DutyCycle_2;              // 时钟占空比，Tlow/Thigh = 2
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:204:49: error: use of undeclared identifier 'I2C_DutyCycle_2'
-  204 |     I2C_InitStructure.I2C_DutyCycle           = I2C_DutyCycle_2;              // 时钟占空比，Tlow/Thigh = 2
-      |                                                 ^
-./../Core/Hardware/OLED.c:205:23: error: no member named 'I2C_OwnAddress1' in 'I2C_InitTypeDef'; did you mean 'OwnAddress1'?
-  205 |     I2C_InitStructure.I2C_OwnAddress1         = 0x30;                         // 主机的I2C地址,用不到则随便写，无影响
-      |                       ^~~~~~~~~~~~~~~
-      |                       OwnAddress1
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:53:12: note: 'OwnAddress1' declared here
-   53 |   uint32_t OwnAddress1;         /*!< Specifies the first device own address.
-      |            ^
-./../Core/Hardware/OLED.c:206:23: error: no member named 'I2C_Ack' in 'I2C_InitTypeDef'
-  206 |     I2C_InitStructure.I2C_Ack                 = I2C_Ack_Enable;               // 使能应答位
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:206:49: error: use of undeclared identifier 'I2C_Ack_Enable'
-  206 |     I2C_InitStructure.I2C_Ack                 = I2C_Ack_Enable;               // 使能应答位
-      |                                                 ^
-./../Core/Hardware/OLED.c:207:23: error: no member named 'I2C_AcknowledgedAddress' in 'I2C_InitTypeDef'
-  207 |     I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; // 设置地址长度7位
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:207:49: error: use of undeclared identifier 'I2C_AcknowledgedAddress_7bit'
-  207 |     I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; // 设置地址长度7位
-      |                                                 ^
-./../Core/Hardware/OLED.c:208:23: error: no member named 'I2C_ClockSpeed' in 'I2C_InitTypeDef'
-  208 |     I2C_InitStructure.I2C_ClockSpeed          = 600000;// 设置I2C时钟频率，600kHz，建议设置400kHz(比较稳定)，实测在STM32F103上最高可以跑1.3MHz，在AIR32F103上最高只能跑600kHz。
-      |     ~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/OLED.c:209:5: error: call to undeclared function 'I2C_Init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  209 |     I2C_Init(OLED_I2C, &I2C_InitStructure);                                   // 初始化I2C
-      |     ^
-./../Core/Hardware/OLED.c:211:5: error: call to undeclared function 'I2C_Cmd'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  211 |     I2C_Cmd(OLED_I2C, ENABLE); // 使能I2C
-      |     ^
-./../Core/Hardware/OLED.c:227:25: error: call to undeclared function 'I2C_GetFlagStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  227 |     for(uint16_t i = 0; I2C_GetFlagStatus(OLED_I2C, I2C_FLAG_BUSY) && i < OLED_I2C_TIMEOUT; i++);       // 判断IIC总线是否忙碌
-      |                         ^
-./../Core/Hardware/OLED.c:228:5: error: call to undeclared function 'I2C_GenerateSTART'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  228 |     I2C_GenerateSTART(OLED_I2C, ENABLE);                                // 发送起始信号
-      |     ^
-./../Core/Hardware/OLED.c:230:26: error: call to undeclared function 'I2C_CheckEvent'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  230 |     for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) && i < OLED_I2C_TIMEOUT; i++);
-      |                          ^
-./../Core/Hardware/OLED.c:230:51: error: use of undeclared identifier 'I2C_EVENT_MASTER_MODE_SELECT'
-  230 |     for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) && i < OLED_I2C_TIMEOUT; i++);
-      |                                                   ^
-./../Core/Hardware/OLED.c:231:5: error: call to undeclared function 'I2C_Send7bitAddress'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  231 |     I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter); // 发送7位地址，I2C通信进入发送模式。
-      |     ^
-./../Core/Hardware/OLED.c:231:49: error: use of undeclared identifier 'I2C_Direction_Transmitter'
-  231 |     I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter); // 发送7位地址，I2C通信进入发送模式。
-      |                                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: note: did you mean 'HAL_UART_MspInit'?
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:1612:6: note: 'HAL_UART_MspInit' declared here
+ 1612 | void HAL_UART_MspInit(UART_HandleTypeDef *huart);
+      |      ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:11: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
+  310 |   husart->State = HAL_USART_STATE_BUSY;
+      |           ^~~~~
+      |           gState
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
+  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
+      |                                 ^
+./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:19: error: use of undeclared identifier 'HAL_USART_STATE_BUSY'; did you mean 'HAL_DMA_STATE_BUSY'?
+  310 |   husart->State = HAL_USART_STATE_BUSY;
+      |                   ^~~~~~~~~~~~~~~~~~~~
+      |                   HAL_DMA_STATE_BUSY
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:83:3: note: 'HAL_DMA_STATE_BUSY' declared here
+   83 |   HAL_DMA_STATE_BUSY              = 0x02U,  /*!< DMA process is ongoing                 */
+      |   ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
 
-[2024-03-14 23:57:08]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+[2024-03-22 01:07:51]	link failed !, exit code: 1
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Hardware/OLED.c:227:25: error: call to undeclared function 'I2C_GetFlagStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  227 |     for(uint16_t i = 0; I2C_GetFlagStatus(OLED_I2C, I2C_FLAG_BUSY) && i < OLED_I2C_TIMEOUT; i++);       // 判断IIC总线是否忙碌
-      |                         ^
-./../Core/Hardware/OLED.c:228:5: error: call to undeclared function 'I2C_GenerateSTART'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  228 |     I2C_GenerateSTART(OLED_I2C, ENABLE);                                // 发送起始信号
-      |     ^
-./../Core/Hardware/OLED.c:230:26: error: call to undeclared function 'I2C_CheckEvent'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  230 |     for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) && i < OLED_I2C_TIMEOUT; i++);
-      |                          ^
-./../Core/Hardware/OLED.c:230:51: error: use of undeclared identifier 'I2C_EVENT_MASTER_MODE_SELECT'
-  230 |     for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) && i < OLED_I2C_TIMEOUT; i++);
-      |                                                   ^
-./../Core/Hardware/OLED.c:231:5: error: call to undeclared function 'I2C_Send7bitAddress'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  231 |     I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter); // 发送7位地址，I2C通信进入发送模式。
-      |     ^
-./../Core/Hardware/OLED.c:231:49: error: use of undeclared identifier 'I2C_Direction_Transmitter'
-  231 |     I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter); // 发送7位地址，I2C通信进入发送模式。
-      |                                                 ^
-./../Core/Hardware/OLED.c:232:51: error: use of undeclared identifier 'I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED'
-  232 |     for(uint16_t i = 0; !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) && i < OLED_I2C_TIMEOUT; i++); // 检测EV6事件，判断I2C通信是否进入发送模式
-      |                                                   ^
-./../Core/Hardware/OLED.c:249:5: error: call to undeclared function 'I2C_GenerateSTOP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  249 |     I2C_GenerateSTOP(OLED_I2C, ENABLE); // 关闭I2C1总线
-      |     ^
-./../Core/Hardware/OLED.c:265:5: error: call to undeclared function 'I2C_SendData'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  265 |     I2C_SendData(OLED_I2C, Byte);       // 发送一个字节
-      |     ^
-./../Core/Hardware/OLED.c:267:25: error: call to undeclared function 'I2C_CheckEvent'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  267 |     for(uint16_t i = 0; I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED) != 1 && i < OLED_I2C_TIMEOUT; i++);
-      |                         ^
-./../Core/Hardware/OLED.c:267:46: error: use of undeclared identifier 'I2C_EVENT_MASTER_BYTE_TRANSMITTED'
-  267 |     for(uint16_t i = 0; I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_TRANSMITTED) != 1 && i < OLED_I2C_TIMEOUT; i++);
-      |                                              ^
-11 errors generated.
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
 
-[2024-03-15 00:01:03]	[done]
+
+[2024-03-22 01:10:57]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:12:05]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:12:18]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:12:27]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 4 error messages.
+
+
+[2024-03-22 01:26:47]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 5 error messages.
+
+
+[2024-03-22 02:37:03]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 5 error messages.
+
+
+[2024-03-22 02:37:15]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
+Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
+Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 5 error messages.
+
+
+[2024-03-22 02:38:25]	[done]
 	build successfully !
 
-[2024-03-15 00:14:41]	[done]
+[2024-03-22 02:38:52]	[done]
 	build successfully !
 
-[2024-03-15 00:15:34]	[done]
+[2024-03-22 02:40:17]	[done]
 	build successfully !
 
-[2024-03-15 00:17:10]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/OLED.c:298:29: error: use of undeclared identifier 'hi2c3'
-  298 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^
-./../Core/Hardware/OLED.c:328:29: error: use of undeclared identifier 'hi2c3'
-  328 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
-      |                             ^
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^
-2 errors generated.
+[2024-03-22 02:40:33]	[done]
+	build successfully !
 
-[2024-03-15 00:18:07]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
+[2024-03-22 15:43:15]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\tim.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/tim.o -MMD ./../Core/Src/tim.c
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Hardware/OLED.c:299:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  299 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-./../Core/Hardware/OLED.c:329:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  329 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-2 errors generated.
-
-[2024-03-15 00:18:31]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/OLED.c:300:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  300 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:55:22: note: expanded from macro 'OLED_I2C'
-   55 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-./../Core/Hardware/OLED.c:330:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  330 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:55:22: note: expanded from macro 'OLED_I2C'
-   55 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-2 errors generated.
-
-[2024-03-15 00:19:12]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/OLED.c:299:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  299 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-./../Core/Hardware/OLED.c:329:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  329 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-2 errors generated.
-
-[2024-03-15 00:19:15]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/OLED.c:299:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  299 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-./../Core/Hardware/OLED.c:329:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  329 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, Count + 1, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
-2 errors generated.
-
-[2024-03-15 00:20:03]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/OLED.c:299:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  299 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
+./../Core/Src/tim.c:242:2: error: call to undeclared function '_HAL_TIM_SET_COMPARE'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  242 |  _HAL_TIM_SET_COMPARE(&htim8,TIM_CHANNEL_3,pwm*10);
+      |  ^
 1 error generated.
 
-[2024-03-15 00:20:09]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED.c", exit code: 1
+[2024-03-22 15:43:51]	[done]
+	build successfully !
+
+[2024-03-22 15:46:07]	[done]
+	build successfully !
+
+[2024-03-22 15:47:03]	[done]
+	build successfully !
+
+[2024-03-22 15:47:50]	[done]
+	build successfully !
+
+[2024-03-22 15:48:18]	[done]
+	build successfully !
+
+[2024-03-22 15:48:45]	[done]
+	build successfully !
+
+[2024-03-22 15:49:13]	[done]
+	build successfully !
+
+[2024-03-22 15:58:41]	[done]
+	build successfully !
+
+[2024-03-22 17:03:28]	[done]
+	build successfully !
+
+[2024-03-22 17:04:11]	[done]
+	build successfully !
+
+[2024-03-22 17:04:58]	[done]
+	build successfully !
+
+[2024-03-22 17:10:14]	[done]
+	build successfully !
+
+[2024-03-22 20:39:23]	[done]
+	build successfully !
+
+[2024-03-22 20:52:43]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o -MMD ./../Core/Hardware/OLED.c
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:108:40: error: use of undeclared identifier 'ADC1_RESULT'
+  108 |   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC1_RESULT, 4);//启动ADC1采样 DMA数据传送采样输入输出电压电流
+      |                                        ^
+1 error generated.
+
+[2024-03-22 20:53:17]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol ADC1_RESULT (referred from main.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2024-03-22 20:54:08]	[done]
+	build successfully !
+
+[2024-03-22 20:55:09]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/function.c:1:
+../Core/Inc\function.h:4:8: error: unknown type name 'uint16_t'
+    4 | extern uint16_t ADC1_RESULT[4];
+      |        ^
+1 error generated.
+
+[2024-03-22 20:55:17]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
    at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Hardware/OLED.c:299:29: error: passing 'I2C_HandleTypeDef' (aka 'struct __I2C_HandleTypeDef') to parameter of incompatible type 'I2C_HandleTypeDef *' (aka 'struct __I2C_HandleTypeDef *'); take the address with &
-  299 |     HAL_I2C_Master_Transmit(OLED_I2C, OLED_ADDRESS, (uint8_t*)TxData, 2, OLED_I2C_TIMEOUT);
-      |                             ^~~~~~~~
-      |                             &
-./../Core/Hardware/OLED.c:54:22: note: expanded from macro 'OLED_I2C'
-   54 | #define OLED_I2C     hi2c3
-      |                      ^~~~~
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_i2c.h:624:62: note: passing argument to parameter 'hi2c' here
-  624 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData,
-      |                                                              ^
+In file included from ./../Core/Src/function.c:1:
+../Core/Inc\function.h:4:8: error: unknown type name 'uint16_t'
+    4 | extern uint16_t ADC1_RESULT[4];
+      |        ^
 1 error generated.
 
-[2024-03-15 00:20:22]	[done]
+[2024-03-22 20:55:35]	[done]
 	build successfully !
 
-[2024-03-15 00:25:07]	[done]
+[2024-03-22 21:00:16]	[done]
 	build successfully !
 
-[2024-03-15 00:25:42]	[done]
+[2024-03-22 21:01:11]	[done]
 	build successfully !
 
-[2024-03-15 03:09:28]	[done]
+[2024-03-22 21:01:36]	[done]
 	build successfully !
 
-[2024-03-15 03:12:15]	[done]
+[2024-03-22 21:08:15]	[done]
 	build successfully !
 
-[2024-03-15 03:12:44]	[done]
+[2024-03-22 21:09:27]	[done]
 	build successfully !
 
-[2024-03-15 03:14:02]	[done]
+[2024-03-22 21:12:50]	[done]
 	build successfully !
 
-[2024-03-15 03:16:00]	[done]
+[2024-03-22 21:13:34]	[done]
 	build successfully !
 
-[2024-03-19 02:13:24]	[done]
+[2024-03-22 21:14:58]	[done]
 	build successfully !
 
-[2024-03-19 02:19:36]	[done]
+[2024-03-22 21:17:21]	[done]
 	build successfully !
 
-[2024-03-19 20:51:00]	[done]
+[2024-03-22 21:18:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:4:19: error: redefinition of 'ADC1_RESULT' with a different type: 'volatile uint16_t[4]' (aka 'volatile unsigned short[4]') vs 'uint16_t[4]' (aka 'unsigned short[4]')
+    4 | volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0}; // ADC采样外设到内存的DMA数据保存寄存器
+      |                   ^
+../Core/Inc\function.h:6:17: note: previous declaration is here
+    6 | extern uint16_t ADC1_RESULT[4];
+      |                 ^
+1 error generated.
+
+[2024-03-22 21:18:21]	[done]
 	build successfully !
 
-[2024-03-19 21:04:11]	[done]
+[2024-03-22 21:19:16]	[done]
 	build successfully !
 
-[2024-03-19 21:05:09]	[done]
+[2024-03-22 21:19:50]	[done]
 	build successfully !
 
-[2024-03-19 21:06:47]	[done]
+[2024-03-22 21:20:30]	[done]
 	build successfully !
 
-[2024-03-20 01:49:58]	[done]
+[2024-03-22 21:23:02]	[done]
 	build successfully !
 
-[2024-03-20 01:50:21]	[done]
+[2024-03-22 21:23:36]	[done]
 	build successfully !
 
-[2024-03-20 01:50:32]	[done]
+[2024-03-22 21:23:59]	[done]
 	build successfully !
 
-[2024-03-20 01:50:44]	[done]
+[2024-03-23 03:21:16]	[done]
 	build successfully !
 
-[2024-03-20 01:51:36]	[done]
+[2024-03-23 03:24:16]	[done]
 	build successfully !
 
-[2024-03-20 01:52:07]	[done]
+[2024-03-23 03:26:11]	[done]
 	build successfully !
 
-[2024-03-20 01:56:45]	[done]
+[2024-03-23 03:28:20]	[done]
 	build successfully !
 
-[2024-03-20 01:56:55]	[done]
+[2024-03-23 03:29:09]	[done]
 	build successfully !
 
-[2024-03-20 02:09:41]	[done]
+[2024-03-23 03:29:42]	[done]
 	build successfully !
 
-[2024-03-20 02:09:56]	[done]
+[2024-03-23 03:31:10]	[done]
 	build successfully !
 
-[2024-03-20 02:14:00]	[done]
+[2024-03-23 03:32:43]	[done]
+	build successfully !
+
+[2024-03-23 03:37:59]	[done]
+	build successfully !
+
+[2024-03-23 03:38:43]	[done]
+	build successfully !
+
+[2024-03-23 03:40:33]	[done]
+	build successfully !
+
+[2024-03-23 03:53:29]	[done]
+	build successfully !
+
+[2024-03-23 03:54:37]	[done]
+	build successfully !
+
+[2024-03-23 03:55:31]	[done]
+	build successfully !
+
+[2024-03-23 03:56:12]	[done]
+	build successfully !
+
+[2024-03-23 04:09:02]	[done]
+	build successfully !
+
+[2024-03-23 04:09:20]	[done]
+	build successfully !
+
+[2024-03-23 16:13:10]	[done]
+	build successfully !
+
+[2024-03-23 16:14:38]	[done]
+	build successfully !
+
+[2024-03-23 16:15:42]	[done]
+	build successfully !
+
+[2024-03-23 16:16:40]	[done]
+	build successfully !
+
+[2024-03-23 16:25:25]	[done]
+	build successfully !
+
+[2024-03-23 16:31:41]	[done]
+	build successfully !
+
+[2024-03-23 16:32:27]	[done]
+	build successfully !
+
+[2024-03-23 16:33:25]	[done]
+	build successfully !
+
+[2024-03-23 16:34:28]	[done]
+	build successfully !
+
+[2024-03-23 16:35:39]	[done]
+	build successfully !
+
+[2024-03-23 16:37:17]	[done]
+	build successfully !
+
+[2024-03-23 16:38:18]	[done]
+	build successfully !
+
+[2024-03-23 16:38:26]	[done]
+	build successfully !
+
+[2024-03-23 20:14:50]	[done]
+	build successfully !
+
+[2024-03-23 20:15:07]	[done]
+	build successfully !
+
+[2024-03-23 20:16:48]	[done]
+	build successfully !
+
+[2024-03-23 20:20:42]	[done]
+	build successfully !
+
+[2024-03-23 21:03:57]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
+      |                               ^
+./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
+1 error generated.
+
+[2024-03-23 21:05:08]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
+      |                               ^
+./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
+1 error generated.
+
+[2024-03-23 21:05:29]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
+      |                               ^
+./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
+1 error generated.
+
+[2024-03-23 21:06:04]	[done]
+	build successfully !
+
+[2024-03-23 21:06:58]	[done]
+	build successfully !
+
+[2024-03-23 21:16:55]	[done]
+	build successfully !
+
+[2024-03-23 21:18:50]	[done]
+	build successfully !
+
+[2024-03-23 21:19:27]	[done]
+	build successfully !
+
+[2024-03-23 21:24:55]	[done]
+	build successfully !
+
+[2024-03-23 21:27:00]	[done]
+	build successfully !
+
+[2024-03-23 21:34:54]	[done]
+	build successfully !
+
+[2024-03-23 21:49:40]	[done]
 	build successfully !
 
