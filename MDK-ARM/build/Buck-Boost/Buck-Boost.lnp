@@ -1,7 +1,10 @@
---cpu=Cortex-M4.fp --library_type=microlib --scatter "e:/Electronic/Project/开关电源/基于STM32的Buck-Boost型数字电源/Buck-Boost/MDK-ARM/build/Buck-Boost/Buck-Boost.sct" --diag_suppress=L6329 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
+--cpu=Cortex-M4.fp --scatter "e:/Electronic/Project/开关电源/基于STM32的Buck-Boost型数字电源/Buck-Boost/MDK-ARM/build/Buck-Boost/Buck-Boost.sct" --diag_suppress=L6329 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers
 --list ./build/Buck-Boost/Buck-Boost.map
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o
+./build/Buck-Boost/.obj/__/Core/Src/adc.o
+./build/Buck-Boost/.obj/__/Core/Src/dma.o
+./build/Buck-Boost/.obj/__/Core/Src/function.o
 ./build/Buck-Boost/.obj/__/Core/Src/gpio.o
 ./build/Buck-Boost/.obj/__/Core/Src/i2c.o
 ./build/Buck-Boost/.obj/__/Core/Src/main.o
@@ -9,7 +12,10 @@
 ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_it.o
 ./build/Buck-Boost/.obj/__/Core/Src/system_stm32g4xx.o
 ./build/Buck-Boost/.obj/__/Core/Src/tim.o
+./build/Buck-Boost/.obj/__/Core/Src/usart.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.o
@@ -26,4 +32,7 @@
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.o
 ./build/Buck-Boost/.obj/startup_stm32g474xx.o -o ./build/Buck-Boost/Buck-Boost.axf

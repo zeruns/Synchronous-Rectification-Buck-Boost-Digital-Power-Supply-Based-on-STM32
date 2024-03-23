@@ -18,13 +18,17 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "OLED.h"
+#include "function.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,7 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define REF_3V3 3.299 // VREF参考电压
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -90,32 +94,66 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_TIM2_Init();
   MX_I2C3_Init();
+  MX_ADC1_Init();
+  MX_ADC2_Init();
+  MX_USART1_UART_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
-
-  OLED_Init(); // OLED初始化
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);                        // 启动定时器8和通道3的PWM输出
+  FAN_PWM_set(100);                                                // 设置风扇转速为100%
+  OLED_Init();                                                     // OLED初始化
+  HAL_TIM_Base_Start_IT(&htim2);                                   // 启动定时器2和定时器中断，1kHz
+  HAL_Delay(100);                                                  // 延时100ms，等待供电稳定
+  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);           // 校准ADC1
+  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);           // 校准ADC2
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC1_RESULT, 4);           // 启动ADC1采样和DMA数据传送,采样输入输出电压电流
+  HAL_ADC_Start(&hadc2);                                           // 启动ADC2采样，采样NTC温度
+  HAL_GPIO_WritePin(GPIOC, LED_G_Pin | LED_R_Pin, GPIO_PIN_RESET); // 关闭LED_G和LED_R
+  HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  OLED_ShowString(0, 0, "V_in:", OLED_8X16);
-  OLED_ShowString(0, 16, "I_in:", OLED_8X16);
-  OLED_ShowString(0, 32, "V_out:", OLED_8X16);
-  OLED_ShowString(0, 48, "I_out:", OLED_8X16);
+  OLED_ShowString(0, 0, "VIN:", OLED_8X16); // 显示字符串
+  OLED_ShowString(0, 16, "Iin:", OLED_8X16);
+  OLED_ShowString(0, 32, "VOUT:", OLED_8X16);
+  OLED_ShowString(0, 48, "IOUT:", OLED_8X16);
 
-  OLED_Update();
-
+  OLED_Update();   // 更新OLED显示内容
+  FAN_PWM_set(35); // 设置风扇转速为100%
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-    if (ms_cnt_1 >= 500)
+    if (ms_cnt_2 >= 100) // 判断是否计时到100ms
     {
-      ms_cnt_1 = 0;
-      HAL_GPIO_TogglePin(LED_R_GPIO_Port, LED_R_Pin);
+      ms_cnt_2 = 0;                                                    // 计时清零
+      OLED_Printf(80, 16, OLED_8X16, "%2.2fC", GET_NTC_Temperature()); // 显示NTC温度
+      OLED_UpdateArea(80, 16, 48, 32);                                 // 更新OLED部分区域显示内容
+
+      OLED_Printf(32, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
+      OLED_Printf(32, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
+      OLED_Printf(40, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
+      OLED_Printf(40, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
+      OLED_UpdateArea(32, 0, 48, 32);                                                              // 更新OLED部分区域显示内容
+      OLED_UpdateArea(40, 32, 48, 32);                                                             // 更新OLED部分区域显示内容
+    }
+
+    if (ms_cnt_1 >= 500) // 判断是否计时到500ms
+    {
+      ms_cnt_1 = 0;                                   // 计时清零
+      HAL_GPIO_TogglePin(LED_R_GPIO_Port, LED_R_Pin); // LED_R电平翻转
+      // OLED_ShowFloatNum(48, 0, ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0), 2, 3, OLED_8X16);  // 显示ADC1通道0采样结果
+      // OLED_ShowFloatNum(48, 16, ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005, 1, 3, OLED_8X16); // 显示ADC1通道1采样结果
+      // OLED_ShowFloatNum(48, 32, ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0), 2, 3, OLED_8X16); // 显示ADC1通道2采样结果
+      // OLED_ShowFloatNum(48, 48, ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005, 1, 3, OLED_8X16); // 显示ADC1通道3采样结果
+      // OLED_UpdateArea(48, 0, 56, 63);                                                              // 更新OLED部分区域显示内容
     }
   }
   /* USER CODE END 3 */
@@ -183,6 +221,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM2)
   {
     ms_cnt_1++;
+    ms_cnt_2++;
   }
 }
 

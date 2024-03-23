@@ -6,8 +6,13 @@
     ],
     "settings": {
         "files.associations": {
+            "tim.h": "c",
+            "main.h": "c",
             "oled.h": "c",
-            "gpio.h": "c"
+            "stdint.h": "c",
+            "stm32g4xx_hal.h": "c",
+            "function.h": "c",
+            "adc.h": "c"
         }
     },
     "extensions": {}
