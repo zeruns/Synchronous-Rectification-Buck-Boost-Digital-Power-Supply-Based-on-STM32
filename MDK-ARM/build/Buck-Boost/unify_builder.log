@@ -749,3 +749,135 @@ command:
 [2024-03-23 21:49:40]	[done]
 	build successfully !
 
+[2024-03-24 14:52:25]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/usart.c:167:1: error: unknown type name 'FILE'
+  167 | FILE __stdout;
+      | ^
+./../Core/Src/usart.c:169:19: error: unknown type name 'FILE'
+  169 | int fputc(int ch, FILE *f)
+      |                   ^
+2 errors generated.
+
+[2024-03-24 14:52:36]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/usart.c:167:1: error: unknown type name 'FILE'
+  167 | FILE __stdout;
+      | ^
+./../Core/Src/usart.c:169:19: error: unknown type name 'FILE'
+  169 | int fputc(int ch, FILE *f)
+      |                   ^
+2 errors generated.
+
+[2024-03-24 15:13:21]	[done]
+	build successfully !
+
+[2024-03-24 15:15:02]	[done]
+	build successfully !
+
+[2024-03-24 15:15:53]	[done]
+	build successfully !
+
+[2024-03-24 15:18:48]	[done]
+	build successfully !
+
+[2024-03-24 15:19:21]	[done]
+	build successfully !
+
+[2024-03-24 15:19:45]	[done]
+	build successfully !
+
+[2024-03-24 15:20:20]	[done]
+	build successfully !
+
+[2024-03-24 15:21:03]	[done]
+	build successfully !
+
+[2024-03-24 15:21:50]	[done]
+	build successfully !
+
+[2024-03-24 15:23:46]	[done]
+	build successfully !
+
+[2024-03-24 15:24:42]	[done]
+	build successfully !
+
+[2024-03-24 15:28:32]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/usart.c:169:47: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
+  169 |         if (__HAL_DMA_GET_FLAG(huart->hdmatx, DMA_FLAG_TCIF1) != RESET) {
+      |                                               ^
+./../Core/Src/usart.c:169:47: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
+./../Core/Src/usart.c:171:49: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
+  171 |             __HAL_DMA_CLEAR_FLAG(huart->hdmatx, DMA_FLAG_TCIF1); // 清除传输完成标志
+      |                                                 ^
+./../Core/Src/usart.c:171:49: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
+4 errors generated.
+
+[2024-03-24 15:28:54]	[done]
+	build successfully !
+
+[2024-03-24 15:31:36]	[done]
+	build successfully !
+
+[2024-03-24 15:32:10]	[done]
+	build successfully !
+
+[2024-03-24 15:32:54]	[done]
+	build successfully !
+
+[2024-03-24 15:33:12]	[done]
+	build successfully !
+
+[2024-03-24 15:34:17]	[done]
+	build successfully !
+
+[2024-03-24 15:35:11]	[done]
+	build successfully !
+
+[2024-03-24 15:37:53]	[done]
+	build successfully !
+
+[2024-03-24 15:37:59]	[done]
+	build successfully !
+
+[2024-03-24 15:39:06]	[done]
+	build successfully !
+
+[2024-03-24 15:39:53]	[done]
+	build successfully !
+
+[2024-03-24 15:44:09]	[done]
+	build successfully !
+
+[2024-03-24 15:44:37]	[done]
+	build successfully !
+
+[2024-03-24 15:45:58]	[done]
+	build successfully !
+
+[2024-03-24 15:54:47]	[done]
+	build successfully !
+
+[2024-03-24 15:55:01]	[done]
+	build successfully !
+
+[2024-03-24 15:55:15]	[done]
+	build successfully !
+
+[2024-03-24 15:55:26]	[done]
+	build successfully !
+
+[2024-03-24 16:01:39]	[done]
+	build successfully !
+
