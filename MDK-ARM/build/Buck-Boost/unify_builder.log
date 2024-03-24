@@ -881,3 +881,73 @@ command:
 [2024-03-24 16:01:39]	[done]
 	build successfully !
 
+[2024-03-24 16:05:05]	[done]
+	build successfully !
+
+[2024-03-24 16:05:43]	[done]
+	build successfully !
+
+[2024-03-24 16:06:29]	[done]
+	build successfully !
+
+[2024-03-24 16:07:42]	[done]
+	build successfully !
+
+[2024-03-24 16:07:54]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/usart.c:231:56: warning: cast to smaller integer type 'char' from 'char *' [-Wpointer-to-int-cast]
+  231 |   rv = vsnprintf((char*)SendBuff,calculateStringLength((char)SendBuff),(char*)format,arg);
+      |                                                        ^~~~~~~~~~~~~~
+./../Core/Src/usart.c:231:56: error: incompatible integer to pointer conversion passing 'char' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wint-conversion]
+  231 |   rv = vsnprintf((char*)SendBuff,calculateStringLength((char)SendBuff),(char*)format,arg);
+      |                                                        ^~~~~~~~~~~~~~
+./../Core/Src/usart.c:196:47: note: passing argument to parameter 'str' here
+  196 | uint16_t calculateStringLength(const uint8_t *str) {
+      |                                               ^
+1 warning and 1 error generated.
+
+[2024-03-24 16:08:33]	[done]
+	build successfully !
+
+[2024-03-24 16:09:33]	[done]
+	build successfully !
+
+[2024-03-24 16:11:40]	[done]
+	build successfully !
+
+[2024-03-24 16:11:58]	[done]
+	build successfully !
+
+[2024-03-24 16:12:16]	[done]
+	build successfully !
+
+[2024-03-24 16:12:43]	[done]
+	build successfully !
+
+[2024-03-24 16:15:56]	[done]
+	build successfully !
+
+[2024-03-24 16:16:51]	[done]
+	build successfully !
+
+[2024-03-24 16:31:00]	[done]
+	build successfully !
+
+[2024-03-24 16:36:30]	[done]
+	build successfully !
+
+[2024-03-24 17:23:01]	[done]
+	build successfully !
+
+[2024-03-24 17:41:14]	[done]
+	build successfully !
+
+[2024-03-25 00:29:28]	[done]
+	build successfully !
+
+[2024-03-25 01:05:13]	[done]
+	build successfully !
+

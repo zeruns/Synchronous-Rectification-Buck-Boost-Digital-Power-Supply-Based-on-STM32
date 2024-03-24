@@ -1,11 +1,9 @@
 >>> cc
 
 
-./../Core/Src/usart.c:231:8: warning: 'vsnprintf' size argument is too large; destination buffer has size 200, but size argument is 201 [-Wfortify-source]
-  231 |   rv = vsnprintf((char*)SendBuff,sizeof(SendBuff)+1,(char*)format,arg);
-      |        ^
-1 warning generated.
+Warning: A1950W: The legacy armasm assembler is deprecated. Consider using the armclang integrated assembler instead.
+0 Errors, 1 Warning
 
 >>> ld
 
-Program Size: Code=32152 RO-data=3316 RW-data=16 ZI-data=3768  
+Program Size: Code=32832 RO-data=3316 RW-data=16 ZI-data=3840  

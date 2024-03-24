@@ -38,7 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define REF_3V3 3.299 // VREF参考电压
+#define REF_3V3 3.2993 // VREF参考电压
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -101,6 +101,7 @@ int main(void)
   MX_ADC2_Init();
   MX_USART1_UART_Init();
   MX_TIM8_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);                        // 启动定时器8和通道3的PWM输出
   FAN_PWM_set(100);                                                // 设置风扇转速为100%
@@ -143,6 +144,13 @@ int main(void)
       OLED_Printf(40, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
       OLED_UpdateArea(32, 0, 48, 32);                                                              // 更新OLED部分区域显示内容
       OLED_UpdateArea(40, 32, 48, 32);                                                             // 更新OLED部分区域显示内容
+
+      float VIN = ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0);
+      float IIN = ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005;
+      float VOUT = ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0);
+      float IOUT = ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005;
+      float TEMP = GET_NTC_Temperature();
+      USART1_Printf("%2.3f,%1.3f,%2.3f,%1.3f,%2.3f\n",VIN,IIN,VOUT,IOUT,TEMP);
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms
@@ -154,8 +162,6 @@ int main(void)
       // OLED_ShowFloatNum(48, 32, ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0), 2, 3, OLED_8X16); // 显示ADC1通道2采样结果
       // OLED_ShowFloatNum(48, 48, ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005, 1, 3, OLED_8X16); // 显示ADC1通道3采样结果
       // OLED_UpdateArea(48, 0, 56, 63);                                                              // 更新OLED部分区域显示内容
-      
-      USART1_Printf("VIN:%2.2fV\r\n", ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0));
     }
   }
   /* USER CODE END 3 */
