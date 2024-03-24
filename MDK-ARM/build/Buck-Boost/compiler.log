@@ -1,7 +1,11 @@
 >>> cc
 
 
+./../Core/Src/usart.c:231:8: warning: 'vsnprintf' size argument is too large; destination buffer has size 200, but size argument is 201 [-Wfortify-source]
+  231 |   rv = vsnprintf((char*)SendBuff,sizeof(SendBuff)+1,(char*)format,arg);
+      |        ^
+1 warning generated.
 
 >>> ld
 
-Program Size: Code=30328 RO-data=3316 RW-data=12 ZI-data=3380  
+Program Size: Code=32152 RO-data=3316 RW-data=16 ZI-data=3768  
