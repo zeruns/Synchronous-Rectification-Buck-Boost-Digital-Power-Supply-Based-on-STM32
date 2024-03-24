@@ -5,7 +5,7 @@
 
 extern volatile uint16_t ADC1_RESULT[4];
 
-#define REF_3V3 3.299 // VREF参考电压
+#define REF_3V3 3.2993 // VREF参考电压
 
 float GET_NTC_Temperature(void);
 

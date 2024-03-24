@@ -41,7 +41,7 @@ void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 921600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -183,7 +183,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 /* USER CODE BEGIN 1 */
 
-volatile uint8_t  usart_dma_tx_over = 1;  //串口DMA发送完成标志
+volatile uint8_t usart_dma_tx_over = 1; // 串口DMA发送完成标志
 
 /**
  * @brief 计算字符串长度,
@@ -193,47 +193,82 @@ volatile uint8_t  usart_dma_tx_over = 1;  //串口DMA发送完成标志
  * @param str 指向要计算长度的字符串的指针。
  * @return 返回字符串的长度。
  */
-uint16_t calculateStringLength(const uint8_t *str) {
-    int length = 0;
-    while (*str) {
-        if (*str == '\\') {
-            // 遇到转义字符时的特殊处理
-            if ( *(str + 1) != '\0') {
-                // 如果转义字符后还有字符，则转义字符占用2个字节
-                length += 2;
-                str++; // 跳过转义字符
-            } else {
-                // 如果转义字符后是字符串结束，只计算一个字节
-                length++;
-            }
-        } else {
-            // 对于普通字符，直接增加长度
-            length++;
-        }
-        str++; // 移动到下一个字符
+uint16_t calculateStringLength(const uint8_t *str)
+{
+  int length = 0;
+  while (*str)
+  {
+    if (*str == '\\')
+    {
+      // 遇到转义字符时的特殊处理
+      if (*(str + 1) != '\0')
+      {
+        // 如果转义字符后还有字符，则转义字符占用2个字节
+        length += 2;
+        str++; // 跳过转义字符
+      }
+      else
+      {
+        // 如果转义字符后是字符串结束，只计算一个字节
+        length++;
+      }
     }
-    return length;
+    else
+    {
+      // 对于普通字符，直接增加长度
+      length++;
+    }
+    str++; // 移动到下一个字符
+  }
+  return length;
 }
 
+
+/**
+ * @brief USART1 使用DMA发送字符串
+ *
+ * 通过USART1接口使用DMA方式发送字符串到指定的缓冲区。
+ *
+ * @param pBuf 字符串指针
+ */
 void USART1_TX_DMA_String(uint8_t *pBuf)
 {
-  HAL_UART_Transmit_DMA(&huart1, pBuf, calculateStringLength(pBuf));
+    // 等待前一次DMA发送完成
+    while (!usart_dma_tx_over); 
+    
+    // 使用HAL库函数启动DMA发送
+    HAL_UART_Transmit_DMA(&huart1, pBuf, calculateStringLength(pBuf));
+    
+    // 清0全局标志，发送完成后重新置1
+    usart_dma_tx_over = 0; 
 }
 
-int USART1_Printf(const char *format,...)
+/**
+ * @brief USART1_Printf 函数
+ *
+ * 使用 USART1 串口进行打印输出。
+ *
+ * @param format 格式化字符串
+ * @param ... 可变参数列表
+ *
+ * @return 成功打印的字符数
+ */
+int USART1_Printf(const char *format, ...)
 {
   va_list arg;
   static char SendBuff[200] = {0};
   int rv;
-  while(!usart_dma_tx_over);//等待前一次DMA发送完成
- 
-  va_start(arg,format);
-  rv = vsnprintf((char*)SendBuff,sizeof(SendBuff)+1,(char*)format,arg);
+  while (!usart_dma_tx_over); // 等待前一次DMA发送完成
+
+  // 使用可变参数列表进行格式化输出
+  va_start(arg, format);
+  rv = vsnprintf((char *)SendBuff, sizeof(SendBuff), (char *)format, arg);
   va_end(arg);
- 
-  HAL_UART_Transmit_DMA(&huart1,(uint8_t *)SendBuff,rv);
-  usart_dma_tx_over = 0;//清0全局标志，发送完成后重新置1
- 
+
+  // 使用DMA发送数据
+  HAL_UART_Transmit_DMA(&huart1, (uint8_t *)SendBuff, rv);
+  usart_dma_tx_over = 0; // 清0全局标志，发送完成后重新置1
+
   return rv;
 }
 
@@ -244,10 +279,12 @@ int USART1_Printf(const char *format,...)
  *
  * @param huart UART句柄指针
  */
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
-    // 检查是否是当前的UART外设
-    if (huart->Instance == USART1) {
-        usart_dma_tx_over = 1;
-    }
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+  // 检查是否是当前的UART外设
+  if (huart->Instance == USART1)
+  {
+    usart_dma_tx_over = 1;
+  }
 }
 /* USER CODE END 1 */
