@@ -32,23 +32,23 @@ void Key_Process(void)
 {
     if (Key_Flag[1] == 1) // 如果按键1按下
     {
-        BUZZER_Middle_Flag = 1;         // 蜂鸣器中等时间长度鸣叫触发标志位置1
-        
+        BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
+
         USART1_Printf("按键1按下\r\n"); // 串口发送消息
         Key_Flag[1] = 0;                // 按键状态标志位清零
     }
     if (Key_Flag[2] == 1) // 如果按键2按下
     {
-        BUZZER_Middle_Flag = 1;         // 蜂鸣器中等时间长度鸣叫触发标志位置1
-        
+        BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
+
         USART1_Printf("按键2按下\r\n"); // 串口发送消息
         Key_Flag[2] = 0;                // 按键状态标志位清零
     }
     if (Key_Flag[3] == 1) // 如果编码器按键按下
     {
-        BUZZER_Middle_Flag = 1;              // 蜂鸣器中等时间长度鸣叫触发标志位置1
-        
-        USART1_Printf("编码器按键按下\r\n"); // 串口发送消息  
+        BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
+
+        USART1_Printf("编码器按键按下\r\n"); // 串口发送消息
         Key_Flag[3] = 0;                     // 按键状态标志位清零
     }
 }
@@ -153,4 +153,14 @@ float GET_NTC_Temperature(void)
     uint32_t TEMP_adcValue = HAL_ADC_GetValue(&hadc2);                           // 读取ADC2采样结果
     float temperature = calculateTemperature(TEMP_adcValue * REF_3V3 / 65520.0); // 计算温度
     return temperature;                                                          // 返回温度值
+}
+
+float GET_CPU_Temperature(void)
+{
+    HAL_ADC_Start(&hadc5); // 启动ADC5采样，采样单片机CPU温度
+    // HAL_ADC_PollForConversion(&hadc5, 100); // 等待ADC采样结束
+    float Temp_Scale = (float)(TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1);        // 计算温度比例因子
+    uint32_t TEMP_adcValue = HAL_ADC_GetValue(&hadc5);                                           // 读取ADC5采样结果
+    float temperature = Temp_Scale * (TEMP_adcValue * (REF_3V3 / 3.0) - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
+    return temperature;
 }

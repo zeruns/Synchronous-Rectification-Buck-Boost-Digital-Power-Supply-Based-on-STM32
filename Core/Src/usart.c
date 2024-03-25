@@ -234,7 +234,7 @@ void USART1_TX_DMA_String(uint8_t *pBuf)
 {
   // 等待前一次DMA发送完成
   //while (!usart_dma_tx_over);
-  for (volatile uint16_t i = 0; i < 500 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
+  for (volatile uint16_t i = 0; i < 1000 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
 
   // 清0全局标志，发送完成后重新置1
   usart_dma_tx_over = 0;
@@ -259,7 +259,7 @@ int USART1_Printf(const char *format, ...)
   static char SendBuff[200] = {0};
   int rv;
   //while (!usart_dma_tx_over); // 等待前一次DMA发送完成
-  for (volatile uint16_t i = 0; i < 500 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
+  for (volatile uint16_t i = 0; i < 1000 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
 
   // 使用可变参数列表进行格式化输出
   va_start(arg, format);
