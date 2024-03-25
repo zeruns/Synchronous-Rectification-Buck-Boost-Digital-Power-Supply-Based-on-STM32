@@ -27,6 +27,7 @@
         "STM32G474xx"
     ],
     "sourceList": [
+        "../Core/Hardware/Key.c",
         "../Core/Hardware/OLED.c",
         "../Core/Hardware/OLED_Data.c",
         "../Core/Src/adc.c",

@@ -71,6 +71,9 @@
                 "name": "Hardware",
                 "files": [
                   {
+                    "path": "../Core/Hardware/Key.c"
+                  },
+                  {
                     "path": "../Core/Hardware/OLED_Data.c"
                   },
                   {
@@ -299,7 +302,7 @@
       "uploadConfig": {
         "bin": "",
         "target": "stm32g4x",
-        "interface": "cmsis-dap",
+        "interface": "stlink-v2-1",
         "baseAddr": "0x08000000"
       },
       "uploadConfigMap": {
@@ -316,7 +319,7 @@
         },
         "OpenOCD": {
           "bin": "",
-          "target": "stm32f1x",
+          "target": "stm32g4x",
           "interface": "cmsis-dap",
           "baseAddr": "0x08000000"
         },
@@ -326,7 +329,7 @@
           "resetMode": "default",
           "runAfterProgram": true,
           "speed": 4000,
-          "address": "0x08000000",
+          "address": "0x8000000",
           "elFile": "None",
           "optionBytes": ".eide/buck-boost.st.option.bytes.ini",
           "otherCmds": ""

@@ -1148,3 +1148,224 @@ In file included from ./../Core/Src/function.c:1:
 [2024-03-25 18:18:13]	[done]
 	build successfully !
 
+[2024-03-25 21:32:17]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/Key.c:31:2: error: call to undeclared function 'RCC_APB2PeriphClockCmd'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   31 |         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+      |         ^
+./../Core/Hardware/Key.c:31:25: error: use of undeclared identifier 'RCC_APB2Periph_GPIOB'
+   31 |         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+      |                                ^
+./../Core/Hardware/Key.c:34:21: error: no member named 'GPIO_Mode' in 'GPIO_InitTypeDef'
+   34 |         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+      |         ~~~~~~~~~~~~~~~~~~ ^
+./../Core/Hardware/Key.c:34:33: error: use of undeclared identifier 'GPIO_Mode_IPU'
+   34 |         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+      |                                        ^
+./../Core/Hardware/Key.c:35:21: error: no member named 'GPIO_Pin' in 'GPIO_InitTypeDef'
+   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
+      |         ~~~~~~~~~~~~~~~~~~ ^
+./../Core/Hardware/Key.c:35:32: error: use of undeclared identifier 'GPIO_Pin_1'
+   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
+      |                                       ^
+./../Core/Hardware/Key.c:35:45: error: use of undeclared identifier 'GPIO_Pin_10'
+   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
+      |                                                    ^
+./../Core/Hardware/Key.c:35:59: error: use of undeclared identifier 'GPIO_Pin_11'
+   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
+      |                                                                  ^
+./../Core/Hardware/Key.c:35:73: error: use of undeclared identifier 'GPIO_Pin_15'
+   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
+      |                                                                                ^
+./../Core/Hardware/Key.c:36:21: error: no member named 'GPIO_Speed' in 'GPIO_InitTypeDef'
+   36 |         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+      |         ~~~~~~~~~~~~~~~~~~ ^
+./../Core/Hardware/Key.c:36:34: error: use of undeclared identifier 'GPIO_Speed_50MHz'
+   36 |         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+      |                                         ^
+./../Core/Hardware/Key.c:37:2: error: call to undeclared function 'GPIO_Init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   37 |         GPIO_Init(GPIOB, &GPIO_InitStructure);
+      |         ^
+./../Core/Hardware/Key.c:108:6: error: call to undeclared function 'TIM_GetITStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  108 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
+      |             ^
+./../Core/Hardware/Key.c:108:28: error: use of undeclared identifier 'TIM_IT_Update'
+  108 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
+      |                                   ^
+./../Core/Hardware/Key.c:112:23: error: use of undeclared identifier 'KEY3'
+  112 |                 key_status_check(2, KEY3);
+      |                                     ^
+./../Core/Hardware/Key.c:113:23: error: use of undeclared identifier 'KEY4'
+  113 |                 key_status_check(3, KEY4);
+      |                                     ^
+./../Core/Hardware/Key.c:118:4: error: call to undeclared function 'I1_SW'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  118 |                         I1_SW(1);
+      |                         ^
+./../Core/Hardware/Key.c:119:4: error: call to undeclared function 'I2_SW'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  119 |                         I2_SW(1);
+      |                         ^
+./../Core/Hardware/Key.c:123:3: error: call to undeclared function 'TIM_ClearITPendingBit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  123 |                 TIM_ClearITPendingBit(TIM3, TIM_IT_Update); // 清除更新中断标志位
+      |                 ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+
+[2024-03-25 22:25:19]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/Key.c:25:9: error: redefinition of 'KEY_Status' with a different type: 'uint8_t[3][3]' (aka 'unsigned char[3][3]') vs 'uint8_t[4][3]' (aka 'unsigned char[4][3]')
+   25 | uint8_t KEY_Status[3][3]; // 记录各按键状态，第一层数组表示按键编号，第二层数组表示按键状态
+      |         ^
+./../Core/Hardware/Key.h:6:16: note: previous declaration is here
+    6 | extern uint8_t KEY_Status[4][3];        //记录各按键状态
+      |                ^
+./../Core/Hardware/Key.c:26:9: error: redefinition of 'key' with a different type: 'uint8_t[3]' (aka 'unsigned char[3]') vs 'uint8_t[4]' (aka 'unsigned char[4]')
+   26 | uint8_t key[3];                   // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
+      |         ^
+./../Core/Hardware/Key.h:7:16: note: previous declaration is here
+    7 | extern uint8_t key[4];                          //记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
+      |                ^
+./../Core/Hardware/Key.c:99:6: error: call to undeclared function 'TIM_GetITStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   99 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
+      |             ^
+./../Core/Hardware/Key.c:99:28: error: use of undeclared identifier 'TIM_IT_Update'
+   99 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
+      |                                   ^
+./../Core/Hardware/Key.c:103:23: error: use of undeclared identifier 'KEY3'
+  103 |                 key_status_check(2, KEY3);
+      |                                     ^
+./../Core/Hardware/Key.c:104:23: error: use of undeclared identifier 'KEY4'
+  104 |                 key_status_check(3, KEY4);
+      |                                     ^
+6 errors generated.
+
+[2024-03-25 22:28:46]	[done]
+	build successfully !
+
+[2024-03-25 22:45:50]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/Key.c:24:9: error: redefinition of 'key' with a different type: 'uint8_t[4]' (aka 'unsigned char[4]') vs 'uint8_t[3]' (aka 'unsigned char[3]')
+   24 | uint8_t key[KEY_NUM + 1];               // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下，按键数量+1跳过0号直观一点
+      |         ^
+./../Core/Hardware/Key.h:13:16: note: previous declaration is here
+   13 | extern uint8_t key[KEY_NUM];           // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
+      |                ^
+1 error generated.
+
+[2024-03-25 22:46:17]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol key multiply defined (by main.o and Key.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+
+
+[2024-03-25 22:46:52]	[done]
+	build successfully !
+
+[2024-03-25 22:47:05]	[done]
+	build successfully !
+
+[2024-03-25 22:52:00]	[done]
+	build successfully !
+
+[2024-03-25 22:52:21]	[done]
+	build successfully !
+
+[2024-03-25 22:52:39]	[done]
+	build successfully !
+
+[2024-03-25 22:56:20]	[done]
+	build successfully !
+
+[2024-03-25 22:57:39]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:140:5: error: call to undeclared function 'Key_Process'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  140 |     Key_Process();      // 按键按下的处理
+      |     ^
+1 error generated.
+
+[2024-03-25 22:57:44]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:140:5: error: call to undeclared function 'Key_Process'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  140 |     Key_Process();      // 按键按下的处理
+      |     ^
+1 error generated.
+
+[2024-03-25 22:58:11]	[done]
+	build successfully !
+
+[2024-03-25 22:58:26]	[done]
+	build successfully !
+
+[2024-03-25 22:58:45]	[done]
+	build successfully !
+
+[2024-03-25 23:01:41]	[done]
+	build successfully !
+
+[2024-03-25 23:02:00]	[done]
+	build successfully !
+
+[2024-03-25 23:02:15]	[done]
+	build successfully !
+
+[2024-03-25 23:09:31]	[done]
+	build successfully !
+
+[2024-03-25 23:18:18]	[done]
+	build successfully !
+
+[2024-03-25 23:26:12]	[done]
+	build successfully !
+
+[2024-03-25 23:26:29]	[done]
+	build successfully !
+
+[2024-03-25 23:26:46]	[done]
+	build successfully !
+
+[2024-03-25 23:29:05]	[done]
+	build successfully !
+
+[2024-03-25 23:30:03]	[done]
+	build successfully !
+
+[2024-03-25 23:30:26]	[done]
+	build successfully !
+
+[2024-03-25 23:32:41]	[done]
+	build successfully !
+
+[2024-03-25 23:34:27]	[done]
+	build successfully !
+
+[2024-03-25 23:47:30]	[done]
+	build successfully !
+
+[2024-03-25 23:47:59]	[done]
+	build successfully !
+
+[2024-03-26 00:04:34]	[done]
+	build successfully !
+
+[2024-03-26 00:10:39]	[done]
+	build successfully !
+

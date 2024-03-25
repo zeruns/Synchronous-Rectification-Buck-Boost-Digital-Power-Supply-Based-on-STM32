@@ -12,6 +12,7 @@ extern volatile uint8_t BUZZER_Middle_Flag; // 蜂鸣器中等时间长度鸣叫
 
 float GET_NTC_Temperature(void);
 void Encoder(void);
+void Key_Process(void);
 void BUZZER_Short(void);
 void BUZZER_Middle(void);
 
