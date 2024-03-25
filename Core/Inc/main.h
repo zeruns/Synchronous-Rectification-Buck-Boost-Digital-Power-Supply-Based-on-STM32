@@ -57,6 +57,13 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Encoder_A_Pin GPIO_PIN_0
+#define Encoder_A_GPIO_Port GPIOC
+#define Encoder_A_EXTI_IRQn EXTI0_IRQn
+#define Encoder_B_Pin GPIO_PIN_1
+#define Encoder_B_GPIO_Port GPIOC
+#define Encoder_KEY_Pin GPIO_PIN_2
+#define Encoder_KEY_GPIO_Port GPIOC
 #define ADC_Vin_Pin GPIO_PIN_0
 #define ADC_Vin_GPIO_Port GPIOA
 #define ADC_Iin_Pin GPIO_PIN_1
