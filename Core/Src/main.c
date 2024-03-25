@@ -29,6 +29,7 @@
 /* USER CODE BEGIN Includes */
 #include "OLED.h"
 #include "function.h"
+#include "Key.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -104,10 +105,12 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);                        // 启动定时器8和通道3的PWM输出
-  FAN_PWM_set(100);                                                // 设置风扇转速为100%
-  OLED_Init();                                                     // OLED初始化
-  HAL_TIM_Base_Start_IT(&htim2);                                   // 启动定时器2和定时器中断，1kHz
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3); // 启动定时器8和通道3的PWM输出
+  FAN_PWM_set(100);                         // 设置风扇转速为100%
+  OLED_Init();                              // OLED初始化
+  HAL_TIM_Base_Start_IT(&htim2);            // 启动定时器2和定时器中断，1kHz
+  Key_Init();                               // 按键状态机初始化
+
   HAL_Delay(100);                                                  // 延时100ms，等待供电稳定
   HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);           // 校准ADC1
   HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);           // 校准ADC2
@@ -134,10 +137,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     Encoder();          // 编码器信号处理
+    Key_Process();      // 按键按下的处理
+
     if (ms_cnt_3 >= 10) // 判断是否计时到10ms
     {
-      ms_cnt_3 = 0;   // 计时清零
-      BUZZER_Short(); // 蜂鸣器短促鸣叫
+      ms_cnt_3 = 0;             // 计时清零
+      BUZZER_Short();           // 蜂鸣器短促鸣叫
+      KEY_Scan(1, KEY1);        // 按键1扫描
+      KEY_Scan(2, KEY2);        // 按键2扫描
+      KEY_Scan(3, Encoder_KEY); // 编码器按键扫描
     }
 
     if (ms_cnt_4 >= 50) // 判断是否计时到50ms
@@ -149,7 +157,6 @@ int main(void)
     if (ms_cnt_2 >= 100) // 判断是否计时到100ms
     {
       ms_cnt_2 = 0; // 计时清零
-      //BUZZER_Middle(); // 蜂鸣器中速鸣叫
 
       OLED_ClearArea(80, 16, 48, 16);
       OLED_Printf(80, 16, OLED_8X16, "%2.2fC", GET_NTC_Temperature()); // 显示NTC温度

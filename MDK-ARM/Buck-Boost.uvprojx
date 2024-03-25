@@ -629,6 +629,11 @@
               <FileType>1</FileType>
               <FilePath>..\Core\Hardware\OLED_Data.c</FilePath>
             </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Hardware\Key.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

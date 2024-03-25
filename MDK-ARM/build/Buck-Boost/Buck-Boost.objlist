@@ -1,3 +1,4 @@
+./build/Buck-Boost/.obj/__/Core/Hardware/Key.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o
 ./build/Buck-Boost/.obj/__/Core/Src/adc.o
