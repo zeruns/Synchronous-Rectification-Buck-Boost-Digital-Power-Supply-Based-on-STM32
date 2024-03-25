@@ -951,3 +951,200 @@ command:
 [2024-03-25 01:05:13]	[done]
 	build successfully !
 
+[2024-03-25 02:54:11]	[done]
+	build successfully !
+
+[2024-03-25 02:56:55]	[done]
+	build successfully !
+
+[2024-03-25 03:07:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:50:3: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   50 |                 printf("A\r\n");
+      |                 ^
+./../Core/Src/function.c:50:3: note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
+1 error generated.
+
+[2024-03-25 03:07:50]	[done]
+	build successfully !
+
+[2024-03-25 03:09:38]	[done]
+	build successfully !
+
+[2024-03-25 03:16:19]	[done]
+	build successfully !
+
+[2024-03-25 03:16:56]	[done]
+	build successfully !
+
+[2024-03-25 03:19:25]	[done]
+	build successfully !
+
+[2024-03-25 03:21:12]	[done]
+	build successfully !
+
+[2024-03-25 03:23:26]	[done]
+	build successfully !
+
+[2024-03-25 16:33:31]	[done]
+	build successfully !
+
+[2024-03-25 16:34:35]	[done]
+	build successfully !
+
+[2024-03-25 16:36:38]	[done]
+	build successfully !
+
+[2024-03-25 16:38:18]	[done]
+	build successfully !
+
+[2024-03-25 17:00:40]	[done]
+	build successfully !
+
+[2024-03-25 17:02:48]	[done]
+	build successfully !
+
+[2024-03-25 17:03:07]	[done]
+	build successfully !
+
+[2024-03-25 17:06:05]	[done]
+	build successfully !
+
+[2024-03-25 17:08:29]	[done]
+	build successfully !
+
+[2024-03-25 17:09:13]	[done]
+	build successfully !
+
+[2024-03-25 17:23:11]	[done]
+	build successfully !
+
+[2024-03-25 17:26:41]	[done]
+	build successfully !
+
+[2024-03-25 17:27:41]	[done]
+	build successfully !
+
+[2024-03-25 17:38:56]	[done]
+	build successfully !
+
+[2024-03-25 17:39:27]	[done]
+	build successfully !
+
+[2024-03-25 17:40:18]	[done]
+	build successfully !
+
+[2024-03-25 17:40:49]	[done]
+	build successfully !
+
+[2024-03-25 17:41:19]	[done]
+	build successfully !
+
+[2024-03-25 17:41:26]	[done]
+	build successfully !
+
+[2024-03-25 17:41:54]	[done]
+	build successfully !
+
+[2024-03-25 17:42:20]	[done]
+	build successfully !
+
+[2024-03-25 17:44:32]	[done]
+	build successfully !
+
+[2024-03-25 17:44:53]	[done]
+	build successfully !
+
+[2024-03-25 17:45:27]	[done]
+	build successfully !
+
+[2024-03-25 17:49:45]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/function.c:1:
+../Core/Inc\function.h:10:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
+      |                         ^
+./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Flag'
+   10 | volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
+      |                  ^
+../Core/Inc\function.h:10:25: note: previous definition is here
+   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
+      |                         ^
+1 warning and 1 error generated.
+
+[2024-03-25 17:50:12]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/function.c:1:
+../Core/Inc\function.h:10:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
+      |                         ^
+./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Flag'
+   10 | volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
+      |                  ^
+../Core/Inc\function.h:10:25: note: previous definition is here
+   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
+      |                         ^
+1 warning and 1 error generated.
+
+[2024-03-25 17:50:41]	[done]
+	build successfully !
+
+[2024-03-25 18:01:16]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/function.c:1:
+../Core/Inc\function.h:11:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   11 | extern volatile uint8_t BUZZER_Middle_Flag = 0; // 蜂鸣器中等时间长度鸣叫触发标志位
+      |                         ^
+./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Middle_Flag'
+   10 | volatile uint8_t BUZZER_Middle_Flag = 0;         // 蜂鸣器中等时间长度鸣叫触发标志位
+      |                  ^
+../Core/Inc\function.h:11:25: note: previous definition is here
+   11 | extern volatile uint8_t BUZZER_Middle_Flag = 0; // 蜂鸣器中等时间长度鸣叫触发标志位
+      |                         ^
+1 warning and 1 error generated.
+
+[2024-03-25 18:01:30]	[done]
+	build successfully !
+
+[2024-03-25 18:03:30]	[done]
+	build successfully !
+
+[2024-03-25 18:04:11]	[done]
+	build successfully !
+
+[2024-03-25 18:04:29]	[done]
+	build successfully !
+
+[2024-03-25 18:05:24]	[done]
+	build successfully !
+
+[2024-03-25 18:05:42]	[done]
+	build successfully !
+
+[2024-03-25 18:10:50]	[done]
+	build successfully !
+
+[2024-03-25 18:12:19]	[done]
+	build successfully !
+
+[2024-03-25 18:16:12]	[done]
+	build successfully !
+
+[2024-03-25 18:16:33]	[done]
+	build successfully !
+
+[2024-03-25 18:18:13]	[done]
+	build successfully !
+

@@ -223,7 +223,6 @@ uint16_t calculateStringLength(const uint8_t *str)
   return length;
 }
 
-
 /**
  * @brief USART1 使用DMA发送字符串
  *
@@ -233,14 +232,15 @@ uint16_t calculateStringLength(const uint8_t *str)
  */
 void USART1_TX_DMA_String(uint8_t *pBuf)
 {
-    // 等待前一次DMA发送完成
-    while (!usart_dma_tx_over); 
-    
-    // 使用HAL库函数启动DMA发送
-    HAL_UART_Transmit_DMA(&huart1, pBuf, calculateStringLength(pBuf));
-    
-    // 清0全局标志，发送完成后重新置1
-    usart_dma_tx_over = 0; 
+  // 等待前一次DMA发送完成
+  //while (!usart_dma_tx_over);
+  for (volatile uint16_t i = 0; i < 500 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
+
+  // 清0全局标志，发送完成后重新置1
+  usart_dma_tx_over = 0;
+
+  // 使用HAL库函数启动DMA发送
+  HAL_UART_Transmit_DMA(&huart1, pBuf, calculateStringLength(pBuf));
 }
 
 /**
@@ -258,16 +258,16 @@ int USART1_Printf(const char *format, ...)
   va_list arg;
   static char SendBuff[200] = {0};
   int rv;
-  while (!usart_dma_tx_over); // 等待前一次DMA发送完成
+  //while (!usart_dma_tx_over); // 等待前一次DMA发送完成
+  for (volatile uint16_t i = 0; i < 500 && (!usart_dma_tx_over); i++);  // 等待前一次DMA发送完成
 
   // 使用可变参数列表进行格式化输出
   va_start(arg, format);
   rv = vsnprintf((char *)SendBuff, sizeof(SendBuff), (char *)format, arg);
   va_end(arg);
 
-  // 使用DMA发送数据
-  HAL_UART_Transmit_DMA(&huart1, (uint8_t *)SendBuff, rv);
-  usart_dma_tx_over = 0; // 清0全局标志，发送完成后重新置1
+  usart_dma_tx_over = 0;                                   // 清0全局标志，发送完成后重新置1
+  HAL_UART_Transmit_DMA(&huart1, (uint8_t *)SendBuff, rv); // 使用DMA发送数据
 
   return rv;
 }

@@ -56,6 +56,18 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = Encoder_A_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Encoder_A_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PCPin PCPin */
+  GPIO_InitStruct.Pin = Encoder_B_Pin|Encoder_KEY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pins : PCPin PCPin */
   GPIO_InitStruct.Pin = LED_G_Pin|LED_R_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -69,6 +81,10 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(BUZZER_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 6, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
 }
 

@@ -50,8 +50,10 @@
 
 /* USER CODE BEGIN PV */
 // 毫秒计时变量
-volatile uint16_t ms_cnt_1 = 0;
-volatile uint16_t ms_cnt_2 = 0;
+volatile uint16_t ms_cnt_1 = 0; // 计时变量1
+volatile uint16_t ms_cnt_2 = 0; // 计时变量2
+volatile uint16_t ms_cnt_3 = 0; // 计时变量3
+volatile uint16_t ms_cnt_4 = 0; // 计时变量4
 
 /* USER CODE END PV */
 
@@ -67,9 +69,9 @@ void SystemClock_Config(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -101,7 +103,6 @@ int main(void)
   MX_ADC2_Init();
   MX_USART1_UART_Init();
   MX_TIM8_Init();
-  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);                        // 启动定时器8和通道3的PWM输出
   FAN_PWM_set(100);                                                // 设置风扇转速为100%
@@ -132,25 +133,41 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    Encoder();          // 编码器信号处理
+    if (ms_cnt_3 >= 10) // 判断是否计时到10ms
+    {
+      ms_cnt_3 = 0;   // 计时清零
+      BUZZER_Short(); // 蜂鸣器短促鸣叫
+    }
+
+    if (ms_cnt_4 >= 50) // 判断是否计时到50ms
+    {
+      ms_cnt_4 = 0;    // 计时清零
+      BUZZER_Middle(); // 蜂鸣器中速鸣叫
+    }
+
     if (ms_cnt_2 >= 100) // 判断是否计时到100ms
     {
-      ms_cnt_2 = 0;                                                    // 计时清零
-      OLED_Printf(80, 16, OLED_8X16, "%2.2fC", GET_NTC_Temperature()); // 显示NTC温度
-      OLED_UpdateArea(80, 16, 48, 32);                                 // 更新OLED部分区域显示内容
+      ms_cnt_2 = 0; // 计时清零
+      //BUZZER_Middle(); // 蜂鸣器中速鸣叫
 
+      OLED_ClearArea(80, 16, 48, 16);
+      OLED_Printf(80, 16, OLED_8X16, "%2.2fC", GET_NTC_Temperature()); // 显示NTC温度
+
+      OLED_ClearArea(32, 0, 48, 32);
+      OLED_ClearArea(40, 32, 48, 32);
       OLED_Printf(32, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
       OLED_Printf(32, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
       OLED_Printf(40, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
       OLED_Printf(40, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
-      OLED_UpdateArea(32, 0, 48, 32);                                                              // 更新OLED部分区域显示内容
-      OLED_UpdateArea(40, 32, 48, 32);                                                             // 更新OLED部分区域显示内容
+      OLED_Update();                                                                               // 更新OLED显示内容
 
       float VIN = ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0);
       float IIN = ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005;
       float VOUT = ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0);
       float IOUT = ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005;
       float TEMP = GET_NTC_Temperature();
-      USART1_Printf("%2.3f,%1.3f,%2.3f,%1.3f,%2.3f\n",VIN,IIN,VOUT,IOUT,TEMP);
+      USART1_Printf("%2.3f,%1.3f,%2.3f,%1.3f,%2.3f\n", VIN, IIN, VOUT, IOUT, TEMP);
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms
@@ -168,21 +185,21 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -198,9 +215,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -212,7 +228,7 @@ void SystemClock_Config(void)
   }
 
   /** Enables the Clock Security System
-  */
+   */
   HAL_RCC_EnableCSS();
 }
 
@@ -227,19 +243,21 @@ void SystemClock_Config(void)
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  if (htim->Instance == TIM2)
+  if (htim->Instance == TIM2) // 定时器TIM2，中断时间1ms
   {
     ms_cnt_1++;
     ms_cnt_2++;
+    ms_cnt_3++;
+    ms_cnt_4++;
   }
 }
 
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -251,14 +269,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
