@@ -1369,3 +1369,118 @@ command:
 [2024-03-26 00:10:39]	[done]
 	build successfully !
 
+[2024-03-26 01:49:03]	[done]
+	build successfully !
+
+[2024-03-26 02:30:06]	[done]
+	build successfully !
+
+[2024-03-26 02:43:52]	[done]
+	build successfully !
+
+[2024-03-26 02:44:48]	[done]
+	build successfully !
+
+[2024-03-26 02:45:59]	[done]
+	build successfully !
+
+[2024-03-26 02:47:56]	[done]
+	build successfully !
+
+[2024-03-26 02:50:27]	[done]
+	build successfully !
+
+[2024-03-26 02:53:47]	[done]
+	build successfully !
+
+[2024-03-26 03:04:15]	[done]
+	build successfully !
+
+[2024-03-26 03:07:28]	[done]
+	build successfully !
+
+[2024-03-26 03:10:30]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
+  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
+      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
+1 error generated.
+
+[2024-03-26 03:11:04]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
+  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
+      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
+1 error generated.
+
+[2024-03-26 03:11:36]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
+  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
+      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
+1 error generated.
+
+[2024-03-26 03:13:49]	[done]
+	build successfully !
+
+[2024-03-26 03:14:36]	[done]
+	build successfully !
+
+[2024-03-26 03:15:04]	[done]
+	build successfully !
+
+[2024-03-26 03:15:21]	[done]
+	build successfully !
+
+[2024-03-26 03:16:17]	[done]
+	build successfully !
+
+[2024-03-26 03:17:00]	[done]
+	build successfully !
+
+[2024-03-26 03:21:05]	[done]
+	build successfully !
+
+[2024-03-26 03:22:33]	[done]
+	build successfully !
+
+[2024-03-26 03:23:10]	[done]
+	build successfully !
+
+[2024-03-26 03:23:29]	[done]
+	build successfully !
+
+[2024-03-26 03:23:45]	[done]
+	build successfully !
+
+[2024-03-26 03:24:56]	[done]
+	build successfully !
+
+[2024-03-26 03:25:36]	[done]
+	build successfully !
+
+[2024-03-26 03:51:19]	[done]
+	build successfully !
+
+[2024-03-26 03:51:56]	[done]
+	build successfully !
+
+[2024-03-26 03:52:44]	[done]
+	build successfully !
+
+[2024-03-26 03:53:12]	[done]
+	build successfully !
+
+[2024-03-26 04:04:23]	[done]
+	build successfully !
+
