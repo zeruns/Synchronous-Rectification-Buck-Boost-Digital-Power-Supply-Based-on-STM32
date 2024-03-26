@@ -20,6 +20,7 @@
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
+#include "hrtim.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
@@ -105,6 +106,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM8_Init();
   MX_ADC5_Init();
+  MX_HRTIM1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3); // 启动定时器8和通道3的PWM输出
   FAN_PWM_set(100);                         // 设置风扇转速为100%
@@ -119,6 +121,12 @@ int main(void)
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC1_RESULT, 4);           // 启动ADC1采样和DMA数据传送,采样输入输出电压电流
   HAL_ADC_Start(&hadc2);                                           // 启动ADC2采样，采样NTC温度
   HAL_ADC_Start(&hadc5);                                           // 启动ADC5采样，采样单片机CPU温度
+  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1|HRTIM_OUTPUT_TD2); //开启PWM输出和PWM计时器
+	HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1|HRTIM_OUTPUT_TF2); //开启PWM输出和PWM计时器
+	HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_D);//开启PWM输出和PWM计时器
+	HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_F);//开启PWM输出和PWM计时器
+	__HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1,HRTIM_TIMERINDEX_TIMER_D,HRTIM_TIM_IT_REP); // 开启HRTIM定时器D的中断
+
   HAL_GPIO_WritePin(GPIOC, LED_G_Pin | LED_R_Pin, GPIO_PIN_RESET); // 关闭LED_G和LED_R
   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
 
@@ -178,7 +186,7 @@ int main(void)
       float IOUT = ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005;
       float TEMP = GET_NTC_Temperature();
       float CPU_TEMP = GET_CPU_Temperature();
-      USART1_Printf("%2.3f,%1.3f,%2.3f,%1.3f,%2.3f,%2.3f\n", VIN, IIN, VOUT, IOUT, TEMP, CPU_TEMP);
+      USART1_Printf("%.3f,%.3f,%.3f,%.3f,%.2f,%.2f\n", VIN, IIN, VOUT, IOUT, TEMP, CPU_TEMP);
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms

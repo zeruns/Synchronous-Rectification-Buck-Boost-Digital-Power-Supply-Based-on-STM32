@@ -56,6 +56,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_adc1;
+extern HRTIM_HandleTypeDef hhrtim1;
 extern TIM_HandleTypeDef htim2;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern DMA_HandleTypeDef hdma_usart1_rx;
@@ -285,6 +286,20 @@ void USART1_IRQHandler(void)
   /* USER CODE BEGIN USART1_IRQn 1 */
 
   /* USER CODE END USART1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles HRTIM timer D global interrupt.
+  */
+void HRTIM1_TIMD_IRQHandler(void)
+{
+  /* USER CODE BEGIN HRTIM1_TIMD_IRQn 0 */
+
+  /* USER CODE END HRTIM1_TIMD_IRQn 0 */
+  HAL_HRTIM_IRQHandler(&hhrtim1,HRTIM_TIMERINDEX_TIMER_D);
+  /* USER CODE BEGIN HRTIM1_TIMD_IRQn 1 */
+
+  /* USER CODE END HRTIM1_TIMD_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

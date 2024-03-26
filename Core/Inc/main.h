@@ -82,6 +82,14 @@ void Error_Handler(void);
 #define LED_G_GPIO_Port GPIOC
 #define LED_R_Pin GPIO_PIN_5
 #define LED_R_GPIO_Port GPIOC
+#define PWM1_L_Pin GPIO_PIN_14
+#define PWM1_L_GPIO_Port GPIOB
+#define PWM1_H_Pin GPIO_PIN_15
+#define PWM1_H_GPIO_Port GPIOB
+#define PWM2_L_Pin GPIO_PIN_6
+#define PWM2_L_GPIO_Port GPIOC
+#define PWM2_H_Pin GPIO_PIN_7
+#define PWM2_H_GPIO_Port GPIOC
 #define FAN_PWM_Pin GPIO_PIN_8
 #define FAN_PWM_GPIO_Port GPIOC
 #define I2C3_SDA_Pin GPIO_PIN_9
