@@ -13,7 +13,8 @@
             "stm32g4xx_hal.h": "c",
             "function.h": "c",
             "adc.h": "c",
-            "key.h": "c"
+            "key.h": "c",
+            "pid.h": "c"
         }
     },
     "extensions": {}

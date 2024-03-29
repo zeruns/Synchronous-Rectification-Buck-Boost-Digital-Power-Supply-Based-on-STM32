@@ -30,6 +30,7 @@
         "../Core/Hardware/Key.c",
         "../Core/Hardware/OLED.c",
         "../Core/Hardware/OLED_Data.c",
+        "../Core/Src/PID.c",
         "../Core/Src/adc.c",
         "../Core/Src/dma.c",
         "../Core/Src/function.c",

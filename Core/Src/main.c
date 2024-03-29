@@ -31,6 +31,7 @@
 #include "OLED.h"
 #include "function.h"
 #include "Key.h"
+#include "PID.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,9 +72,9 @@ void SystemClock_Config(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -107,6 +108,7 @@ int main(void)
   MX_TIM8_Init();
   MX_ADC5_Init();
   MX_HRTIM1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3); // 启动定时器8和通道3的PWM输出
   FAN_PWM_set(100);                         // 设置风扇转速为100%
@@ -114,18 +116,22 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);            // 启动定时器2和定时器中断，1kHz
   Key_Init();                               // 按键状态机初始化
 
-  HAL_Delay(100);                                                  // 延时100ms，等待供电稳定
-  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);           // 校准ADC1
-  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);           // 校准ADC2
-  HAL_ADCEx_Calibration_Start(&hadc5, ADC_SINGLE_ENDED);           // 校准ADC5
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC1_RESULT, 4);           // 启动ADC1采样和DMA数据传送,采样输入输出电压电流
-  HAL_ADC_Start(&hadc2);                                           // 启动ADC2采样，采样NTC温度
-  HAL_ADC_Start(&hadc5);                                           // 启动ADC5采样，采样单片机CPU温度
-  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1|HRTIM_OUTPUT_TD2); //开启PWM输出和PWM计时器
-	HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1|HRTIM_OUTPUT_TF2); //开启PWM输出和PWM计时器
-	HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_D);//开启PWM输出和PWM计时器
-	HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_F);//开启PWM输出和PWM计时器
-	__HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1,HRTIM_TIMERINDEX_TIMER_D,HRTIM_TIM_IT_REP); // 开启HRTIM定时器D的中断
+  HAL_Delay(100);                                                                    // 延时100ms，等待供电稳定
+  HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);                             // 校准ADC1
+  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);                             // 校准ADC2
+  HAL_ADCEx_Calibration_Start(&hadc5, ADC_SINGLE_ENDED);                             // 校准ADC5
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC1_RESULT, 4);                             // 启动ADC1采样和DMA数据传送,采样输入输出电压电流
+  HAL_ADC_Start(&hadc2);                                                             // 启动ADC2采样，采样NTC温度
+  HAL_ADC_Start(&hadc5);                                                             // 启动ADC5采样，采样单片机CPU温度
+  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 2500); // 设置HRTIM定时器D的比较单元1的值（设置PWM占空比）
+  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_3, 15000); // 设置HRTIM定时器D的比较单元3的值（设置触发ADC采样的比较值）
+  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, 12000); // 设置HRTIM定时器F的比较单元1的值（设置PWM占空比）
+  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2);      // 开启HRTIM的PWM输出
+  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2);      // 开启HRTIM的PWM输出
+  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_D);                     // 开启HRTIM波形计数器
+  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_F);                     // 开启HRTIM波形计数器
+  __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_TIM_IT_REP); // 开启HRTIM定时器D的中断
+
 
   HAL_GPIO_WritePin(GPIOC, LED_G_Pin | LED_R_Pin, GPIO_PIN_RESET); // 关闭LED_G和LED_R
   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
@@ -142,6 +148,7 @@ int main(void)
 
   OLED_Update();   // 更新OLED显示内容
   FAN_PWM_set(35); // 设置风扇转速为100%
+  
   while (1)
   {
     /* USER CODE END WHILE */
@@ -178,7 +185,7 @@ int main(void)
       OLED_Printf(32, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
       OLED_Printf(40, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
       OLED_Printf(40, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
-      OLED_Update();                                                                               // 更新OLED显示内容
+      OLED_Update(); // 更新OLED显示内容
 
       float VIN = ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0);
       float IIN = ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005;
@@ -204,21 +211,21 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -234,9 +241,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -248,7 +254,7 @@ void SystemClock_Config(void)
   }
 
   /** Enables the Clock Security System
-  */
+   */
   HAL_RCC_EnableCSS();
 }
 
@@ -275,9 +281,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -289,14 +295,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

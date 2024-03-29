@@ -34,6 +34,8 @@ extern "C" {
 
 extern TIM_HandleTypeDef htim2;
 
+extern TIM_HandleTypeDef htim3;
+
 extern TIM_HandleTypeDef htim8;
 
 /* USER CODE BEGIN Private defines */
@@ -41,18 +43,13 @@ extern TIM_HandleTypeDef htim8;
 /* USER CODE END Private defines */
 
 void MX_TIM2_Init(void);
+void MX_TIM3_Init(void);
 void MX_TIM8_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN Prototypes */
 
-/**
- * @brief 设置风扇 PWM 值,
- * 根据给定的 PWM 值，设置风扇的 PWM 输出。
- * @param dutyCycle PWM 值，范围在 0 到 100 之间
- */
-void FAN_PWM_set(uint16_t pwm);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

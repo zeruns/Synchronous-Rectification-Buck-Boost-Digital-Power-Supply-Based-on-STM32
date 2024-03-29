@@ -3,6 +3,7 @@
 #include <math.h>
 #include "adc.h"
 #include "usart.h"
+#include "tim.h"
 #include "Key.h"
 
 volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0}; // ADC采样外设到内存的DMA数据保存寄存器
@@ -184,4 +185,18 @@ float GET_CPU_Temperature(void)
     float TEMP_adcValue = HAL_ADC_GetValue(&hadc5) / 8.0;
     float temperature = Temp_Scale * (TEMP_adcValue * (REF_3V3 / 3.0) - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
     return temperature;                                                                          // 返回温度值
+}
+
+/**
+ * @brief 设置风扇 PWM 值,
+ * 根据给定的 PWM 值，设置风扇的 PWM 输出。
+ * @param dutyCycle PWM 值，范围在 0 到 100 之间
+ */
+void FAN_PWM_set(uint16_t dutyCycle)
+{
+    if (dutyCycle > 100)
+    {
+        dutyCycle = 100;
+    }
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, dutyCycle * 10);
 }
