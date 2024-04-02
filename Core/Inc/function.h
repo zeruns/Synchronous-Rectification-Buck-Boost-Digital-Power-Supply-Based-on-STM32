@@ -14,6 +14,19 @@ extern volatile uint8_t BUZZER_Short_Flag;  // 蜂鸣器短叫触发标志位
 extern volatile uint8_t BUZZER_Flag;        // 蜂鸣器当前状态标志位
 extern volatile uint8_t BUZZER_Middle_Flag; // 蜂鸣器中等时间长度鸣叫触发标志位
 
+// 控制参数结构体
+struct  _Ctr_value
+{
+	int32_t		Voref;//参考电压
+	int32_t		Ioref;//参考电流
+	int32_t		ILimit;//限流参考电流
+	int16_t		BUCKMaxDuty;//Buck最大占空比
+	int16_t		BoostMaxDuty;//Boost最大占空比
+	int16_t		BuckDuty;//Buck控制占空比
+	int16_t		BoostDuty;//Boost控制占空比
+	int32_t		Ilimitout;//电流环输出
+};
+
 float GET_NTC_Temperature(void);
 void Encoder(void);
 void Key_Process(void);

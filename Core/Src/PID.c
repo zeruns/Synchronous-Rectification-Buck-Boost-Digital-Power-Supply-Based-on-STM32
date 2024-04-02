@@ -11,6 +11,7 @@
 /**
  * @brief BuckBoost电压电流环路控制PID函数。
  * 该函数用于实现BuckBoost电压电流环路控制的PID算法。
+ * 在stm32g4xx_it.c文件中的HRTIM1_TIMD_IRQHandler中断函数里调用此函数。
  */
 CCMRAM void BuckBoostVILoopCtlPID(void)
 {

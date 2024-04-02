@@ -1676,3 +1676,71 @@ command:
 [2024-03-30 02:57:41]	[done]
 	build successfully !
 
+[2024-04-01 20:31:15]	[done]
+	build successfully !
+
+[2024-04-02 17:30:55]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_IWDG_Init (referred from main.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2024-04-02 17:32:25]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol MX_IWDG_Init (referred from main.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2024-04-02 17:33:25]	[done]
+	build successfully !
+
+[2024-04-02 17:34:55]	[done]
+	build successfully !
+
+[2024-04-02 17:35:02]	[done]
+	build successfully !
+
+[2024-04-02 17:38:38]	[done]
+	build successfully !
+
+[2024-04-02 17:39:12]	[done]
+	build successfully !
+
+[2024-04-02 17:39:45]	[done]
+	build successfully !
+
+[2024-04-02 17:40:51]	[done]
+	build successfully !
+
+[2024-04-02 17:41:16]	[done]
+	build successfully !
+
+[2024-04-02 17:42:31]	[done]
+	build successfully !
+
+[2024-04-02 17:42:43]	[done]
+	build successfully !
+
+[2024-04-02 17:42:54]	[done]
+	build successfully !
+
+[2024-04-02 17:49:08]	[done]
+	build successfully !
+
+[2024-04-02 18:07:18]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\stm32g4xx_it.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_it.o -MMD ./../Core/Src/stm32g4xx_it.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/stm32g4xx_it.c:317:3: error: call to undeclared function 'BuckBoostVILoopCtlPID'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  317 |   BuckBoostVILoopCtlPID();
+      |   ^
+1 error generated.
+
+[2024-04-02 18:07:54]	[done]
+	build successfully !
+
