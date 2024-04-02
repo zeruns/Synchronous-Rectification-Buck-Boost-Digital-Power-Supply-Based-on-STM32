@@ -3,5 +3,6 @@
 
 #include "main.h"
 
+void BuckBoostVILoopCtlPID(void);
 
 #endif
