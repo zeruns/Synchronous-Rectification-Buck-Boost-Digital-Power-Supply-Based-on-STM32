@@ -282,6 +282,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     ms_cnt_3++;
     ms_cnt_4++;
   }
+  if(htim->Instance == TIM3) // 定时器TIM3，中断时间5ms
+  {
+    
+  }
 }
 
 /* USER CODE END 4 */

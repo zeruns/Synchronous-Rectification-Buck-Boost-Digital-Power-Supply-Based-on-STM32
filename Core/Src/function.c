@@ -6,12 +6,20 @@
 #include "tim.h"
 #include "Key.h"
 
+/*
+ * 定义一个宏 CCMRAM，用于将函数或变量指定到CCM RAM段。
+ * 使用此宏的声明将会被编译器放置在CCM（Cacheable Memory）RAM区域中。
+ * 这对于需要快速访问且不被系统缓存机制影响的变量或函数非常有用。
+ */
+#define CCMRAM __attribute__((section("ccmram")))
+
 volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0}; // ADC采样外设到内存的DMA数据保存寄存器
 volatile uint8_t Encoder_Flag = 0;               // 编码器中断标志位
 volatile uint8_t BUZZER_Short_Flag = 0;          // 蜂鸣器短叫触发标志位
 volatile uint8_t BUZZER_Middle_Flag = 0;         // 蜂鸣器中等时间长度鸣叫触发标志位
 volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
 volatile int16_t encoder_num = 0;
+CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
 
 /**
  * @brief GPIO外部中断回调函数。
