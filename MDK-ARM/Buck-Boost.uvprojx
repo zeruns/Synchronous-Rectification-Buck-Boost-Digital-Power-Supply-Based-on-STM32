@@ -136,7 +136,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3 />
+          <Flash3>"" ()</Flash3>
           <Flash4 />
           <pFcarmOut />
           <pFcarmGrp />
@@ -396,6 +396,11 @@
               <FileName>function.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\function.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\PID.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>

@@ -42,7 +42,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define REF_3V3 3.2993 // VREF参考电压
+//#define REF_3V3 3.2993 // VREF参考电压
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -117,6 +117,7 @@ int main(void)
   OLED_Init();                              // OLED初始化
   HAL_TIM_Base_Start_IT(&htim2);            // 启动定时器2和定时器中断，1kHz
   Key_Init();                               // 按键状态机初始化
+  PID_Init();                               // PID初始化
 
   HAL_Delay(100);                                                                         // 延时100ms，等待供电稳定
   HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);                                  // 校准ADC1
@@ -125,7 +126,8 @@ int main(void)
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC1_RESULT, 4);                                  // 启动ADC1采样和DMA数据传送,采样输入输出电压电流
   HAL_ADC_Start(&hadc2);                                                                  // 启动ADC2采样，采样NTC温度
   HAL_ADC_Start(&hadc5);                                                                  // 启动ADC5采样，采样单片机CPU温度
-  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 2500);  // 设置HRTIM定时器D的比较单元1的值（设置PWM占空比）
+  
+  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 2000);  // 设置HRTIM定时器D的比较单元1的值（设置PWM占空比）
   __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_3, 15000); // 设置HRTIM定时器D的比较单元3的值（设置触发ADC采样的比较值）
   __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, 12000); // 设置HRTIM定时器F的比较单元1的值（设置PWM占空比）
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2);           // 开启HRTIM的PWM输出

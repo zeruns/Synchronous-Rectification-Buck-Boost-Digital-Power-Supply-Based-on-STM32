@@ -12,6 +12,7 @@
 "buck-boost\usart.o"
 "buck-boost\stm32g4xx_it.o"
 "buck-boost\stm32g4xx_hal_msp.o"
+"buck-boost\pid.o"
 "buck-boost\oled.o"
 "buck-boost\oled_data.o"
 "buck-boost\key.o"
