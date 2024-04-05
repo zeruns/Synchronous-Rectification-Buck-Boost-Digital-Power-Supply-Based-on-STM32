@@ -12,6 +12,14 @@
 extern struct _Ctr_value CtrValue;       // 控制参数
 int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
 int32_t u0 = 0, u1 = 0;                  // 电压环输出量
+float Vset = 6.5;                        // 输出电压设定值
+
+CCMRAM void PID_Init(void)
+{
+    // 初始化PID参数
+    CtrValue.Vout_ref = Vset * (4.7 / 75.0) / REF_3V3 * 16380; // 输出电压参考值
+    VErr1 = VErr2 = 0;                                         // 初始化误差量
+}
 
 /**
  * @brief BuckBoost电压电流环路控制PID函数。
@@ -20,6 +28,7 @@ int32_t u0 = 0, u1 = 0;                  // 电压环输出量
  */
 CCMRAM void BuckBoostVILoopCtlPID(void)
 {
-    int32_t VoutTemp = 0;                 // 输出电压
+    int32_t VoutTemp = 0; // 输出电压
+    VoutTemp = ADC1_RESULT[2];
     VErr0 = CtrValue.Vout_ref - VoutTemp; // 计算电压误差量
 }
