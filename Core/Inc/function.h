@@ -38,6 +38,7 @@ struct _Ctr_value
 float GET_NTC_Temperature(void);
 void Encoder(void);
 void Key_Process(void);
+void OLED_Display(void);
 void BUZZER_Short(void);
 void BUZZER_Middle(void);
 float GET_CPU_Temperature(void);
