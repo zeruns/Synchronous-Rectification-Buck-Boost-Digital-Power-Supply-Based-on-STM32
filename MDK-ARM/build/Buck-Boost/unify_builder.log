@@ -1810,3 +1810,112 @@ command:
 [2024-04-05 01:40:40]	[done]
 	build successfully !
 
+[2024-04-08 14:42:40]	[done]
+	build successfully !
+
+[2024-04-08 15:18:14]	[done]
+	build successfully !
+
+[2024-04-08 15:18:18]	[done]
+	build successfully !
+
+[2024-04-09 17:09:23]	[done]
+	build successfully !
+
+[2024-04-10 02:29:07]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:102:45: error: too many arguments to function call, expected 3, have 4
+  102 |     OLED_ShowChinese(0, 0, "输入电压:", OLED_CF16x16); // 显示字符串
+      |     ~~~~~~~~~~~~~~~~                    ^~~~~~~~~~~~
+../Core/Hardware\OLED.h:44:6: note: 'OLED_ShowChinese' declared here
+   44 | void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese);
+      |      ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[2024-04-10 02:29:51]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:103:43: error: too few arguments to function call, expected 4, have 3
+  103 |     OLED_ShowString(0, 16, "输入电流:");
+      |     ~~~~~~~~~~~~~~~                   ^
+../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
+   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../Core/Src/function.c:104:43: error: too few arguments to function call, expected 4, have 3
+  104 |     OLED_ShowString(0, 32, "输出电压:");
+      |     ~~~~~~~~~~~~~~~                   ^
+../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
+   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./../Core/Src/function.c:105:43: error: too few arguments to function call, expected 4, have 3
+  105 |     OLED_ShowString(0, 48, "输出电流:");
+      |     ~~~~~~~~~~~~~~~                   ^
+../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
+   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3 errors generated.
+
+[2024-04-10 02:30:02]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:178:7: error: call to undeclared function 'OLED_DisPlay'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  178 |       OLED_DisPlay(); // 刷新OLED屏显示内容
+      |       ^
+./../Core/Src/main.c:178:7: note: did you mean 'OLED_Display'?
+../Core/Inc\function.h:41:6: note: 'OLED_Display' declared here
+   41 | void OLED_Display(void);
+      |      ^
+1 error generated.
+
+[2024-04-10 02:30:07]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:178:7: error: call to undeclared function 'OLED_DisPlay'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  178 |       OLED_DisPlay(); // 刷新OLED屏显示内容
+      |       ^
+./../Core/Src/main.c:178:7: note: did you mean 'OLED_Display'?
+../Core/Inc\function.h:41:6: note: 'OLED_Display' declared here
+   41 | void OLED_Display(void);
+      |      ^
+1 error generated.
+
+[2024-04-10 02:30:21]	[done]
+	build successfully !
+
+[2024-04-10 02:31:22]	[done]
+	build successfully !
+
+[2024-04-10 02:32:44]	[done]
+	build successfully !
+
+[2024-04-10 02:35:07]	[done]
+	build successfully !
+
+[2024-04-10 02:35:54]	[done]
+	build successfully !
+
+[2024-04-10 02:36:44]	[done]
+	build successfully !
+
+[2024-04-10 02:39:05]	[done]
+	build successfully !
+
+[2024-04-10 02:40:23]	[done]
+	build successfully !
+
+[2024-04-10 02:41:00]	[done]
+	build successfully !
+
+[2024-04-10 02:43:09]	[done]
+	build successfully !
+

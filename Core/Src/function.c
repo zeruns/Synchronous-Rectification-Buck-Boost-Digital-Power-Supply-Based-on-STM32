@@ -93,6 +93,28 @@ void Encoder(void)
 }
 
 /**
+ * @brief OLED显示函数。
+ * 刷新屏幕显示内容。
+ */
+void OLED_Display(void)
+{
+    OLED_Clear();
+    OLED_ShowChinese(0, 0, "输入电压");   // 显示中文字
+    OLED_ShowChinese(0, 16, "输入电流");
+    OLED_ShowChinese(0, 32, "输出电压");
+    OLED_ShowChinese(0, 48, "输出电流");
+    OLED_ShowChar(64, 0, ':', OLED_8X16); // 显示冒号
+    OLED_ShowChar(64, 16, ':', OLED_8X16); // 显示冒号
+    OLED_ShowChar(64, 32, ':', OLED_8X16); // 显示冒号
+    OLED_ShowChar(64, 48, ':', OLED_8X16); // 显示冒号
+    OLED_Printf(72, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
+    OLED_Printf(72, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
+    OLED_Printf(72, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
+    OLED_Printf(72, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
+    OLED_Update();
+}
+
+/**
  * @brief 蜂鸣器短促声。
  * 根据 BUZZER_Flag 和 BUZZER_Short_Flag 的状态，控制蜂鸣器发出短促的声音。
  * 需10毫秒间隔执行一次。

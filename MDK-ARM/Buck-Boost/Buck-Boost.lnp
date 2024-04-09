@@ -1,6 +1,7 @@
 --cpu=Cortex-M4.fp.sp
 "buck-boost\startup_stm32g474xx.o"
 "buck-boost\function.o"
+"buck-boost\pid.o"
 "buck-boost\main.o"
 "buck-boost\gpio.o"
 "buck-boost\adc.o"
@@ -12,7 +13,6 @@
 "buck-boost\usart.o"
 "buck-boost\stm32g4xx_it.o"
 "buck-boost\stm32g4xx_hal_msp.o"
-"buck-boost\pid.o"
 "buck-boost\oled.o"
 "buck-boost\oled_data.o"
 "buck-boost\key.o"
