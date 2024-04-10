@@ -39,11 +39,13 @@ extern struct _FLAG DF;
 #define F_SW_VOUT_OVP 0x0008 // 输出过压
 #define F_SW_IOUT_OCP 0x0010 // 输出过流
 #define F_SW_SHORT 0x0020	 // 输出短路
+#define F_OTP 0x0040		 // 温度过高
 
 // 控制参数结构体
 struct _Ctr_value
 {
 	int32_t Vout_ref;	  // 输出参考电压
+	int32_t Vout_SSref;	  // 软启动时的输出参考电压
 	int32_t Iout_ref;	  // 输出参考电流
 	int32_t I_Limit;	  // 限流参考电流
 	int16_t BUCKMaxDuty;  // Buck最大占空比
@@ -62,6 +64,7 @@ struct _FLAG
 	uint8_t BBFlag;		  // 运行模式标志位，BUCK模式，BOOST模式，MIX混合模式
 	uint8_t PWMENFlag;	  // 启动标志位
 	uint8_t BBModeChange; // 工作模式切换标志位
+	uint8_t OUTPUT_Flag;  // 输出开关标志位, 0为关闭，1为开启
 };
 
 // 状态机枚举量
@@ -91,6 +94,41 @@ typedef enum
 	SSRun	// 开始软启
 } SState_M;
 
+/*
+ * 设置寄存器的位
+ * 参数：
+ *   reg: 要操作的寄存器
+ *   mask: 指定要设置的位掩码
+ * 返回值：无
+ */
+#define setRegBits(reg, mask) (reg |= (unsigned int)(mask))
+
+/*
+ * 清除寄存器的位
+ * 参数：
+ *   reg: 要操作的寄存器
+ *   mask: 指定要清除的位掩码
+ * 返回值：无
+ */
+#define clrRegBits(reg, mask) (reg &= (unsigned int)(~(unsigned int)(mask)))
+
+/*
+ * 获取寄存器中指定位的值
+ * 参数：
+ *   reg: 要操作的寄存器
+ *   mask: 指定要获取的位掩码
+ * 返回值：掩码中为1的位的值
+ */
+#define getRegBits(reg, mask) (reg & (unsigned int)(mask))
+
+/*
+ * 获取寄存器的值
+ * 参数：
+ *   reg: 要获取的寄存器
+ * 返回值：寄存器的当前值
+ */
+#define getReg(reg) (reg)
+
 float GET_NTC_Temperature(void);
 void Encoder(void);
 void Key_Process(void);
@@ -103,6 +141,9 @@ void StateMRun(void);
 void StateMErr(void);
 void ValInit(void);
 void OTP(void);
+void OVP(void);
+void OCP(void);
+void BBMode(void);
 void BUZZER_Short(void);
 void BUZZER_Middle(void);
 float GET_CPU_Temperature(void);

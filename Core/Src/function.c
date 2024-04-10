@@ -12,9 +12,11 @@ volatile uint8_t Encoder_Flag = 0;                                     // 编码
 volatile uint8_t BUZZER_Short_Flag = 0;                                // 蜂鸣器短叫触发标志位
 volatile uint8_t BUZZER_Middle_Flag = 0;                               // 蜂鸣器中等时间长度鸣叫触发标志位
 volatile uint8_t BUZZER_Flag = 0;                                      // 蜂鸣器当前状态标志位
-volatile float OTP_Value = 65.0;                                       // 过温保护阈值
+volatile float MAX_VOUT_OTP_VAL = 65.0;                                // 过温保护阈值
+volatile float MAX_VOUT_OVP_VAL = 50.0;                                // 输出过压保护阈值
+volatile float MAX_VOUT_OCP_VAL = 10.5;                                // 输出过流保护阈值
 CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0};                           // 控制标志位
+CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
 SState_M STState = SSInit;                                             // 软启动状态标志位
 
 extern volatile int32_t VErr0, VErr1, VErr2; // 电压误差
@@ -43,6 +45,10 @@ void Key_Process(void)
     if (Key_Flag[1] == 1) // 如果按键1按下
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
+        if (DF.SMFlag == Err)   // 如果状态机处于错误状态
+        {
+            DF.ErrFlag = F_NOERR; // 消除故障状态
+        }
 
         USART1_Printf("按键1按下\r\n"); // 串口发送消息
         Key_Flag[1] = 0;                // 按键状态标志位清零
@@ -50,21 +56,25 @@ void Key_Process(void)
     if (Key_Flag[2] == 1) // 如果按键2按下
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
-        if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
+        if (DF.SMFlag == Err)   // 如果状态机处于错误状态
         {
-            DF.SMFlag = Wait;
-            // 关闭PWM
-            DF.PWMENFlag = 0;
+            DF.ErrFlag = F_NOERR; // 消除故障状态
+        }
+        else if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
+        {
+            DF.SMFlag = Wait;                                                            // 进入等待状态
+            DF.OUTPUT_Flag = 0;                                                          // 输出关闭
+            DF.PWMENFlag = 0;                                                            // 关闭PWM
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
         }
         else if (DF.SMFlag == Wait)
         {
-            DF.SMFlag = Run;
-            // 开闭PWM
-            DF.PWMENFlag = 1;
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+            DF.OUTPUT_Flag = 1;                                                           // 输出使能
+            DF.SMFlag = Rise;                                                             // 进入软启动状态
+            DF.PWMENFlag = 1;                                                             // 开闭PWM
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启BUCK电路的PWM输出
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启BOOST电路的PWM输出
         }
         USART1_Printf("按键2按下\r\n"); // 串口发送消息
         Key_Flag[2] = 0;                // 按键状态标志位清零
@@ -72,6 +82,10 @@ void Key_Process(void)
     if (Key_Flag[3] == 1) // 如果编码器按键按下
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
+        if (DF.SMFlag == Err)   // 如果状态机处于错误状态
+        {
+            DF.ErrFlag = F_NOERR; // 消除故障状态
+        }
 
         USART1_Printf("编码器按键按下\r\n"); // 串口发送消息
         Key_Flag[3] = 0;                     // 按键状态标志位清零
@@ -114,20 +128,37 @@ void Encoder(void)
  */
 void OLED_Display(void)
 {
-    OLED_Clear();
-    OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
-    OLED_ShowChinese(0, 16, "输入电流");
-    OLED_ShowChinese(0, 32, "输出电压");
-    OLED_ShowChinese(0, 48, "输出电流");
-    OLED_ShowChar(64, 0, ':', OLED_8X16);                                                        // 显示冒号
-    OLED_ShowChar(64, 16, ':', OLED_8X16);                                                       // 显示冒号
-    OLED_ShowChar(64, 32, ':', OLED_8X16);                                                       // 显示冒号
-    OLED_ShowChar(64, 48, ':', OLED_8X16);                                                       // 显示冒号
-    OLED_Printf(72, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
-    OLED_Printf(72, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
-    OLED_Printf(72, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
-    OLED_Printf(72, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
-    OLED_Update();
+    if (DF.SMFlag != Err)
+    {
+        OLED_Clear();                       // 清除OLED屏显示缓冲区
+        OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
+        OLED_ShowChinese(0, 16, "输入电流");
+        OLED_ShowChinese(0, 32, "输出电压");
+        OLED_ShowChinese(0, 48, "输出电流");
+        OLED_ShowChar(64, 0, ':', OLED_8X16);                                                        // 显示冒号
+        OLED_ShowChar(64, 16, ':', OLED_8X16);                                                       // 显示冒号
+        OLED_ShowChar(64, 32, ':', OLED_8X16);                                                       // 显示冒号
+        OLED_ShowChar(64, 48, ':', OLED_8X16);                                                       // 显示冒号
+        OLED_Printf(72, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
+        OLED_Printf(72, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
+        OLED_Printf(72, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
+        OLED_Printf(72, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
+        OLED_Update();                                                                               // 刷新屏幕显示
+    }
+    else
+    {
+        // 错误状态显示
+        OLED_Clear();                              // 清除OLED屏显示缓冲区
+        if (getRegBits(DF.ErrFlag, F_SW_VOUT_OVP)) // 判断是否输出过压保护状态
+        {
+            OLED_ShowChinese(32, 0, "输出过压");
+        }
+        if (getRegBits(DF.ErrFlag, F_SW_IOUT_OCP)) // 判断是否输出过流保护状态
+        {
+            OLED_ShowChinese(32, 16, "输出过流");
+        }
+        OLED_Update();
+    }
 }
 
 /*
@@ -224,9 +255,32 @@ void StateMErr(void)
  */
 void StateMWait(void)
 {
+    // 计数器定义
+    static uint16_t CntS = 0;
+    static uint32_t IinSum = 0, IoutSum = 0;
+
+    // 关PWM
+    DF.PWMENFlag = 0;
+    // 计数器累加
+    CntS++;
+    // 等待*S，采样输入和输出电流偏置好后， 且无故障情况,切按键按下，启动，则进入启动状态
+    if (CntS > 256)
+    {
+        CntS = 256;
+        if ((DF.ErrFlag == F_NOERR) && (DF.OUTPUT_Flag == 1))
+        {
+            // 计数器清0
+            CntS = 0;
+            IinSum = 0;
+            IoutSum = 0;
+            // 状态标志位跳转至等待状态
+            DF.SMFlag = Rise;
+            // 软启动子状态跳转至初始化状态
+            STState = SSInit;
+        }
+    }
 }
 
-#define MAX_SSCNT 20 // 等待100ms
 /*
  * @brief 软启动阶段
  */
@@ -267,7 +321,7 @@ void StateMRise(void)
         // 计数器累加
         Cnt++;
         // 等待100ms
-        if (Cnt > MAX_SSCNT)
+        if (Cnt > 20)
         {
             // 计数器清0
             Cnt = 0;
@@ -282,8 +336,8 @@ void StateMRise(void)
             VErr2 = 0;
             u0 = 0;
             u1 = 0;
-            // CtrValue.Voref输出参考电压从一半开始启动，避免过冲，然后缓慢上升
-            CtrValue.Vout_ref = CtrValue.Vout_ref >> 1;
+            // CtrValue.Vout_ref输出参考电压从一半开始启动，避免过冲，然后缓慢上升
+            CtrValue.Vout_SSref = CtrValue.Vout_ref >> 1;
             STState = SSRun; // 跳转至软启状态
         }
         break;
@@ -331,6 +385,112 @@ void StateMRise(void)
 }
 
 /**
+ * @brief OVP 输出过压保护函数
+ * OVP 函数用于处理输出电压过高的情况。
+ * 函数需放5ms中断里执行。
+ */
+void OVP(void)
+{
+    // 过压保护判据保持计数器定义
+    static uint16_t OVPCnt = 0;
+    float Vout = ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0);
+    // 当输出电压大于50V，且保持10ms
+    if (Vout >= MAX_VOUT_OVP_VAL)
+    {
+        // 条件保持计时
+        OVPCnt++;
+        // 条件保持10ms
+        if (OVPCnt > 2)
+        {
+            // 计时器清零
+            OVPCnt = 0;
+            // 关闭PWM
+            DF.PWMENFlag = 0;
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+            // 故障标志位
+            setRegBits(DF.ErrFlag, F_SW_VOUT_OVP);
+            // 跳转至故障状态
+            DF.SMFlag = Err;
+        }
+    }
+    else
+        OVPCnt = 0;
+}
+
+/**
+ * @brief OCP 输出过流保护函数
+ * OCP 函数用于处理输出电流过高的情况。
+ * 函数需放5ms中断里执行。
+ */
+void OCP(void)
+{
+    // 过流保护判据保持计数器定义
+    static uint16_t OCPCnt = 0;
+    // 故障清楚保持计数器定义
+    static uint16_t RSCnt = 0;
+    // 保留保护重启计数器
+    static uint16_t RSNum = 0;
+
+    float Iout = ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005;
+
+    // 当输出电流大于*A，且保持50ms
+    if ((Iout >= MAX_VOUT_OCP_VAL) && (DF.SMFlag == Run))
+    {
+        // 条件保持计时
+        OCPCnt++;
+        // 条件保持50ms，则认为过流发生
+        if (OCPCnt > 10)
+        {
+            // 计数器清0
+            OCPCnt = 0;
+            // 关闭PWM
+            DF.PWMENFlag = 0;
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+            // 故障标志位
+            setRegBits(DF.ErrFlag, F_SW_IOUT_OCP);
+            // 跳转至故障状态
+            DF.SMFlag = Err;
+        }
+    }
+    else
+        // 计数器清0
+        OCPCnt = 0;
+
+    // 输出过流后恢复
+    // 当发生输出软件过流保护，关机后等待4S后清楚故障信息，进入等待状态等待重启
+    if (getRegBits(DF.ErrFlag, F_SW_IOUT_OCP))
+    {
+        // 等待故障清楚计数器累加
+        RSCnt++;
+        // 等待2S
+        if (RSCnt > 400)
+        {
+            // 计数器清零
+            RSCnt = 0;
+            // 过流重启计数器累加
+            RSNum++;
+            // 过流重启只重启10次，10次后不重启（严重故障）
+            if (RSNum > 10)
+            {
+                // 确保不清除故障，不重启
+                RSNum = 11;
+                // 关闭PWM
+                DF.PWMENFlag = 0;
+                HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+                HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+            }
+            else
+            {
+                // 清除过流保护故障标志位
+                clrRegBits(DF.ErrFlag, F_SW_IOUT_OCP);
+            }
+        }
+    }
+}
+
+/**
  * @brief OTP 过温保护函数
  * OTP 函数用于处理温度过高的情况。
  * 函数需放5ms中断里执行。
@@ -338,7 +498,7 @@ void StateMRise(void)
 void OTP(void)
 {
     float TEMP = GET_NTC_Temperature(); // 获取NTC温度值
-    if (TEMP >= OTP_Value)
+    if (TEMP >= MAX_VOUT_OTP_VAL)
     {
         DF.SMFlag = Wait;
         // 关闭PWM
@@ -346,6 +506,71 @@ void OTP(void)
         HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
         HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
     }
+}
+
+/**
+ * @brief 运行模式判断。
+ * BUCK模式：输出参考电压<0.8倍输入电压
+ * BOOST模式：输出参考电压>1.2倍输入电压
+ * MIX模式：1.15倍输入电压>输出参考电压>0.85倍输入电压
+ * 当进入MIX（buck-boost）模式后，退出到BUCK或者BOOST时需要滞缓，防止在临界点来回振荡
+ */
+void BBMode(void)
+{
+    // 上一次模式状态量
+    uint8_t PreBBFlag = 0;
+
+    // 暂存当前的模式状态量
+    PreBBFlag = DF.BBFlag;
+
+    // 判断当前模块的工作模式
+    switch (DF.BBFlag)
+    {
+    // NA-初始化模式
+    case NA:
+    {
+        if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 0.8))      // 输出参考电压小于0.8倍输入电压时
+            DF.BBFlag = Buck;                                // 切换到buck模式
+        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2)) // 输出参考电压大于1.2倍输入电压时
+            DF.BBFlag = Boost;                               // 切换到boost模式
+        else
+            DF.BBFlag = Mix; // buck-boost（MIX） mode
+        break;
+    }
+    // BUCK模式
+    case Buck:
+    {
+        if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2))       // vout>1.2*vin
+            DF.BBFlag = Boost;                                // boost mode
+        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 0.85)) // 1.2*vin>vout>0.85*vin
+            DF.BBFlag = Mix;                                  // buck-boost（MIX） mode
+        break;
+    }
+    // Boost模式
+    case Boost:
+    {
+        if (CtrValue.Vout_ref < ((ADC1_RESULT[0] * 0.8)))     // vout<0.8*vin
+            DF.BBFlag = Buck;                                 // buck mode
+        else if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 1.15)) // 0.8*vin<vout<1.15*vin
+            DF.BBFlag = Mix;                                  // buck-boost（MIX） mode
+        break;
+    }
+    // Mix模式
+    case Mix:
+    {
+        if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 0.8))      // vout<0.8*vin
+            DF.BBFlag = Buck;                                // buck mode
+        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2)) // vout>1.2*vin
+            DF.BBFlag = Boost;                               // boost mode
+        break;
+    }
+    }
+
+    // 当模式发生变换时（上一次和这一次不一样）,则标志位置位，标志位用以环路计算复位，保证模式切换过程不会有大的过冲
+    if (PreBBFlag == DF.BBFlag)
+        DF.BBModeChange = 0;
+    else
+        DF.BBModeChange = 1;
 }
 
 /**
