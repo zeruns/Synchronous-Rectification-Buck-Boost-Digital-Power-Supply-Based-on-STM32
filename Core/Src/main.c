@@ -151,8 +151,6 @@ int main(void)
   OLED_Update();   // 更新OLED显示内容
   FAN_PWM_set(35); // 设置风扇转速为100%
 
-  DF.SMFlag = Wait;
-
   while (1)
   {
     /* USER CODE END WHILE */
@@ -170,6 +168,7 @@ int main(void)
     {
       ms_cnt_4 = 0;    // 计时清零
       BUZZER_Middle(); // 蜂鸣器中速鸣叫
+
       if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
       {
         HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET); // LED_G输出状态指示灯亮
@@ -178,21 +177,21 @@ int main(void)
       {
         HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET); // LED_G输出状态指示灯灭
       }
+
+      float VIN = ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0);                                                  // 计算ADC1通道0输入电压采样结果
+      float IIN = ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005;                                                  // 计算ADC1通道1输入电流采样结果
+      float VOUT = ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0);                                                 // 计算ADC1通道2输出电压采样结果
+      float IOUT = ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005;                                                 // 计算ADC1通道3输出电流采样结果
+      float TEMP = GET_NTC_Temperature();                                                                           // 获取NTC温度(主板温度)
+      float CPU_TEMP = GET_CPU_Temperature();                                                                       // 获取单片机CPU温度
+      float powerEfficiency = (VOUT * IOUT) / (VIN * IIN) * 100.0;                                                  // 计算电源效率
+      USART1_Printf("%.3f,%.3f,%.3f,%.3f,%.2f,%.2f,%.2f\n", VIN, IIN, VOUT, IOUT, TEMP, CPU_TEMP, powerEfficiency); // 串口发送数据
     }
 
     if (ms_cnt_2 >= 100) // 判断是否计时到100ms
     {
       ms_cnt_2 = 0;   // 计时清零
       OLED_Display(); // 刷新OLED屏显示内容
-
-      float VIN = ADC1_RESULT[0] * 3.299 / 16380.0 / (4.7 / 75.0);
-      float IIN = ADC1_RESULT[1] * 3.299 / 16380.0 / 62.0 / 0.005;
-      float VOUT = ADC1_RESULT[2] * 3.299 / 16380.0 / (4.7 / 75.0);
-      float IOUT = ADC1_RESULT[3] * 3.299 / 16380.0 / 62.0 / 0.005;
-      float TEMP = GET_NTC_Temperature();
-      float CPU_TEMP = GET_CPU_Temperature();
-      USART1_Printf("%.3f,%.3f,%.3f,%.3f,%.2f,%.2f\n", VIN, IIN, VOUT, IOUT, TEMP, CPU_TEMP);
-
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms
@@ -280,7 +279,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   }
   if (htim->Instance == TIM3) // 定时器TIM3，中断时间5ms
   {
-    OTP(); // 过温保护
+    OTP();    // 过温保护
+    OVP();    // 输出过压保护
+    OCP();    // 输出过流保护
+    StateM(); // 电源状态机函数
+    BBMode(); // 运行模式判断
   }
   if (htim->Instance == TIM4) // 定时器TIM4，中断时间10ms
   {
@@ -288,7 +291,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     KEY_Scan(2, KEY2);        // 按键2扫描
     KEY_Scan(3, Encoder_KEY); // 编码器按键扫描
     Key_Process();            // 按键按下的处理
-    StateM();                 // 电源状态机函数
   }
 }
 
