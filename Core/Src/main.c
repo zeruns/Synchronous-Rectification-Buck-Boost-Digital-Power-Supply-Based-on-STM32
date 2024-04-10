@@ -111,11 +111,14 @@ int main(void)
   MX_HRTIM1_Init();
   MX_TIM3_Init();
   MX_IWDG_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3); // 启动定时器8和通道3的PWM输出
   FAN_PWM_set(100);                         // 设置风扇转速为100%
   OLED_Init();                              // OLED初始化
   HAL_TIM_Base_Start_IT(&htim2);            // 启动定时器2和定时器中断，1kHz
+  HAL_TIM_Base_Start_IT(&htim3);            // 启动定时器3和定时器中断，200Hz
+  HAL_TIM_Base_Start_IT(&htim4);            // 启动定时器4和定时器中断，100Hz
   Key_Init();                               // 按键状态机初始化
   PID_Init();                               // PID初始化
 
@@ -127,14 +130,15 @@ int main(void)
   HAL_ADC_Start(&hadc2);                                 // 启动ADC2采样，采样NTC温度
   HAL_ADC_Start(&hadc5);                                 // 启动ADC5采样，采样单片机CPU温度
 
-  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 2000);  // 设置HRTIM定时器D的比较单元1的值（设置PWM占空比）
-  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_3, 15000); // 设置HRTIM定时器D的比较单元3的值（设置触发ADC采样的比较值）
-  __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, 9000);  // 设置HRTIM定时器F的比较单元1的值（设置PWM占空比）
-  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2);           // 开启HRTIM的PWM输出
-  HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2);           // 开启HRTIM的PWM输出
-  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_D);                          // 开启HRTIM波形计数器
-  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_F);                          // 开启HRTIM波形计数器
-  __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_TIM_IT_REP);      // 开启HRTIM定时器D的中断
+  //__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 30000 - 18000); // 设置HRTIM定时器D的比较单元1的值（设置PWM占空比）
+  //__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_3, 15000);         // 设置HRTIM定时器D的比较单元3的值（设置触发ADC采样的比较值）
+  //__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, 1800);          // 设置HRTIM定时器F的比较单元1的值（设置PWM占空比）
+  // HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2);                   // 开启HRTIM的PWM输出
+  // HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2);                   // 开启HRTIM的PWM输出
+
+  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_D);                     // 开启HRTIM波形计数器
+  HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_F);                     // 开启HRTIM波形计数器
+  __HAL_HRTIM_TIMER_ENABLE_IT(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_TIM_IT_REP); // 开启HRTIM定时器D的中断
 
   HAL_GPIO_WritePin(GPIOC, LED_G_Pin | LED_R_Pin, GPIO_PIN_RESET); // 关闭LED_G和LED_R
   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
@@ -144,32 +148,36 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  
-
   OLED_Update();   // 更新OLED显示内容
   FAN_PWM_set(35); // 设置风扇转速为100%
+
+  DF.SMFlag = Wait;
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    Encoder();     // 编码器信号处理
-    Key_Process(); // 按键按下的处理
+    Encoder(); // 编码器信号处理
 
     if (ms_cnt_3 >= 10) // 判断是否计时到10ms
     {
-      ms_cnt_3 = 0;             // 计时清零
-      BUZZER_Short();           // 蜂鸣器短促鸣叫
-      KEY_Scan(1, KEY1);        // 按键1扫描
-      KEY_Scan(2, KEY2);        // 按键2扫描
-      KEY_Scan(3, Encoder_KEY); // 编码器按键扫描
+      ms_cnt_3 = 0;   // 计时清零
+      BUZZER_Short(); // 蜂鸣器短促鸣叫
     }
 
     if (ms_cnt_4 >= 50) // 判断是否计时到50ms
     {
       ms_cnt_4 = 0;    // 计时清零
       BUZZER_Middle(); // 蜂鸣器中速鸣叫
+      if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
+      {
+        HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET); // LED_G输出状态指示灯亮
+      }
+      else
+      {
+        HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET); // LED_G输出状态指示灯灭
+      }
     }
 
     if (ms_cnt_2 >= 100) // 判断是否计时到100ms
@@ -184,6 +192,7 @@ int main(void)
       float TEMP = GET_NTC_Temperature();
       float CPU_TEMP = GET_CPU_Temperature();
       USART1_Printf("%.3f,%.3f,%.3f,%.3f,%.2f,%.2f\n", VIN, IIN, VOUT, IOUT, TEMP, CPU_TEMP);
+
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms
@@ -271,6 +280,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   }
   if (htim->Instance == TIM3) // 定时器TIM3，中断时间5ms
   {
+    OTP(); // 过温保护
+  }
+  if (htim->Instance == TIM4) // 定时器TIM4，中断时间10ms
+  {
+    KEY_Scan(1, KEY1);        // 按键1扫描
+    KEY_Scan(2, KEY2);        // 按键2扫描
+    KEY_Scan(3, Encoder_KEY); // 编码器按键扫描
+    Key_Process();            // 按键按下的处理
+    StateM();                 // 电源状态机函数
   }
 }
 

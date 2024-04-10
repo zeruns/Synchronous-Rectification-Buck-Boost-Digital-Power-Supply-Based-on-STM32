@@ -5,21 +5,22 @@
 #include "usart.h"
 #include "tim.h"
 #include "Key.h"
+#include "hrtim.h"
 
-/*
- * 定义一个宏 CCMRAM，用于将函数或变量指定到CCM RAM段。
- * 使用此宏的声明将会被编译器放置在CCM（Cacheable Memory）RAM区域中。
- * 这对于需要快速访问且不被系统缓存机制影响的变量或函数非常有用。
- */
-#define CCMRAM __attribute__((section("ccmram")))
-
-volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0}; // ADC采样外设到内存的DMA数据保存寄存器
-volatile uint8_t Encoder_Flag = 0;               // 编码器中断标志位
-volatile uint8_t BUZZER_Short_Flag = 0;          // 蜂鸣器短叫触发标志位
-volatile uint8_t BUZZER_Middle_Flag = 0;         // 蜂鸣器中等时间长度鸣叫触发标志位
-volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
-volatile int16_t encoder_num = 0;
+volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                       // ADC采样外设到内存的DMA数据保存寄存器
+volatile uint8_t Encoder_Flag = 0;                                     // 编码器中断标志位
+volatile uint8_t BUZZER_Short_Flag = 0;                                // 蜂鸣器短叫触发标志位
+volatile uint8_t BUZZER_Middle_Flag = 0;                               // 蜂鸣器中等时间长度鸣叫触发标志位
+volatile uint8_t BUZZER_Flag = 0;                                      // 蜂鸣器当前状态标志位
+volatile float OTP_Value = 65.0;                                       // 过温保护阈值
 CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
+CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0};                           // 控制标志位
+SState_M STState = SSInit;                                             // 软启动状态标志位
+
+extern volatile int32_t VErr0, VErr1, VErr2; // 电压误差
+extern volatile int32_t u0, u1;              // 电压环输出量
+
+volatile int16_t encoder_num = 0;
 
 /**
  * @brief GPIO外部中断回调函数。
@@ -49,7 +50,22 @@ void Key_Process(void)
     if (Key_Flag[2] == 1) // 如果按键2按下
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
-
+        if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
+        {
+            DF.SMFlag = Wait;
+            // 关闭PWM
+            DF.PWMENFlag = 0;
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+            HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+        }
+        else if (DF.SMFlag == Wait)
+        {
+            DF.SMFlag = Run;
+            // 开闭PWM
+            DF.PWMENFlag = 1;
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+        }
         USART1_Printf("按键2按下\r\n"); // 串口发送消息
         Key_Flag[2] = 0;                // 按键状态标志位清零
     }
@@ -99,19 +115,237 @@ void Encoder(void)
 void OLED_Display(void)
 {
     OLED_Clear();
-    OLED_ShowChinese(0, 0, "输入电压");   // 显示中文字
+    OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
     OLED_ShowChinese(0, 16, "输入电流");
     OLED_ShowChinese(0, 32, "输出电压");
     OLED_ShowChinese(0, 48, "输出电流");
-    OLED_ShowChar(64, 0, ':', OLED_8X16); // 显示冒号
-    OLED_ShowChar(64, 16, ':', OLED_8X16); // 显示冒号
-    OLED_ShowChar(64, 32, ':', OLED_8X16); // 显示冒号
-    OLED_ShowChar(64, 48, ':', OLED_8X16); // 显示冒号
+    OLED_ShowChar(64, 0, ':', OLED_8X16);                                                        // 显示冒号
+    OLED_ShowChar(64, 16, ':', OLED_8X16);                                                       // 显示冒号
+    OLED_ShowChar(64, 32, ':', OLED_8X16);                                                       // 显示冒号
+    OLED_ShowChar(64, 48, ':', OLED_8X16);                                                       // 显示冒号
     OLED_Printf(72, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
     OLED_Printf(72, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
     OLED_Printf(72, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
     OLED_Printf(72, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
     OLED_Update();
+}
+
+/*
+ * @brief 状态机函数，在5ms中断中运行，5ms运行一次
+ */
+void StateM(void)
+{
+    // 判断状态类型
+    switch (DF.SMFlag)
+    {
+    // 初始化状态
+    case Init:
+        StateMInit();
+        break;
+    // 等待状态
+    case Wait:
+        StateMWait();
+        break;
+    // 软启动状态
+    case Rise:
+        StateMRise();
+        break;
+    // 运行状态
+    case Run:
+        StateMRun();
+        break;
+    // 故障状态
+    case Err:
+        StateMErr();
+        break;
+    }
+}
+
+/*
+ * @brief 初始化状态函数，参数初始化
+ */
+void StateMInit(void)
+{
+    // 相关参数初始化
+    ValInit();
+    // 状态机跳转至等待软启状态
+    DF.SMFlag = Wait;
+}
+
+/*
+ * @brief 相关参数初始化函数
+ */
+void ValInit(void)
+{
+    // 关闭PWM
+    DF.PWMENFlag = 0;
+    HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+    HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+    // 清除故障标志位
+    DF.ErrFlag = 0;
+    // 初始化电压参考量
+    CtrValue.Vout_ref = 0;
+    // 限制占空比
+    CtrValue.BuckDuty = MIN_BUKC_DUTY;
+    CtrValue.BUCKMaxDuty = MIN_BUKC_DUTY;
+    CtrValue.BoostDuty = MIN_BOOST_DUTY;
+    CtrValue.BoostMaxDuty = MIN_BOOST_DUTY;
+    // 环路计算变量初始化
+    VErr0 = 0;
+    VErr1 = 0;
+    VErr2 = 0;
+    u0 = 0;
+    u1 = 0;
+}
+
+/*
+ * @brief 正常运行，主处理函数在中断中运行
+ */
+void StateMRun(void)
+{
+}
+
+/*
+ * @brief 故障状态
+ */
+void StateMErr(void)
+{
+    // 关闭PWM
+    DF.PWMENFlag = 0;
+    HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+    HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+    // 若故障消除跳转至等待重新软启
+    if (DF.ErrFlag == F_NOERR)
+        DF.SMFlag = Wait;
+}
+
+/*
+ * @brief 等待状态机
+ */
+void StateMWait(void)
+{
+}
+
+#define MAX_SSCNT 20 // 等待100ms
+/*
+ * @brief 软启动阶段
+ */
+void StateMRise(void)
+{
+    // 计时器
+    static uint16_t Cnt = 0;
+    // 最大占空比限制计数器
+    static uint16_t BUCKMaxDutyCnt = 0, BoostMaxDutyCnt = 0;
+
+    // 判断软启状态
+    switch (STState)
+    {
+    // 初始化状态
+    case SSInit:
+    {
+        // 关闭PWM
+        DF.PWMENFlag = 0;
+        HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+        HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+        // 软启中将运行限制占空比启动，从最小占空比开始启动
+        CtrValue.BUCKMaxDuty = MIN_BUKC_DUTY;
+        CtrValue.BoostMaxDuty = MIN_BOOST_DUTY;
+        // 环路计算变量初始化
+        VErr0 = 0;
+        VErr1 = 0;
+        VErr2 = 0;
+        u0 = 0;
+        u1 = 0;
+        // 跳转至软启等待状态
+        STState = SSWait;
+
+        break;
+    }
+    // 等待软启动状态
+    case SSWait:
+    {
+        // 计数器累加
+        Cnt++;
+        // 等待100ms
+        if (Cnt > MAX_SSCNT)
+        {
+            // 计数器清0
+            Cnt = 0;
+            // 限制启动占空比
+            CtrValue.BuckDuty = MIN_BUKC_DUTY;
+            CtrValue.BUCKMaxDuty = MIN_BUKC_DUTY;
+            CtrValue.BoostDuty = MIN_BOOST_DUTY;
+            CtrValue.BoostMaxDuty = MIN_BOOST_DUTY;
+            // 环路计算变量初始化
+            VErr0 = 0;
+            VErr1 = 0;
+            VErr2 = 0;
+            u0 = 0;
+            u1 = 0;
+            // CtrValue.Voref输出参考电压从一半开始启动，避免过冲，然后缓慢上升
+            CtrValue.Vout_ref = CtrValue.Vout_ref >> 1;
+            STState = SSRun; // 跳转至软启状态
+        }
+        break;
+    }
+    // 软启动状态
+    case SSRun:
+    {
+        if (DF.PWMENFlag == 0) // 正式发波前环路变量清0
+        {
+            // 环路计算变量初始化
+            VErr0 = 0;
+            VErr1 = 0;
+            VErr2 = 0;
+            u0 = 0;
+            u1 = 0;
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+        }
+        // 发波标志位置位
+        DF.PWMENFlag = 1;
+        // 最大占空比限制逐渐增加
+        BUCKMaxDutyCnt++;
+        BoostMaxDutyCnt++;
+        // 最大占空比限制累加
+        CtrValue.BUCKMaxDuty = CtrValue.BUCKMaxDuty + BUCKMaxDutyCnt * 5;
+        CtrValue.BoostMaxDuty = CtrValue.BoostMaxDuty + BoostMaxDutyCnt * 5;
+        // 累加到最大值
+        if (CtrValue.BUCKMaxDuty > MAX_BUCK_DUTY)
+            CtrValue.BUCKMaxDuty = MAX_BUCK_DUTY;
+        if (CtrValue.BoostMaxDuty > MAX_BOOST_DUTY)
+            CtrValue.BoostMaxDuty = MAX_BOOST_DUTY;
+
+        if ((CtrValue.BUCKMaxDuty == MAX_BUCK_DUTY) && (CtrValue.BoostMaxDuty == MAX_BOOST_DUTY))
+        {
+            // 状态机跳转至运行状态
+            DF.SMFlag = Run;
+            // 软启动子状态跳转至初始化状态
+            STState = SSInit;
+        }
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+/**
+ * @brief OTP 过温保护函数
+ * OTP 函数用于处理温度过高的情况。
+ * 函数需放5ms中断里执行。
+ */
+void OTP(void)
+{
+    float TEMP = GET_NTC_Temperature(); // 获取NTC温度值
+    if (TEMP >= OTP_Value)
+    {
+        DF.SMFlag = Wait;
+        // 关闭PWM
+        DF.PWMENFlag = 0;
+        HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
+        HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+    }
 }
 
 /**

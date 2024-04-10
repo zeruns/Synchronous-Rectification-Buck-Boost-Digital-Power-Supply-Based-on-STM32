@@ -1919,3 +1919,398 @@ command:
 [2024-04-10 02:43:09]	[done]
 	build successfully !
 
+[2024-04-10 14:03:00]	[done]
+	build successfully !
+
+[2024-04-10 14:04:46]	[done]
+	build successfully !
+
+[2024-04-10 14:26:54]	[done]
+	build successfully !
+
+[2024-04-10 14:27:17]	[done]
+	build successfully !
+
+[2024-04-10 14:28:22]	[done]
+	build successfully !
+
+[2024-04-10 14:31:18]	[done]
+	build successfully !
+
+[2024-04-10 14:31:23]	[done]
+	build successfully !
+
+[2024-04-10 14:42:55]	[done]
+	build successfully !
+
+[2024-04-10 14:43:27]	[done]
+	build successfully !
+
+[2024-04-10 14:44:19]	[done]
+	build successfully !
+
+[2024-04-10 14:44:45]	[done]
+	build successfully !
+
+[2024-04-10 14:50:09]	[done]
+	build successfully !
+
+[2024-04-10 14:50:51]	[done]
+	build successfully !
+
+[2024-04-10 14:51:37]	[done]
+	build successfully !
+
+[2024-04-10 14:52:12]	[done]
+	build successfully !
+
+[2024-04-10 14:52:57]	[done]
+	build successfully !
+
+[2024-04-10 14:53:34]	[done]
+	build successfully !
+
+[2024-04-10 15:05:01]	[done]
+	build successfully !
+
+[2024-04-10 15:06:05]	[done]
+	build successfully !
+
+[2024-04-10 15:09:00]	[done]
+	build successfully !
+
+[2024-04-10 15:21:23]	[done]
+	build successfully !
+
+[2024-04-10 15:22:07]	[done]
+	build successfully !
+
+[2024-04-10 15:23:27]	[done]
+	build successfully !
+
+[2024-04-10 15:24:58]	[done]
+	build successfully !
+
+[2024-04-10 15:25:57]	[done]
+	build successfully !
+
+[2024-04-10 15:26:08]	[done]
+	build successfully !
+
+[2024-04-10 15:29:35]	[done]
+	build successfully !
+
+[2024-04-10 15:29:58]	[done]
+	build successfully !
+
+[2024-04-10 15:30:23]	[done]
+	build successfully !
+
+[2024-04-10 15:32:34]	[done]
+	build successfully !
+
+[2024-04-10 15:33:30]	[done]
+	build successfully !
+
+[2024-04-10 15:38:02]	[done]
+	build successfully !
+
+[2024-04-10 15:38:23]	[done]
+	build successfully !
+
+[2024-04-10 15:38:37]	[done]
+	build successfully !
+
+[2024-04-10 16:27:29]	[done]
+	build successfully !
+
+[2024-04-10 16:47:17]	[done]
+	build successfully !
+
+[2024-04-10 17:27:09]	[done]
+	build successfully !
+
+[2024-04-10 17:28:09]	[done]
+	build successfully !
+
+[2024-04-10 17:52:59]	[done]
+	build successfully !
+
+[2024-04-10 17:54:54]	[done]
+	build successfully !
+
+[2024-04-10 17:58:56]	[done]
+	build successfully !
+
+[2024-04-10 18:06:31]	[done]
+	build successfully !
+
+[2024-04-10 18:07:34]	[done]
+	build successfully !
+
+[2024-04-10 18:07:57]	[done]
+	build successfully !
+
+[2024-04-10 18:08:27]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:16:35: error: redefinition of 'CtrValue' with a different type: 'volatile struct _Ctr_value' vs 'struct _Ctr_value'
+   16 | CCMRAM volatile struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
+      |                                   ^
+../Core/Inc\function.h:31:26: note: previous declaration is here
+   31 | extern struct _Ctr_value CtrValue;
+      |                          ^
+./../Core/Src/function.c:17:30: error: redefinition of 'DF' with a different type: 'volatile struct _FLAG' vs 'struct _FLAG'
+   17 | CCMRAM volatile struct _FLAG DF = {0, 0, 0, 0, 0, 0};                           // 控制标志位
+      |                              ^
+../Core/Inc\function.h:32:21: note: previous declaration is here
+   32 | extern struct _FLAG DF;
+      |                     ^
+2 errors generated.
+
+[2024-04-10 18:08:35]	[done]
+	build successfully !
+
+[2024-04-10 18:09:13]	[done]
+	build successfully !
+
+[2024-04-10 18:10:50]	[done]
+	build successfully !
+
+[2024-04-10 18:12:18]	[done]
+	build successfully !
+
+[2024-04-10 18:14:20]	[done]
+	build successfully !
+
+[2024-04-10 18:14:45]	[done]
+	build successfully !
+
+[2024-04-10 18:15:02]	[done]
+	build successfully !
+
+[2024-04-10 18:15:39]	[done]
+	build successfully !
+
+[2024-04-10 18:16:04]	[done]
+	build successfully !
+
+[2024-04-10 18:16:33]	[done]
+	build successfully !
+
+[2024-04-10 18:17:10]	[done]
+	build successfully !
+
+[2024-04-10 18:17:44]	[done]
+	build successfully !
+
+[2024-04-10 18:18:47]	[done]
+	build successfully !
+
+[2024-04-10 18:19:22]	[done]
+	build successfully !
+
+[2024-04-10 18:19:36]	[done]
+	build successfully !
+
+[2024-04-10 18:19:52]	[done]
+	build successfully !
+
+[2024-04-10 18:20:30]	[done]
+	build successfully !
+
+[2024-04-10 18:24:05]	[done]
+	build successfully !
+
+[2024-04-10 19:32:06]	[done]
+	build successfully !
+
+[2024-04-10 19:34:14]	[done]
+	build successfully !
+
+[2024-04-10 19:41:01]	[done]
+	build successfully !
+
+[2024-04-10 19:41:56]	[done]
+	build successfully !
+
+[2024-04-10 19:57:20]	[done]
+	build successfully !
+
+[2024-04-10 19:59:52]	[done]
+	build successfully !
+
+[2024-04-10 20:03:07]	[done]
+	build successfully !
+
+[2024-04-10 20:04:29]	[done]
+	build successfully !
+
+[2024-04-10 20:06:49]	[done]
+	build successfully !
+
+[2024-04-10 20:07:23]	[done]
+	build successfully !
+
+[2024-04-10 20:09:21]	[done]
+	build successfully !
+
+[2024-04-10 20:10:15]	[done]
+	build successfully !
+
+[2024-04-10 20:11:22]	[done]
+	build successfully !
+
+[2024-04-10 20:11:56]	[done]
+	build successfully !
+
+[2024-04-10 20:12:24]	[done]
+	build successfully !
+
+[2024-04-10 20:14:21]	[done]
+	build successfully !
+
+[2024-04-10 20:14:45]	[done]
+	build successfully !
+
+[2024-04-10 20:15:02]	[done]
+	build successfully !
+
+[2024-04-10 20:15:18]	[done]
+	build successfully !
+
+[2024-04-10 20:19:56]	[done]
+	build successfully !
+
+[2024-04-10 20:36:04]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:49:13: error: 'BuckBoostVILoopCtlPID' causes a section type conflict with 'VErr0'
+   49 | CCMRAM void BuckBoostVILoopCtlPID(void)
+      |             ^
+./../Core/Src/PID.c:13:16: note: declared here
+   13 | CCMRAM int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
+      |                ^
+1 error generated.
+
+[2024-04-10 20:36:52]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:49:13: error: 'BuckBoostVILoopCtlPID' causes a section type conflict with 'VErr0'
+   49 | CCMRAM void BuckBoostVILoopCtlPID(void)
+      |             ^
+./../Core/Src/PID.c:13:25: note: declared here
+   13 | CCMRAM volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
+      |                         ^
+1 error generated.
+
+[2024-04-10 20:36:57]	[done]
+	build successfully !
+
+[2024-04-10 20:43:03]	[done]
+	build successfully !
+
+[2024-04-10 20:44:03]	[done]
+	build successfully !
+
+[2024-04-10 20:44:32]	[done]
+	build successfully !
+
+[2024-04-10 20:46:07]	[done]
+	build successfully !
+
+[2024-04-10 20:46:39]	[done]
+	build successfully !
+
+[2024-04-10 20:48:28]	[done]
+	build successfully !
+
+[2024-04-10 20:50:56]	[done]
+	build successfully !
+
+[2024-04-10 20:51:36]	[done]
+	build successfully !
+
+[2024-04-10 20:52:04]	[done]
+	build successfully !
+
+[2024-04-10 20:52:25]	[done]
+	build successfully !
+
+[2024-04-10 20:53:08]	[done]
+	build successfully !
+
+[2024-04-10 20:54:59]	[done]
+	build successfully !
+
+[2024-04-10 20:57:49]	[done]
+	build successfully !
+
+[2024-04-10 20:59:04]	[done]
+	build successfully !
+
+[2024-04-10 20:59:30]	[done]
+	build successfully !
+
+[2024-04-10 21:03:34]	[done]
+	build successfully !
+
+[2024-04-10 21:07:09]	[done]
+	build successfully !
+
+[2024-04-10 21:21:59]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:20:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
+      |                         ^
+./../Core/Src/function.c:20:36: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
+      |                                    ^
+./../Core/Src/function.c:20:47: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
+      |                                               ^
+./../Core/Src/function.c:21:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   21 | extern volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
+      |                         ^
+./../Core/Src/function.c:21:33: warning: 'extern' variable has an initializer [-Wextern-initializer]
+   21 | extern volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
+      |                                 ^
+./../Core/Src/function.c:170:5: error: call to undeclared function 'ValInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  170 |     ValInit();
+      |     ^
+5 warnings and 1 error generated.
+
+[2024-04-10 21:30:03]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol u0 multiply defined (by function.o and PID.o).
+Error: L6200E: Symbol VErr0 multiply defined (by function.o and PID.o).
+Error: L6200E: Symbol VErr1 multiply defined (by function.o and PID.o).
+Error: L6200E: Symbol VErr2 multiply defined (by function.o and PID.o).
+Error: L6200E: Symbol u1 multiply defined (by function.o and PID.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 5 error messages.
+
+
+[2024-04-10 21:30:27]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol StateMRun (referred from function.o).
+Error: L6218E: Undefined symbol StateMErr (referred from function.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+
+
+[2024-04-10 21:35:02]	[done]
+	build successfully !
+
