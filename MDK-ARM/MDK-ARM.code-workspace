@@ -14,7 +14,16 @@
             "function.h": "c",
             "adc.h": "c",
             "key.h": "c",
-            "pid.h": "c"
+            "pid.h": "c",
+            "cstddef": "c",
+            "limits": "c",
+            "new": "c",
+            "bit": "c",
+            "compare": "c",
+            "memory": "c",
+            "type_traits": "c",
+            "xmemory": "c",
+            "xutility": "c"
         }
     },
     "extensions": {}
