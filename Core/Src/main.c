@@ -149,7 +149,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   OLED_Update();   // 更新OLED显示内容
-  FAN_PWM_set(35); // 设置风扇转速为100%
+  FAN_PWM_set(35); // 设置风扇转速为35%
 
   while (1)
   {
