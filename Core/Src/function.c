@@ -7,22 +7,28 @@
 #include "Key.h"
 #include "hrtim.h"
 
-volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                       // ADC采样外设到内存的DMA数据保存寄存器
-volatile uint8_t Encoder_Flag = 0;                                     // 编码器中断标志位
-volatile uint8_t BUZZER_Short_Flag = 0;                                // 蜂鸣器短叫触发标志位
-volatile uint8_t BUZZER_Middle_Flag = 0;                               // 蜂鸣器中等时间长度鸣叫触发标志位
-volatile uint8_t BUZZER_Flag = 0;                                      // 蜂鸣器当前状态标志位
-volatile float MAX_VOUT_OTP_VAL = 65.0;                                // 过温保护阈值
-volatile float MAX_VOUT_OVP_VAL = 50.0;                                // 输出过压保护阈值
-volatile float MAX_VOUT_OCP_VAL = 10.5;                                // 输出过流保护阈值
-CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
-SState_M STState = SSInit;                                             // 软启动状态标志位
+volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                // ADC采样外设到内存的DMA数据保存寄存器
+volatile uint8_t Encoder_Flag = 0;                              // 编码器中断标志位
+volatile uint8_t BUZZER_Short_Flag = 0;                         // 蜂鸣器短叫触发标志位
+volatile uint8_t BUZZER_Middle_Flag = 0;                        // 蜂鸣器中等时间长度鸣叫触发标志位
+volatile uint8_t BUZZER_Flag = 0;                               // 蜂鸣器当前状态标志位
+volatile float MAX_VOUT_OTP_VAL = 65.0;                         // 过温保护阈值
+volatile float MAX_VOUT_OVP_VAL = 50.0;                         // 输出过压保护阈值
+volatile float MAX_VOUT_OCP_VAL = 10.5;                         // 输出过流保护阈值
+#define MAX_SHORT_I 10.2                                        // 短路电流判据
+#define MIN_SHORT_V 0.5                                         // 短路电压判据
+struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
+struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
+struct _ADI SADC = {0, 0, 0, 0, 0, 0, 0, 0};                    // 输入输出参数采样值和平均值
+struct _SET_Value SET_Value = {0, 0, 0, 0, 0};                  // 设置参数
+SState_M STState = SSInit;                                      // 软启动状态标志位
+_Screen_page Screen_page = VIset_page;                          // 当前屏幕页面标志位
+volatile float VIN, VOUT, IIN, IOUT;                            // 电压电流实际值
+volatile float MainBoard_TEMP, CPU_TEMP;                        // 主板和CPU温度实际值
+volatile float powerEfficiency = 0;                             // 电源转换效率
 
 extern volatile int32_t VErr0, VErr1, VErr2; // 电压误差
 extern volatile int32_t u0, u1;              // 电压环输出量
-
-volatile int16_t encoder_num = 0;
 
 /**
  * @brief GPIO外部中断回调函数。
@@ -42,24 +48,40 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  */
 void Key_Process(void)
 {
-    if (Key_Flag[1] == 1) // 如果按键1按下
+    // 如果按键1按下
+    if (Key_Flag[1] == 1)
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
         if (DF.SMFlag == Err)   // 如果状态机处于错误状态
         {
             DF.ErrFlag = F_NOERR; // 消除故障状态
+        }
+        else if (Screen_page == VIset_page)
+        {
+            // 没有选中位时
+            if (SET_Value.SET_bit == 0)
+            {
+                SET_Value.currentSetting++;       // 切换下一个设置项
+                if (SET_Value.currentSetting > 2) // 如果超过最后一项，则回到第一项
+                {
+                    SET_Value.currentSetting = 0;
+                }
+            }
         }
 
         USART1_Printf("按键1按下\r\n"); // 串口发送消息
         Key_Flag[1] = 0;                // 按键状态标志位清零
     }
-    if (Key_Flag[2] == 1) // 如果按键2按下
+    // 如果按键2按下
+    if (Key_Flag[2] == 1)
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
-        if (DF.SMFlag == Err)   // 如果状态机处于错误状态
+        // 如果状态机处于错误状态
+        if (DF.SMFlag == Err)
         {
             DF.ErrFlag = F_NOERR; // 消除故障状态
         }
+        // 当状态机处于软启动状态或运行状态时
         else if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
         {
             DF.SMFlag = Wait;                                                            // 进入等待状态
@@ -68,23 +90,35 @@ void Key_Process(void)
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
         }
+        // 当状态机处于等待状态时
         else if (DF.SMFlag == Wait)
         {
-            DF.OUTPUT_Flag = 1;                                                           // 输出使能
-            DF.SMFlag = Rise;                                                             // 进入软启动状态
-            DF.PWMENFlag = 1;                                                             // 开闭PWM
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启BUCK电路的PWM输出
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启BOOST电路的PWM输出
+            DF.OUTPUT_Flag = 1; // 输出使能
+            DF.SMFlag = Rise;   // 进入软启动状态
         }
         USART1_Printf("按键2按下\r\n"); // 串口发送消息
         Key_Flag[2] = 0;                // 按键状态标志位清零
     }
-    if (Key_Flag[3] == 1) // 如果编码器按键按下
+    // 如果编码器按键按下
+    if (Key_Flag[3] == 1)
     {
         BUZZER_Middle_Flag = 1; // 蜂鸣器中等时间长度鸣叫触发标志位置1
         if (DF.SMFlag == Err)   // 如果状态机处于错误状态
         {
             DF.ErrFlag = F_NOERR; // 消除故障状态
+        }
+        // 当屏幕页面处于电压电流设置页面时
+        else if (Screen_page == VIset_page)
+        {
+            // 当选中设置项时
+            if (SET_Value.currentSetting != 0)
+            {
+                SET_Value.SET_bit++;       // 切换下一个设置位
+                if (SET_Value.SET_bit > 4) // 如果超过最后一位，则回到没有选中位时
+                {
+                    SET_Value.SET_bit = 0;
+                }
+            }
         }
 
         USART1_Printf("编码器按键按下\r\n"); // 串口发送消息
@@ -106,18 +140,144 @@ void Encoder(void)
             BUZZER_Short_Flag = 1;                                         // 蜂鸣器短促声触发标志位置1
             if (HAL_GPIO_ReadPin(Encoder_B_GPIO_Port, Encoder_B_Pin) == 1) // 编码器A相比B相提前
             {                                                              // 编码器逆时针旋转
-                USART1_Printf("编码器逆时针旋转\r\n");
-                encoder_num--;
+                USART1_Printf("编码器逆时针旋转\r\n");                     // 串口发送消息
+                // 当没有选中设置项时
+                if (SET_Value.currentSetting == 0)
+                {
+                    Screen_page--;                // 屏幕切换上一页
+                    if (Screen_page < VIset_page) // 判断是否到首页
+                    {
+                        Screen_page = SET_page; // 切换到最后一页
+                    }
+                }
+                // 当屏幕页面处于电压电流设置页面时
+                if (Screen_page == VIset_page)
+                {
+                    // 选中电压设置时
+                    if (SET_Value.currentSetting == 1)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            SET_Value.Vout -= 10;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Vout < 0.5)
+                            {
+                                SET_Value.Vout += 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            SET_Value.Vout -= 1;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Vout < 0.5)
+                            {
+                                SET_Value.Vout = 0.5;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            SET_Value.Vout -= 0.1;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Vout < 0.5)
+                            {
+                                SET_Value.Vout += 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            SET_Value.Vout -= 0.01;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Vout < 0.5)
+                            {
+                                SET_Value.Vout += 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                            // 将设置值传到参考值
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
+                        }
+                    }
+                }
             }
             else if (HAL_GPIO_ReadPin(Encoder_B_GPIO_Port, Encoder_B_Pin) == 0)
-            { // 编码器顺时针旋转
-                USART1_Printf("编码器顺时针旋转\r\n");
-                encoder_num++;
+            {                                          // 编码器顺时针旋转
+                USART1_Printf("编码器顺时针旋转\r\n"); // 串口发送消息
+                // 当没有选中设置项时
+                if (SET_Value.currentSetting == 0)
+                {
+                    Screen_page++;              // 屏幕切换下一页
+                    if (Screen_page > SET_page) // 判断是否到最后一页
+                    {
+                        Screen_page = VIset_page; // 切换到首页
+                    }
+                }
+                // 当屏幕页面处于电压电流设置页面时
+                if (Screen_page == VIset_page)
+                {
+                    // 选中电压设置时
+                    if (SET_Value.currentSetting == 1)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            SET_Value.Vout += 10;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Vout > 48.5)
+                            {
+                                SET_Value.Vout -= 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            SET_Value.Vout += 1;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Vout > 48.5)
+                            {
+                                SET_Value.Vout = 48.5;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            SET_Value.Vout += 0.1;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Vout > 48.5)
+                            {
+                                SET_Value.Vout -= 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            SET_Value.Vout += 0.01;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Vout > 48.5)
+                            {
+                                SET_Value.Vout -= 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+
+                            // 将设置值传到参考值
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
+                        }
+                    }
+                }
             }
             Encoder_Flag = 0;
-            OLED_ClearArea(88, 0, 48, 16);
-            OLED_Printf(88, 0, OLED_8X16, "%d", encoder_num);
-            OLED_Update();
         }
     }
 }
@@ -128,22 +288,143 @@ void Encoder(void)
  */
 void OLED_Display(void)
 {
-    if (DF.SMFlag != Err)
+    if (DF.SMFlag != Err) // 非错误状态时
     {
-        OLED_Clear();                       // 清除OLED屏显示缓冲区
-        OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
-        OLED_ShowChinese(0, 16, "输入电流");
-        OLED_ShowChinese(0, 32, "输出电压");
-        OLED_ShowChinese(0, 48, "输出电流");
-        OLED_ShowChar(64, 0, ':', OLED_8X16);                                                        // 显示冒号
-        OLED_ShowChar(64, 16, ':', OLED_8X16);                                                       // 显示冒号
-        OLED_ShowChar(64, 32, ':', OLED_8X16);                                                       // 显示冒号
-        OLED_ShowChar(64, 48, ':', OLED_8X16);                                                       // 显示冒号
-        OLED_Printf(72, 0, OLED_8X16, "%2.2fV", ADC1_RESULT[0] * REF_3V3 / 16380.0 / (4.7 / 75.0));  // 显示输入电压
-        OLED_Printf(72, 16, OLED_8X16, "%2.2fA", ADC1_RESULT[1] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输入电流
-        OLED_Printf(72, 32, OLED_8X16, "%2.2fV", ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0)); // 显示输出电压
-        OLED_Printf(72, 48, OLED_8X16, "%2.2fA", ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005); // 显示输出电流
-        OLED_Update();                                                                               // 刷新屏幕显示
+        OLED_Clear();                  // 清除OLED屏显示缓冲区
+        if (Screen_page == VIset_page) // 电压电流设置页面
+        {
+            OLED_ShowChinese(0, 0, "电压设置"); // 显示中文字
+            OLED_ShowChinese(0, 16, "电流设置");
+            OLED_ShowChinese(0, 32, "输出电压");
+            OLED_ShowChinese(0, 48, "输出电流");
+            OLED_ShowChar(64, 0, ':', OLED_8X16);                                                         // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16);                                                        // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16);                                                        // 显示冒号
+            OLED_ShowChar(64, 48, ':', OLED_8X16);                                                        // 显示冒号
+            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                                 // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                                // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                                // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                                // 显示单位符号
+            OLED_ShowNum(72, 0, SET_Value.Vout + 0.005, 2, OLED_8X16);                                    // 显示当前设置电压值整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                 // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((SET_Value.Vout + 0.005) * 100) % 100, 2, OLED_8X16);  // 显示当前设置电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 16, SET_Value.Iout + 0.005, 2, OLED_8X16);                                   // 显示当前设置电流值整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((SET_Value.Iout + 0.005) * 100) % 100, 2, OLED_8X16); // 显示当前设置电流值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 32, VOUT + 0.005, 2, OLED_8X16);                                             // 显示输出电压整数部分
+            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                                // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005) * 100) % 100, 2, OLED_8X16);           // 显示输出电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 48, IOUT + 0.005, 2, OLED_8X16);                                             // 显示输出电流整数部分
+            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                                // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005) * 100) % 100, 2, OLED_8X16);           // 显示输出电流值小数部分,+0.005是为了四舍五入
+            if (SET_Value.currentSetting == 1)                                                            // 选中第一个设置项时，输出电压设置
+            {
+                // 没有选中设置位时
+                if (SET_Value.SET_bit == 0)
+                {
+                    OLED_ReverseArea(0, 0, 128, 16); // 反显当前设置项，输出电压设置
+                }
+                // 选中十位时
+                else if (SET_Value.SET_bit == 1)
+                {
+                    OLED_ReverseArea(72, 0, 8, 16); // 反显当前设置位，十位
+                }
+                // 选中个位时
+                else if (SET_Value.SET_bit == 2)
+                {
+                    OLED_ReverseArea(72 + 8 * 1, 0, 8, 16); // 反显当前设置位，个位
+                }
+                // 选中小数第一位时
+                else if (SET_Value.SET_bit == 3)
+                {
+                    OLED_ReverseArea(72 + 8 * 3, 0, 8, 16); // 反显当前设置位，小数第一位
+                }
+                // 选中小数第二位时
+                else if (SET_Value.SET_bit == 4)
+                {
+                    OLED_ReverseArea(72 + 8 * 4, 0, 8, 16); // 反显当前设置位，小数第二位
+                }
+            }
+            else if (SET_Value.currentSetting == 2) // 选中第二个设置项时，输出电流设置
+            {
+                if (SET_Value.SET_bit == 0)
+                {
+                    OLED_ReverseArea(0, 16, 128, 16); // 反显当前设置项，输出电流设置
+                }
+                // 选中十位时
+                else if (SET_Value.SET_bit == 1)
+                {
+                    OLED_ReverseArea(72, 16, 8, 16); // 反显当前设置位，十位
+                }
+                // 选中个位时
+                else if (SET_Value.SET_bit == 2)
+                {
+                    OLED_ReverseArea(72 + 8 * 1, 16, 8, 16); // 反显当前设置位，个位
+                }
+                // 选中小数第一位时
+                else if (SET_Value.SET_bit == 3)
+                {
+                    OLED_ReverseArea(72 + 8 * 3, 16, 8, 16); // 反显当前设置位，小数第一位
+                }
+                // 选中小数第二位时
+                else if (SET_Value.SET_bit == 4)
+                {
+                    OLED_ReverseArea(72 + 8 * 4, 16, 8, 16); // 反显当前设置位，小数第二位
+                }
+            }
+        }
+        // 数据显示页面1
+        else if (Screen_page == DATA1_page)
+        {
+            OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
+            OLED_ShowChinese(0, 16, "输入电流");
+            OLED_ShowChinese(0, 32, "输出电压");
+            OLED_ShowChinese(0, 48, "输出电流");
+            OLED_ShowChar(64, 0, ':', OLED_8X16);                                               // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16);                                              // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16);                                              // 显示冒号
+            OLED_ShowChar(64, 48, ':', OLED_8X16);                                              // 显示冒号
+            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                       // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                      // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                      // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                      // 显示单位符号
+            OLED_ShowNum(72, 0, VIN + 0.005, 2, OLED_8X16);                                     // 显示输入电压值整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                       // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((VIN + 0.005) * 100) % 100, 2, OLED_8X16);   // 显示输入电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 16, IIN + 0.005, 2, OLED_8X16);                                    // 显示输入电流值整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                      // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((IIN + 0.005) * 100) % 100, 2, OLED_8X16);  // 显示输入电流值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 32, VOUT + 0.005, 2, OLED_8X16);                                   // 显示输出电压整数部分
+            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                      // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005) * 100) % 100, 2, OLED_8X16); // 显示输出电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 48, IOUT + 0.005, 2, OLED_8X16);                                   // 显示输出电流整数部分
+            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                      // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005) * 100) % 100, 2, OLED_8X16); // 显示输出电流值小数部分,+0.005是为了四舍五入
+        }
+        else if (Screen_page == DATA2_page) // 数据显示页面2
+        {
+            OLED_ShowString(0, 0, "MCU", OLED_8X16);
+            OLED_ShowChinese(24, 0, "温度"); // 显示中文字
+            OLED_ShowChinese(0, 16, "主板温度");
+            OLED_ShowChinese(0, 32, "转换效率");
+            OLED_ShowChar(64, 0, ':', OLED_8X16);  // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16); // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16); // 显示冒号
+            // OLED_ShowChar(64, 48, ':', OLED_8X16);                                              // 显示冒号
+            OLED_ShowNum(72, 0, CPU_TEMP + 0.005, 2, OLED_8X16);                                          // 显示CPU温度整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                 // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((CPU_TEMP + 0.005) * 100) % 100, 2, OLED_8X16);        // 显示CPU温度小数部分，+0.005是为了四舍五入
+            OLED_ShowChinese(72 + 8 * 5, 0, "℃");                                                         // 显示单位符号
+            OLED_ShowNum(72, 16, MainBoard_TEMP + 0.005, 2, OLED_8X16);                                   // 显示CPU温度整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((MainBoard_TEMP + 0.005) * 100) % 100, 2, OLED_8X16); // 显示CPU温度小数部分，+0.005是为了四舍五入
+            OLED_ShowChinese(72 + 8 * 5, 16, "℃");                                                        // 显示单位符号
+            OLED_Printf(72, 32, OLED_8X16, "%2.2f%%", powerEfficiency);                                   // 显示转换效率
+        }
+        else if (Screen_page == SET_page) // 设置页面
+        {
+        }
+        OLED_Update(); // 刷新屏幕显示
     }
     else
     {
@@ -157,14 +438,64 @@ void OLED_Display(void)
         {
             OLED_ShowChinese(32, 16, "输出过流");
         }
+        if (getRegBits(DF.ErrFlag, F_SW_SHORT)) // 判断是否短路保护状态
+        {
+            OLED_ShowChinese(32, 32, "输出短路");
+        }
         OLED_Update();
     }
+}
+
+/**
+ * @brief 采样输出电压、输出电流、输入电压、输入电流并滤波
+ */
+CCMRAM void ADCSample(void)
+{
+    // 输入输出采样参数求和，用以计算平均值
+    static uint32_t VinAvgSum = 0, IinAvgSum = 0, VoutAvgSum = 0, IoutAvgSum = 0;
+
+    // 从DMA缓冲器中获取数据
+    SADC.Vin = (uint32_t)ADC1_RESULT[0];
+    SADC.Iin = (uint32_t)ADC1_RESULT[1];
+    SADC.Vout = (uint32_t)ADC1_RESULT[2];
+    SADC.Iout = (uint32_t)ADC1_RESULT[3];
+
+    if (SADC.Vin < 15) // 采样有零偏离，采样值很小时，直接为0
+        SADC.Vin = 0;
+    if (SADC.Vout < 15)
+        SADC.Vout = 0;
+    if (SADC.Iout < 16)
+        SADC.Iout = 0;
+
+    // 计算各个采样值的平均值-滑动平均方式
+    VinAvgSum = VinAvgSum + SADC.Vin - (VinAvgSum >> 3); // 求和，新增入一个新的采样值，同时减去之前的平均值。
+    SADC.VinAvg = VinAvgSum >> 3;                        // 求平均
+    IinAvgSum = IinAvgSum + SADC.Iin - (IinAvgSum >> 3);
+    SADC.IinAvg = IinAvgSum >> 3;
+    VoutAvgSum = VoutAvgSum + SADC.Vout - (VoutAvgSum >> 3);
+    SADC.VoutAvg = VoutAvgSum >> 3;
+    IoutAvgSum = IoutAvgSum + SADC.Iout - (IoutAvgSum >> 3);
+    SADC.IoutAvg = IoutAvgSum >> 3;
+}
+
+/**
+ * @brief ADC数据计算转换成实际数值的浮点数
+ *
+ */
+void ADC_calculate(void)
+{
+    VIN = SADC.VinAvg * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);   // 计算ADC1通道0输入电压采样结果
+    IIN = SADC.IinAvg * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;   // 计算ADC1通道1输入电流采样结果
+    VOUT = SADC.VoutAvg * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0); // 计算ADC1通道2输出电压采样结果
+    IOUT = SADC.IoutAvg * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005; // 计算ADC1通道3输出电流采样结果
+    MainBoard_TEMP = GET_NTC_Temperature();                       // 获取NTC温度(主板温度)
+    CPU_TEMP = GET_CPU_Temperature();                             // 获取单片机CPU温度
 }
 
 /*
  * @brief 状态机函数，在5ms中断中运行，5ms运行一次
  */
-void StateM(void)
+CCMRAM void StateM(void)
 {
     // 判断状态类型
     switch (DF.SMFlag)
@@ -227,6 +558,9 @@ void ValInit(void)
     VErr2 = 0;
     u0 = 0;
     u1 = 0;
+    // 设置值初始化
+    SET_Value.Vout = 12.0;
+    SET_Value.Iout = 10.0;
 }
 
 /*
@@ -263,10 +597,10 @@ void StateMWait(void)
     DF.PWMENFlag = 0;
     // 计数器累加
     CntS++;
-    // 等待*S，采样输入和输出电流偏置好后， 且无故障情况,切按键按下，启动，则进入启动状态
-    if (CntS > 256)
+    // 等待1S，进入启动状态
+    if (CntS > 200)
     {
-        CntS = 256;
+        CntS = 200;
         if ((DF.ErrFlag == F_NOERR) && (DF.OUTPUT_Flag == 1))
         {
             // 计数器清0
@@ -310,6 +644,9 @@ void StateMRise(void)
         VErr2 = 0;
         u0 = 0;
         u1 = 0;
+        // 将设置值传到参考值
+        CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
+        CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
         // 跳转至软启等待状态
         STState = SSWait;
 
@@ -362,8 +699,8 @@ void StateMRise(void)
         BUCKMaxDutyCnt++;
         BoostMaxDutyCnt++;
         // 最大占空比限制累加
-        CtrValue.BUCKMaxDuty = CtrValue.BUCKMaxDuty + BUCKMaxDutyCnt * 5;
-        CtrValue.BoostMaxDuty = CtrValue.BoostMaxDuty + BoostMaxDutyCnt * 5;
+        CtrValue.BUCKMaxDuty = CtrValue.BUCKMaxDuty + BUCKMaxDutyCnt * 35;
+        CtrValue.BoostMaxDuty = CtrValue.BoostMaxDuty + BoostMaxDutyCnt * 35;
         // 累加到最大值
         if (CtrValue.BUCKMaxDuty > MAX_BUCK_DUTY)
             CtrValue.BUCKMaxDuty = MAX_BUCK_DUTY;
@@ -384,6 +721,56 @@ void StateMRise(void)
     }
 }
 
+void ShortOff(void)
+{
+    static int32_t RSCnt = 0;
+    static uint8_t RSNum = 0;
+    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);
+    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;
+    // 当输出电流大于 *A，且电压小于*V时，可判定为发生短路保护
+    if ((Iout > MAX_SHORT_I) && (Vout < MIN_SHORT_V))
+    {
+        // 关闭PWM
+        DF.PWMENFlag = 0;
+        HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
+        HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+        // 故障标志位
+        setRegBits(DF.ErrFlag, F_SW_SHORT);
+        // 跳转至故障状态
+        DF.SMFlag = Err;
+    }
+    // 输出短路保护恢复
+    // 当发生输出短路保护，关机后等待4S后清楚故障信息，进入等待状态等待重启
+    if (getRegBits(DF.ErrFlag, F_SW_SHORT))
+    {
+        // 等待故障清楚计数器累加
+        RSCnt++;
+        // 等待2S
+        if (RSCnt > 400)
+        {
+            // 计数器清零
+            RSCnt = 0;
+            // 短路重启只重启10次，10次后不重启
+            if (RSNum > 10)
+            {
+                // 确保不清除故障，不重启
+                RSNum = 11;
+                // 关闭PWM
+                DF.PWMENFlag = 0;
+                HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
+                HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+            }
+            else
+            {
+                // 短路重启计数器累加
+                RSNum++;
+                // 清除过流保护故障标志位
+                clrRegBits(DF.ErrFlag, F_SW_SHORT);
+            }
+        }
+    }
+}
+
 /**
  * @brief OVP 输出过压保护函数
  * OVP 函数用于处理输出电压过高的情况。
@@ -393,7 +780,7 @@ void OVP(void)
 {
     // 过压保护判据保持计数器定义
     static uint16_t OVPCnt = 0;
-    float Vout = ADC1_RESULT[2] * REF_3V3 / 16380.0 / (4.7 / 75.0);
+    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);
     // 当输出电压大于50V，且保持10ms
     if (Vout >= MAX_VOUT_OVP_VAL)
     {
@@ -432,7 +819,7 @@ void OCP(void)
     // 保留保护重启计数器
     static uint16_t RSNum = 0;
 
-    float Iout = ADC1_RESULT[3] * REF_3V3 / 16380.0 / 62.0 / 0.005;
+    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;
 
     // 当输出电流大于*A，且保持50ms
     if ((Iout >= MAX_VOUT_OCP_VAL) && (DF.SMFlag == Run))
@@ -515,13 +902,30 @@ void OTP(void)
  * MIX模式：1.15倍输入电压>输出参考电压>0.85倍输入电压
  * 当进入MIX（buck-boost）模式后，退出到BUCK或者BOOST时需要滞缓，防止在临界点来回振荡
  */
-void BBMode(void)
+CCMRAM void BBMode(void)
 {
     // 上一次模式状态量
     uint8_t PreBBFlag = 0;
-
     // 暂存当前的模式状态量
     PreBBFlag = DF.BBFlag;
+
+    uint32_t VIN_ADC = ADC1_RESULT[0]; // 输入电压ADC采样值
+
+    // 对输入电压ADC采样值累计取平均值
+    static uint32_t VIN_ADC_SUM = 0;
+    static uint8_t VIN_ADC_Count = 0;
+
+    if (VIN_ADC_Count < 5)
+    {
+        VIN_ADC_SUM += ADC1_RESULT[0];
+        VIN_ADC_Count++;
+    }
+    if (VIN_ADC_Count == 5)
+    {
+        VIN_ADC = VIN_ADC_SUM / 5;
+        VIN_ADC_SUM = 0;
+        VIN_ADC_Count = 0;
+    }
 
     // 判断当前模块的工作模式
     switch (DF.BBFlag)
@@ -529,10 +933,10 @@ void BBMode(void)
     // NA-初始化模式
     case NA:
     {
-        if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 0.8))      // 输出参考电压小于0.8倍输入电压时
-            DF.BBFlag = Buck;                                // 切换到buck模式
-        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2)) // 输出参考电压大于1.2倍输入电压时
-            DF.BBFlag = Boost;                               // 切换到boost模式
+        if (CtrValue.Vout_ref < (VIN_ADC * 0.8))      // 输出参考电压小于0.8倍输入电压时
+            DF.BBFlag = Buck;                         // 切换到buck模式
+        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2)) // 输出参考电压大于1.2倍输入电压时
+            DF.BBFlag = Boost;                        // 切换到boost模式
         else
             DF.BBFlag = Mix; // buck-boost（MIX） mode
         break;
@@ -540,28 +944,28 @@ void BBMode(void)
     // BUCK模式
     case Buck:
     {
-        if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2))       // vout>1.2*vin
-            DF.BBFlag = Boost;                                // boost mode
-        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 0.85)) // 1.2*vin>vout>0.85*vin
-            DF.BBFlag = Mix;                                  // buck-boost（MIX） mode
+        if (CtrValue.Vout_ref > (VIN_ADC * 1.2))       // vout>1.2*vin
+            DF.BBFlag = Boost;                         // boost mode
+        else if (CtrValue.Vout_ref > (VIN_ADC * 0.85)) // 1.2*vin>vout>0.85*vin
+            DF.BBFlag = Mix;                           // buck-boost（MIX） mode
         break;
     }
     // Boost模式
     case Boost:
     {
-        if (CtrValue.Vout_ref < ((ADC1_RESULT[0] * 0.8)))     // vout<0.8*vin
-            DF.BBFlag = Buck;                                 // buck mode
-        else if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 1.15)) // 0.8*vin<vout<1.15*vin
-            DF.BBFlag = Mix;                                  // buck-boost（MIX） mode
+        if (CtrValue.Vout_ref < ((VIN_ADC * 0.8)))     // vout<0.8*vin
+            DF.BBFlag = Buck;                          // buck mode
+        else if (CtrValue.Vout_ref < (VIN_ADC * 1.15)) // 0.8*vin<vout<1.15*vin
+            DF.BBFlag = Mix;                           // buck-boost（MIX） mode
         break;
     }
     // Mix模式
     case Mix:
     {
-        if (CtrValue.Vout_ref < (ADC1_RESULT[0] * 0.8))      // vout<0.8*vin
-            DF.BBFlag = Buck;                                // buck mode
-        else if (CtrValue.Vout_ref > (ADC1_RESULT[0] * 1.2)) // vout>1.2*vin
-            DF.BBFlag = Boost;                               // boost mode
+        if (CtrValue.Vout_ref < (VIN_ADC * 0.8))      // vout<0.8*vin
+            DF.BBFlag = Buck;                         // buck mode
+        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2)) // vout>1.2*vin
+            DF.BBFlag = Boost;                        // boost mode
         break;
     }
     }
@@ -673,7 +1077,7 @@ float GET_CPU_Temperature(void)
     // 读取ADC5采样结果, 除以8是因为开启了硬件超采样到15bit，但下面计算用的是12bit，开启硬件超采样是为了得到一个比较平滑的采样结果
     float TEMP_adcValue = HAL_ADC_GetValue(&hadc5) / 8.0;
     float temperature = Temp_Scale * (TEMP_adcValue * (REF_3V3 / 3.0) - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
-    return temperature;                                                                          // 返回温度值
+    return one_order_lowpass_filter(temperature, 0.1);                                           // 返回温度值
 }
 
 /**

@@ -12,12 +12,11 @@
 extern volatile uint16_t ADC1_RESULT[4];          // ADC1通道1~4采样结果
 volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
 volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
-volatile float Vset = 23.5;                       // 输出电压设定值
 
 void PID_Init(void)
 {
     // 初始化PID参数
-    CtrValue.Vout_ref = Vset * (4.7 / 75.0) / REF_3V3 * 16380.0; // 输出电压参考值计算，设置电压的浮点数转换成ADC值的整数
+    //CtrValue.Vout_ref = Vset * (4.7 / 75.0) / REF_3V3 * 8190.0; // 输出电压参考值计算，设置电压的浮点数转换成ADC值的整数
     VErr0 = 0;
     VErr1 = 0;
     VErr2 = 0;
@@ -81,7 +80,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         VErr1 = VErr0;
         u1 = u0;
         // 环路输出赋值
-        CtrValue.BuckDuty = u0 >> 8;
+        CtrValue.BuckDuty = u0 >> 2;
         CtrValue.BoostDuty = MIN_BOOST_DUTY1; // BOOST上管固定占空比93%，下管7%
         // 环路输出最大最小占空比限制
         if (CtrValue.BuckDuty > CtrValue.BUCKMaxDuty)
@@ -100,7 +99,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         u1 = u0;
         // 环路输出赋值
         CtrValue.BuckDuty = MAX_BUCK_DUTY; // BUCK上管固定占空比93%
-        CtrValue.BoostDuty = u0 >> 8;
+        CtrValue.BoostDuty = u0 >> 2;
         // 环路输出最大最小占空比限制
         if (CtrValue.BoostDuty > CtrValue.BoostMaxDuty)
             CtrValue.BoostDuty = CtrValue.BoostMaxDuty;
@@ -117,8 +116,8 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         VErr1 = VErr0;
         u1 = u0;
         // 环路输出赋值
-        CtrValue.BuckDuty = MAX_BUCK_DUTY1; // BUCK上管固定占空比80%
-        CtrValue.BoostDuty = u0 >> 8;
+        CtrValue.BuckDuty = MAX_BUCK_DUTY1; // BUCK上管固定占空比70%
+        CtrValue.BoostDuty = u0 >> 2;
         // 环路输出最大最小占空比限制
         if (CtrValue.BoostDuty > CtrValue.BoostMaxDuty)
             CtrValue.BoostDuty = CtrValue.BoostMaxDuty;
