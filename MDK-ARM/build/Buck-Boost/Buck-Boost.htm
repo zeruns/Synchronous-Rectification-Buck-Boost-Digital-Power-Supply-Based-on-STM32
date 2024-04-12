@@ -3,9 +3,9 @@
 <title>Static Call Graph - [./build/Buck-Boost/Buck-Boost.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ./build/Buck-Boost/Buck-Boost.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Apr 12 01:02:00 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Apr 12 15:50:54 2024
 <BR><P>
-<H3>Maximum Stack Usage =        400 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        408 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; OLED_Display &rArr; OLED_Update &rArr; OLED_SetCursor &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnFlagUntilTimeout &rArr; I2C_IsErrorOccurred
 <P>
@@ -440,7 +440,7 @@ Global Symbols
 <P><STRONG><a name="[200]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[ad]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; OLED_Display &rArr; OLED_Update &rArr; OLED_SetCursor &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnFlagUntilTimeout &rArr; I2C_IsErrorOccurred
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -2787,8 +2787,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GET_NTC_Temperature
 </UL>
 
-<P><STRONG><a name="[ae]"></a>main</STRONG> (Thumb, 720 bytes, Stack size 48 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
+<P><STRONG><a name="[ae]"></a>main</STRONG> (Thumb, 744 bytes, Stack size 56 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
 <LI>Call Chain = main &rArr; OLED_Display &rArr; OLED_Update &rArr; OLED_SetCursor &rArr; HAL_I2C_Master_Transmit &rArr; I2C_WaitOnFlagUntilTimeout &rArr; I2C_IsErrorOccurred
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IWDG_Refresh

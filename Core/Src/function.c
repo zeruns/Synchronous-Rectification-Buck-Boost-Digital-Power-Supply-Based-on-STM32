@@ -559,7 +559,7 @@ void ValInit(void)
     u0 = 0;
     u1 = 0;
     // 设置值初始化
-    SET_Value.Vout = 12.0;
+    SET_Value.Vout = 5.0;
     SET_Value.Iout = 10.0;
 }
 
