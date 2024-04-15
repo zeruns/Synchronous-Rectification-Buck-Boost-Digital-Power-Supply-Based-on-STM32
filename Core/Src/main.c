@@ -279,6 +279,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM3) // 定时器TIM3，中断时间5ms
   {
     ADCSample(); // ADC采样滤波函数
+    ShortOff();  // 短路保护
     OTP();       // 过温保护
     OVP();       // 输出过压保护
     OCP();       // 输出过流保护

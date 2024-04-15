@@ -1,3339 +1,412 @@
-[2024-03-22 01:00:31]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
+[2024-04-14 03:36:44]	[done]
+	build successfully !
 
+[2024-04-14 03:37:09]	[done]
+	build successfully !
 
-[2024-03-22 01:00:51]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
+[2024-04-14 03:37:32]	[done]
+	build successfully !
 
+[2024-04-14 03:37:52]	[done]
+	build successfully !
 
-[2024-03-22 01:03:45]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
+[2024-04-14 03:38:10]	[done]
+	build successfully !
 
+[2024-04-14 03:38:28]	[done]
+	build successfully !
 
-[2024-03-22 01:04:03]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:05:29]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Drivers\STM32G4xx_HAL_Driver\Src\stm32g4xx_hal_usart.c", exit code: 1
+[2024-04-14 03:38:52]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED_Data.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.o -MMD ./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o -MMD ./../Core/Hardware/OLED_Data.c
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:187:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  187 | static void USART_EndTransfer(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:196:55: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  196 | static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
-      |                                                       ^~~~~~~~~~~~~~~~~~~
-      |                                                       UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:198:42: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  198 | static HAL_StatusTypeDef USART_SetConfig(USART_HandleTypeDef *husart);
-      |                                          ^~~~~~~~~~~~~~~~~~~
-      |                                          UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:199:47: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  199 | static HAL_StatusTypeDef USART_CheckIdleState(USART_HandleTypeDef *husart);
-      |                                               ^~~~~~~~~~~~~~~~~~~
-      |                                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:200:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  200 | static void USART_TxISR_8BIT(USART_HandleTypeDef *husart);
-      |                              ^~~~~~~~~~~~~~~~~~~
-      |                              UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:201:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  201 | static void USART_TxISR_16BIT(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:202:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  202 | static void USART_TxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                     ^~~~~~~~~~~~~~~~~~~
-      |                                     UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:203:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  203 | static void USART_TxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                      ^~~~~~~~~~~~~~~~~~~
-      |                                      UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:204:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  204 | static void USART_EndTransmit_IT(USART_HandleTypeDef *husart);
-      |                                  ^~~~~~~~~~~~~~~~~~~
-      |                                  UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:205:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  205 | static void USART_RxISR_8BIT(USART_HandleTypeDef *husart);
-      |                              ^~~~~~~~~~~~~~~~~~~
-      |                              UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:206:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  206 | static void USART_RxISR_16BIT(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:207:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  207 | static void USART_RxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                     ^~~~~~~~~~~~~~~~~~~
-      |                                     UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:208:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  208 | static void USART_RxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                      ^~~~~~~~~~~~~~~~~~~
-      |                                      UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:278:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  278 | HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart)
-      |                                  ^~~~~~~~~~~~~~~~~~~
-      |                                  UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:15: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
-  289 |   if (husart->State == HAL_USART_STATE_RESET)
-      |               ^~~~~
-      |               gState
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
-  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
-      |                                 ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:24: error: use of undeclared identifier 'HAL_USART_STATE_RESET'; did you mean 'HAL_DMA_STATE_RESET'?
-  289 |   if (husart->State == HAL_USART_STATE_RESET)
-      |                        ^~~~~~~~~~~~~~~~~~~~~
-      |                        HAL_DMA_STATE_RESET
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:81:3: note: 'HAL_DMA_STATE_RESET' declared here
-   81 |   HAL_DMA_STATE_RESET             = 0x00U,  /*!< DMA not yet initialized or disabled    */
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: error: call to undeclared function 'HAL_USART_MspInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  306 |     HAL_USART_MspInit(husart);
-      |     ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: note: did you mean 'HAL_UART_MspInit'?
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:1612:6: note: 'HAL_UART_MspInit' declared here
- 1612 | void HAL_UART_MspInit(UART_HandleTypeDef *huart);
-      |      ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:11: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
-  310 |   husart->State = HAL_USART_STATE_BUSY;
-      |           ^~~~~
-      |           gState
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
-  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
-      |                                 ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:19: error: use of undeclared identifier 'HAL_USART_STATE_BUSY'; did you mean 'HAL_DMA_STATE_BUSY'?
-  310 |   husart->State = HAL_USART_STATE_BUSY;
-      |                   ^~~~~~~~~~~~~~~~~~~~
-      |                   HAL_DMA_STATE_BUSY
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:83:3: note: 'HAL_DMA_STATE_BUSY' declared here
-   83 |   HAL_DMA_STATE_BUSY              = 0x02U,  /*!< DMA process is ongoing                 */
-      |   ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-
-[2024-03-22 01:05:39]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Drivers\STM32G4xx_HAL_Driver\Src\stm32g4xx_hal_usart.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -IRTE/_Buck-Boost -I../Core/Hardware -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -fno-function-sections -funsigned-char -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.o -MMD ./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:187:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  187 | static void USART_EndTransfer(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:196:55: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  196 | static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
-      |                                                       ^~~~~~~~~~~~~~~~~~~
-      |                                                       UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:198:42: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  198 | static HAL_StatusTypeDef USART_SetConfig(USART_HandleTypeDef *husart);
-      |                                          ^~~~~~~~~~~~~~~~~~~
-      |                                          UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:199:47: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  199 | static HAL_StatusTypeDef USART_CheckIdleState(USART_HandleTypeDef *husart);
-      |                                               ^~~~~~~~~~~~~~~~~~~
-      |                                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:200:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  200 | static void USART_TxISR_8BIT(USART_HandleTypeDef *husart);
-      |                              ^~~~~~~~~~~~~~~~~~~
-      |                              UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:201:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  201 | static void USART_TxISR_16BIT(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:202:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  202 | static void USART_TxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                     ^~~~~~~~~~~~~~~~~~~
-      |                                     UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:203:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  203 | static void USART_TxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                      ^~~~~~~~~~~~~~~~~~~
-      |                                      UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:204:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  204 | static void USART_EndTransmit_IT(USART_HandleTypeDef *husart);
-      |                                  ^~~~~~~~~~~~~~~~~~~
-      |                                  UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:205:30: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  205 | static void USART_RxISR_8BIT(USART_HandleTypeDef *husart);
-      |                              ^~~~~~~~~~~~~~~~~~~
-      |                              UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:206:31: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  206 | static void USART_RxISR_16BIT(USART_HandleTypeDef *husart);
-      |                               ^~~~~~~~~~~~~~~~~~~
-      |                               UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:207:37: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  207 | static void USART_RxISR_8BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                     ^~~~~~~~~~~~~~~~~~~
-      |                                     UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:208:38: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  208 | static void USART_RxISR_16BIT_FIFOEN(USART_HandleTypeDef *husart);
-      |                                      ^~~~~~~~~~~~~~~~~~~
-      |                                      UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:278:34: error: unknown type name 'USART_HandleTypeDef'; did you mean 'UART_HandleTypeDef'?
-  278 | HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart)
-      |                                  ^~~~~~~~~~~~~~~~~~~
-      |                                  UART_HandleTypeDef
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:289:3: note: 'UART_HandleTypeDef' declared here
-  289 | } UART_HandleTypeDef;
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:15: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
-  289 |   if (husart->State == HAL_USART_STATE_RESET)
-      |               ^~~~~
-      |               gState
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
-  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
-      |                                 ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:289:24: error: use of undeclared identifier 'HAL_USART_STATE_RESET'; did you mean 'HAL_DMA_STATE_RESET'?
-  289 |   if (husart->State == HAL_USART_STATE_RESET)
-      |                        ^~~~~~~~~~~~~~~~~~~~~
-      |                        HAL_DMA_STATE_RESET
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:81:3: note: 'HAL_DMA_STATE_RESET' declared here
-   81 |   HAL_DMA_STATE_RESET             = 0x00U,  /*!< DMA not yet initialized or disabled    */
-      |   ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: error: call to undeclared function 'HAL_USART_MspInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  306 |     HAL_USART_MspInit(husart);
-      |     ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:306:5: note: did you mean 'HAL_UART_MspInit'?
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:1612:6: note: 'HAL_UART_MspInit' declared here
- 1612 | void HAL_UART_MspInit(UART_HandleTypeDef *huart);
-      |      ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:11: error: no member named 'State' in 'struct __UART_HandleTypeDef'; did you mean 'gState'?
-  310 |   husart->State = HAL_USART_STATE_BUSY;
-      |           ^~~~~
-      |           gState
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_uart.h:262:33: note: 'gState' declared here
-  262 |   __IO HAL_UART_StateTypeDef    gState;              /*!< UART state information related to global Handle management
-      |                                 ^
-./../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:310:19: error: use of undeclared identifier 'HAL_USART_STATE_BUSY'; did you mean 'HAL_DMA_STATE_BUSY'?
-  310 |   husart->State = HAL_USART_STATE_BUSY;
-      |                   ^~~~~~~~~~~~~~~~~~~~
-      |                   HAL_DMA_STATE_BUSY
-../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_dma.h:83:3: note: 'HAL_DMA_STATE_BUSY' declared here
-   83 |   HAL_DMA_STATE_BUSY              = 0x02U,  /*!< DMA process is ongoing                 */
-      |   ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-
-[2024-03-22 01:07:51]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:10:57]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:12:05]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:12:18]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:12:27]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 4 error messages.
-
-
-[2024-03-22 01:26:47]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 5 error messages.
-
-
-[2024-03-22 02:37:03]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 5 error messages.
-
-
-[2024-03-22 02:37:15]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol MX_DMA_Init (referred from main.o).
-Error: L6218E: Undefined symbol HAL_UART_Init (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetTxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_SetRxFifoThreshold (referred from usart.o).
-Error: L6218E: Undefined symbol HAL_UARTEx_DisableFifoMode (referred from usart.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 5 error messages.
-
-
-[2024-03-22 02:38:25]	[done]
-	build successfully !
-
-[2024-03-22 02:38:52]	[done]
-	build successfully !
-
-[2024-03-22 02:40:17]	[done]
-	build successfully !
-
-[2024-03-22 02:40:33]	[done]
-	build successfully !
-
-[2024-03-22 15:43:15]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\tim.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/tim.o -MMD ./../Core/Src/tim.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/tim.c:242:2: error: call to undeclared function '_HAL_TIM_SET_COMPARE'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  242 |  _HAL_TIM_SET_COMPARE(&htim8,TIM_CHANNEL_3,pwm*10);
-      |  ^
-1 error generated.
-
-[2024-03-22 15:43:51]	[done]
-	build successfully !
-
-[2024-03-22 15:46:07]	[done]
-	build successfully !
-
-[2024-03-22 15:47:03]	[done]
-	build successfully !
-
-[2024-03-22 15:47:50]	[done]
-	build successfully !
-
-[2024-03-22 15:48:18]	[done]
-	build successfully !
-
-[2024-03-22 15:48:45]	[done]
-	build successfully !
-
-[2024-03-22 15:49:13]	[done]
-	build successfully !
-
-[2024-03-22 15:58:41]	[done]
-	build successfully !
-
-[2024-03-22 17:03:28]	[done]
-	build successfully !
-
-[2024-03-22 17:04:11]	[done]
-	build successfully !
-
-[2024-03-22 17:04:58]	[done]
-	build successfully !
-
-[2024-03-22 17:10:14]	[done]
-	build successfully !
-
-[2024-03-22 20:39:23]	[done]
-	build successfully !
-
-[2024-03-22 20:52:43]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:108:40: error: use of undeclared identifier 'ADC1_RESULT'
-  108 |   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC1_RESULT, 4);//启动ADC1采样 DMA数据传送采样输入输出电压电流
-      |                                        ^
-1 error generated.
-
-[2024-03-22 20:53:17]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol ADC1_RESULT (referred from main.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 1 error messages.
-
-
-[2024-03-22 20:54:08]	[done]
-	build successfully !
-
-[2024-03-22 20:55:09]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:4:8: error: unknown type name 'uint16_t'
-    4 | extern uint16_t ADC1_RESULT[4];
-      |        ^
-1 error generated.
-
-[2024-03-22 20:55:17]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:4:8: error: unknown type name 'uint16_t'
-    4 | extern uint16_t ADC1_RESULT[4];
-      |        ^
-1 error generated.
-
-[2024-03-22 20:55:35]	[done]
-	build successfully !
-
-[2024-03-22 21:00:16]	[done]
-	build successfully !
-
-[2024-03-22 21:01:11]	[done]
-	build successfully !
-
-[2024-03-22 21:01:36]	[done]
-	build successfully !
-
-[2024-03-22 21:08:15]	[done]
-	build successfully !
-
-[2024-03-22 21:09:27]	[done]
-	build successfully !
-
-[2024-03-22 21:12:50]	[done]
-	build successfully !
-
-[2024-03-22 21:13:34]	[done]
-	build successfully !
-
-[2024-03-22 21:14:58]	[done]
-	build successfully !
-
-[2024-03-22 21:17:21]	[done]
-	build successfully !
-
-[2024-03-22 21:18:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:4:19: error: redefinition of 'ADC1_RESULT' with a different type: 'volatile uint16_t[4]' (aka 'volatile unsigned short[4]') vs 'uint16_t[4]' (aka 'unsigned short[4]')
-    4 | volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0}; // ADC采样外设到内存的DMA数据保存寄存器
-      |                   ^
-../Core/Inc\function.h:6:17: note: previous declaration is here
-    6 | extern uint16_t ADC1_RESULT[4];
-      |                 ^
-1 error generated.
-
-[2024-03-22 21:18:21]	[done]
-	build successfully !
-
-[2024-03-22 21:19:16]	[done]
-	build successfully !
-
-[2024-03-22 21:19:50]	[done]
-	build successfully !
-
-[2024-03-22 21:20:30]	[done]
-	build successfully !
-
-[2024-03-22 21:23:02]	[done]
-	build successfully !
-
-[2024-03-22 21:23:36]	[done]
-	build successfully !
-
-[2024-03-22 21:23:59]	[done]
-	build successfully !
-
-[2024-03-23 03:21:16]	[done]
-	build successfully !
-
-[2024-03-23 03:24:16]	[done]
-	build successfully !
-
-[2024-03-23 03:26:11]	[done]
-	build successfully !
-
-[2024-03-23 03:28:20]	[done]
-	build successfully !
-
-[2024-03-23 03:29:09]	[done]
-	build successfully !
-
-[2024-03-23 03:29:42]	[done]
-	build successfully !
-
-[2024-03-23 03:31:10]	[done]
-	build successfully !
-
-[2024-03-23 03:32:43]	[done]
-	build successfully !
-
-[2024-03-23 03:37:59]	[done]
-	build successfully !
-
-[2024-03-23 03:38:43]	[done]
-	build successfully !
-
-[2024-03-23 03:40:33]	[done]
-	build successfully !
-
-[2024-03-23 03:53:29]	[done]
-	build successfully !
-
-[2024-03-23 03:54:37]	[done]
-	build successfully !
-
-[2024-03-23 03:55:31]	[done]
-	build successfully !
-
-[2024-03-23 03:56:12]	[done]
-	build successfully !
-
-[2024-03-23 04:09:02]	[done]
-	build successfully !
-
-[2024-03-23 04:09:20]	[done]
-	build successfully !
-
-[2024-03-23 16:13:10]	[done]
-	build successfully !
-
-[2024-03-23 16:14:38]	[done]
-	build successfully !
-
-[2024-03-23 16:15:42]	[done]
-	build successfully !
-
-[2024-03-23 16:16:40]	[done]
-	build successfully !
-
-[2024-03-23 16:25:25]	[done]
-	build successfully !
-
-[2024-03-23 16:31:41]	[done]
-	build successfully !
-
-[2024-03-23 16:32:27]	[done]
-	build successfully !
-
-[2024-03-23 16:33:25]	[done]
-	build successfully !
-
-[2024-03-23 16:34:28]	[done]
-	build successfully !
-
-[2024-03-23 16:35:39]	[done]
-	build successfully !
-
-[2024-03-23 16:37:17]	[done]
-	build successfully !
-
-[2024-03-23 16:38:18]	[done]
-	build successfully !
-
-[2024-03-23 16:38:26]	[done]
-	build successfully !
-
-[2024-03-23 20:14:50]	[done]
-	build successfully !
-
-[2024-03-23 20:15:07]	[done]
-	build successfully !
-
-[2024-03-23 20:16:48]	[done]
-	build successfully !
-
-[2024-03-23 20:20:42]	[done]
-	build successfully !
-
-[2024-03-23 21:03:57]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
-      |                               ^
-./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
-1 error generated.
-
-[2024-03-23 21:05:08]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
-      |                               ^
-./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
-1 error generated.
-
-[2024-03-23 21:05:29]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:16:31: error: call to undeclared library function 'log' with type 'double (double)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   16 |     float temperature = (1 / (log(resistance / NTC_RESISTANCE) / temperatureCoefficient + 1 / 298.15)) - 273.15;
-      |                               ^
-./../Core/Src/function.c:16:31: note: include the header <math.h> or explicitly provide a declaration for 'log'
-1 error generated.
-
-[2024-03-23 21:06:04]	[done]
-	build successfully !
-
-[2024-03-23 21:06:58]	[done]
-	build successfully !
-
-[2024-03-23 21:16:55]	[done]
-	build successfully !
-
-[2024-03-23 21:18:50]	[done]
-	build successfully !
-
-[2024-03-23 21:19:27]	[done]
-	build successfully !
-
-[2024-03-23 21:24:55]	[done]
-	build successfully !
-
-[2024-03-23 21:27:00]	[done]
-	build successfully !
-
-[2024-03-23 21:34:54]	[done]
-	build successfully !
-
-[2024-03-23 21:49:40]	[done]
-	build successfully !
-
-[2024-03-24 14:52:25]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/usart.c:167:1: error: unknown type name 'FILE'
-  167 | FILE __stdout;
-      | ^
-./../Core/Src/usart.c:169:19: error: unknown type name 'FILE'
-  169 | int fputc(int ch, FILE *f)
-      |                   ^
-2 errors generated.
-
-[2024-03-24 14:52:36]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/usart.c:167:1: error: unknown type name 'FILE'
-  167 | FILE __stdout;
-      | ^
-./../Core/Src/usart.c:169:19: error: unknown type name 'FILE'
-  169 | int fputc(int ch, FILE *f)
-      |                   ^
-2 errors generated.
-
-[2024-03-24 15:13:21]	[done]
-	build successfully !
-
-[2024-03-24 15:15:02]	[done]
-	build successfully !
-
-[2024-03-24 15:15:53]	[done]
-	build successfully !
-
-[2024-03-24 15:18:48]	[done]
-	build successfully !
-
-[2024-03-24 15:19:21]	[done]
-	build successfully !
-
-[2024-03-24 15:19:45]	[done]
-	build successfully !
-
-[2024-03-24 15:20:20]	[done]
-	build successfully !
-
-[2024-03-24 15:21:03]	[done]
-	build successfully !
-
-[2024-03-24 15:21:50]	[done]
-	build successfully !
-
-[2024-03-24 15:23:46]	[done]
-	build successfully !
-
-[2024-03-24 15:24:42]	[done]
-	build successfully !
-
-[2024-03-24 15:28:32]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/usart.c:169:47: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
-  169 |         if (__HAL_DMA_GET_FLAG(huart->hdmatx, DMA_FLAG_TCIF1) != RESET) {
-      |                                               ^
-./../Core/Src/usart.c:169:47: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
-./../Core/Src/usart.c:171:49: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
-  171 |             __HAL_DMA_CLEAR_FLAG(huart->hdmatx, DMA_FLAG_TCIF1); // 清除传输完成标志
-      |                                                 ^
-./../Core/Src/usart.c:171:49: error: use of undeclared identifier 'DMA_FLAG_TCIF1'
-4 errors generated.
-
-[2024-03-24 15:28:54]	[done]
-	build successfully !
-
-[2024-03-24 15:31:36]	[done]
-	build successfully !
-
-[2024-03-24 15:32:10]	[done]
-	build successfully !
-
-[2024-03-24 15:32:54]	[done]
-	build successfully !
-
-[2024-03-24 15:33:12]	[done]
-	build successfully !
-
-[2024-03-24 15:34:17]	[done]
-	build successfully !
-
-[2024-03-24 15:35:11]	[done]
-	build successfully !
-
-[2024-03-24 15:37:53]	[done]
-	build successfully !
-
-[2024-03-24 15:37:59]	[done]
-	build successfully !
-
-[2024-03-24 15:39:06]	[done]
-	build successfully !
-
-[2024-03-24 15:39:53]	[done]
-	build successfully !
-
-[2024-03-24 15:44:09]	[done]
-	build successfully !
-
-[2024-03-24 15:44:37]	[done]
-	build successfully !
-
-[2024-03-24 15:45:58]	[done]
-	build successfully !
-
-[2024-03-24 15:54:47]	[done]
-	build successfully !
-
-[2024-03-24 15:55:01]	[done]
-	build successfully !
-
-[2024-03-24 15:55:15]	[done]
-	build successfully !
-
-[2024-03-24 15:55:26]	[done]
-	build successfully !
-
-[2024-03-24 16:01:39]	[done]
-	build successfully !
-
-[2024-03-24 16:05:05]	[done]
-	build successfully !
-
-[2024-03-24 16:05:43]	[done]
-	build successfully !
-
-[2024-03-24 16:06:29]	[done]
-	build successfully !
-
-[2024-03-24 16:07:42]	[done]
-	build successfully !
-
-[2024-03-24 16:07:54]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\usart.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/usart.o -MMD ./../Core/Src/usart.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/usart.c:231:56: warning: cast to smaller integer type 'char' from 'char *' [-Wpointer-to-int-cast]
-  231 |   rv = vsnprintf((char*)SendBuff,calculateStringLength((char)SendBuff),(char*)format,arg);
-      |                                                        ^~~~~~~~~~~~~~
-./../Core/Src/usart.c:231:56: error: incompatible integer to pointer conversion passing 'char' to parameter of type 'const uint8_t *' (aka 'const unsigned char *') [-Wint-conversion]
-  231 |   rv = vsnprintf((char*)SendBuff,calculateStringLength((char)SendBuff),(char*)format,arg);
-      |                                                        ^~~~~~~~~~~~~~
-./../Core/Src/usart.c:196:47: note: passing argument to parameter 'str' here
-  196 | uint16_t calculateStringLength(const uint8_t *str) {
-      |                                               ^
-1 warning and 1 error generated.
-
-[2024-03-24 16:08:33]	[done]
-	build successfully !
-
-[2024-03-24 16:09:33]	[done]
-	build successfully !
-
-[2024-03-24 16:11:40]	[done]
-	build successfully !
-
-[2024-03-24 16:11:58]	[done]
-	build successfully !
-
-[2024-03-24 16:12:16]	[done]
-	build successfully !
-
-[2024-03-24 16:12:43]	[done]
-	build successfully !
-
-[2024-03-24 16:15:56]	[done]
-	build successfully !
-
-[2024-03-24 16:16:51]	[done]
-	build successfully !
-
-[2024-03-24 16:31:00]	[done]
-	build successfully !
-
-[2024-03-24 16:36:30]	[done]
-	build successfully !
-
-[2024-03-24 17:23:01]	[done]
-	build successfully !
-
-[2024-03-24 17:41:14]	[done]
-	build successfully !
-
-[2024-03-25 00:29:28]	[done]
-	build successfully !
-
-[2024-03-25 01:05:13]	[done]
-	build successfully !
-
-[2024-03-25 02:54:11]	[done]
-	build successfully !
-
-[2024-03-25 02:56:55]	[done]
-	build successfully !
-
-[2024-03-25 03:07:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:50:3: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   50 |                 printf("A\r\n");
-      |                 ^
-./../Core/Src/function.c:50:3: note: include the header <stdio.h> or explicitly provide a declaration for 'printf'
-1 error generated.
-
-[2024-03-25 03:07:50]	[done]
-	build successfully !
-
-[2024-03-25 03:09:38]	[done]
-	build successfully !
-
-[2024-03-25 03:16:19]	[done]
-	build successfully !
-
-[2024-03-25 03:16:56]	[done]
-	build successfully !
-
-[2024-03-25 03:19:25]	[done]
-	build successfully !
-
-[2024-03-25 03:21:12]	[done]
-	build successfully !
-
-[2024-03-25 03:23:26]	[done]
-	build successfully !
-
-[2024-03-25 16:33:31]	[done]
-	build successfully !
-
-[2024-03-25 16:34:35]	[done]
-	build successfully !
-
-[2024-03-25 16:36:38]	[done]
-	build successfully !
-
-[2024-03-25 16:38:18]	[done]
-	build successfully !
-
-[2024-03-25 17:00:40]	[done]
-	build successfully !
-
-[2024-03-25 17:02:48]	[done]
-	build successfully !
-
-[2024-03-25 17:03:07]	[done]
-	build successfully !
-
-[2024-03-25 17:06:05]	[done]
-	build successfully !
-
-[2024-03-25 17:08:29]	[done]
-	build successfully !
-
-[2024-03-25 17:09:13]	[done]
-	build successfully !
-
-[2024-03-25 17:23:11]	[done]
-	build successfully !
-
-[2024-03-25 17:26:41]	[done]
-	build successfully !
-
-[2024-03-25 17:27:41]	[done]
-	build successfully !
-
-[2024-03-25 17:38:56]	[done]
-	build successfully !
-
-[2024-03-25 17:39:27]	[done]
-	build successfully !
-
-[2024-03-25 17:40:18]	[done]
-	build successfully !
-
-[2024-03-25 17:40:49]	[done]
-	build successfully !
-
-[2024-03-25 17:41:19]	[done]
-	build successfully !
-
-[2024-03-25 17:41:26]	[done]
-	build successfully !
-
-[2024-03-25 17:41:54]	[done]
-	build successfully !
-
-[2024-03-25 17:42:20]	[done]
-	build successfully !
-
-[2024-03-25 17:44:32]	[done]
-	build successfully !
-
-[2024-03-25 17:44:53]	[done]
-	build successfully !
-
-[2024-03-25 17:45:27]	[done]
-	build successfully !
-
-[2024-03-25 17:49:45]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:10:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
-      |                         ^
-./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Flag'
-   10 | volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
-      |                  ^
-../Core/Inc\function.h:10:25: note: previous definition is here
-   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
-      |                         ^
-1 warning and 1 error generated.
-
-[2024-03-25 17:50:12]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:10:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
-      |                         ^
-./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Flag'
-   10 | volatile uint8_t BUZZER_Flag = 0;                // 蜂鸣器当前状态标志位
-      |                  ^
-../Core/Inc\function.h:10:25: note: previous definition is here
-   10 | extern volatile uint8_t BUZZER_Flag = 0;   // 蜂鸣器当前状态标志位
-      |                         ^
-1 warning and 1 error generated.
-
-[2024-03-25 17:50:41]	[done]
-	build successfully !
-
-[2024-03-25 18:01:16]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:11:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   11 | extern volatile uint8_t BUZZER_Middle_Flag = 0; // 蜂鸣器中等时间长度鸣叫触发标志位
-      |                         ^
-./../Core/Src/function.c:10:18: error: redefinition of 'BUZZER_Middle_Flag'
-   10 | volatile uint8_t BUZZER_Middle_Flag = 0;         // 蜂鸣器中等时间长度鸣叫触发标志位
-      |                  ^
-../Core/Inc\function.h:11:25: note: previous definition is here
-   11 | extern volatile uint8_t BUZZER_Middle_Flag = 0; // 蜂鸣器中等时间长度鸣叫触发标志位
-      |                         ^
-1 warning and 1 error generated.
-
-[2024-03-25 18:01:30]	[done]
-	build successfully !
-
-[2024-03-25 18:03:30]	[done]
-	build successfully !
-
-[2024-03-25 18:04:11]	[done]
-	build successfully !
-
-[2024-03-25 18:04:29]	[done]
-	build successfully !
-
-[2024-03-25 18:05:24]	[done]
-	build successfully !
-
-[2024-03-25 18:05:42]	[done]
-	build successfully !
-
-[2024-03-25 18:10:50]	[done]
-	build successfully !
-
-[2024-03-25 18:12:19]	[done]
-	build successfully !
-
-[2024-03-25 18:16:12]	[done]
-	build successfully !
-
-[2024-03-25 18:16:33]	[done]
-	build successfully !
-
-[2024-03-25 18:18:13]	[done]
-	build successfully !
-
-[2024-03-25 21:32:17]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/Key.c:31:2: error: call to undeclared function 'RCC_APB2PeriphClockCmd'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   31 |         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-      |         ^
-./../Core/Hardware/Key.c:31:25: error: use of undeclared identifier 'RCC_APB2Periph_GPIOB'
-   31 |         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-      |                                ^
-./../Core/Hardware/Key.c:34:21: error: no member named 'GPIO_Mode' in 'GPIO_InitTypeDef'
-   34 |         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-      |         ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/Key.c:34:33: error: use of undeclared identifier 'GPIO_Mode_IPU'
-   34 |         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-      |                                        ^
-./../Core/Hardware/Key.c:35:21: error: no member named 'GPIO_Pin' in 'GPIO_InitTypeDef'
-   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
-      |         ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/Key.c:35:32: error: use of undeclared identifier 'GPIO_Pin_1'
-   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
-      |                                       ^
-./../Core/Hardware/Key.c:35:45: error: use of undeclared identifier 'GPIO_Pin_10'
-   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
-      |                                                    ^
-./../Core/Hardware/Key.c:35:59: error: use of undeclared identifier 'GPIO_Pin_11'
-   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
-      |                                                                  ^
-./../Core/Hardware/Key.c:35:73: error: use of undeclared identifier 'GPIO_Pin_15'
-   35 |         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_15;
-      |                                                                                ^
-./../Core/Hardware/Key.c:36:21: error: no member named 'GPIO_Speed' in 'GPIO_InitTypeDef'
-   36 |         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-      |         ~~~~~~~~~~~~~~~~~~ ^
-./../Core/Hardware/Key.c:36:34: error: use of undeclared identifier 'GPIO_Speed_50MHz'
-   36 |         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-      |                                         ^
-./../Core/Hardware/Key.c:37:2: error: call to undeclared function 'GPIO_Init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   37 |         GPIO_Init(GPIOB, &GPIO_InitStructure);
-      |         ^
-./../Core/Hardware/Key.c:108:6: error: call to undeclared function 'TIM_GetITStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  108 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
-      |             ^
-./../Core/Hardware/Key.c:108:28: error: use of undeclared identifier 'TIM_IT_Update'
-  108 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
-      |                                   ^
-./../Core/Hardware/Key.c:112:23: error: use of undeclared identifier 'KEY3'
-  112 |                 key_status_check(2, KEY3);
-      |                                     ^
-./../Core/Hardware/Key.c:113:23: error: use of undeclared identifier 'KEY4'
-  113 |                 key_status_check(3, KEY4);
-      |                                     ^
-./../Core/Hardware/Key.c:118:4: error: call to undeclared function 'I1_SW'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  118 |                         I1_SW(1);
-      |                         ^
-./../Core/Hardware/Key.c:119:4: error: call to undeclared function 'I2_SW'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  119 |                         I2_SW(1);
-      |                         ^
-./../Core/Hardware/Key.c:123:3: error: call to undeclared function 'TIM_ClearITPendingBit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  123 |                 TIM_ClearITPendingBit(TIM3, TIM_IT_Update); // 清除更新中断标志位
-      |                 ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-
-[2024-03-25 22:25:19]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/Key.c:25:9: error: redefinition of 'KEY_Status' with a different type: 'uint8_t[3][3]' (aka 'unsigned char[3][3]') vs 'uint8_t[4][3]' (aka 'unsigned char[4][3]')
-   25 | uint8_t KEY_Status[3][3]; // 记录各按键状态，第一层数组表示按键编号，第二层数组表示按键状态
-      |         ^
-./../Core/Hardware/Key.h:6:16: note: previous declaration is here
-    6 | extern uint8_t KEY_Status[4][3];        //记录各按键状态
-      |                ^
-./../Core/Hardware/Key.c:26:9: error: redefinition of 'key' with a different type: 'uint8_t[3]' (aka 'unsigned char[3]') vs 'uint8_t[4]' (aka 'unsigned char[4]')
-   26 | uint8_t key[3];                   // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
-      |         ^
-./../Core/Hardware/Key.h:7:16: note: previous declaration is here
-    7 | extern uint8_t key[4];                          //记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
-      |                ^
-./../Core/Hardware/Key.c:99:6: error: call to undeclared function 'TIM_GetITStatus'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   99 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
-      |             ^
-./../Core/Hardware/Key.c:99:28: error: use of undeclared identifier 'TIM_IT_Update'
-   99 |         if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) // 获取TIM3定时器的更新中断标志位
-      |                                   ^
-./../Core/Hardware/Key.c:103:23: error: use of undeclared identifier 'KEY3'
-  103 |                 key_status_check(2, KEY3);
-      |                                     ^
-./../Core/Hardware/Key.c:104:23: error: use of undeclared identifier 'KEY4'
-  104 |                 key_status_check(3, KEY4);
-      |                                     ^
-6 errors generated.
-
-[2024-03-25 22:28:46]	[done]
-	build successfully !
-
-[2024-03-25 22:45:50]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\Key.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o -MMD ./../Core/Hardware/Key.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Hardware/Key.c:24:9: error: redefinition of 'key' with a different type: 'uint8_t[4]' (aka 'unsigned char[4]') vs 'uint8_t[3]' (aka 'unsigned char[3]')
-   24 | uint8_t key[KEY_NUM + 1];               // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下，按键数量+1跳过0号直观一点
-      |         ^
-./../Core/Hardware/Key.h:13:16: note: previous declaration is here
-   13 | extern uint8_t key[KEY_NUM];           // 记录各按键是否稳定按下，1表示按键已按下，0表示按键没被按下
-      |                ^
-1 error generated.
-
-[2024-03-25 22:46:17]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6200E: Symbol key multiply defined (by main.o and Key.o).
-Not enough information to list image symbols.
-Not enough information to list the image map.
-Finished: 2 information, 0 warning and 1 error messages.
-
-
-[2024-03-25 22:46:52]	[done]
-	build successfully !
-
-[2024-03-25 22:47:05]	[done]
-	build successfully !
-
-[2024-03-25 22:52:00]	[done]
-	build successfully !
-
-[2024-03-25 22:52:21]	[done]
-	build successfully !
-
-[2024-03-25 22:52:39]	[done]
-	build successfully !
-
-[2024-03-25 22:56:20]	[done]
-	build successfully !
-
-[2024-03-25 22:57:39]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:140:5: error: call to undeclared function 'Key_Process'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  140 |     Key_Process();      // 按键按下的处理
-      |     ^
-1 error generated.
-
-[2024-03-25 22:57:44]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:140:5: error: call to undeclared function 'Key_Process'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  140 |     Key_Process();      // 按键按下的处理
-      |     ^
-1 error generated.
-
-[2024-03-25 22:58:11]	[done]
-	build successfully !
-
-[2024-03-25 22:58:26]	[done]
-	build successfully !
-
-[2024-03-25 22:58:45]	[done]
-	build successfully !
-
-[2024-03-25 23:01:41]	[done]
-	build successfully !
-
-[2024-03-25 23:02:00]	[done]
-	build successfully !
-
-[2024-03-25 23:02:15]	[done]
-	build successfully !
-
-[2024-03-25 23:09:31]	[done]
-	build successfully !
-
-[2024-03-25 23:18:18]	[done]
-	build successfully !
-
-[2024-03-25 23:26:12]	[done]
-	build successfully !
-
-[2024-03-25 23:26:29]	[done]
-	build successfully !
-
-[2024-03-25 23:26:46]	[done]
-	build successfully !
-
-[2024-03-25 23:29:05]	[done]
-	build successfully !
-
-[2024-03-25 23:30:03]	[done]
-	build successfully !
-
-[2024-03-25 23:30:26]	[done]
-	build successfully !
-
-[2024-03-25 23:32:41]	[done]
-	build successfully !
-
-[2024-03-25 23:34:27]	[done]
-	build successfully !
-
-[2024-03-25 23:47:30]	[done]
-	build successfully !
-
-[2024-03-25 23:47:59]	[done]
-	build successfully !
-
-[2024-03-26 00:04:34]	[done]
-	build successfully !
-
-[2024-03-26 00:10:39]	[done]
-	build successfully !
-
-[2024-03-26 01:49:03]	[done]
-	build successfully !
-
-[2024-03-26 02:30:06]	[done]
-	build successfully !
-
-[2024-03-26 02:43:52]	[done]
-	build successfully !
-
-[2024-03-26 02:44:48]	[done]
-	build successfully !
-
-[2024-03-26 02:45:59]	[done]
-	build successfully !
-
-[2024-03-26 02:47:56]	[done]
-	build successfully !
-
-[2024-03-26 02:50:27]	[done]
-	build successfully !
-
-[2024-03-26 02:53:47]	[done]
-	build successfully !
-
-[2024-03-26 03:04:15]	[done]
-	build successfully !
-
-[2024-03-26 03:07:28]	[done]
-	build successfully !
-
-[2024-03-26 03:10:30]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
-  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
-      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
-1 error generated.
-
-[2024-03-26 03:11:04]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
-  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
-      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
-1 error generated.
-
-[2024-03-26 03:11:36]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:164:101: error: invalid operands to binary expression ('uint32_t' (aka 'unsigned int') and 'uint16_t *' (aka 'unsigned short *'))
-  164 |     float temperature = (TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1) * (TEMP_adcValue - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
-      |                                                                                       ~~~~~~~~~~~~~ ^ ~~~~~~~
-1 error generated.
-
-[2024-03-26 03:13:49]	[done]
-	build successfully !
-
-[2024-03-26 03:14:36]	[done]
-	build successfully !
-
-[2024-03-26 03:15:04]	[done]
-	build successfully !
-
-[2024-03-26 03:15:21]	[done]
-	build successfully !
-
-[2024-03-26 03:16:17]	[done]
-	build successfully !
-
-[2024-03-26 03:17:00]	[done]
-	build successfully !
-
-[2024-03-26 03:21:05]	[done]
-	build successfully !
-
-[2024-03-26 03:22:33]	[done]
-	build successfully !
-
-[2024-03-26 03:23:10]	[done]
-	build successfully !
-
-[2024-03-26 03:23:29]	[done]
-	build successfully !
-
-[2024-03-26 03:23:45]	[done]
-	build successfully !
-
-[2024-03-26 03:24:56]	[done]
-	build successfully !
-
-[2024-03-26 03:25:36]	[done]
-	build successfully !
-
-[2024-03-26 03:51:19]	[done]
-	build successfully !
-
-[2024-03-26 03:51:56]	[done]
-	build successfully !
-
-[2024-03-26 03:52:44]	[done]
-	build successfully !
-
-[2024-03-26 03:53:12]	[done]
-	build successfully !
-
-[2024-03-26 04:04:23]	[done]
-	build successfully !
-
-[2024-03-26 04:13:14]	[done]
-	build successfully !
-
-[2024-03-26 14:25:29]	[done]
-	build successfully !
-
-[2024-03-26 14:27:11]	[done]
-	build successfully !
-
-[2024-03-26 14:27:47]	[done]
-	build successfully !
-
-[2024-03-26 14:58:38]	[done]
-	build successfully !
-
-[2024-03-26 15:01:33]	[done]
-	build successfully !
-
-[2024-03-26 15:04:09]	[done]
-	build successfully !
-
-[2024-03-26 15:08:16]	[done]
-	build successfully !
-
-[2024-03-26 15:10:10]	[done]
-	build successfully !
-
-[2024-03-26 15:11:29]	[done]
-	build successfully !
-
-[2024-03-26 15:14:10]	[done]
-	build successfully !
-
-[2024-03-26 15:15:00]	[done]
-	build successfully !
-
-[2024-03-26 15:15:30]	[done]
-	build successfully !
-
-[2024-03-26 15:16:36]	[done]
-	build successfully !
-
-[2024-03-26 21:39:13]	[done]
-	build successfully !
-
-[2024-03-26 21:41:26]	[done]
-	build successfully !
-
-[2024-03-26 21:44:34]	[done]
-	build successfully !
-
-[2024-03-26 21:45:09]	[done]
-	build successfully !
-
-[2024-03-26 22:33:53]	[done]
-	build successfully !
-
-[2024-03-26 22:36:20]	[done]
-	build successfully !
-
-[2024-03-26 22:39:22]	[done]
-	build successfully !
-
-[2024-03-26 22:51:16]	[done]
-	build successfully !
-
-[2024-03-26 23:02:04]	[done]
-	build successfully !
-
-[2024-03-27 22:23:43]	[done]
-	build successfully !
-
-[2024-03-27 22:24:12]	[done]
-	build successfully !
-
-[2024-03-27 22:24:47]	[done]
-	build successfully !
-
-[2024-03-27 22:25:42]	[done]
-	build successfully !
-
-[2024-03-27 22:26:30]	[done]
-	build successfully !
-
-[2024-03-27 22:30:43]	[done]
-	build successfully !
-
-[2024-03-27 22:31:36]	[done]
-	build successfully !
-
-[2024-03-27 22:32:50]	[done]
-	build successfully !
-
-[2024-03-30 02:08:10]	[done]
-	build successfully !
-
-[2024-03-30 02:20:54]	[done]
-	build successfully !
-
-[2024-03-30 02:23:17]	[done]
-	build successfully !
-
-[2024-03-30 02:24:49]	[done]
-	build successfully !
-
-[2024-03-30 02:26:08]	[done]
-	build successfully !
-
-[2024-03-30 02:29:53]	[done]
-	build successfully !
-
-[2024-03-30 02:31:20]	[done]
-	build successfully !
-
-[2024-03-30 02:31:52]	[done]
-	build successfully !
-
-[2024-03-30 02:34:56]	[done]
-	build successfully !
-
-[2024-03-30 02:36:21]	[done]
-	build successfully !
-
-[2024-03-30 02:36:40]	[done]
-	build successfully !
-
-[2024-03-30 02:37:21]	[done]
-	build successfully !
-
-[2024-03-30 02:37:56]	[done]
-	build successfully !
-
-[2024-03-30 02:41:51]	[done]
-	build successfully !
-
-[2024-03-30 02:42:24]	[done]
-	build successfully !
-
-[2024-03-30 02:42:52]	[done]
-	build successfully !
-
-[2024-03-30 02:43:23]	[done]
-	build successfully !
-
-[2024-03-30 02:44:09]	[done]
-	build successfully !
-
-[2024-03-30 02:45:52]	[done]
-	build successfully !
-
-[2024-03-30 02:46:26]	[done]
-	build successfully !
-
-[2024-03-30 02:46:42]	[done]
-	build successfully !
-
-[2024-03-30 02:46:56]	[done]
-	build successfully !
-
-[2024-03-30 02:49:38]	[done]
-	build successfully !
-
-[2024-03-30 02:50:52]	[done]
-	build successfully !
-
-[2024-03-30 02:51:36]	[done]
-	build successfully !
-
-[2024-03-30 02:52:45]	[done]
-	build successfully !
-
-[2024-03-30 02:53:19]	[done]
-	build successfully !
-
-[2024-03-30 02:54:18]	[done]
-	build successfully !
-
-[2024-03-30 02:55:37]	[done]
-	build successfully !
-
-[2024-03-30 02:55:51]	[done]
-	build successfully !
-
-[2024-03-30 02:56:15]	[done]
-	build successfully !
-
-[2024-03-30 02:56:53]	[done]
-	build successfully !
-
-[2024-03-30 02:57:41]	[done]
-	build successfully !
-
-[2024-04-01 20:31:15]	[done]
-	build successfully !
-
-[2024-04-02 17:30:55]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol MX_IWDG_Init (referred from main.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 1 error messages.
-
-
-[2024-04-02 17:32:25]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol MX_IWDG_Init (referred from main.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 1 error messages.
-
-
-[2024-04-02 17:33:25]	[done]
-	build successfully !
-
-[2024-04-02 17:34:55]	[done]
-	build successfully !
-
-[2024-04-02 17:35:02]	[done]
-	build successfully !
-
-[2024-04-02 17:38:38]	[done]
-	build successfully !
-
-[2024-04-02 17:39:12]	[done]
-	build successfully !
-
-[2024-04-02 17:39:45]	[done]
-	build successfully !
-
-[2024-04-02 17:40:51]	[done]
-	build successfully !
-
-[2024-04-02 17:41:16]	[done]
-	build successfully !
-
-[2024-04-02 17:42:31]	[done]
-	build successfully !
-
-[2024-04-02 17:42:43]	[done]
-	build successfully !
-
-[2024-04-02 17:42:54]	[done]
-	build successfully !
-
-[2024-04-02 17:49:08]	[done]
-	build successfully !
-
-[2024-04-02 18:07:18]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\stm32g4xx_it.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_it.o -MMD ./../Core/Src/stm32g4xx_it.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/stm32g4xx_it.c:317:3: error: call to undeclared function 'BuckBoostVILoopCtlPID'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  317 |   BuckBoostVILoopCtlPID();
-      |   ^
-1 error generated.
-
-[2024-04-02 18:07:54]	[done]
-	build successfully !
-
-[2024-04-03 01:40:38]	[done]
-	build successfully !
-
-[2024-04-03 01:41:21]	[done]
-	build successfully !
-
-[2024-04-03 01:46:49]	[done]
-	build successfully !
-
-[2024-04-03 14:02:47]	[done]
-	build successfully !
-
-[2024-04-03 19:28:31]	[done]
-	build successfully !
-
-[2024-04-03 19:32:06]	[done]
-	build successfully !
-
-[2024-04-03 21:04:01]	[done]
-	build successfully !
-
-[2024-04-03 21:05:17]	[done]
-	build successfully !
-
-[2024-04-03 21:06:22]	[done]
-	build successfully !
-
-[2024-04-03 21:07:04]	[done]
-	build successfully !
-
-[2024-04-03 21:07:38]	[done]
-	build successfully !
-
-[2024-04-04 01:16:51]	[done]
-	build successfully !
-
-[2024-04-04 01:17:49]	[done]
-	build successfully !
-
-[2024-04-04 01:17:53]	[done]
-	build successfully !
-
-[2024-04-04 01:18:17]	[done]
-	build successfully !
-
-[2024-04-04 01:18:37]	[done]
-	build successfully !
-
-[2024-04-04 01:19:07]	[done]
-	build successfully !
-
-[2024-04-04 01:43:12]	[done]
-	build successfully !
-
-[2024-04-04 01:43:45]	[done]
-	build successfully !
-
-[2024-04-04 01:43:50]	[done]
-	build successfully !
-
-[2024-04-05 01:40:36]	[done]
-	build successfully !
-
-[2024-04-05 01:40:40]	[done]
-	build successfully !
-
-[2024-04-08 14:42:40]	[done]
-	build successfully !
-
-[2024-04-08 15:18:14]	[done]
-	build successfully !
-
-[2024-04-08 15:18:18]	[done]
-	build successfully !
-
-[2024-04-09 17:09:23]	[done]
-	build successfully !
-
-[2024-04-10 02:29:07]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:102:45: error: too many arguments to function call, expected 3, have 4
-  102 |     OLED_ShowChinese(0, 0, "输入电压:", OLED_CF16x16); // 显示字符串
-      |     ~~~~~~~~~~~~~~~~                    ^~~~~~~~~~~~
-../Core/Hardware\OLED.h:44:6: note: 'OLED_ShowChinese' declared here
-   44 | void OLED_ShowChinese(uint8_t X, uint8_t Y, char *Chinese);
-      |      ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1 error generated.
-
-[2024-04-10 02:29:51]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:103:43: error: too few arguments to function call, expected 4, have 3
-  103 |     OLED_ShowString(0, 16, "输入电流:");
-      |     ~~~~~~~~~~~~~~~                   ^
-../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
-   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
-      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./../Core/Src/function.c:104:43: error: too few arguments to function call, expected 4, have 3
-  104 |     OLED_ShowString(0, 32, "输出电压:");
-      |     ~~~~~~~~~~~~~~~                   ^
-../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
-   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
-      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./../Core/Src/function.c:105:43: error: too few arguments to function call, expected 4, have 3
-  105 |     OLED_ShowString(0, 48, "输出电流:");
-      |     ~~~~~~~~~~~~~~~                   ^
-../Core/Hardware\OLED.h:38:6: note: 'OLED_ShowString' declared here
-   38 | void OLED_ShowString(uint8_t X, uint8_t Y, char *String, uint8_t FontSize);
-      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-3 errors generated.
-
-[2024-04-10 02:30:02]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:178:7: error: call to undeclared function 'OLED_DisPlay'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  178 |       OLED_DisPlay(); // 刷新OLED屏显示内容
-      |       ^
-./../Core/Src/main.c:178:7: note: did you mean 'OLED_Display'?
-../Core/Inc\function.h:41:6: note: 'OLED_Display' declared here
-   41 | void OLED_Display(void);
-      |      ^
-1 error generated.
-
-[2024-04-10 02:30:07]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:178:7: error: call to undeclared function 'OLED_DisPlay'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  178 |       OLED_DisPlay(); // 刷新OLED屏显示内容
-      |       ^
-./../Core/Src/main.c:178:7: note: did you mean 'OLED_Display'?
-../Core/Inc\function.h:41:6: note: 'OLED_Display' declared here
-   41 | void OLED_Display(void);
-      |      ^
-1 error generated.
-
-[2024-04-10 02:30:21]	[done]
-	build successfully !
-
-[2024-04-10 02:31:22]	[done]
-	build successfully !
-
-[2024-04-10 02:32:44]	[done]
-	build successfully !
-
-[2024-04-10 02:35:07]	[done]
-	build successfully !
-
-[2024-04-10 02:35:54]	[done]
-	build successfully !
-
-[2024-04-10 02:36:44]	[done]
-	build successfully !
-
-[2024-04-10 02:39:05]	[done]
-	build successfully !
-
-[2024-04-10 02:40:23]	[done]
-	build successfully !
-
-[2024-04-10 02:41:00]	[done]
-	build successfully !
-
-[2024-04-10 02:43:09]	[done]
-	build successfully !
-
-[2024-04-10 14:03:00]	[done]
-	build successfully !
-
-[2024-04-10 14:04:46]	[done]
-	build successfully !
-
-[2024-04-10 14:26:54]	[done]
-	build successfully !
-
-[2024-04-10 14:27:17]	[done]
-	build successfully !
-
-[2024-04-10 14:28:22]	[done]
-	build successfully !
-
-[2024-04-10 14:31:18]	[done]
-	build successfully !
-
-[2024-04-10 14:31:23]	[done]
-	build successfully !
-
-[2024-04-10 14:42:55]	[done]
-	build successfully !
-
-[2024-04-10 14:43:27]	[done]
-	build successfully !
-
-[2024-04-10 14:44:19]	[done]
-	build successfully !
-
-[2024-04-10 14:44:45]	[done]
-	build successfully !
-
-[2024-04-10 14:50:09]	[done]
-	build successfully !
-
-[2024-04-10 14:50:51]	[done]
-	build successfully !
-
-[2024-04-10 14:51:37]	[done]
-	build successfully !
-
-[2024-04-10 14:52:12]	[done]
-	build successfully !
-
-[2024-04-10 14:52:57]	[done]
-	build successfully !
-
-[2024-04-10 14:53:34]	[done]
-	build successfully !
-
-[2024-04-10 15:05:01]	[done]
-	build successfully !
-
-[2024-04-10 15:06:05]	[done]
-	build successfully !
-
-[2024-04-10 15:09:00]	[done]
-	build successfully !
-
-[2024-04-10 15:21:23]	[done]
-	build successfully !
-
-[2024-04-10 15:22:07]	[done]
-	build successfully !
-
-[2024-04-10 15:23:27]	[done]
-	build successfully !
-
-[2024-04-10 15:24:58]	[done]
-	build successfully !
-
-[2024-04-10 15:25:57]	[done]
-	build successfully !
-
-[2024-04-10 15:26:08]	[done]
-	build successfully !
-
-[2024-04-10 15:29:35]	[done]
-	build successfully !
-
-[2024-04-10 15:29:58]	[done]
-	build successfully !
-
-[2024-04-10 15:30:23]	[done]
-	build successfully !
-
-[2024-04-10 15:32:34]	[done]
-	build successfully !
-
-[2024-04-10 15:33:30]	[done]
-	build successfully !
-
-[2024-04-10 15:38:02]	[done]
-	build successfully !
-
-[2024-04-10 15:38:23]	[done]
-	build successfully !
-
-[2024-04-10 15:38:37]	[done]
-	build successfully !
-
-[2024-04-10 16:27:29]	[done]
-	build successfully !
-
-[2024-04-10 16:47:17]	[done]
-	build successfully !
-
-[2024-04-10 17:27:09]	[done]
-	build successfully !
-
-[2024-04-10 17:28:09]	[done]
-	build successfully !
-
-[2024-04-10 17:52:59]	[done]
-	build successfully !
-
-[2024-04-10 17:54:54]	[done]
-	build successfully !
-
-[2024-04-10 17:58:56]	[done]
-	build successfully !
-
-[2024-04-10 18:06:31]	[done]
-	build successfully !
-
-[2024-04-10 18:07:34]	[done]
-	build successfully !
-
-[2024-04-10 18:07:57]	[done]
-	build successfully !
-
-[2024-04-10 18:08:27]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:16:35: error: redefinition of 'CtrValue' with a different type: 'volatile struct _Ctr_value' vs 'struct _Ctr_value'
-   16 | CCMRAM volatile struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-      |                                   ^
-../Core/Inc\function.h:31:26: note: previous declaration is here
-   31 | extern struct _Ctr_value CtrValue;
-      |                          ^
-./../Core/Src/function.c:17:30: error: redefinition of 'DF' with a different type: 'volatile struct _FLAG' vs 'struct _FLAG'
-   17 | CCMRAM volatile struct _FLAG DF = {0, 0, 0, 0, 0, 0};                           // 控制标志位
+./../Core/Hardware/OLED_Data.c:335:30: error: redefinition of 'OLED_CF16x16' with a different type: 'const volatile ChineseCell_t[]' vs 'const ChineseCell_t[]'
+  335 | volatile const ChineseCell_t OLED_CF16x16[] = {
       |                              ^
-../Core/Inc\function.h:32:21: note: previous declaration is here
-   32 | extern struct _FLAG DF;
-      |                     ^
+./../Core/Hardware/OLED_Data.h:21:28: note: previous declaration is here
+   21 | extern const ChineseCell_t OLED_CF16x16[];
+      |                            ^
+1 error generated.
+
+[2024-04-14 03:39:04]	[done]
+	build successfully !
+
+[2024-04-14 03:39:08]	[done]
+	build successfully !
+
+[2024-04-14 03:40:04]	[done]
+	build successfully !
+
+[2024-04-14 03:40:36]	[done]
+	build successfully !
+
+[2024-04-14 03:40:49]	[done]
+	build successfully !
+
+[2024-04-14 03:41:03]	[done]
+	build successfully !
+
+[2024-04-14 03:41:14]	[done]
+	build successfully !
+
+[2024-04-14 03:41:31]	[done]
+	build successfully !
+
+[2024-04-14 03:41:51]	[done]
+	build successfully !
+
+[2024-04-14 03:43:11]	[done]
+	build successfully !
+
+[2024-04-14 03:44:30]	[done]
+	build successfully !
+
+[2024-04-14 03:44:42]	[done]
+	build successfully !
+
+[2024-04-14 17:26:19]	[done]
+	build successfully !
+
+[2024-04-14 17:27:05]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:139:5: error: unterminated function-like macro invocation
+  139 |     __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, CtrValue.BoostDuty ;
+      |     ^
+../Drivers/STM32G4xx_HAL_Driver/Inc\stm32g4xx_hal_hrtim.h:4488:9: note: macro '__HAL_HRTIM_SETCOMPARE' defined here
+ 4488 | #define __HAL_HRTIM_SETCOMPARE(__HANDLE__, __TIMER__, __COMPAREUNIT__, __COMPARE__) \
+      |         ^
+./../Core/Src/PID.c:140:2: error: expected '}'
+  140 | }
+      |  ^
+./../Core/Src/PID.c:42:1: note: to match this '{'
+   42 | {
+      | ^
 2 errors generated.
 
-[2024-04-10 18:08:35]	[done]
+[2024-04-14 17:27:38]	[done]
 	build successfully !
 
-[2024-04-10 18:09:13]	[done]
+[2024-04-14 17:41:18]	[done]
 	build successfully !
 
-[2024-04-10 18:10:50]	[done]
+[2024-04-14 17:42:46]	[done]
 	build successfully !
 
-[2024-04-10 18:12:18]	[done]
+[2024-04-15 15:30:05]	[done]
 	build successfully !
 
-[2024-04-10 18:14:20]	[done]
+[2024-04-15 15:31:23]	[done]
 	build successfully !
 
-[2024-04-10 18:14:45]	[done]
+[2024-04-15 15:32:08]	[done]
 	build successfully !
 
-[2024-04-10 18:15:02]	[done]
+[2024-04-15 15:32:26]	[done]
 	build successfully !
 
-[2024-04-10 18:15:39]	[done]
+[2024-04-15 15:33:09]	[done]
 	build successfully !
 
-[2024-04-10 18:16:04]	[done]
+[2024-04-15 15:35:35]	[done]
 	build successfully !
 
-[2024-04-10 18:16:33]	[done]
+[2024-04-15 15:36:44]	[done]
 	build successfully !
 
-[2024-04-10 18:17:10]	[done]
+[2024-04-15 15:37:11]	[done]
 	build successfully !
 
-[2024-04-10 18:17:44]	[done]
+[2024-04-15 15:37:28]	[done]
 	build successfully !
 
-[2024-04-10 18:18:47]	[done]
+[2024-04-15 15:37:46]	[done]
 	build successfully !
 
-[2024-04-10 18:19:22]	[done]
+[2024-04-15 15:38:01]	[done]
 	build successfully !
 
-[2024-04-10 18:19:36]	[done]
+[2024-04-15 15:38:21]	[done]
 	build successfully !
 
-[2024-04-10 18:19:52]	[done]
+[2024-04-15 15:38:44]	[done]
 	build successfully !
 
-[2024-04-10 18:20:30]	[done]
+[2024-04-15 15:39:40]	[done]
 	build successfully !
 
-[2024-04-10 18:24:05]	[done]
+[2024-04-15 15:43:25]	[done]
 	build successfully !
 
-[2024-04-10 19:32:06]	[done]
+[2024-04-15 15:43:44]	[done]
 	build successfully !
 
-[2024-04-10 19:34:14]	[done]
+[2024-04-15 15:44:59]	[done]
 	build successfully !
 
-[2024-04-10 19:41:01]	[done]
+[2024-04-15 15:45:34]	[done]
 	build successfully !
 
-[2024-04-10 19:41:56]	[done]
+[2024-04-15 15:50:24]	[done]
 	build successfully !
 
-[2024-04-10 19:57:20]	[done]
+[2024-04-15 15:50:59]	[done]
 	build successfully !
 
-[2024-04-10 19:59:52]	[done]
+[2024-04-15 15:51:42]	[done]
 	build successfully !
 
-[2024-04-10 20:03:07]	[done]
+[2024-04-15 15:52:08]	[done]
 	build successfully !
 
-[2024-04-10 20:04:29]	[done]
+[2024-04-15 15:52:37]	[done]
 	build successfully !
 
-[2024-04-10 20:06:49]	[done]
+[2024-04-15 15:53:01]	[done]
 	build successfully !
 
-[2024-04-10 20:07:23]	[done]
+[2024-04-15 15:53:26]	[done]
 	build successfully !
 
-[2024-04-10 20:09:21]	[done]
+[2024-04-15 15:54:01]	[done]
 	build successfully !
 
-[2024-04-10 20:10:15]	[done]
+[2024-04-15 15:54:17]	[done]
 	build successfully !
 
-[2024-04-10 20:11:22]	[done]
+[2024-04-15 16:00:25]	[done]
 	build successfully !
 
-[2024-04-10 20:11:56]	[done]
+[2024-04-15 16:23:05]	[done]
 	build successfully !
 
-[2024-04-10 20:12:24]	[done]
+[2024-04-15 16:23:31]	[done]
 	build successfully !
 
-[2024-04-10 20:14:21]	[done]
+[2024-04-15 16:23:56]	[done]
 	build successfully !
 
-[2024-04-10 20:14:45]	[done]
+[2024-04-15 16:24:19]	[done]
 	build successfully !
 
-[2024-04-10 20:15:02]	[done]
+[2024-04-15 16:25:28]	[done]
 	build successfully !
 
-[2024-04-10 20:15:18]	[done]
+[2024-04-15 16:27:53]	[done]
 	build successfully !
 
-[2024-04-10 20:19:56]	[done]
+[2024-04-15 16:28:37]	[done]
 	build successfully !
 
-[2024-04-10 20:36:04]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+[2024-04-15 16:28:52]	[done]
+	build successfully !
+
+[2024-04-15 16:29:10]	[done]
+	build successfully !
+
+[2024-04-15 16:29:35]	[done]
+	build successfully !
+
+[2024-04-15 16:33:01]	[done]
+	build successfully !
+
+[2024-04-15 16:34:20]	[done]
+	build successfully !
+
+[2024-04-15 16:34:37]	[done]
+	build successfully !
+
+[2024-04-15 16:35:03]	[done]
+	build successfully !
+
+[2024-04-15 16:35:26]	[done]
+	build successfully !
+
+[2024-04-15 16:35:59]	[done]
+	build successfully !
+
+[2024-04-15 16:36:19]	[done]
+	build successfully !
+
+[2024-04-15 16:36:44]	[done]
+	build successfully !
+
+[2024-04-15 16:37:07]	[done]
+	build successfully !
+
+[2024-04-15 16:37:27]	[done]
+	build successfully !
+
+[2024-04-15 16:37:45]	[done]
+	build successfully !
+
+[2024-04-15 16:38:03]	[done]
+	build successfully !
+
+[2024-04-15 16:38:18]	[done]
+	build successfully !
+
+[2024-04-15 16:38:34]	[done]
+	build successfully !
+
+[2024-04-15 16:38:54]	[done]
+	build successfully !
+
+[2024-04-15 16:39:10]	[done]
+	build successfully !
+
+[2024-04-15 16:39:30]	[done]
+	build successfully !
+
+[2024-04-15 16:39:42]	[done]
+	build successfully !
+
+[2024-04-15 16:40:00]	[done]
+	build successfully !
+
+[2024-04-15 16:40:15]	[done]
+	build successfully !
+
+[2024-04-15 16:40:29]	[done]
+	build successfully !
+
+[2024-04-15 17:56:13]	[done]
+	build successfully !
+
+[2024-04-15 17:57:47]	[done]
+	build successfully !
+
+[2024-04-15 17:59:56]	[done]
+	build successfully !
+
+[2024-04-15 18:01:06]	[done]
+	build successfully !
+
+[2024-04-15 18:02:01]	[done]
+	build successfully !
+
+[2024-04-15 18:09:22]	[done]
+	build successfully !
+
+[2024-04-15 18:10:13]	[done]
+	build successfully !
+
+[2024-04-15 18:10:43]	[done]
+	build successfully !
+
+[2024-04-15 18:11:06]	[done]
+	build successfully !
+
+[2024-04-15 18:16:20]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
 command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Src/PID.c:49:13: error: 'BuckBoostVILoopCtlPID' causes a section type conflict with 'VErr0'
-   49 | CCMRAM void BuckBoostVILoopCtlPID(void)
+./../Core/Src/function.c:733:17: error: invalid digit 'F' in decimal constant
+  733 |     if ((Iout > MAX_SHORT_I) && (Vout < MIN_SHORT_V))
+      |                 ^
+./../Core/Src/function.c:20:22: note: expanded from macro 'MAX_SHORT_I'
+   20 | #define MAX_SHORT_I 5F                                       // 短路电流判据
+      |                      ^
+1 error generated.
+
+[2024-04-15 18:16:28]	[done]
+	build successfully !
+
+[2024-04-15 18:18:08]	[done]
+	build successfully !
+
+[2024-04-15 18:19:43]	[done]
+	build successfully !
+
+[2024-04-15 18:21:21]	[done]
+	build successfully !
+
+[2024-04-15 18:23:19]	[done]
+	build successfully !
+
+[2024-04-15 18:29:30]	[done]
+	build successfully !
+
+[2024-04-15 18:37:39]	[done]
+	build successfully !
+
+[2024-04-15 18:38:24]	[done]
+	build successfully !
+
+[2024-04-15 18:42:29]	[done]
+	build successfully !
+
+[2024-04-15 18:44:44]	[done]
+	build successfully !
+
+[2024-04-15 18:45:05]	[done]
+	build successfully !
+
+[2024-04-15 18:46:33]	[done]
+	build successfully !
+
+[2024-04-15 18:47:40]	[done]
+	build successfully !
+
+[2024-04-15 18:48:22]	[done]
+	build successfully !
+
+[2024-04-15 18:49:15]	[done]
+	build successfully !
+
+[2024-04-15 18:50:09]	[done]
+	build successfully !
+
+[2024-04-15 18:50:50]	[done]
+	build successfully !
+
+[2024-04-15 18:51:29]	[done]
+	build successfully !
+
+[2024-04-15 18:52:24]	[done]
+	build successfully !
+
+[2024-04-15 18:53:06]	[done]
+	build successfully !
+
+[2024-04-15 18:54:07]	[done]
+	build successfully !
+
+[2024-04-15 18:54:14]	[done]
+	build successfully !
+
+[2024-04-15 18:54:51]	[done]
+	build successfully !
+
+[2024-04-15 18:57:19]	[done]
+	build successfully !
+
+[2024-04-15 19:04:50]	[done]
+	build successfully !
+
+[2024-04-15 19:07:28]	[done]
+	build successfully !
+
+[2024-04-15 21:03:40]	[done]
+	build successfully !
+
+[2024-04-15 22:22:23]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:55:13: error: non-static declaration of 'IoutTemp' follows static declaration
+   55 |     int32_t IoutTemp = (int32_t)ADC1_RESULT[3];                          // 获取输出电流
       |             ^
-./../Core/Src/PID.c:13:16: note: declared here
-   13 | CCMRAM int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-      |                ^
+./../Core/Src/PID.c:52:20: note: previous definition is here
+   52 |     static int32_t IoutTemp = 0;
+      |                    ^
 1 error generated.
 
-[2024-04-10 20:36:52]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/PID.c:49:13: error: 'BuckBoostVILoopCtlPID' causes a section type conflict with 'VErr0'
-   49 | CCMRAM void BuckBoostVILoopCtlPID(void)
-      |             ^
-./../Core/Src/PID.c:13:25: note: declared here
-   13 | CCMRAM volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-      |                         ^
-1 error generated.
-
-[2024-04-10 20:36:57]	[done]
-	build successfully !
-
-[2024-04-10 20:43:03]	[done]
-	build successfully !
-
-[2024-04-10 20:44:03]	[done]
-	build successfully !
-
-[2024-04-10 20:44:32]	[done]
-	build successfully !
-
-[2024-04-10 20:46:07]	[done]
-	build successfully !
-
-[2024-04-10 20:46:39]	[done]
-	build successfully !
-
-[2024-04-10 20:48:28]	[done]
-	build successfully !
-
-[2024-04-10 20:50:56]	[done]
-	build successfully !
-
-[2024-04-10 20:51:36]	[done]
-	build successfully !
-
-[2024-04-10 20:52:04]	[done]
-	build successfully !
-
-[2024-04-10 20:52:25]	[done]
-	build successfully !
-
-[2024-04-10 20:53:08]	[done]
-	build successfully !
-
-[2024-04-10 20:54:59]	[done]
-	build successfully !
-
-[2024-04-10 20:57:49]	[done]
-	build successfully !
-
-[2024-04-10 20:59:04]	[done]
-	build successfully !
-
-[2024-04-10 20:59:30]	[done]
-	build successfully !
-
-[2024-04-10 21:03:34]	[done]
-	build successfully !
-
-[2024-04-10 21:07:09]	[done]
-	build successfully !
-
-[2024-04-10 21:21:59]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:20:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-      |                         ^
-./../Core/Src/function.c:20:36: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-      |                                    ^
-./../Core/Src/function.c:20:47: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   20 | extern volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-      |                                               ^
-./../Core/Src/function.c:21:25: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   21 | extern volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
-      |                         ^
-./../Core/Src/function.c:21:33: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   21 | extern volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
-      |                                 ^
-./../Core/Src/function.c:170:5: error: call to undeclared function 'ValInit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  170 |     ValInit();
-      |     ^
-5 warnings and 1 error generated.
-
-[2024-04-10 21:30:03]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6200E: Symbol u0 multiply defined (by function.o and PID.o).
-Error: L6200E: Symbol VErr0 multiply defined (by function.o and PID.o).
-Error: L6200E: Symbol VErr1 multiply defined (by function.o and PID.o).
-Error: L6200E: Symbol VErr2 multiply defined (by function.o and PID.o).
-Error: L6200E: Symbol u1 multiply defined (by function.o and PID.o).
-Not enough information to list image symbols.
-Not enough information to list the image map.
-Finished: 2 information, 0 warning and 5 error messages.
-
-
-[2024-04-10 21:30:27]	link failed !, exit code: 1
-   at unify_builder.Program.Main(String[] args_)
----
-Error: L6218E: Undefined symbol StateMRun (referred from function.o).
-Error: L6218E: Undefined symbol StateMErr (referred from function.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 2 error messages.
-
-
-[2024-04-10 21:35:02]	[done]
-	build successfully !
-
-[2024-04-10 21:37:10]	[done]
-	build successfully !
-
-[2024-04-10 23:50:43]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:354:13: error: call to undeclared function 'setRegBits'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  354 |             setRegBits(DF.ErrFlag, F_SW_VOUT_OVP);
-      |             ^
-1 error generated.
-
-[2024-04-10 23:53:43]	[done]
-	build successfully !
-
-[2024-04-11 00:15:11]	[done]
-	build successfully !
-
-[2024-04-11 00:16:10]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\main.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/main.c:283:5: error: call to undeclared function 'OVP'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-  283 |     OVP();    // 输出过压保护
-      |     ^
-./../Core/Src/main.c:283:5: note: did you mean 'OTP'?
-../Core/Inc\function.h:140:6: note: 'OTP' declared here
-  140 | void OTP(void);
-      |      ^
-1 error generated.
-
-[2024-04-11 00:16:28]	[done]
-	build successfully !
-
-[2024-04-11 00:36:41]	[done]
-	build successfully !
-
-[2024-04-11 00:36:48]	[done]
-	build successfully !
-
-[2024-04-11 00:38:26]	[done]
-	build successfully !
-
-[2024-04-11 00:44:09]	[done]
-	build successfully !
-
-[2024-04-11 00:45:33]	[done]
-	build successfully !
-
-[2024-04-11 00:46:49]	[done]
-	build successfully !
-
-[2024-04-11 01:03:53]	[done]
-	build successfully !
-
-[2024-04-11 01:09:03]	[done]
-	build successfully !
-
-[2024-04-11 01:15:56]	[done]
-	build successfully !
-
-[2024-04-11 01:17:47]	[done]
-	build successfully !
-
-[2024-04-11 01:19:29]	[done]
-	build successfully !
-
-[2024-04-11 01:24:13]	[done]
-	build successfully !
-
-[2024-04-11 01:27:19]	[done]
-	build successfully !
-
-[2024-04-11 01:29:45]	[done]
-	build successfully !
-
-[2024-04-11 01:33:39]	[done]
-	build successfully !
-
-[2024-04-11 01:34:04]	[done]
-	build successfully !
-
-[2024-04-11 01:34:24]	[done]
-	build successfully !
-
-[2024-04-11 01:34:38]	[done]
-	build successfully !
-
-[2024-04-11 01:35:14]	[done]
-	build successfully !
-
-[2024-04-11 01:36:08]	[done]
-	build successfully !
-
-[2024-04-11 01:39:48]	[done]
-	build successfully !
-
-[2024-04-11 01:41:11]	[done]
-	build successfully !
-
-[2024-04-11 01:41:35]	[done]
-	build successfully !
-
-[2024-04-11 01:42:06]	[done]
-	build successfully !
-
-[2024-04-11 01:43:09]	[done]
-	build successfully !
-
-[2024-04-11 01:44:21]	[done]
-	build successfully !
-
-[2024-04-11 01:45:11]	[done]
-	build successfully !
-
-[2024-04-11 01:45:35]	[done]
-	build successfully !
-
-[2024-04-11 01:46:19]	[done]
-	build successfully !
-
-[2024-04-11 01:48:12]	[done]
-	build successfully !
-
-[2024-04-11 01:48:39]	[done]
-	build successfully !
-
-[2024-04-11 01:50:12]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:167:13: error: 'StateM' causes a section type conflict with 'CtrValue'
-  167 | CCMRAM void StateM(void)
-      |             ^
-./../Core/Src/function.c:18:26: note: declared here
-   18 | CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-      |                          ^
-1 error generated.
-
-[2024-04-11 01:50:52]	[done]
-	build successfully !
-
-[2024-04-11 01:51:05]	[done]
-	build successfully !
-
-[2024-04-11 01:51:31]	[done]
-	build successfully !
-
-[2024-04-11 01:52:32]	[done]
-	build successfully !
-
-[2024-04-11 01:53:39]	[done]
-	build successfully !
-
-[2024-04-11 01:54:34]	[done]
-	build successfully !
-
-[2024-04-11 01:58:27]	[done]
-	build successfully !
-
-[2024-04-11 01:58:45]	[done]
-	build successfully !
-
-[2024-04-11 01:59:03]	[done]
-	build successfully !
-
-[2024-04-11 01:59:16]	[done]
-	build successfully !
-
-[2024-04-11 02:00:29]	[done]
-	build successfully !
-
-[2024-04-11 02:01:40]	[done]
-	build successfully !
-
-[2024-04-11 02:04:21]	[done]
-	build successfully !
-
-[2024-04-11 02:06:40]	[done]
-	build successfully !
-
-[2024-04-11 02:10:09]	[done]
-	build successfully !
-
-[2024-04-11 02:10:34]	[done]
-	build successfully !
-
-[2024-04-11 02:12:50]	[done]
-	build successfully !
-
-[2024-04-11 02:25:49]	[done]
-	build successfully !
-
-[2024-04-11 02:26:06]	[done]
-	build successfully !
-
-[2024-04-11 02:26:34]	[done]
-	build successfully !
-
-[2024-04-11 02:27:08]	[done]
-	build successfully !
-
-[2024-04-11 02:29:11]	[done]
-	build successfully !
-
-[2024-04-11 02:29:39]	[done]
-	build successfully !
-
-[2024-04-11 02:30:28]	[done]
-	build successfully !
-
-[2024-04-11 02:31:25]	[done]
-	build successfully !
-
-[2024-04-11 02:32:20]	[done]
-	build successfully !
-
-[2024-04-11 02:32:35]	[done]
-	build successfully !
-
-[2024-04-11 02:32:51]	[done]
-	build successfully !
-
-[2024-04-11 02:33:10]	[done]
-	build successfully !
-
-[2024-04-11 02:33:23]	[done]
-	build successfully !
-
-[2024-04-11 02:33:36]	[done]
-	build successfully !
-
-[2024-04-11 02:34:15]	[done]
-	build successfully !
-
-[2024-04-11 02:34:49]	[done]
-	build successfully !
-
-[2024-04-11 02:35:40]	[done]
-	build successfully !
-
-[2024-04-11 02:36:00]	[done]
-	build successfully !
-
-[2024-04-11 02:36:37]	[done]
-	build successfully !
-
-[2024-04-11 02:36:46]	[done]
-	build successfully !
-
-[2024-04-11 02:37:18]	[done]
-	build successfully !
-
-[2024-04-11 02:38:04]	[done]
-	build successfully !
-
-[2024-04-11 02:38:37]	[done]
-	build successfully !
-
-[2024-04-11 02:39:04]	[done]
-	build successfully !
-
-[2024-04-11 02:42:32]	[done]
-	build successfully !
-
-[2024-04-11 02:44:17]	[done]
-	build successfully !
-
-[2024-04-11 02:45:07]	[done]
-	build successfully !
-
-[2024-04-11 02:46:04]	[done]
-	build successfully !
-
-[2024-04-11 02:48:36]	[done]
-	build successfully !
-
-[2024-04-11 02:49:26]	[done]
-	build successfully !
-
-[2024-04-11 02:50:15]	[done]
-	build successfully !
-
-[2024-04-11 02:51:03]	[done]
-	build successfully !
-
-[2024-04-11 02:53:07]	[done]
-	build successfully !
-
-[2024-04-11 03:49:52]	[done]
-	build successfully !
-
-[2024-04-11 03:50:19]	[done]
-	build successfully !
-
-[2024-04-11 03:50:57]	[done]
-	build successfully !
-
-[2024-04-11 03:51:50]	[done]
-	build successfully !
-
-[2024-04-11 03:52:22]	[done]
-	build successfully !
-
-[2024-04-11 03:53:18]	[done]
-	build successfully !
-
-[2024-04-11 03:54:02]	[done]
-	build successfully !
-
-[2024-04-11 03:54:41]	[done]
-	build successfully !
-
-[2024-04-11 03:59:23]	[done]
-	build successfully !
-
-[2024-04-11 04:00:25]	[done]
-	build successfully !
-
-[2024-04-11 04:00:54]	[done]
-	build successfully !
-
-[2024-04-11 04:01:11]	[done]
-	build successfully !
-
-[2024-04-11 04:01:37]	[done]
-	build successfully !
-
-[2024-04-11 04:02:14]	[done]
-	build successfully !
-
-[2024-04-11 04:02:34]	[done]
-	build successfully !
-
-[2024-04-11 04:02:56]	[done]
-	build successfully !
-
-[2024-04-11 04:03:45]	[done]
-	build successfully !
-
-[2024-04-11 04:04:11]	[done]
-	build successfully !
-
-[2024-04-11 04:04:39]	[done]
-	build successfully !
-
-[2024-04-11 04:05:11]	[done]
-	build successfully !
-
-[2024-04-11 04:05:33]	[done]
-	build successfully !
-
-[2024-04-11 04:05:57]	[done]
-	build successfully !
-
-[2024-04-11 04:06:25]	[done]
-	build successfully !
-
-[2024-04-11 04:09:02]	[done]
-	build successfully !
-
-[2024-04-11 04:10:32]	[done]
-	build successfully !
-
-[2024-04-11 04:12:09]	[done]
-	build successfully !
-
-[2024-04-11 04:12:44]	[done]
-	build successfully !
-
-[2024-04-11 04:13:16]	[done]
-	build successfully !
-
-[2024-04-11 04:13:32]	[done]
-	build successfully !
-
-[2024-04-11 04:20:39]	[done]
-	build successfully !
-
-[2024-04-11 04:21:15]	[done]
-	build successfully !
-
-[2024-04-11 04:27:30]	[done]
-	build successfully !
-
-[2024-04-11 04:29:32]	[done]
-	build successfully !
-
-[2024-04-11 04:30:35]	[done]
-	build successfully !
-
-[2024-04-11 04:31:50]	[done]
-	build successfully !
-
-[2024-04-11 04:32:05]	[done]
-	build successfully !
-
-[2024-04-11 04:32:25]	[done]
-	build successfully !
-
-[2024-04-11 04:33:49]	[done]
-	build successfully !
-
-[2024-04-11 04:34:03]	[done]
-	build successfully !
-
-[2024-04-11 04:35:11]	[done]
-	build successfully !
-
-[2024-04-11 04:36:28]	[done]
-	build successfully !
-
-[2024-04-11 04:36:44]	[done]
-	build successfully !
-
-[2024-04-11 04:37:09]	[done]
-	build successfully !
-
-[2024-04-11 04:37:23]	[done]
-	build successfully !
-
-[2024-04-11 04:37:48]	[done]
-	build successfully !
-
-[2024-04-11 04:38:34]	[done]
-	build successfully !
-
-[2024-04-11 04:42:27]	[done]
-	build successfully !
-
-[2024-04-11 04:44:10]	[done]
-	build successfully !
-
-[2024-04-11 04:44:55]	[done]
-	build successfully !
-
-[2024-04-11 04:54:50]	[done]
-	build successfully !
-
-[2024-04-11 04:55:36]	[done]
-	build successfully !
-
-[2024-04-11 04:57:40]	[done]
-	build successfully !
-
-[2024-04-11 05:01:49]	[done]
-	build successfully !
-
-[2024-04-11 05:02:02]	[done]
-	build successfully !
-
-[2024-04-11 05:02:59]	[done]
-	build successfully !
-
-[2024-04-11 05:03:06]	[done]
-	build successfully !
-
-[2024-04-11 05:04:04]	[done]
-	build successfully !
-
-[2024-04-11 14:33:20]	[done]
-	build successfully !
-
-[2024-04-11 14:35:17]	[done]
-	build successfully !
-
-[2024-04-11 14:35:44]	[done]
-	build successfully !
-
-[2024-04-11 14:36:18]	[done]
-	build successfully !
-
-[2024-04-11 14:37:24]	[done]
-	build successfully !
-
-[2024-04-11 14:38:13]	[done]
-	build successfully !
-
-[2024-04-11 14:38:36]	[done]
-	build successfully !
-
-[2024-04-11 14:39:14]	[done]
-	build successfully !
-
-[2024-04-11 14:39:30]	[done]
-	build successfully !
-
-[2024-04-11 14:39:54]	[done]
-	build successfully !
-
-[2024-04-11 14:40:24]	[done]
-	build successfully !
-
-[2024-04-11 14:42:50]	[done]
-	build successfully !
-
-[2024-04-11 14:43:13]	[done]
-	build successfully !
-
-[2024-04-11 14:44:17]	[done]
-	build successfully !
-
-[2024-04-11 14:44:46]	[done]
-	build successfully !
-
-[2024-04-11 14:44:56]	[done]
-	build successfully !
-
-[2024-04-11 14:45:31]	[done]
-	build successfully !
-
-[2024-04-11 14:46:03]	[done]
-	build successfully !
-
-[2024-04-11 14:47:50]	[done]
-	build successfully !
-
-[2024-04-11 14:48:16]	[done]
-	build successfully !
-
-[2024-04-11 14:48:42]	[done]
-	build successfully !
-
-[2024-04-11 14:49:23]	[done]
-	build successfully !
-
-[2024-04-11 14:50:22]	[done]
-	build successfully !
-
-[2024-04-11 14:50:49]	[done]
-	build successfully !
-
-[2024-04-11 14:51:44]	[done]
-	build successfully !
-
-[2024-04-11 14:52:11]	[done]
-	build successfully !
-
-[2024-04-11 14:52:40]	[done]
-	build successfully !
-
-[2024-04-11 14:53:01]	[done]
-	build successfully !
-
-[2024-04-11 14:53:45]	[done]
-	build successfully !
-
-[2024-04-11 14:54:02]	[done]
-	build successfully !
-
-[2024-04-11 14:54:30]	[done]
-	build successfully !
-
-[2024-04-11 14:54:50]	[done]
-	build successfully !
-
-[2024-04-11 14:55:29]	[done]
-	build successfully !
-
-[2024-04-11 14:55:56]	[done]
-	build successfully !
-
-[2024-04-11 14:56:11]	[done]
-	build successfully !
-
-[2024-04-11 14:57:10]	[done]
-	build successfully !
-
-[2024-04-11 14:57:24]	[done]
-	build successfully !
-
-[2024-04-11 15:03:40]	[done]
-	build successfully !
-
-[2024-04-11 15:04:14]	[done]
-	build successfully !
-
-[2024-04-11 15:04:32]	[done]
-	build successfully !
-
-[2024-04-11 15:09:30]	[done]
-	build successfully !
-
-[2024-04-11 15:11:17]	[done]
-	build successfully !
-
-[2024-04-11 15:11:40]	[done]
-	build successfully !
-
-[2024-04-11 15:12:23]	[done]
-	build successfully !
-
-[2024-04-11 15:13:07]	[done]
-	build successfully !
-
-[2024-04-11 15:13:32]	[done]
-	build successfully !
-
-[2024-04-11 15:14:03]	[done]
-	build successfully !
-
-[2024-04-11 15:14:23]	[done]
-	build successfully !
-
-[2024-04-11 15:15:22]	[done]
-	build successfully !
-
-[2024-04-11 15:16:20]	[done]
-	build successfully !
-
-[2024-04-11 15:16:53]	[done]
-	build successfully !
-
-[2024-04-11 15:17:20]	[done]
-	build successfully !
-
-[2024-04-11 15:17:49]	[done]
-	build successfully !
-
-[2024-04-11 15:18:23]	[done]
-	build successfully !
-
-[2024-04-11 15:19:07]	[done]
-	build successfully !
-
-[2024-04-11 15:19:30]	[done]
-	build successfully !
-
-[2024-04-11 15:19:57]	[done]
-	build successfully !
-
-[2024-04-11 15:20:30]	[done]
-	build successfully !
-
-[2024-04-11 15:20:56]	[done]
-	build successfully !
-
-[2024-04-11 15:23:55]	[done]
-	build successfully !
-
-[2024-04-11 15:25:06]	[done]
-	build successfully !
-
-[2024-04-11 15:25:35]	[done]
-	build successfully !
-
-[2024-04-11 15:26:00]	[done]
-	build successfully !
-
-[2024-04-11 15:26:41]	[done]
-	build successfully !
-
-[2024-04-11 15:27:53]	[done]
-	build successfully !
-
-[2024-04-11 15:28:54]	[done]
-	build successfully !
-
-[2024-04-11 15:30:01]	[done]
-	build successfully !
-
-[2024-04-11 15:30:24]	[done]
-	build successfully !
-
-[2024-04-11 15:31:21]	[done]
-	build successfully !
-
-[2024-04-11 15:32:24]	[done]
-	build successfully !
-
-[2024-04-11 15:34:11]	[done]
-	build successfully !
-
-[2024-04-11 15:38:16]	[done]
-	build successfully !
-
-[2024-04-11 15:40:04]	[done]
-	build successfully !
-
-[2024-04-11 16:35:28]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:166:13: error: 'ADCSample' causes a section type conflict with 'CtrValue'
-  166 | CCMRAM void ADCSample(void)
-      |             ^
-./../Core/Src/function.c:18:26: note: declared here
-   18 | CCMRAM struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-      |                          ^
-1 error generated.
-
-[2024-04-11 16:37:45]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:18:8: error: 'section' attribute only applies to functions, global variables, Objective-C methods, and Objective-C properties
-   18 | struct CCMRAM _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-      |        ^
-../Core/Inc\function.h:11:31: note: expanded from macro 'CCMRAM'
-   11 | #define CCMRAM __attribute__((section("ccmram")))
-      |                               ^
-./../Core/Src/function.c:166:13: error: 'ADCSample' causes a section type conflict with 'DF'
-  166 | CCMRAM void ADCSample(void)
-      |             ^
-./../Core/Src/function.c:19:21: note: declared here
-   19 | CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
-      |                     ^
-2 errors generated.
-
-[2024-04-11 16:37:51]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:166:13: error: 'ADCSample' causes a section type conflict with 'DF'
-  166 | CCMRAM void ADCSample(void)
-      |             ^
-./../Core/Src/function.c:19:21: note: declared here
-   19 | CCMRAM struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
-      |                     ^
-1 error generated.
-
-[2024-04-11 16:37:58]	[done]
-	build successfully !
-
-[2024-04-11 16:38:33]	[done]
-	build successfully !
-
-[2024-04-11 16:39:05]	[done]
-	build successfully !
-
-[2024-04-11 16:39:22]	[done]
-	build successfully !
-
-[2024-04-11 16:47:06]	[done]
-	build successfully !
-
-[2024-04-11 16:51:29]	[done]
-	build successfully !
-
-[2024-04-11 17:13:43]	[done]
-	build successfully !
-
-[2024-04-11 17:29:03]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-In file included from ./../Core/Src/function.c:1:
-../Core/Inc\function.h:36:23: warning: 'extern' variable has an initializer [-Wextern-initializer]
-   36 | extern volatile float powerEfficiency = 0;              // 电源转换效率
-      |                       ^
-./../Core/Src/function.c:24:7: error: redefinition of 'powerEfficiency' with a different type: 'float' vs 'volatile float'
-   24 | float powerEfficiency = 0;                                      // 电源转换效率
-      |       ^
-../Core/Inc\function.h:36:23: note: previous definition is here
-   36 | extern volatile float powerEfficiency = 0;              // 电源转换效率
-      |                       ^
-1 warning and 1 error generated.
-
-[2024-04-11 17:29:21]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:24:7: error: redefinition of 'powerEfficiency' with a different type: 'float' vs 'volatile float'
-   24 | float powerEfficiency = 0;                                      // 电源转换效率
-      |       ^
-../Core/Inc\function.h:36:23: note: previous declaration is here
-   36 | extern volatile float powerEfficiency;          // 电源转换效率
-      |                       ^
-1 error generated.
-
-[2024-04-11 17:29:58]	[done]
-	build successfully !
-
-[2024-04-11 17:30:50]	[done]
-	build successfully !
-
-[2024-04-11 17:31:34]	[done]
-	build successfully !
-
-[2024-04-11 17:32:00]	[done]
-	build successfully !
-
-[2024-04-11 17:35:58]	[done]
-	build successfully !
-
-[2024-04-11 17:37:46]	[done]
-	build successfully !
-
-[2024-04-11 17:39:30]	[done]
-	build successfully !
-
-[2024-04-11 17:43:48]	[done]
-	build successfully !
-
-[2024-04-11 17:45:40]	[done]
-	build successfully !
-
-[2024-04-11 17:46:10]	[done]
-	build successfully !
-
-[2024-04-11 18:12:08]	[done]
-	build successfully !
-
-[2024-04-11 18:23:59]	[done]
-	build successfully !
-
-[2024-04-11 18:24:51]	[done]
-	build successfully !
-
-[2024-04-11 18:26:54]	[done]
-	build successfully !
-
-[2024-04-11 18:27:58]	[done]
-	build successfully !
-
-[2024-04-11 18:29:22]	[done]
-	build successfully !
-
-[2024-04-11 18:31:49]	[done]
-	build successfully !
-
-[2024-04-11 18:35:47]	[done]
-	build successfully !
-
-[2024-04-11 18:36:54]	[done]
-	build successfully !
-
-[2024-04-11 18:37:00]	[done]
-	build successfully !
-
-[2024-04-11 18:40:10]	[done]
-	build successfully !
-
-[2024-04-11 18:42:10]	[done]
-	build successfully !
-
-[2024-04-11 18:42:23]	[done]
-	build successfully !
-
-[2024-04-11 21:10:30]	[done]
-	build successfully !
-
-[2024-04-11 21:11:09]	[done]
-	build successfully !
-
-[2024-04-11 21:11:25]	[done]
-	build successfully !
-
-[2024-04-11 21:25:57]	[done]
-	build successfully !
-
-[2024-04-11 21:50:37]	[done]
-	build successfully !
-
-[2024-04-11 22:01:30]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
-command: 
-  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
-   at unify_builder.Program.Main(String[] args_)
----
-./../Core/Src/function.c:257:5: error: function definition is not allowed here
-  257 |     {
-      |     ^
-./../Core/Src/function.c:283:5: error: function definition is not allowed here
-  283 |     {
-      |     ^
-./../Core/Src/function.c:296:5: error: function definition is not allowed here
-  296 |     {
-      |     ^
-./../Core/Src/function.c:327:5: error: function definition is not allowed here
-  327 |     {
-      |     ^
-./../Core/Src/function.c:338:5: error: function definition is not allowed here
-  338 |     {
-      |     ^
-./../Core/Src/function.c:365:5: error: function definition is not allowed here
-  365 |     {
-      |     ^
-./../Core/Src/function.c:372:5: error: function definition is not allowed here
-  372 |     {
-      |     ^
-./../Core/Src/function.c:386:5: error: function definition is not allowed here
-  386 |     {
-      |     ^
-./../Core/Src/function.c:417:5: error: function definition is not allowed here
-  417 |     {
-      |     ^
-./../Core/Src/function.c:522:5: error: function definition is not allowed here
-  522 |     {
-      |     ^
-./../Core/Src/function.c:556:5: error: function definition is not allowed here
-  556 |     {
-      |     ^
-./../Core/Src/function.c:628:5: error: function definition is not allowed here
-  628 |     {
-      |     ^
-./../Core/Src/function.c:648:5: error: function definition is not allowed here
-  648 |     {
-      |     ^
-./../Core/Src/function.c:728:5: error: function definition is not allowed here
-  728 |     {
-      |     ^
-./../Core/Src/function.c:748:5: error: function definition is not allowed here
-  748 |     {
-      |     ^
-./../Core/Src/function.c:770:5: error: function definition is not allowed here
-  770 |     {
-      |     ^
-./../Core/Src/function.c:784:5: error: function definition is not allowed here
-  784 |     {
-      |     ^
-./../Core/Src/function.c:801:5: error: function definition is not allowed here
-  801 |     {
-      |     ^
-./../Core/Src/function.c:815:5: error: function definition is not allowed here
-  815 |     {
-      |     ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-
-[2024-04-11 22:02:46]	[done]
-	build successfully !
-
-[2024-04-11 22:05:35]	[done]
-	build successfully !
-
-[2024-04-11 22:10:46]	[done]
-	build successfully !
-
-[2024-04-11 22:12:46]	[done]
-	build successfully !
-
-[2024-04-11 22:13:57]	[done]
-	build successfully !
-
-[2024-04-11 22:14:50]	[done]
-	build successfully !
-
-[2024-04-11 22:16:47]	[done]
-	build successfully !
-
-[2024-04-11 22:22:33]	[done]
-	build successfully !
-
-[2024-04-11 22:38:08]	[done]
-	build successfully !
-
-[2024-04-11 22:49:31]	[done]
-	build successfully !
-
-[2024-04-11 22:55:07]	[done]
-	build successfully !
-
-[2024-04-11 22:57:55]	[done]
-	build successfully !
-
-[2024-04-11 23:02:18]	[done]
-	build successfully !
-
-[2024-04-11 23:03:10]	[done]
-	build successfully !
-
-[2024-04-11 23:03:41]	[done]
-	build successfully !
-
-[2024-04-11 23:05:06]	[done]
-	build successfully !
-
-[2024-04-11 23:13:12]	[done]
-	build successfully !
-
-[2024-04-11 23:16:38]	[done]
-	build successfully !
-
-[2024-04-11 23:18:04]	[done]
-	build successfully !
-
-[2024-04-11 23:18:40]	[done]
-	build successfully !
-
-[2024-04-11 23:20:51]	[done]
-	build successfully !
-
-[2024-04-11 23:22:07]	[done]
-	build successfully !
-
-[2024-04-11 23:30:30]	[done]
-	build successfully !
-
-[2024-04-11 23:32:39]	[done]
-	build successfully !
-
-[2024-04-12 00:42:31]	[done]
-	build successfully !
-
-[2024-04-12 00:45:37]	[done]
-	build successfully !
-
-[2024-04-12 00:46:53]	[done]
-	build successfully !
-
-[2024-04-12 00:48:41]	[done]
-	build successfully !
-
-[2024-04-12 00:49:31]	[done]
-	build successfully !
-
-[2024-04-12 01:02:00]	[done]
-	build successfully !
-
-[2024-04-12 15:44:28]	[done]
-	build successfully !
-
-[2024-04-12 15:50:54]	[done]
+[2024-04-15 22:22:59]	[done]
 	build successfully !
 
