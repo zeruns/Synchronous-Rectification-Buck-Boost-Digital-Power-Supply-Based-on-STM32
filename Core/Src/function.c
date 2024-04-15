@@ -7,16 +7,18 @@
 #include "Key.h"
 #include "hrtim.h"
 
+// 数字后面加F表示使用单精度浮点数类型，C语言默认使用双精度浮点数类型，硬件浮点运算只支持单精度浮点数
+
 volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                // ADC采样外设到内存的DMA数据保存寄存器
 volatile uint8_t Encoder_Flag = 0;                              // 编码器中断标志位
 volatile uint8_t BUZZER_Short_Flag = 0;                         // 蜂鸣器短叫触发标志位
 volatile uint8_t BUZZER_Middle_Flag = 0;                        // 蜂鸣器中等时间长度鸣叫触发标志位
 volatile uint8_t BUZZER_Flag = 0;                               // 蜂鸣器当前状态标志位
-volatile float MAX_VOUT_OTP_VAL = 65.0;                         // 过温保护阈值
-volatile float MAX_VOUT_OVP_VAL = 50.0;                         // 输出过压保护阈值
-volatile float MAX_VOUT_OCP_VAL = 10.5;                         // 输出过流保护阈值
-#define MAX_SHORT_I 10.2                                        // 短路电流判据
-#define MIN_SHORT_V 0.5                                         // 短路电压判据
+volatile float MAX_VOUT_OTP_VAL = 65.0F;                        // 过温保护阈值
+volatile float MAX_VOUT_OVP_VAL = 50.0F;                        // 输出过压保护阈值
+volatile float MAX_VOUT_OCP_VAL = 10.5F;                        // 输出过流保护阈值
+#define MAX_SHORT_I 10.1F                                       // 短路电流判据
+#define MIN_SHORT_V 0.5F                                        // 短路电压判据
 struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
 struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
 struct _ADI SADC = {0, 0, 0, 0, 0, 0, 0, 0};                    // 输入输出参数采样值和平均值
@@ -201,8 +203,8 @@ void Encoder(void)
                         {
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
-                            CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
                 }
@@ -228,11 +230,11 @@ void Encoder(void)
                         // 选中十位时
                         if (SET_Value.SET_bit == 1)
                         {
-                            SET_Value.Vout += 10;
+                            SET_Value.Vout += 10.0F;
                             // 当设置值大于48.5时限位
                             if (SET_Value.Vout > 48.5)
                             {
-                                SET_Value.Vout -= 10;
+                                SET_Value.Vout -= 10.0F;
                             }
                         }
                         // 选中个位时
@@ -242,27 +244,27 @@ void Encoder(void)
                             // 当设置值大于48.5时限位
                             if (SET_Value.Vout > 48.5)
                             {
-                                SET_Value.Vout = 48.5;
+                                SET_Value.Vout = 48.5F;
                             }
                         }
                         // 选中小数第一位时
                         else if (SET_Value.SET_bit == 3)
                         {
-                            SET_Value.Vout += 0.1;
+                            SET_Value.Vout += 0.1F;
                             // 当设置值大于48.5时限位
                             if (SET_Value.Vout > 48.5)
                             {
-                                SET_Value.Vout -= 0.1;
+                                SET_Value.Vout -= 0.1F;
                             }
                         }
                         // 选中小数第二位时
                         else if (SET_Value.SET_bit == 4)
                         {
-                            SET_Value.Vout += 0.01;
+                            SET_Value.Vout += 0.01F;
                             // 当设置值大于48.5时限位
                             if (SET_Value.Vout > 48.5)
                             {
-                                SET_Value.Vout -= 0.01;
+                                SET_Value.Vout -= 0.01F;
                             }
                         }
                         // 当设置被修改时
@@ -271,8 +273,8 @@ void Encoder(void)
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
 
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
-                            CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
                 }
@@ -297,27 +299,27 @@ void OLED_Display(void)
             OLED_ShowChinese(0, 16, "电流设置");
             OLED_ShowChinese(0, 32, "输出电压");
             OLED_ShowChinese(0, 48, "输出电流");
-            OLED_ShowChar(64, 0, ':', OLED_8X16);                                                         // 显示冒号
-            OLED_ShowChar(64, 16, ':', OLED_8X16);                                                        // 显示冒号
-            OLED_ShowChar(64, 32, ':', OLED_8X16);                                                        // 显示冒号
-            OLED_ShowChar(64, 48, ':', OLED_8X16);                                                        // 显示冒号
-            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                                 // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                                // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                                // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                                // 显示单位符号
-            OLED_ShowNum(72, 0, SET_Value.Vout + 0.005, 2, OLED_8X16);                                    // 显示当前设置电压值整数部分
-            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                 // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((SET_Value.Vout + 0.005) * 100) % 100, 2, OLED_8X16);  // 显示当前设置电压值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 16, SET_Value.Iout + 0.005, 2, OLED_8X16);                                   // 显示当前设置电流值整数部分
-            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((SET_Value.Iout + 0.005) * 100) % 100, 2, OLED_8X16); // 显示当前设置电流值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 32, VOUT + 0.005, 2, OLED_8X16);                                             // 显示输出电压整数部分
-            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                                // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005) * 100) % 100, 2, OLED_8X16);           // 显示输出电压值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 48, IOUT + 0.005, 2, OLED_8X16);                                             // 显示输出电流整数部分
-            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                                // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005) * 100) % 100, 2, OLED_8X16);           // 显示输出电流值小数部分,+0.005是为了四舍五入
-            if (SET_Value.currentSetting == 1)                                                            // 选中第一个设置项时，输出电压设置
+            OLED_ShowChar(64, 0, ':', OLED_8X16);                                                             // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16);                                                            // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16);                                                            // 显示冒号
+            OLED_ShowChar(64, 48, ':', OLED_8X16);                                                            // 显示冒号
+            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                                     // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                                    // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                                    // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                                    // 显示单位符号
+            OLED_ShowNum(72, 0, SET_Value.Vout + 0.005F, 2, OLED_8X16);                                       // 显示当前设置电压值整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                     // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((SET_Value.Vout + 0.005F) * 100.0F) % 100, 2, OLED_8X16);  // 显示当前设置电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 16, SET_Value.Iout + 0.005F, 2, OLED_8X16);                                      // 显示当前设置电流值整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                    // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((SET_Value.Iout + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示当前设置电流值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 32, VOUT + 0.005F, 2, OLED_8X16);                                                // 显示输出电压整数部分
+            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                                    // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16);           // 显示输出电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 48, IOUT + 0.005F, 2, OLED_8X16);                                                // 显示输出电流整数部分
+            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                                    // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16);           // 显示输出电流值小数部分,+0.005是为了四舍五入
+            if (SET_Value.currentSetting == 1)                                                                // 选中第一个设置项时，输出电压设置
             {
                 // 没有选中设置位时
                 if (SET_Value.SET_bit == 0)
@@ -380,26 +382,26 @@ void OLED_Display(void)
             OLED_ShowChinese(0, 16, "输入电流");
             OLED_ShowChinese(0, 32, "输出电压");
             OLED_ShowChinese(0, 48, "输出电流");
-            OLED_ShowChar(64, 0, ':', OLED_8X16);                                               // 显示冒号
-            OLED_ShowChar(64, 16, ':', OLED_8X16);                                              // 显示冒号
-            OLED_ShowChar(64, 32, ':', OLED_8X16);                                              // 显示冒号
-            OLED_ShowChar(64, 48, ':', OLED_8X16);                                              // 显示冒号
-            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                       // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                      // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                      // 显示单位符号
-            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                      // 显示单位符号
-            OLED_ShowNum(72, 0, VIN + 0.005, 2, OLED_8X16);                                     // 显示输入电压值整数部分
-            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                       // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((VIN + 0.005) * 100) % 100, 2, OLED_8X16);   // 显示输入电压值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 16, IIN + 0.005, 2, OLED_8X16);                                    // 显示输入电流值整数部分
-            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                      // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((IIN + 0.005) * 100) % 100, 2, OLED_8X16);  // 显示输入电流值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 32, VOUT + 0.005, 2, OLED_8X16);                                   // 显示输出电压整数部分
-            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                      // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005) * 100) % 100, 2, OLED_8X16); // 显示输出电压值小数部分,+0.005是为了四舍五入
-            OLED_ShowNum(72, 48, IOUT + 0.005, 2, OLED_8X16);                                   // 显示输出电流整数部分
-            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                      // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005) * 100) % 100, 2, OLED_8X16); // 显示输出电流值小数部分,+0.005是为了四舍五入
+            OLED_ShowChar(64, 0, ':', OLED_8X16);                                                   // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16);                                                  // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16);                                                  // 显示冒号
+            OLED_ShowChar(64, 48, ':', OLED_8X16);                                                  // 显示冒号
+            OLED_ShowChar(72 + 8 * 5, 0, 'V', OLED_8X16);                                           // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                          // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                          // 显示单位符号
+            OLED_ShowChar(72 + 8 * 5, 48, 'A', OLED_8X16);                                          // 显示单位符号
+            OLED_ShowNum(72, 0, VIN + 0.005F, 2, OLED_8X16);                                        // 显示输入电压值整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                           // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((VIN + 0.005F) * 100.0F) % 100, 2, OLED_8X16);   // 显示输入电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 16, IIN + 0.005F, 2, OLED_8X16);                                       // 显示输入电流值整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                          // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((IIN + 0.005F) * 100.0F) % 100, 2, OLED_8X16);  // 显示输入电流值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 32, VOUT + 0.005F, 2, OLED_8X16);                                      // 显示输出电压整数部分
+            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                          // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((VOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示输出电压值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 48, IOUT + 0.005F, 2, OLED_8X16);                                      // 显示输出电流整数部分
+            OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                          // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示输出电流值小数部分,+0.005是为了四舍五入
         }
         else if (Screen_page == DATA2_page) // 数据显示页面2
         {
@@ -411,15 +413,15 @@ void OLED_Display(void)
             OLED_ShowChar(64, 16, ':', OLED_8X16); // 显示冒号
             OLED_ShowChar(64, 32, ':', OLED_8X16); // 显示冒号
             // OLED_ShowChar(64, 48, ':', OLED_8X16);                                              // 显示冒号
-            OLED_ShowNum(72, 0, CPU_TEMP + 0.005, 2, OLED_8X16);                                          // 显示CPU温度整数部分
-            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                 // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((CPU_TEMP + 0.005) * 100) % 100, 2, OLED_8X16);        // 显示CPU温度小数部分，+0.005是为了四舍五入
-            OLED_ShowChinese(72 + 8 * 5, 0, "℃");                                                         // 显示单位符号
-            OLED_ShowNum(72, 16, MainBoard_TEMP + 0.005, 2, OLED_8X16);                                   // 显示CPU温度整数部分
-            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                // 显示小数点
-            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((MainBoard_TEMP + 0.005) * 100) % 100, 2, OLED_8X16); // 显示CPU温度小数部分，+0.005是为了四舍五入
-            OLED_ShowChinese(72 + 8 * 5, 16, "℃");                                                        // 显示单位符号
-            OLED_Printf(72, 32, OLED_8X16, "%2.2f%%", powerEfficiency);                                   // 显示转换效率
+            OLED_ShowNum(72, 0, CPU_TEMP + 0.005F, 2, OLED_8X16);                                             // 显示CPU温度整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                     // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((CPU_TEMP + 0.005F) * 100.0F) % 100, 2, OLED_8X16);        // 显示CPU温度小数部分，+0.005是为了四舍五入
+            OLED_ShowChinese(72 + 8 * 5, 0, "℃");                                                             // 显示单位符号
+            OLED_ShowNum(72, 16, MainBoard_TEMP + 0.005F, 2, OLED_8X16);                                      // 显示CPU温度整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                    // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((MainBoard_TEMP + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示CPU温度小数部分，+0.005是为了四舍五入
+            OLED_ShowChinese(72 + 8 * 5, 16, "℃");                                                            // 显示单位符号
+            OLED_Printf(72, 32, OLED_8X16, "%2.2f%%", powerEfficiency);                                       // 显示转换效率
         }
         else if (Screen_page == SET_page) // 设置页面
         {
@@ -457,7 +459,7 @@ CCMRAM void ADCSample(void)
     // 从DMA缓冲器中获取数据
     SADC.Vin = (uint32_t)ADC1_RESULT[0];
     SADC.Iin = (uint32_t)ADC1_RESULT[1];
-    SADC.Vout = (uint32_t)ADC1_RESULT[2];
+    SADC.Vout = (uint32_t)((ADC1_RESULT[2] * CAL_VOUT_K >> 12) + CAL_VOUT_B);
     SADC.Iout = (uint32_t)ADC1_RESULT[3];
 
     if (SADC.Vin < 15) // 采样有零偏离，采样值很小时，直接为0
@@ -484,12 +486,12 @@ CCMRAM void ADCSample(void)
  */
 void ADC_calculate(void)
 {
-    VIN = SADC.VinAvg * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);   // 计算ADC1通道0输入电压采样结果
-    IIN = SADC.IinAvg * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;   // 计算ADC1通道1输入电流采样结果
-    VOUT = SADC.VoutAvg * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0); // 计算ADC1通道2输出电压采样结果
-    IOUT = SADC.IoutAvg * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005; // 计算ADC1通道3输出电流采样结果
-    MainBoard_TEMP = GET_NTC_Temperature();                       // 获取NTC温度(主板温度)
-    CPU_TEMP = GET_CPU_Temperature();                             // 获取单片机CPU温度
+    VIN = SADC.VinAvg * REF_3V3 / ADC_MAX_VALUE / (4.7F / 75.0F);   // 计算ADC1通道0输入电压采样结果
+    IIN = SADC.IinAvg * REF_3V3 / ADC_MAX_VALUE / 62.0F / 0.005F;   // 计算ADC1通道1输入电流采样结果
+    VOUT = SADC.VoutAvg * REF_3V3 / ADC_MAX_VALUE / (4.7F / 75.0F); // 计算ADC1通道2输出电压采样结果
+    IOUT = SADC.IoutAvg * REF_3V3 / ADC_MAX_VALUE / 62.0F / 0.005F; // 计算ADC1通道3输出电流采样结果
+    MainBoard_TEMP = GET_NTC_Temperature();                         // 获取NTC温度(主板温度)
+    CPU_TEMP = GET_CPU_Temperature();                               // 获取单片机CPU温度
 }
 
 /*
@@ -560,7 +562,7 @@ void ValInit(void)
     u1 = 0;
     // 设置值初始化
     SET_Value.Vout = 5.0;
-    SET_Value.Iout = 10.0;
+    SET_Value.Iout = 1.0;
 }
 
 /*
@@ -645,8 +647,8 @@ void StateMRise(void)
         u0 = 0;
         u1 = 0;
         // 将设置值传到参考值
-        CtrValue.Vout_ref = SET_Value.Vout * (4.7 / 75.0) / REF_3V3 * ADC_MAX_VALUE;
-        CtrValue.Iout_ref = SET_Value.Iout * 0.005 * (6200.0 / 100.0) / REF_3V3 * ADC_MAX_VALUE;
+        CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+        CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
         // 跳转至软启等待状态
         STState = SSWait;
 
@@ -657,8 +659,8 @@ void StateMRise(void)
     {
         // 计数器累加
         Cnt++;
-        // 等待100ms
-        if (Cnt > 20)
+        // 等待25ms
+        if (Cnt > 5)
         {
             // 计数器清0
             Cnt = 0;
@@ -699,8 +701,8 @@ void StateMRise(void)
         BUCKMaxDutyCnt++;
         BoostMaxDutyCnt++;
         // 最大占空比限制累加
-        CtrValue.BUCKMaxDuty = CtrValue.BUCKMaxDuty + BUCKMaxDutyCnt * 35;
-        CtrValue.BoostMaxDuty = CtrValue.BoostMaxDuty + BoostMaxDutyCnt * 35;
+        CtrValue.BUCKMaxDuty = CtrValue.BUCKMaxDuty + BUCKMaxDutyCnt * 15;
+        CtrValue.BoostMaxDuty = CtrValue.BoostMaxDuty + BoostMaxDutyCnt * 15;
         // 累加到最大值
         if (CtrValue.BUCKMaxDuty > MAX_BUCK_DUTY)
             CtrValue.BUCKMaxDuty = MAX_BUCK_DUTY;
@@ -725,8 +727,8 @@ void ShortOff(void)
 {
     static int32_t RSCnt = 0;
     static uint8_t RSNum = 0;
-    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);
-    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;
+    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7F / 75.0F);
+    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0F / 0.005F;
     // 当输出电流大于 *A，且电压小于*V时，可判定为发生短路保护
     if ((Iout > MAX_SHORT_I) && (Vout < MIN_SHORT_V))
     {
@@ -780,7 +782,7 @@ void OVP(void)
 {
     // 过压保护判据保持计数器定义
     static uint16_t OVPCnt = 0;
-    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7 / 75.0);
+    float Vout = SADC.Vout * REF_3V3 / ADC_MAX_VALUE / (4.7F / 75.0F);
     // 当输出电压大于50V，且保持10ms
     if (Vout >= MAX_VOUT_OVP_VAL)
     {
@@ -819,7 +821,7 @@ void OCP(void)
     // 保留保护重启计数器
     static uint16_t RSNum = 0;
 
-    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0 / 0.005;
+    float Iout = SADC.Iout * REF_3V3 / ADC_MAX_VALUE / 62.0F / 0.005F;
 
     // 当输出电流大于*A，且保持50ms
     if ((Iout >= MAX_VOUT_OCP_VAL) && (DF.SMFlag == Run))
@@ -933,10 +935,10 @@ CCMRAM void BBMode(void)
     // NA-初始化模式
     case NA:
     {
-        if (CtrValue.Vout_ref < (VIN_ADC * 0.8))      // 输出参考电压小于0.8倍输入电压时
-            DF.BBFlag = Buck;                         // 切换到buck模式
-        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2)) // 输出参考电压大于1.2倍输入电压时
-            DF.BBFlag = Boost;                        // 切换到boost模式
+        if (CtrValue.Vout_ref < (VIN_ADC * 0.8F))      // 输出参考电压小于0.8倍输入电压时
+            DF.BBFlag = Buck;                          // 切换到buck模式
+        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2F)) // 输出参考电压大于1.2倍输入电压时
+            DF.BBFlag = Boost;                         // 切换到boost模式
         else
             DF.BBFlag = Mix; // buck-boost（MIX） mode
         break;
@@ -944,28 +946,28 @@ CCMRAM void BBMode(void)
     // BUCK模式
     case Buck:
     {
-        if (CtrValue.Vout_ref > (VIN_ADC * 1.2))       // vout>1.2*vin
-            DF.BBFlag = Boost;                         // boost mode
-        else if (CtrValue.Vout_ref > (VIN_ADC * 0.85)) // 1.2*vin>vout>0.85*vin
-            DF.BBFlag = Mix;                           // buck-boost（MIX） mode
+        if (CtrValue.Vout_ref > (VIN_ADC * 1.2F))       // vout>1.2*vin
+            DF.BBFlag = Boost;                          // boost mode
+        else if (CtrValue.Vout_ref > (VIN_ADC * 0.85F)) // 1.2*vin>vout>0.85*vin
+            DF.BBFlag = Mix;                            // buck-boost（MIX） mode
         break;
     }
     // Boost模式
     case Boost:
     {
-        if (CtrValue.Vout_ref < ((VIN_ADC * 0.8)))     // vout<0.8*vin
-            DF.BBFlag = Buck;                          // buck mode
-        else if (CtrValue.Vout_ref < (VIN_ADC * 1.15)) // 0.8*vin<vout<1.15*vin
-            DF.BBFlag = Mix;                           // buck-boost（MIX） mode
+        if (CtrValue.Vout_ref < ((VIN_ADC * 0.8F)))     // vout<0.8*vin
+            DF.BBFlag = Buck;                           // buck mode
+        else if (CtrValue.Vout_ref < (VIN_ADC * 1.15F)) // 0.8*vin<vout<1.15*vin
+            DF.BBFlag = Mix;                            // buck-boost（MIX） mode
         break;
     }
     // Mix模式
     case Mix:
     {
-        if (CtrValue.Vout_ref < (VIN_ADC * 0.8))      // vout<0.8*vin
-            DF.BBFlag = Buck;                         // buck mode
-        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2)) // vout>1.2*vin
-            DF.BBFlag = Boost;                        // boost mode
+        if (CtrValue.Vout_ref < (VIN_ADC * 0.8F))      // vout<0.8*vin
+            DF.BBFlag = Buck;                          // buck mode
+        else if (CtrValue.Vout_ref > (VIN_ADC * 1.2F)) // vout>1.2*vin
+            DF.BBFlag = Boost;                         // boost mode
         break;
     }
     }
@@ -1026,10 +1028,10 @@ void BUZZER_Middle(void)
  */
 float one_order_lowpass_filter(float input, float alpha)
 {
-    static float prev_output = 0.0;                           // 静态变量，用于保存上一次的输出值
-    float output = alpha * input + (1 - alpha) * prev_output; // 一阶低通滤波算法
-    prev_output = output;                                     // 保存本次输出值，以备下一次使用
-    return output;                                            // 返回滤波后的输出信号
+    static float prev_output = 0.0F;                             // 静态变量，用于保存上一次的输出值
+    float output = alpha * input + (1.0F - alpha) * prev_output; // 一阶低通滤波算法
+    prev_output = output;                                        // 保存本次输出值，以备下一次使用
+    return output;                                               // 返回滤波后的输出信号
 }
 
 /**
@@ -1041,13 +1043,13 @@ float one_order_lowpass_filter(float input, float alpha)
 float calculateTemperature(float voltage)
 {
     // 数据进入前，可先做滤波处理
-    float Rt = 0;                                            // NTC电阻
-    float R = 10000;                                         // 10K固定阻值电阻
-    float T0 = 273.15 + 25;                                  // 转换为开尔文温度
-    float B = 3950;                                          // B值
-    float Ka = 273.15;                                       // K值
-    Rt = (REF_3V3 - voltage) * 10000 / voltage;              // 计算Rt
-    float temperature = 1 / (1 / T0 + log(Rt / R) / B) - Ka; // 计算温度
+    float Rt = 0;                                                  // NTC电阻
+    float R = 10000;                                               // 10K固定阻值电阻
+    float T0 = 273.15F + 25;                                       // 转换为开尔文温度
+    float B = 3950;                                                // B值
+    float Ka = 273.15F;                                            // K值
+    Rt = (REF_3V3 - voltage) * 10000.0F / voltage;                 // 计算Rt
+    float temperature = 1.0F / (1.0F / T0 + log(Rt / R) / B) - Ka; // 计算温度
     return temperature;
 }
 
@@ -1059,9 +1061,9 @@ float GET_NTC_Temperature(void)
 {
     HAL_ADC_Start(&hadc2); // 启动ADC2采样，采样NTC温度
     // HAL_ADC_PollForConversion(&hadc2, 100); // 等待ADC采样结束
-    uint32_t TEMP_adcValue = HAL_ADC_GetValue(&hadc2);                           // 读取ADC2采样结果
-    float temperature = calculateTemperature(TEMP_adcValue * REF_3V3 / 65520.0); // 计算温度
-    return temperature;                                                          // 返回温度值
+    uint32_t TEMP_adcValue = HAL_ADC_GetValue(&hadc2);                            // 读取ADC2采样结果
+    float temperature = calculateTemperature(TEMP_adcValue * REF_3V3 / 65520.0F); // 计算温度
+    return temperature;                                                           // 返回温度值
 }
 
 /**
@@ -1075,9 +1077,9 @@ float GET_CPU_Temperature(void)
     // HAL_ADC_PollForConversion(&hadc5, 100); // 等待ADC采样结束
     float Temp_Scale = (float)(TS_CAL2_TEMP - TS_CAL1_TEMP) / (float)(TS_CAL2 - TS_CAL1); // 计算温度比例因子
     // 读取ADC5采样结果, 除以8是因为开启了硬件超采样到15bit，但下面计算用的是12bit，开启硬件超采样是为了得到一个比较平滑的采样结果
-    float TEMP_adcValue = HAL_ADC_GetValue(&hadc5) / 8.0;
-    float temperature = Temp_Scale * (TEMP_adcValue * (REF_3V3 / 3.0) - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
-    return one_order_lowpass_filter(temperature, 0.1);                                           // 返回温度值
+    float TEMP_adcValue = HAL_ADC_GetValue(&hadc5) / 8.0F;
+    float temperature = Temp_Scale * (TEMP_adcValue * (REF_3V3 / 3.0F) - TS_CAL1) + TS_CAL1_TEMP; // 计算温度
+    return one_order_lowpass_filter(temperature, 0.1F);                                           // 返回温度值
 }
 
 /**

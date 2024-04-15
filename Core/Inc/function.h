@@ -10,20 +10,23 @@
  */
 #define CCMRAM __attribute__((section("ccmram")))
 
-#define ADC_MAX_VALUE 8190.0				   // ADC最大值
-#define REF_3V3 3.2993						   // VREF参考电压
+#define ADC_MAX_VALUE 8190.0F				   // ADC最大值
+#define REF_3V3 3.2993F						   // VREF参考电压
 #define TS_CAL1 *((__IO uint16_t *)0x1FFF75A8) // 内部温度传感器在30度和VREF为3V时的校准数据
 #define TS_CAL2 *((__IO uint16_t *)0x1FFF75CA) // 内部温度传感器在130度和VREF为3V时的校准数据
-#define TS_CAL1_TEMP 30.0
-#define TS_CAL2_TEMP 130.0
+#define TS_CAL1_TEMP 30.0F
+#define TS_CAL2_TEMP 130.0F
 
 #define MIN_BUKC_DUTY 100	  // BUCK最小占空比
 #define MAX_BUCK_DUTY 28200	  // BUCK最大占空比94%
-#define MAX_BUCK_DUTY1 21000  // MIX模式下 BUCK固定占空比70%
+#define MAX_BUCK_DUTY1 24000  // MIX模式下 BUCK固定占空比80%
 #define MIN_BOOST_DUTY 100	  // BOOST最小占空比
 #define MIN_BOOST_DUTY1 1800  // BOOST最小占空6%
 #define MAX_BOOST_DUTY 19500  // BOOST工作模式下最大占空比65%
 #define MAX_BOOST_DUTY1 28200 // BOOST最大占空比94%
+
+#define CAL_VOUT_K	4070//输出电压矫正K值
+#define CAL_VOUT_B	3//输出电压矫正B值
 
 extern volatile uint16_t ADC1_RESULT[4];	// ADC1通道1~4采样结果
 extern volatile uint8_t BUZZER_Short_Flag;	// 蜂鸣器短叫触发标志位
@@ -51,7 +54,7 @@ struct _SET_Value
 	float SET_modified_flag; // 设置被修改标志位
 	float Vout;				 // 输出电压设置值
 	float Iout;				 // 输出电流设置值
-	uint8_t currentSetting;		 // 当前设置项标志位，0表示没有选中设置项
+	uint8_t currentSetting;	 // 当前设置项标志位，0表示没有选中设置项
 	uint8_t SET_bit;		 // 当前设置位标志位，0表示没有选中设置位
 };
 
@@ -181,6 +184,7 @@ void ValInit(void);
 void OTP(void);
 void OVP(void);
 void OCP(void);
+void ShortOff(void);
 void BBMode(void);
 void BUZZER_Short(void);
 void BUZZER_Middle(void);
