@@ -410,3 +410,106 @@ command:
 [2024-04-15 22:22:59]	[done]
 	build successfully !
 
+[2024-04-15 23:04:47]	[done]
+	build successfully !
+
+[2024-04-15 23:06:45]	[done]
+	build successfully !
+
+[2024-04-15 23:07:22]	[done]
+	build successfully !
+
+[2024-04-15 23:08:30]	[done]
+	build successfully !
+
+[2024-04-15 23:12:10]	[done]
+	build successfully !
+
+[2024-04-15 23:47:42]	[done]
+	build successfully !
+
+[2024-04-15 23:52:35]	[done]
+	build successfully !
+
+[2024-04-16 00:35:02]	[done]
+	build successfully !
+
+[2024-04-16 00:40:14]	[done]
+	build successfully !
+
+[2024-04-16 00:42:24]	[done]
+	build successfully !
+
+[2024-04-16 00:43:11]	[done]
+	build successfully !
+
+[2024-04-16 01:28:17]	[done]
+	build successfully !
+
+[2024-04-16 03:10:57]	[done]
+	build successfully !
+
+[2024-04-16 03:16:19]	[done]
+	build successfully !
+
+[2024-04-16 03:16:48]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:51:13: error: 'BuckBoostVILoopCtlPID' causes a section type conflict with 'CVCC_Mode'
+   51 | CCMRAM void BuckBoostVILoopCtlPID(void)
+      |             ^
+./../Core/Src/PID.c:17:28: note: declared here
+   17 | CCMRAM volatile _CVCC_Mode CVCC_Mode = CV;               // 恒流恒压模式标志位
+      |                            ^
+1 error generated.
+
+[2024-04-16 03:17:01]	[done]
+	build successfully !
+
+[2024-04-16 03:20:37]	[done]
+	build successfully !
+
+[2024-04-16 03:22:04]	[done]
+	build successfully !
+
+[2024-04-16 03:24:49]	[done]
+	build successfully !
+
+[2024-04-16 03:33:06]	[done]
+	build successfully !
+
+[2024-04-16 03:43:44]	[done]
+	build successfully !
+
+[2024-04-16 03:46:37]	[done]
+	build successfully !
+
+[2024-04-16 03:49:08]	[done]
+	build successfully !
+
+[2024-04-16 04:11:30]	[done]
+	build successfully !
+
+[2024-04-16 04:13:10]	[done]
+	build successfully !
+
+[2024-04-16 04:15:08]	[done]
+	build successfully !
+
+[2024-04-16 16:10:23]	[done]
+	build successfully !
+
+[2024-04-16 16:10:29]	[done]
+	build successfully !
+
+[2024-04-16 18:11:25]	[done]
+	build successfully !
+
+[2024-04-16 18:12:01]	[done]
+	build successfully !
+
+[2024-04-16 18:14:49]	[done]
+	build successfully !
+

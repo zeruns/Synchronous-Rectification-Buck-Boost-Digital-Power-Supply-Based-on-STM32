@@ -25,8 +25,8 @@
 #define MAX_BOOST_DUTY 19500  // BOOST工作模式下最大占空比65%
 #define MAX_BOOST_DUTY1 28200 // BOOST最大占空比94%
 
-#define CAL_VOUT_K	4070//输出电压矫正K值
-#define CAL_VOUT_B	3//输出电压矫正B值
+#define CAL_VOUT_K 4070 // 输出电压矫正K值
+#define CAL_VOUT_B 3	// 输出电压矫正B值
 
 extern volatile uint16_t ADC1_RESULT[4];	// ADC1通道1~4采样结果
 extern volatile uint8_t BUZZER_Short_Flag;	// 蜂鸣器短叫触发标志位
@@ -132,6 +132,12 @@ typedef enum
 	DATA2_page,		// 数据显示页面2
 	SET_page		// 设置页面
 } _Screen_page;
+
+typedef enum
+{
+	CV, // 恒压模式
+	CC	// 恒流模式
+} _CVCC_Mode;
 
 /*
  * 设置寄存器的位

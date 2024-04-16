@@ -207,6 +207,58 @@ void Encoder(void)
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
+                    // 选中电流设置时
+                    else if (SET_Value.currentSetting == 2)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            SET_Value.Iout -= 10;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Iout < 0.01)
+                            {
+                                SET_Value.Iout += 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            SET_Value.Iout -= 1;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Iout < 0.01)
+                            {
+                                SET_Value.Iout = 0.01;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            SET_Value.Iout -= 0.1;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Iout < 0.01)
+                            {
+                                SET_Value.Iout += 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            SET_Value.Iout -= 0.01;
+                            // 当设置值小于0.5时限位
+                            if (SET_Value.Iout < 0.01)
+                            {
+                                SET_Value.Iout += 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                            // 将设置值传到参考值
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
+                        }
+                    }
                 }
             }
             else if (HAL_GPIO_ReadPin(Encoder_B_GPIO_Port, Encoder_B_Pin) == 0)
@@ -265,6 +317,59 @@ void Encoder(void)
                             if (SET_Value.Vout > 48.5)
                             {
                                 SET_Value.Vout -= 0.01F;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+
+                            // 将设置值传到参考值
+                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
+                        }
+                    }
+                    // 选中电流设置时
+                    else if (SET_Value.currentSetting == 2)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            SET_Value.Iout += 10.0F;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Iout > 10.0)
+                            {
+                                SET_Value.Iout -= 10.0F;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            SET_Value.Iout += 1;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Iout > 10.0)
+                            {
+                                SET_Value.Iout = 10.0F;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            SET_Value.Iout += 0.1F;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Iout > 10.0)
+                            {
+                                SET_Value.Iout -= 0.1F;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            SET_Value.Iout += 0.01F;
+                            // 当设置值大于48.5时限位
+                            if (SET_Value.Iout > 10.0)
+                            {
+                                SET_Value.Iout -= 0.01F;
                             }
                         }
                         // 当设置被修改时
