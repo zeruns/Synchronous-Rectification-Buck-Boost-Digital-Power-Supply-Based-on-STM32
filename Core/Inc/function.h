@@ -28,17 +28,6 @@
 #define CAL_VOUT_K 4070 // 输出电压矫正K值
 #define CAL_VOUT_B 3	// 输出电压矫正B值
 
-extern volatile uint16_t ADC1_RESULT[4];	// ADC1通道1~4采样结果
-extern volatile uint8_t BUZZER_Short_Flag;	// 蜂鸣器短叫触发标志位
-extern volatile uint8_t BUZZER_Flag;		// 蜂鸣器当前状态标志位
-extern volatile uint8_t BUZZER_Middle_Flag; // 蜂鸣器中等时间长度鸣叫触发标志位
-extern struct _Ctr_value CtrValue;
-extern struct _FLAG DF;
-extern struct _ADI SADC;
-extern volatile float VIN, VOUT, IIN, IOUT;		// 电压电流实际值
-extern volatile float MainBoard_TEMP, CPU_TEMP; // 主板和CPU温度实际值
-extern volatile float powerEfficiency;			// 电源转换效率
-
 /***************故障类型*****************/
 #define F_NOERR 0x0000		 // 无故障
 #define F_SW_VIN_UVP 0x0001	 // 输入欠压
@@ -138,6 +127,18 @@ typedef enum
 	CV, // 恒压模式
 	CC	// 恒流模式
 } _CVCC_Mode;
+
+extern volatile uint16_t ADC1_RESULT[4];	// ADC1通道1~4采样结果
+extern volatile uint8_t BUZZER_Short_Flag;	// 蜂鸣器短叫触发标志位
+extern volatile uint8_t BUZZER_Flag;		// 蜂鸣器当前状态标志位
+extern volatile uint8_t BUZZER_Middle_Flag; // 蜂鸣器中等时间长度鸣叫触发标志位
+extern struct _Ctr_value CtrValue;
+extern struct _FLAG DF;
+extern struct _ADI SADC;
+extern volatile float VIN, VOUT, IIN, IOUT;		// 电压电流实际值
+extern volatile float MainBoard_TEMP, CPU_TEMP; // 主板和CPU温度实际值
+extern volatile float powerEfficiency;			// 电源转换效率
+extern volatile _CVCC_Mode CVCC_Mode;			// 电源模式
 
 /*
  * 设置寄存器的位

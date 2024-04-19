@@ -762,3 +762,196 @@ command:
 [2024-04-17 03:35:06]	[done]
 	build successfully !
 
+[2024-04-17 17:27:49]	[done]
+	build successfully !
+
+[2024-04-17 17:28:55]	[done]
+	build successfully !
+
+[2024-04-17 17:29:27]	[done]
+	build successfully !
+
+[2024-04-17 17:30:01]	[done]
+	build successfully !
+
+[2024-04-17 17:30:23]	[done]
+	build successfully !
+
+[2024-04-17 17:30:45]	[done]
+	build successfully !
+
+[2024-04-17 17:31:07]	[done]
+	build successfully !
+
+[2024-04-17 17:31:36]	[done]
+	build successfully !
+
+[2024-04-17 17:32:18]	[done]
+	build successfully !
+
+[2024-04-17 17:32:44]	[done]
+	build successfully !
+
+[2024-04-17 17:33:03]	[done]
+	build successfully !
+
+[2024-04-17 17:34:00]	[done]
+	build successfully !
+
+[2024-04-17 17:34:58]	[done]
+	build successfully !
+
+[2024-04-17 17:35:43]	[done]
+	build successfully !
+
+[2024-04-17 17:36:59]	[done]
+	build successfully !
+
+[2024-04-17 17:47:35]	[done]
+	build successfully !
+
+[2024-04-17 17:48:11]	[done]
+	build successfully !
+
+[2024-04-17 17:48:43]	[done]
+	build successfully !
+
+[2024-04-17 17:49:19]	[done]
+	build successfully !
+
+[2024-04-17 17:50:01]	[done]
+	build successfully !
+
+[2024-04-17 17:50:33]	[done]
+	build successfully !
+
+[2024-04-17 17:51:17]	[done]
+	build successfully !
+
+[2024-04-17 17:51:47]	[done]
+	build successfully !
+
+[2024-04-17 17:52:21]	[done]
+	build successfully !
+
+[2024-04-17 17:53:16]	[done]
+	build successfully !
+
+[2024-04-17 17:53:56]	[done]
+	build successfully !
+
+[2024-04-17 18:12:24]	[done]
+	build successfully !
+
+[2024-04-17 18:13:19]	[done]
+	build successfully !
+
+[2024-04-17 18:13:44]	[done]
+	build successfully !
+
+[2024-04-17 18:14:22]	[done]
+	build successfully !
+
+[2024-04-17 18:14:41]	[done]
+	build successfully !
+
+[2024-04-17 18:15:12]	[done]
+	build successfully !
+
+[2024-04-17 18:16:11]	[done]
+	build successfully !
+
+[2024-04-17 18:16:43]	[done]
+	build successfully !
+
+[2024-04-17 18:17:09]	[done]
+	build successfully !
+
+[2024-04-17 18:17:36]	[done]
+	build successfully !
+
+[2024-04-17 18:18:30]	[done]
+	build successfully !
+
+[2024-04-17 18:19:04]	[done]
+	build successfully !
+
+[2024-04-17 18:19:39]	[done]
+	build successfully !
+
+[2024-04-17 18:20:05]	[done]
+	build successfully !
+
+[2024-04-17 18:20:42]	[done]
+	build successfully !
+
+[2024-04-17 18:21:57]	[done]
+	build successfully !
+
+[2024-04-17 18:22:17]	[done]
+	build successfully !
+
+[2024-04-17 18:22:36]	[done]
+	build successfully !
+
+[2024-04-17 18:23:02]	[done]
+	build successfully !
+
+[2024-04-17 18:23:31]	[done]
+	build successfully !
+
+[2024-04-17 18:23:53]	[done]
+	build successfully !
+
+[2024-04-17 18:24:41]	[done]
+	build successfully !
+
+[2024-04-17 18:25:07]	[done]
+	build successfully !
+
+[2024-04-17 18:25:45]	[done]
+	build successfully !
+
+[2024-04-17 18:26:02]	[done]
+	build successfully !
+
+[2024-04-17 18:26:57]	[done]
+	build successfully !
+
+[2024-04-17 18:31:31]	[done]
+	build successfully !
+
+[2024-04-17 18:32:20]	[done]
+	build successfully !
+
+[2024-04-17 18:33:44]	[done]
+	build successfully !
+
+[2024-04-18 15:30:14]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/PID.c:3:
+../Core/Inc\function.h:41:17: error: unknown type name '_CVCC_Mode'
+   41 | extern volatile _CVCC_Mode CVCC_Mode;                   // 电源模式
+      |                 ^
+1 error generated.
+
+[2024-04-18 15:30:19]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../Core/Src/PID.c:3:
+../Core/Inc\function.h:41:17: error: unknown type name '_CVCC_Mode'
+   41 | extern volatile _CVCC_Mode CVCC_Mode;                   // 电源模式
+      |                 ^
+1 error generated.
+
+[2024-04-18 15:31:07]	[done]
+	build successfully !
+
+[2024-04-18 15:31:33]	[done]
+	build successfully !
+

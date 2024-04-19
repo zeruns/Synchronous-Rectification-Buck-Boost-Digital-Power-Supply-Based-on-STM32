@@ -58,7 +58,6 @@ volatile uint16_t ms_cnt_1 = 0; // 计时变量1
 volatile uint16_t ms_cnt_2 = 0; // 计时变量2
 volatile uint16_t ms_cnt_3 = 0; // 计时变量3
 volatile uint16_t ms_cnt_4 = 0; // 计时变量4
-extern volatile _CVCC_Mode CVCC_Mode;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
