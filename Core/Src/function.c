@@ -424,7 +424,18 @@ void OLED_Display(void)
             OLED_ShowNum(72, 48, IOUT + 0.005F, 2, OLED_8X16);                                                // 显示输出电流整数部分
             OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                                    // 显示小数点
             OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16);           // 显示输出电流值小数部分,+0.005是为了四舍五入
-            if (SET_Value.currentSetting == 1)                                                                // 选中第一个设置项时，输出电压设置
+            if (DF.OUTPUT_Flag == 1)                                                                          // 当输出开启时
+            {
+                if (CVCC_Mode == CV) // 在恒压模式下
+                {
+                    OLED_DrawCircle(72 + 8 * 6 + 4, 32 + 8, 3, OLED_FILLED); // 在输出电压右边显示一个实心圆，表示在恒压模式
+                }
+                else if (CVCC_Mode == CC)
+                {
+                    OLED_DrawCircle(72 + 8 * 6 + 4, 48 + 8, 3, OLED_FILLED); // 在输出电流右边显示一个实心圆，表示在恒流模式
+                }
+            }
+            if (SET_Value.currentSetting == 1) // 选中第一个设置项时，输出电压设置
             {
                 // 没有选中设置位时
                 if (SET_Value.SET_bit == 0)
@@ -666,7 +677,7 @@ void ValInit(void)
     u0 = 0;
     u1 = 0;
     // 设置值初始化
-    SET_Value.Vout = 5.0;
+    SET_Value.Vout = 14.0;
     SET_Value.Iout = 1.0;
 }
 
