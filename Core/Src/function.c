@@ -697,9 +697,13 @@ void StateMErr(void)
     DF.PWMENFlag = 0;
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+    HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);               // 开启蜂鸣器
     // 若故障消除跳转至等待重新软启
     if (DF.ErrFlag == F_NOERR)
+    {
         DF.SMFlag = Wait;
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
+    }
 }
 
 /*
