@@ -1289,3 +1289,140 @@ command:
 [2024-04-21 01:36:25]	[done]
 	build successfully !
 
+[2024-04-21 01:44:24]	[done]
+	build successfully !
+
+[2024-04-21 02:06:36]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6218E: Undefined symbol HAL_SPI_Init (referred from spi.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+
+
+[2024-04-21 02:07:23]	[done]
+	build successfully !
+
+[2024-04-21 02:15:37]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\W25Q64.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/W25Q64.o -MMD ./../Core/Hardware/W25Q64.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/W25Q64.c:6:2: error: call to undeclared function 'MySPI_Init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    6 |         MySPI_Init();
+      |         ^
+./../Core/Hardware/W25Q64.c:16:54: warning: implicit conversion from enumeration type 'FlagStatus' to different enumeration type 'GPIO_PinState' [-Wenum-conversion]
+   16 |         HAL_GPIO_WritePin(Flash_CS_GPIO_Port, Flash_CS_Pin, RESET);
+      |         ~~~~~~~~~~~~~~~~~                                   ^~~~~
+./../Core/Hardware/W25Q64.c:25:54: warning: implicit conversion from enumeration type 'FlagStatus' to different enumeration type 'GPIO_PinState' [-Wenum-conversion]
+   25 |         HAL_GPIO_WritePin(Flash_CS_GPIO_Port, Flash_CS_Pin, SET);
+      |         ~~~~~~~~~~~~~~~~~                                   ^~~
+./../Core/Hardware/W25Q64.c:31:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   31 |         MySPI_SwapByte(W25Q64_JEDEC_ID);
+      |         ^
+./../Core/Hardware/W25Q64.c:42:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   42 |         MySPI_SwapByte(W25Q64_WRITE_ENABLE);
+      |         ^
+./../Core/Hardware/W25Q64.c:50:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   50 |         MySPI_SwapByte(W25Q64_READ_STATUS_REGISTER_1);
+      |         ^
+./../Core/Hardware/W25Q64.c:70:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   70 |         MySPI_SwapByte(W25Q64_PAGE_PROGRAM);
+      |         ^
+./../Core/Hardware/W25Q64.c:88:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   88 |         MySPI_SwapByte(W25Q64_SECTOR_ERASE_4KB);
+      |         ^
+./../Core/Hardware/W25Q64.c:101:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  101 |         MySPI_SwapByte(W25Q64_READ_DATA);
+      |         ^
+2 warnings and 7 errors generated.
+
+[2024-04-21 02:16:27]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\W25Q64.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/W25Q64.o -MMD ./../Core/Hardware/W25Q64.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/W25Q64.c:12:54: warning: implicit conversion from enumeration type 'FlagStatus' to different enumeration type 'GPIO_PinState' [-Wenum-conversion]
+   12 |         HAL_GPIO_WritePin(Flash_CS_GPIO_Port, Flash_CS_Pin, RESET);
+      |         ~~~~~~~~~~~~~~~~~                                   ^~~~~
+./../Core/Hardware/W25Q64.c:21:54: warning: implicit conversion from enumeration type 'FlagStatus' to different enumeration type 'GPIO_PinState' [-Wenum-conversion]
+   21 |         HAL_GPIO_WritePin(Flash_CS_GPIO_Port, Flash_CS_Pin, SET);
+      |         ~~~~~~~~~~~~~~~~~                                   ^~~
+./../Core/Hardware/W25Q64.c:27:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   27 |         MySPI_SwapByte(W25Q64_JEDEC_ID);
+      |         ^
+./../Core/Hardware/W25Q64.c:38:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   38 |         MySPI_SwapByte(W25Q64_WRITE_ENABLE);
+      |         ^
+./../Core/Hardware/W25Q64.c:46:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   46 |         MySPI_SwapByte(W25Q64_READ_STATUS_REGISTER_1);
+      |         ^
+./../Core/Hardware/W25Q64.c:66:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   66 |         MySPI_SwapByte(W25Q64_PAGE_PROGRAM);
+      |         ^
+./../Core/Hardware/W25Q64.c:84:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   84 |         MySPI_SwapByte(W25Q64_SECTOR_ERASE_4KB);
+      |         ^
+./../Core/Hardware/W25Q64.c:97:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   97 |         MySPI_SwapByte(W25Q64_READ_DATA);
+      |         ^
+2 warnings and 6 errors generated.
+
+[2024-04-21 02:16:57]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\W25Q64.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/W25Q64.o -MMD ./../Core/Hardware/W25Q64.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/W25Q64.c:27:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   27 |         MySPI_SwapByte(W25Q64_JEDEC_ID);
+      |         ^
+./../Core/Hardware/W25Q64.c:38:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   38 |         MySPI_SwapByte(W25Q64_WRITE_ENABLE);
+      |         ^
+./../Core/Hardware/W25Q64.c:46:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   46 |         MySPI_SwapByte(W25Q64_READ_STATUS_REGISTER_1);
+      |         ^
+./../Core/Hardware/W25Q64.c:66:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   66 |         MySPI_SwapByte(W25Q64_PAGE_PROGRAM);
+      |         ^
+./../Core/Hardware/W25Q64.c:84:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   84 |         MySPI_SwapByte(W25Q64_SECTOR_ERASE_4KB);
+      |         ^
+./../Core/Hardware/W25Q64.c:97:2: error: call to undeclared function 'MySPI_SwapByte'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   97 |         MySPI_SwapByte(W25Q64_READ_DATA);
+      |         ^
+6 errors generated.
+
+[2024-04-21 03:07:25]	[done]
+	build successfully !
+
+[2024-04-21 03:14:49]	[done]
+	build successfully !
+
+[2024-04-21 03:20:49]	[done]
+	build successfully !
+
+[2024-04-21 03:27:10]	[done]
+	build successfully !
+
+[2024-04-21 03:28:53]	[done]
+	build successfully !
+
+[2024-04-21 03:35:02]	[done]
+	build successfully !
+
+[2024-04-21 03:35:30]	[done]
+	build successfully !
+
+[2024-04-21 03:38:29]	[done]
+	build successfully !
+
+[2024-04-21 03:41:41]	[done]
+	build successfully !
+
+[2024-04-21 03:43:16]	[done]
+	build successfully !
+
+[2024-04-21 03:43:31]	[done]
+	build successfully !
+

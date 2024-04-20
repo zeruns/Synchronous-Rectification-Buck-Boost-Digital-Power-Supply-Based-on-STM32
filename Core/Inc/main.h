@@ -100,6 +100,14 @@ void Error_Handler(void);
 #define USART1_TX_GPIO_Port GPIOA
 #define USART1_RX_Pin GPIO_PIN_10
 #define USART1_RX_GPIO_Port GPIOA
+#define SP3_SCK_Pin GPIO_PIN_10
+#define SP3_SCK_GPIO_Port GPIOC
+#define SP3_MISO_Pin GPIO_PIN_11
+#define SP3_MISO_GPIO_Port GPIOC
+#define SP3_MOSI_Pin GPIO_PIN_12
+#define SP3_MOSI_GPIO_Port GPIOC
+#define Flash_CS_Pin GPIO_PIN_2
+#define Flash_CS_GPIO_Port GPIOD
 #define BUZZER_Pin GPIO_PIN_5
 #define BUZZER_GPIO_Port GPIOB
 

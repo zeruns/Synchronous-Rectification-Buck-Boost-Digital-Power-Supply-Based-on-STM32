@@ -23,7 +23,8 @@
             "memory": "c",
             "type_traits": "c",
             "xmemory": "c",
-            "xutility": "c"
+            "xutility": "c",
+            "w25q64_ins.h": "c"
         }
     },
     "extensions": {}

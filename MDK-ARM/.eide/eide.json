@@ -62,6 +62,9 @@
                     "path": "../Core/Src/PID.c"
                   },
                   {
+                    "path": "../Core/Src/spi.c"
+                  },
+                  {
                     "path": "../Core/Src/stm32g4xx_hal_msp.c"
                   },
                   {
@@ -87,6 +90,9 @@
                   },
                   {
                     "path": "../Core/Hardware/OLED.c"
+                  },
+                  {
+                    "path": "../Core/Hardware/W25Q64.c"
                   }
                 ],
                 "folders": []
@@ -164,6 +170,12 @@
               },
               {
                 "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c"
               },
               {
                 "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c"
