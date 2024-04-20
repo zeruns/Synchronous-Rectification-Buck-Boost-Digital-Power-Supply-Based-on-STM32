@@ -3,7 +3,7 @@
 <title>Static Call Graph - [./build/Buck-Boost/Buck-Boost.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ./build/Buck-Boost/Buck-Boost.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Sun Apr 21 01:32:42 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Sun Apr 21 01:36:25 2024
 <BR><P>
 <H3>Maximum Stack Usage =        508 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -980,6 +980,7 @@ Global Symbols
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUZZER_Middle
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUZZER_Short
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateM
 </UL>
 
 <P><STRONG><a name="[94]"></a>HAL_GetTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32g4xx_hal.o(.text.HAL_GetTick))
@@ -2141,8 +2142,8 @@ Global Symbols
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FAN_PWM_set
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUZZER_Middle
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUZZER_Short
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_calculate
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Display
@@ -2174,10 +2175,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 </UL>
 
-<P><STRONG><a name="[f9]"></a>StateM</STRONG> (Thumb, 262 bytes, Stack size 16 bytes, function.o(ccmram))
+<P><STRONG><a name="[f9]"></a>StateM</STRONG> (Thumb, 296 bytes, Stack size 16 bytes, function.o(ccmram))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = StateM &rArr; StateMRise
 </UL>
-<BR>[Calls]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateMRise
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateMRise
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_HRTIM_WaveformOutputStop
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
