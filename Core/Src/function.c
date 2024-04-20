@@ -9,25 +9,25 @@
 
 // 数字后面加F表示使用单精度浮点数类型，C语言默认使用双精度浮点数类型，硬件浮点运算只支持单精度浮点数
 
-volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                // ADC采样外设到内存的DMA数据保存寄存器
-volatile uint8_t Encoder_Flag = 0;                              // 编码器中断标志位
-volatile uint8_t BUZZER_Short_Flag = 0;                         // 蜂鸣器短叫触发标志位
-volatile uint8_t BUZZER_Middle_Flag = 0;                        // 蜂鸣器中等时间长度鸣叫触发标志位
-volatile uint8_t BUZZER_Flag = 0;                               // 蜂鸣器当前状态标志位
-volatile float MAX_VOUT_OTP_VAL = 65.0F;                        // 过温保护阈值
-volatile float MAX_VOUT_OVP_VAL = 50.0F;                        // 输出过压保护阈值
-volatile float MAX_VOUT_OCP_VAL = 10.5F;                        // 输出过流保护阈值
-#define MAX_SHORT_I 10.1F                                       // 短路电流判据
-#define MIN_SHORT_V 0.5F                                        // 短路电压判据
-struct _Ctr_value CtrValue = {0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
-struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                        // 控制标志位
-struct _ADI SADC = {0, 0, 0, 0, 0, 0, 0, 0};                    // 输入输出参数采样值和平均值
-struct _SET_Value SET_Value = {0, 0, 0, 0, 0};                  // 设置参数
-SState_M STState = SSInit;                                      // 软启动状态标志位
-_Screen_page Screen_page = VIset_page;                          // 当前屏幕页面标志位
-volatile float VIN, VOUT, IIN, IOUT;                            // 电压电流实际值
-volatile float MainBoard_TEMP, CPU_TEMP;                        // 主板和CPU温度实际值
-volatile float powerEfficiency = 0;                             // 电源转换效率
+volatile uint16_t ADC1_RESULT[4] = {0, 0, 0, 0};                   // ADC采样外设到内存的DMA数据保存寄存器
+volatile uint8_t Encoder_Flag = 0;                                 // 编码器中断标志位
+volatile uint8_t BUZZER_Short_Flag = 0;                            // 蜂鸣器短叫触发标志位
+volatile uint8_t BUZZER_Middle_Flag = 0;                           // 蜂鸣器中等时间长度鸣叫触发标志位
+volatile uint8_t BUZZER_Flag = 0;                                  // 蜂鸣器当前状态标志位
+volatile float MAX_VOUT_OTP_VAL = 65.0F;                           // 过温保护阈值
+volatile float MAX_VOUT_OVP_VAL = 50.0F;                           // 输出过压保护阈值
+volatile float MAX_VOUT_OCP_VAL = 10.5F;                           // 输出过流保护阈值
+#define MAX_SHORT_I 10.1F                                          // 短路电流判据
+#define MIN_SHORT_V 0.5F                                           // 短路电压判据
+struct _Ctr_value CtrValue = {0, 0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
+struct _FLAG DF = {0, 0, 0, 0, 0, 0, 0};                           // 控制标志位
+struct _ADI SADC = {0, 0, 0, 0, 0, 0, 0, 0};                       // 输入输出参数采样值和平均值
+struct _SET_Value SET_Value = {0, 0, 0, 0, 0};                     // 设置参数
+SState_M STState = SSInit;                                         // 软启动状态标志位
+_Screen_page Screen_page = VIset_page;                             // 当前屏幕页面标志位
+volatile float VIN, VOUT, IIN, IOUT;                               // 电压电流实际值
+volatile float MainBoard_TEMP, CPU_TEMP;                           // 主板和CPU温度实际值
+volatile float powerEfficiency = 0;                                // 电源转换效率
 
 extern volatile int32_t VErr0, VErr1, VErr2; // 电压误差
 extern volatile int32_t u0, u1;              // 电压环输出量
@@ -203,7 +203,7 @@ void Encoder(void)
                         {
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
@@ -255,7 +255,7 @@ void Encoder(void)
                         {
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
@@ -325,7 +325,7 @@ void Encoder(void)
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
 
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
@@ -378,7 +378,7 @@ void Encoder(void)
                             SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
 
                             // 将设置值传到参考值
-                            CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+                            CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
                         }
                     }
@@ -763,7 +763,7 @@ void StateMRise(void)
         u0 = 0;
         u1 = 0;
         // 将设置值传到参考值
-        CtrValue.Vout_ref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
+        CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
         CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
         // 跳转至软启等待状态
         STState = SSWait;
@@ -792,7 +792,7 @@ void StateMRise(void)
             u0 = 0;
             u1 = 0;
             // CtrValue.Vout_ref输出参考电压从一半开始启动，避免过冲，然后缓慢上升
-            CtrValue.Vout_SSref = CtrValue.Vout_ref >> 1;
+            CtrValue.Vout_SSref = CtrValue.Vout_SETref >> 1;
             STState = SSRun; // 跳转至软启状态
         }
         break;
