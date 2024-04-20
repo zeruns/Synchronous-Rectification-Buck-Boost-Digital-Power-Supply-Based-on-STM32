@@ -6,6 +6,7 @@
 #include "tim.h"
 #include "Key.h"
 #include "hrtim.h"
+#include "W25Q64.h"
 
 // 数字后面加F表示使用单精度浮点数类型，C语言默认使用双精度浮点数类型，硬件浮点运算只支持单精度浮点数
 
@@ -14,7 +15,7 @@ volatile uint8_t Encoder_Flag = 0;                                 // 编码器�
 volatile uint8_t BUZZER_Short_Flag = 0;                            // 蜂鸣器短叫触发标志位
 volatile uint8_t BUZZER_Middle_Flag = 0;                           // 蜂鸣器中等时间长度鸣叫触发标志位
 volatile uint8_t BUZZER_Flag = 0;                                  // 蜂鸣器当前状态标志位
-volatile float MAX_VOUT_OTP_VAL = 65.0F;                           // 过温保护阈值
+volatile float MAX_VOUT_OTP_VAL = 80.0F;                           // 过温保护阈值
 volatile float MAX_VOUT_OVP_VAL = 50.0F;                           // 输出过压保护阈值
 volatile float MAX_VOUT_OCP_VAL = 10.5F;                           // 输出过流保护阈值
 #define MAX_SHORT_I 10.1F                                          // 短路电流判据
@@ -560,6 +561,10 @@ void OLED_Display(void)
         {
             OLED_ShowChinese(32, 32, "输出短路");
         }
+        if (getRegBits(DF.ErrFlag, F_OTP)) // 判断是否短路保护状态
+        {
+            OLED_ShowChinese(32, 48, "温度过高");
+        }
         OLED_Update();
     }
 }
@@ -795,9 +800,8 @@ void StateMRise(void)
             VErr2 = 0;
             u0 = 0;
             u1 = 0;
-            // CtrValue.Vout_ref输出参考电压从一半开始启动，避免过冲，然后缓慢上升
-            CtrValue.Vout_SSref = CtrValue.Vout_SETref >> 1;
-            STState = SSRun; // 跳转至软启状态
+            CtrValue.Vout_SSref = CtrValue.Vout_SETref >> 1; // 输出参考电压从一半开始启动，避免过冲，然后缓慢上升
+            STState = SSRun;                                 // 跳转至软启状态
         }
         break;
     }
@@ -812,8 +816,10 @@ void StateMRise(void)
             VErr2 = 0;
             u0 = 0;
             u1 = 0;
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 开启HRTIM的PWM输出
-            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 开启HRTIM的PWM输出
+            __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, 30000); // BUCK电路下管占空比拉满
+            __HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_F, HRTIM_COMPAREUNIT_1, 30000); // BOOST电路下管占空比拉满
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2);           // 开启HRTIM的PWM输出
+            HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2);           // 开启HRTIM的PWM输出
         }
         // 发波标志位置位
         DF.PWMENFlag = 1;
@@ -1014,6 +1020,8 @@ void OTP(void)
         DF.PWMENFlag = 0;
         HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
         HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+        setRegBits(DF.ErrFlag, F_OTP);                                               // 故障标志位
+        DF.SMFlag = Err;                                                             // 跳转至故障状态
     }
 }
 
@@ -1214,4 +1222,24 @@ void FAN_PWM_set(uint16_t dutyCycle)
         dutyCycle = 100;
     }
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, dutyCycle * 10);
+}
+
+/**
+ * @brief 更新Flash中存储的数据。
+ * 将设置电压和电流存储到Flash中。
+ */
+void Update_Flash()
+{
+    if (SET_Value.SET_modified_flag == 1)
+    {
+        SET_Value.SET_modified_flag = 0;
+    }
+}
+
+/**
+ * @brief 读取Flash中存储的数据。
+ * 将设置电压和电流存储从Flash中读取出来。
+ */
+void Read_Flash()
+{
 }

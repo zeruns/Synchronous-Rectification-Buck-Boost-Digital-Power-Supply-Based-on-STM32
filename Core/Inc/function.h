@@ -198,5 +198,7 @@ void BUZZER_Short(void);
 void BUZZER_Middle(void);
 float GET_CPU_Temperature(void);
 void FAN_PWM_set(uint16_t pwm);
+void Update_Flash();
+void Read_Flash();
 
 #endif

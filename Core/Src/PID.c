@@ -36,7 +36,7 @@ void PID_Init(void)
 #define BOOSTPIDb1 -15813
 #define BOOSTPIDb2 7772
 
-#define ILOOP_KP 8 // 电流环PID补偿器P值
+#define ILOOP_KP 6 // 电流环PID补偿器P值
 #define ILOOP_KI 3 // 电流环PID补偿器I值
 #define ILOOP_KD 1 // 电流环PID补偿器D值
 

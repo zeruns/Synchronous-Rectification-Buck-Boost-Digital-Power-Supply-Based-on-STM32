@@ -1,6 +1,7 @@
 ./build/Buck-Boost/.obj/__/Core/Hardware/Key.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED.o
 ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o
+./build/Buck-Boost/.obj/__/Core/Hardware/W25Q64.o
 ./build/Buck-Boost/.obj/__/Core/Src/PID.o
 ./build/Buck-Boost/.obj/__/Core/Src/adc.o
 ./build/Buck-Boost/.obj/__/Core/Src/dma.o
@@ -10,6 +11,7 @@
 ./build/Buck-Boost/.obj/__/Core/Src/i2c.o
 ./build/Buck-Boost/.obj/__/Core/Src/iwdg.o
 ./build/Buck-Boost/.obj/__/Core/Src/main.o
+./build/Buck-Boost/.obj/__/Core/Src/spi.o
 ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_hal_msp.o
 ./build/Buck-Boost/.obj/__/Core/Src/stm32g4xx_it.o
 ./build/Buck-Boost/.obj/__/Core/Src/system_stm32g4xx.o
@@ -34,6 +36,8 @@
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.o
+./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.o
