@@ -1183,3 +1183,106 @@ command:
 [2024-04-20 17:45:46]	[done]
 	build successfully !
 
+[2024-04-20 18:07:11]	[done]
+	build successfully !
+
+[2024-04-20 18:12:54]	[done]
+	build successfully !
+
+[2024-04-20 18:13:16]	[done]
+	build successfully !
+
+[2024-04-20 18:13:24]	[done]
+	build successfully !
+
+[2024-04-21 00:42:01]	[done]
+	build successfully !
+
+[2024-04-21 00:45:40]	[done]
+	build successfully !
+
+[2024-04-21 00:46:14]	[done]
+	build successfully !
+
+[2024-04-21 00:46:46]	[done]
+	build successfully !
+
+[2024-04-21 00:47:59]	[done]
+	build successfully !
+
+[2024-04-21 00:51:26]	[done]
+	build successfully !
+
+[2024-04-21 00:51:42]	[done]
+	build successfully !
+
+[2024-04-21 00:52:47]	[done]
+	build successfully !
+
+[2024-04-21 00:54:50]	[done]
+	build successfully !
+
+[2024-04-21 00:55:29]	[done]
+	build successfully !
+
+[2024-04-21 00:57:24]	[done]
+	build successfully !
+
+[2024-04-21 00:58:31]	[done]
+	build successfully !
+
+[2024-04-21 01:05:03]	[done]
+	build successfully !
+
+[2024-04-21 01:06:20]	[done]
+	build successfully !
+
+[2024-04-21 01:09:05]	[done]
+	build successfully !
+
+[2024-04-21 01:09:23]	[done]
+	build successfully !
+
+[2024-04-21 01:10:19]	[done]
+	build successfully !
+
+[2024-04-21 01:12:32]	[done]
+	build successfully !
+
+[2024-04-21 01:17:44]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:61:14: error: no member named 'Vout_tempref' in 'struct _Ctr_value'
+   61 |     CtrValue.Vout_tempref = CtrValue.Vout_ref;
+      |     ~~~~~~~~ ^
+1 error generated.
+
+[2024-04-21 01:18:02]	[done]
+	build successfully !
+
+[2024-04-21 01:18:08]	[done]
+	build successfully !
+
+[2024-04-21 01:23:01]	[done]
+	build successfully !
+
+[2024-04-21 01:24:15]	[done]
+	build successfully !
+
+[2024-04-21 01:26:29]	[done]
+	build successfully !
+
+[2024-04-21 01:28:19]	[done]
+	build successfully !
+
+[2024-04-21 01:30:04]	[done]
+	build successfully !
+
+[2024-04-21 01:31:06]	[done]
+	build successfully !
+
+[2024-04-21 01:32:42]	[done]
+	build successfully !
+

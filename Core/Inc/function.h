@@ -52,6 +52,7 @@ struct _Ctr_value
 {
 	int32_t Vout_ref;	  // 输出参考电压
 	int32_t Vout_SSref;	  // 软启动时的输出参考电压
+	int32_t Vout_SETref;  // 设置的参考电压
 	int32_t Iout_ref;	  // 输出参考电流
 	int32_t I_Limit;	  // 限流参考电流
 	int16_t BUCKMaxDuty;  // Buck最大占空比
