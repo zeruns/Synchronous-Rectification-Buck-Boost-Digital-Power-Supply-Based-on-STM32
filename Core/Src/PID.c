@@ -39,8 +39,8 @@ void PID_Init(void)
 #define BOOSTPIDb1 -15813
 #define BOOSTPIDb2 7772
 
-#define BUCKI_KP 8 // BUCK电流环PID补偿器P值
-#define BUCKI_KI 6  // BUCK电流环PID补偿器I值
+#define BUCKI_KP 88 // BUCK电流环PID补偿器P值
+#define BUCKI_KI 66  // BUCK电流环PID补偿器I值
 #define BUCKI_KD 1   // BUCK电流环PID补偿器D值
 
 #define BOOSTI_KP 8 // BOOST电流环PID补偿器P值
@@ -96,6 +96,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         i0 = 0;
         IErr0 = 0;
         IErr1 = 0;
+        i1 =0;
         I_Integral = 0;
         break;
     }
@@ -106,7 +107,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         i0 = I_Integral + IErr0 * BUCKI_KP + (IErr0 - IErr1) * BUCKI_KD;
         // 积分量=积分量+KI*误差量
         I_Integral = I_Integral + IErr0 * BUCKI_KI;
-        // i0 = i1 + IErr0 * BUCKPIDb0 + IErr1 * BUCKPIDb1 + IErr2 * BUCKPIDb2;
+        //i0 = i1 + IErr0 * BUCKPIDIb0 + IErr1 * BUCKPIDIb1 + IErr2 * BUCKPIDIb2;
 
         // 历史数据幅值
         VErr2 = VErr1;
@@ -123,7 +124,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         // 环路输出赋值
         CtrValue.BoostDuty = MIN_BOOST_DUTY1; // BOOST上管固定占空比94%，下管6%
 
-        if (((u0 >> 8) * 3) <= ((i0 >> 8) * 3)) // 判断电压环占空比是否小于电流环
+        if (((u0 >> 8) * 3) <= (i0 >> 8)) // 判断电压环占空比是否小于电流环
         {
             CVCC_Mode = CV;                              // 设置当前模式为恒压模式
             if (last_CVCC_Mode == CC && CVCC_Mode == CV) // 当从恒流模式切换到恒压模式时
@@ -136,12 +137,24 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
             {
                 CtrValue.BuckDuty = (u0 >> 8) * 3; // 电压环占空比输出
             }
+            
         }
         else
         {
             CVCC_Mode = CC;                    // 设置当前模式为恒流模式
-            CtrValue.BuckDuty = (i0 >> 8) * 3; // 设置电流环输出
-            //u1 = 0;                            // 降低电压环占空比，防止电压过冲
+            if (last_CVCC_Mode == CV && CVCC_Mode == CC)
+            {
+                I_Integral =0;  // 切换到恒流模式时，积分清零
+                i0 = I_Integral + IErr0 * BUCKI_KP + (IErr0 - IErr1) * BUCKI_KD; // 重新计算电流环输出
+                CtrValue.BuckDuty = (i0 >> 8) ; // 设置电流环输出
+            }
+            else
+            {
+                CtrValue.BuckDuty = (i0 >> 8) ; // 设置电流环输出
+                
+            }
+            
+            //u1 = u1>>1;                            // 降低电压环占空比，防止电压过冲
         }
 
         // 环路输出最大最小占空比限制
@@ -173,7 +186,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         // 环路输出赋值
         CtrValue.BuckDuty = MAX_BUCK_DUTY; // BUCK上管固定占空比94%
 
-        if (((u0 >> 8) * 3) <= (i0 >> 12)) // 判断电压环占空比是否小于电流环
+        if (((u0 >> 8) * 3) <= (i0 >> 8)) // 判断电压环占空比是否小于电流环
         {
             CVCC_Mode = CV;                              // 设置当前模式为恒压模式
             if (last_CVCC_Mode == CC && CVCC_Mode == CV) // 当从恒流模式切换到恒压模式时
@@ -189,7 +202,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         }
         else
         {
-            CtrValue.BoostDuty = i0 >> 12; // 设置电流环输出
+            CtrValue.BoostDuty = i0 >> 8; // 设置电流环输出
             CVCC_Mode = CC;                // 设置当前模式为恒流模式
             u1 = 0;                        // 降低电压环占空比，防止电压过冲
         }
@@ -223,7 +236,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         // 环路输出赋值
         CtrValue.BuckDuty = MAX_BUCK_DUTY1; // BUCK上管固定占空比80%
 
-        if (((u0 >> 8) * 3) <= (i0 >> 12)) // 判断电压环占空比是否小于电流环
+        if (((u0 >> 8) * 3) <= (i0 >> 8)) // 判断电压环占空比是否小于电流环
         {
             CVCC_Mode = CV;                              // 设置当前模式为恒压模式
             if (last_CVCC_Mode == CC && CVCC_Mode == CV) // 当从恒流模式切换到恒压模式时
@@ -239,7 +252,7 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         }
         else
         {
-            CtrValue.BoostDuty = i0 >> 12; // 设置电流环输出
+            CtrValue.BoostDuty = i0 >> 8; // 设置电流环输出
             CVCC_Mode = CC;                // 设置当前模式为恒流模式
             u1 = 0;                        // 降低电压环占空比，防止电压过冲
         }

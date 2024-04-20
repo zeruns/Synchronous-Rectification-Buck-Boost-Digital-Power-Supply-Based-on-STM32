@@ -128,13 +128,13 @@ typedef enum
 	CC	// 恒流模式
 } _CVCC_Mode;
 
-extern volatile uint16_t ADC1_RESULT[4];	// ADC1通道1~4采样结果
-extern volatile uint8_t BUZZER_Short_Flag;	// 蜂鸣器短叫触发标志位
-extern volatile uint8_t BUZZER_Flag;		// 蜂鸣器当前状态标志位
-extern volatile uint8_t BUZZER_Middle_Flag; // 蜂鸣器中等时间长度鸣叫触发标志位
-extern struct _Ctr_value CtrValue;
-extern struct _FLAG DF;
-extern struct _ADI SADC;
+extern volatile uint16_t ADC1_RESULT[4];		// ADC1通道1~4采样结果
+extern volatile uint8_t BUZZER_Short_Flag;		// 蜂鸣器短叫触发标志位
+extern volatile uint8_t BUZZER_Flag;			// 蜂鸣器当前状态标志位
+extern volatile uint8_t BUZZER_Middle_Flag;		// 蜂鸣器中等时间长度鸣叫触发标志位
+extern struct _Ctr_value CtrValue;				// 控制参数
+extern struct _FLAG DF;							// 控制标志位
+extern struct _ADI SADC;						// 采样变量
 extern volatile float VIN, VOUT, IIN, IOUT;		// 电压电流实际值
 extern volatile float MainBoard_TEMP, CPU_TEMP; // 主板和CPU温度实际值
 extern volatile float powerEfficiency;			// 电源转换效率

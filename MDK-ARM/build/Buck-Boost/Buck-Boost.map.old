@@ -4075,43 +4075,43 @@ Image Symbol Table
     [Anonymous Symbol]                       0x0800a114   Section        0  stm32g4xx_it.o(.text.UsageFault_Handler)
     [Anonymous Symbol]                       0x0800a118   Section        0  main.o(.text.main)
     [Anonymous Symbol]                       0x0800a4a0   Section        0  PID.o(ccmram)
-    [Anonymous Symbol]                       0x0800a7a8   Section        0  function.o(ccmram)
-    i.__0vsnprintf                           0x0800aae4   Section        0  printfa.o(i.__0vsnprintf)
-    i.__0vsprintf                            0x0800ab18   Section        0  printfa.o(i.__0vsprintf)
-    i.__hardfp_log                           0x0800ab40   Section        0  log.o(i.__hardfp_log)
-    i.__kernel_poly                          0x0800af04   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_divzero                  0x0800b000   Section        0  dunder.o(i.__mathlib_dbl_divzero)
-    i.__mathlib_dbl_infnan                   0x0800b030   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_invalid                  0x0800b048   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__scatterload_copy                     0x0800b068   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800b076   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800b078   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.__set_errno                            0x0800b088   Section        0  errno.o(i.__set_errno)
-    _fp_digits                               0x0800b095   Thumb Code   366  printfa.o(i._fp_digits)
-    i._fp_digits                             0x0800b094   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x0800b219   Thumb Code  1744  printfa.o(i._printf_core)
-    i._printf_core                           0x0800b218   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x0800b8f5   Thumb Code    36  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x0800b8f4   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x0800b919   Thumb Code    46  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x0800b918   Section        0  printfa.o(i._printf_pre_padding)
-    _snputc                                  0x0800b947   Thumb Code    22  printfa.o(i._snputc)
-    i._snputc                                0x0800b946   Section        0  printfa.o(i._snputc)
-    _sputc                                   0x0800b95d   Thumb Code    10  printfa.o(i._sputc)
-    i._sputc                                 0x0800b95c   Section        0  printfa.o(i._sputc)
-    Lg2                                      0x0800b968   Data          24  log.o(.constdata)
-    .constdata                               0x0800b968   Section       56  log.o(.constdata)
-    Lg                                       0x0800b980   Data          32  log.o(.constdata)
-    .constdata                               0x0800b9a0   Section        8  qnan.o(.constdata)
-    .Lswitch.table.HAL_HRTIM_WaveformTimerControl 0x0800b9a8   Data          28  stm32g4xx_hal_hrtim.o(.rodata..Lswitch.table.HAL_HRTIM_WaveformTimerControl)
-    .Lswitch.table.UART_SetConfig.5          0x0800c634   Data          16  stm32g4xx_hal_uart.o(.rodata.cst16)
-    UARTEx_SetNbDataToProcess.numerator      0x0800c644   Data           8  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
-    [Anonymous Symbol]                       0x0800c644   Section        0  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
-    UARTEx_SetNbDataToProcess.denominator    0x0800c64c   Data           8  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
-    .L.str.8                                 0x0800c654   Data          13  function.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800c654   Section        0  function.o(.rodata.str1.1)
-    .L.str.15                                0x0800c661   Data           4  function.o(.rodata.str1.1)
-    .L.str.7                                 0x0800c665   Data          13  function.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800a7b8   Section        0  function.o(ccmram)
+    i.__0vsnprintf                           0x0800aaf4   Section        0  printfa.o(i.__0vsnprintf)
+    i.__0vsprintf                            0x0800ab28   Section        0  printfa.o(i.__0vsprintf)
+    i.__hardfp_log                           0x0800ab50   Section        0  log.o(i.__hardfp_log)
+    i.__kernel_poly                          0x0800af14   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_divzero                  0x0800b010   Section        0  dunder.o(i.__mathlib_dbl_divzero)
+    i.__mathlib_dbl_infnan                   0x0800b040   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_invalid                  0x0800b058   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__scatterload_copy                     0x0800b078   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800b086   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800b088   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.__set_errno                            0x0800b098   Section        0  errno.o(i.__set_errno)
+    _fp_digits                               0x0800b0a5   Thumb Code   366  printfa.o(i._fp_digits)
+    i._fp_digits                             0x0800b0a4   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x0800b229   Thumb Code  1744  printfa.o(i._printf_core)
+    i._printf_core                           0x0800b228   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x0800b905   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x0800b904   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x0800b929   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x0800b928   Section        0  printfa.o(i._printf_pre_padding)
+    _snputc                                  0x0800b957   Thumb Code    22  printfa.o(i._snputc)
+    i._snputc                                0x0800b956   Section        0  printfa.o(i._snputc)
+    _sputc                                   0x0800b96d   Thumb Code    10  printfa.o(i._sputc)
+    i._sputc                                 0x0800b96c   Section        0  printfa.o(i._sputc)
+    Lg2                                      0x0800b978   Data          24  log.o(.constdata)
+    .constdata                               0x0800b978   Section       56  log.o(.constdata)
+    Lg                                       0x0800b990   Data          32  log.o(.constdata)
+    .constdata                               0x0800b9b0   Section        8  qnan.o(.constdata)
+    .Lswitch.table.HAL_HRTIM_WaveformTimerControl 0x0800b9b8   Data          28  stm32g4xx_hal_hrtim.o(.rodata..Lswitch.table.HAL_HRTIM_WaveformTimerControl)
+    .Lswitch.table.UART_SetConfig.5          0x0800c644   Data          16  stm32g4xx_hal_uart.o(.rodata.cst16)
+    UARTEx_SetNbDataToProcess.numerator      0x0800c654   Data           8  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
+    [Anonymous Symbol]                       0x0800c654   Section        0  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
+    UARTEx_SetNbDataToProcess.denominator    0x0800c65c   Data           8  stm32g4xx_hal_uart_ex.o(.rodata.cst8)
+    .L.str.8                                 0x0800c664   Data          13  function.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800c664   Section        0  function.o(.rodata.str1.1)
+    .L.str.15                                0x0800c671   Data           4  function.o(.rodata.str1.1)
+    .L.str.7                                 0x0800c675   Data          13  function.o(.rodata.str1.1)
     _errno                                   0x20000000   Data           4  errno.o(.data)
     .data                                    0x20000000   Section        4  errno.o(.data)
     .L_MergedGlobals                         0x20000004   Data          32  function.o(.data..L_MergedGlobals)
@@ -4505,38 +4505,38 @@ Image Symbol Table
     USART1_Printf                            0x0800a059   Thumb Code   188  usart.o(.text.USART1_Printf)
     UsageFault_Handler                       0x0800a115   Thumb Code     2  stm32g4xx_it.o(.text.UsageFault_Handler)
     main                                     0x0800a119   Thumb Code   848  main.o(.text.main)
-    BuckBoostVILoopCtlPID                    0x0800a4a1   Thumb Code   774  PID.o(ccmram)
-    ADCSample                                0x0800a7a9   Thumb Code   148  function.o(ccmram)
-    StateM                                   0x0800a83d   Thumb Code   262  function.o(ccmram)
-    BBMode                                   0x0800a945   Thumb Code   400  function.o(ccmram)
-    __0vsnprintf                             0x0800aae5   Thumb Code    46  printfa.o(i.__0vsnprintf)
-    __1vsnprintf                             0x0800aae5   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __2vsnprintf                             0x0800aae5   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __c89vsnprintf                           0x0800aae5   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    vsnprintf                                0x0800aae5   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __0vsprintf                              0x0800ab19   Thumb Code    30  printfa.o(i.__0vsprintf)
-    __1vsprintf                              0x0800ab19   Thumb Code     0  printfa.o(i.__0vsprintf)
-    __2vsprintf                              0x0800ab19   Thumb Code     0  printfa.o(i.__0vsprintf)
-    __c89vsprintf                            0x0800ab19   Thumb Code     0  printfa.o(i.__0vsprintf)
-    vsprintf                                 0x0800ab19   Thumb Code     0  printfa.o(i.__0vsprintf)
-    __hardfp_log                             0x0800ab41   Thumb Code   872  log.o(i.__hardfp_log)
-    __kernel_poly                            0x0800af05   Thumb Code   248  poly.o(i.__kernel_poly)
-    __mathlib_dbl_divzero                    0x0800b001   Thumb Code    28  dunder.o(i.__mathlib_dbl_divzero)
-    __mathlib_dbl_infnan                     0x0800b031   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_invalid                    0x0800b049   Thumb Code    24  dunder.o(i.__mathlib_dbl_invalid)
-    __scatterload_copy                       0x0800b069   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800b077   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800b079   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    __set_errno                              0x0800b089   Thumb Code     6  errno.o(i.__set_errno)
-    __mathlib_zero                           0x0800b9a0   Data           8  qnan.o(.constdata)
-    AHBPrescTable                            0x0800b9c4   Data          16  system_stm32g4xx.o(.rodata.AHBPrescTable)
-    APBPrescTable                            0x0800b9d4   Data           8  system_stm32g4xx.o(.rodata.APBPrescTable)
-    OLED_CF16x16                             0x0800b9dc   Data        1044  OLED_Data.o(.rodata.OLED_CF16x16)
-    OLED_F6x8                                0x0800bdf0   Data         570  OLED_Data.o(.rodata.OLED_F6x8)
-    OLED_F8x16                               0x0800c02a   Data        1520  OLED_Data.o(.rodata.OLED_F8x16)
-    UARTPrescTable                           0x0800c61a   Data          24  stm32g4xx_hal_uart.o(.rodata.UARTPrescTable)
-    Region$$Table$$Base                      0x0800c674   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800c694   Number         0  anon$$obj.o(Region$$Table)
+    BuckBoostVILoopCtlPID                    0x0800a4a1   Thumb Code   790  PID.o(ccmram)
+    ADCSample                                0x0800a7b9   Thumb Code   148  function.o(ccmram)
+    StateM                                   0x0800a84d   Thumb Code   262  function.o(ccmram)
+    BBMode                                   0x0800a955   Thumb Code   400  function.o(ccmram)
+    __0vsnprintf                             0x0800aaf5   Thumb Code    46  printfa.o(i.__0vsnprintf)
+    __1vsnprintf                             0x0800aaf5   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __2vsnprintf                             0x0800aaf5   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __c89vsnprintf                           0x0800aaf5   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    vsnprintf                                0x0800aaf5   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __0vsprintf                              0x0800ab29   Thumb Code    30  printfa.o(i.__0vsprintf)
+    __1vsprintf                              0x0800ab29   Thumb Code     0  printfa.o(i.__0vsprintf)
+    __2vsprintf                              0x0800ab29   Thumb Code     0  printfa.o(i.__0vsprintf)
+    __c89vsprintf                            0x0800ab29   Thumb Code     0  printfa.o(i.__0vsprintf)
+    vsprintf                                 0x0800ab29   Thumb Code     0  printfa.o(i.__0vsprintf)
+    __hardfp_log                             0x0800ab51   Thumb Code   872  log.o(i.__hardfp_log)
+    __kernel_poly                            0x0800af15   Thumb Code   248  poly.o(i.__kernel_poly)
+    __mathlib_dbl_divzero                    0x0800b011   Thumb Code    28  dunder.o(i.__mathlib_dbl_divzero)
+    __mathlib_dbl_infnan                     0x0800b041   Thumb Code    20  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_invalid                    0x0800b059   Thumb Code    24  dunder.o(i.__mathlib_dbl_invalid)
+    __scatterload_copy                       0x0800b079   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800b087   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800b089   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    __set_errno                              0x0800b099   Thumb Code     6  errno.o(i.__set_errno)
+    __mathlib_zero                           0x0800b9b0   Data           8  qnan.o(.constdata)
+    AHBPrescTable                            0x0800b9d4   Data          16  system_stm32g4xx.o(.rodata.AHBPrescTable)
+    APBPrescTable                            0x0800b9e4   Data           8  system_stm32g4xx.o(.rodata.APBPrescTable)
+    OLED_CF16x16                             0x0800b9ec   Data        1044  OLED_Data.o(.rodata.OLED_CF16x16)
+    OLED_F6x8                                0x0800be00   Data         570  OLED_Data.o(.rodata.OLED_F6x8)
+    OLED_F8x16                               0x0800c03a   Data        1520  OLED_Data.o(.rodata.OLED_F8x16)
+    UARTPrescTable                           0x0800c62a   Data          24  stm32g4xx_hal_uart.o(.rodata.UARTPrescTable)
+    Region$$Table$$Base                      0x0800c684   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800c6a4   Number         0  anon$$obj.o(Region$$Table)
     Screen_page                              0x20000004   Data           1  function.o(.data..L_MergedGlobals)
     CtrValue                                 0x20000008   Data          28  function.o(.data..L_MergedGlobals)
     uwTickPrio                               0x20000024   Data           4  stm32g4xx_hal.o(.data..L_MergedGlobals)
@@ -4607,9 +4607,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001d9
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000c6d8, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000c6e8, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0000c694, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0000c6a4, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -4977,46 +4977,46 @@ Memory Map of the image
     0x0800a114   0x00000002   Code   RO          292    .text.UsageFault_Handler  stm32g4xx_it.o
     0x0800a116   0x00000002   PAD
     0x0800a118   0x00000388   Code   RO          258    .text.main          main.o
-    0x0800a4a0   0x00000306   Code   RO          105    ccmram              PID.o
-    0x0800a7a6   0x00000002   PAD
-    0x0800a7a8   0x0000033c   Code   RO          154    ccmram              function.o
-    0x0800aae4   0x00000034   Code   RO         2099    i.__0vsnprintf      mc_w.l(printfa.o)
-    0x0800ab18   0x00000024   Code   RO         2100    i.__0vsprintf       mc_w.l(printfa.o)
-    0x0800ab3c   0x00000004   PAD
-    0x0800ab40   0x000003c4   Code   RO         2069    i.__hardfp_log      m_wm.l(log.o)
-    0x0800af04   0x000000f8   Code   RO         2174    i.__kernel_poly     m_wm.l(poly.o)
-    0x0800affc   0x00000004   PAD
-    0x0800b000   0x00000030   Code   RO         2154    i.__mathlib_dbl_divzero  m_wm.l(dunder.o)
-    0x0800b030   0x00000014   Code   RO         2155    i.__mathlib_dbl_infnan  m_wm.l(dunder.o)
-    0x0800b044   0x00000004   PAD
-    0x0800b048   0x00000020   Code   RO         2157    i.__mathlib_dbl_invalid  m_wm.l(dunder.o)
-    0x0800b068   0x0000000e   Code   RO         2243    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800b076   0x00000002   Code   RO         2244    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800b078   0x0000000e   Code   RO         2245    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800b086   0x00000002   PAD
-    0x0800b088   0x0000000c   Code   RO         2215    i.__set_errno       mc_w.l(errno.o)
-    0x0800b094   0x00000184   Code   RO         2101    i._fp_digits        mc_w.l(printfa.o)
-    0x0800b218   0x000006dc   Code   RO         2102    i._printf_core      mc_w.l(printfa.o)
-    0x0800b8f4   0x00000024   Code   RO         2103    i._printf_post_padding  mc_w.l(printfa.o)
-    0x0800b918   0x0000002e   Code   RO         2104    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x0800b946   0x00000016   Code   RO         2105    i._snputc           mc_w.l(printfa.o)
-    0x0800b95c   0x0000000a   Code   RO         2106    i._sputc            mc_w.l(printfa.o)
-    0x0800b966   0x00000002   PAD
-    0x0800b968   0x00000038   Data   RO         2072    .constdata          m_wm.l(log.o)
-    0x0800b9a0   0x00000008   Data   RO         2176    .constdata          m_wm.l(qnan.o)
-    0x0800b9a8   0x0000001c   Data   RO         1093    .rodata..Lswitch.table.HAL_HRTIM_WaveformTimerControl  stm32g4xx_hal_hrtim.o
-    0x0800b9c4   0x00000010   Data   RO          332    .rodata.AHBPrescTable  system_stm32g4xx.o
-    0x0800b9d4   0x00000008   Data   RO          333    .rodata.APBPrescTable  system_stm32g4xx.o
-    0x0800b9dc   0x00000414   Data   RO           96    .rodata.OLED_CF16x16  OLED_Data.o
-    0x0800bdf0   0x0000023a   Data   RO           95    .rodata.OLED_F6x8   OLED_Data.o
-    0x0800c02a   0x000005f0   Data   RO           94    .rodata.OLED_F8x16  OLED_Data.o
-    0x0800c61a   0x00000018   Data   RO         2002    .rodata.UARTPrescTable  stm32g4xx_hal_uart.o
-    0x0800c632   0x00000002   PAD
-    0x0800c634   0x00000010   Data   RO         2003    .rodata.cst16       stm32g4xx_hal_uart.o
-    0x0800c644   0x00000010   Data   RO         2044    .rodata.cst8        stm32g4xx_hal_uart_ex.o
-    0x0800c654   0x0000001e   Data   RO          196    .rodata.str1.1      function.o
-    0x0800c672   0x00000002   PAD
-    0x0800c674   0x00000020   Data   RO         2242    Region$$Table       anon$$obj.o
+    0x0800a4a0   0x00000316   Code   RO          105    ccmram              PID.o
+    0x0800a7b6   0x00000002   PAD
+    0x0800a7b8   0x0000033c   Code   RO          154    ccmram              function.o
+    0x0800aaf4   0x00000034   Code   RO         2099    i.__0vsnprintf      mc_w.l(printfa.o)
+    0x0800ab28   0x00000024   Code   RO         2100    i.__0vsprintf       mc_w.l(printfa.o)
+    0x0800ab4c   0x00000004   PAD
+    0x0800ab50   0x000003c4   Code   RO         2069    i.__hardfp_log      m_wm.l(log.o)
+    0x0800af14   0x000000f8   Code   RO         2174    i.__kernel_poly     m_wm.l(poly.o)
+    0x0800b00c   0x00000004   PAD
+    0x0800b010   0x00000030   Code   RO         2154    i.__mathlib_dbl_divzero  m_wm.l(dunder.o)
+    0x0800b040   0x00000014   Code   RO         2155    i.__mathlib_dbl_infnan  m_wm.l(dunder.o)
+    0x0800b054   0x00000004   PAD
+    0x0800b058   0x00000020   Code   RO         2157    i.__mathlib_dbl_invalid  m_wm.l(dunder.o)
+    0x0800b078   0x0000000e   Code   RO         2243    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800b086   0x00000002   Code   RO         2244    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800b088   0x0000000e   Code   RO         2245    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800b096   0x00000002   PAD
+    0x0800b098   0x0000000c   Code   RO         2215    i.__set_errno       mc_w.l(errno.o)
+    0x0800b0a4   0x00000184   Code   RO         2101    i._fp_digits        mc_w.l(printfa.o)
+    0x0800b228   0x000006dc   Code   RO         2102    i._printf_core      mc_w.l(printfa.o)
+    0x0800b904   0x00000024   Code   RO         2103    i._printf_post_padding  mc_w.l(printfa.o)
+    0x0800b928   0x0000002e   Code   RO         2104    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x0800b956   0x00000016   Code   RO         2105    i._snputc           mc_w.l(printfa.o)
+    0x0800b96c   0x0000000a   Code   RO         2106    i._sputc            mc_w.l(printfa.o)
+    0x0800b976   0x00000002   PAD
+    0x0800b978   0x00000038   Data   RO         2072    .constdata          m_wm.l(log.o)
+    0x0800b9b0   0x00000008   Data   RO         2176    .constdata          m_wm.l(qnan.o)
+    0x0800b9b8   0x0000001c   Data   RO         1093    .rodata..Lswitch.table.HAL_HRTIM_WaveformTimerControl  stm32g4xx_hal_hrtim.o
+    0x0800b9d4   0x00000010   Data   RO          332    .rodata.AHBPrescTable  system_stm32g4xx.o
+    0x0800b9e4   0x00000008   Data   RO          333    .rodata.APBPrescTable  system_stm32g4xx.o
+    0x0800b9ec   0x00000414   Data   RO           96    .rodata.OLED_CF16x16  OLED_Data.o
+    0x0800be00   0x0000023a   Data   RO           95    .rodata.OLED_F6x8   OLED_Data.o
+    0x0800c03a   0x000005f0   Data   RO           94    .rodata.OLED_F8x16  OLED_Data.o
+    0x0800c62a   0x00000018   Data   RO         2002    .rodata.UARTPrescTable  stm32g4xx_hal_uart.o
+    0x0800c642   0x00000002   PAD
+    0x0800c644   0x00000010   Data   RO         2003    .rodata.cst16       stm32g4xx_hal_uart.o
+    0x0800c654   0x00000010   Data   RO         2044    .rodata.cst8        stm32g4xx_hal_uart_ex.o
+    0x0800c664   0x0000001e   Data   RO          196    .rodata.str1.1      function.o
+    0x0800c682   0x00000002   PAD
+    0x0800c684   0x00000020   Data   RO         2242    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000f78, Max: 0x00020000, ABSOLUTE)
@@ -5067,7 +5067,7 @@ Image component sizes
        168          0          0          0         20       1311   Key.o
       4670          0          0          0       1024      54146   OLED.o
          0          0       3134          0          0        834   OLED_Data.o
-       800          4          0          0         48       2028   PID.o
+       816          4          0          0         48       2081   PID.o
       1028          0          0          0        424       8497   adc.o
        102          0          0          0          0       4155   dma.o
       6728        648         30         44        148      17168   function.o
@@ -5101,7 +5101,7 @@ Image component sizes
        620          0          0          1        540      11746   usart.o
 
     ----------------------------------------------------------------------
-     41408       1090       3780         60       3896     568549   Object Totals
+     41424       1090       3780         60       3896     568602   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        252          0          4          3          0          0   (incl. Padding)
 
@@ -5170,15 +5170,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     46992       1330       3844         64       3896     569809   Grand Totals
-     46992       1330       3844         64       3896     569809   ELF Image Totals
-     46992       1330       3844         64          0          0   ROM Totals
+     47008       1330       3844         64       3896     569862   Grand Totals
+     47008       1330       3844         64       3896     569862   ELF Image Totals
+     47008       1330       3844         64          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                50836 (  49.64kB)
+    Total RO  Size (Code + RO Data)                50852 (  49.66kB)
     Total RW  Size (RW Data + ZI Data)              3960 (   3.87kB)
-    Total ROM Size (Code + RO Data + RW Data)      50900 (  49.71kB)
+    Total ROM Size (Code + RO Data + RW Data)      50916 (  49.72kB)
 
 ==============================================================================
 

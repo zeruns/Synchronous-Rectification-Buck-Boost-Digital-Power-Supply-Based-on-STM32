@@ -955,3 +955,231 @@ In file included from ./../Core/Src/PID.c:3:
 [2024-04-18 15:31:33]	[done]
 	build successfully !
 
+[2024-04-19 17:34:52]	[done]
+	build successfully !
+
+[2024-04-19 18:30:35]	[done]
+	build successfully !
+
+[2024-04-19 18:33:27]	[done]
+	build successfully !
+
+[2024-04-19 18:36:01]	[done]
+	build successfully !
+
+[2024-04-19 18:37:12]	[done]
+	build successfully !
+
+[2024-04-19 18:38:11]	[done]
+	build successfully !
+
+[2024-04-19 18:38:47]	[done]
+	build successfully !
+
+[2024-04-19 18:39:07]	[done]
+	build successfully !
+
+[2024-04-19 18:39:45]	[done]
+	build successfully !
+
+[2024-04-19 18:40:06]	[done]
+	build successfully !
+
+[2024-04-19 18:40:13]	[done]
+	build successfully !
+
+[2024-04-19 18:40:27]	[done]
+	build successfully !
+
+[2024-04-19 18:40:57]	[done]
+	build successfully !
+
+[2024-04-19 18:41:19]	[done]
+	build successfully !
+
+[2024-04-19 18:41:43]	[done]
+	build successfully !
+
+[2024-04-19 18:42:10]	[done]
+	build successfully !
+
+[2024-04-19 18:46:57]	[done]
+	build successfully !
+
+[2024-04-19 18:49:07]	[done]
+	build successfully !
+
+[2024-04-19 18:51:10]	[done]
+	build successfully !
+
+[2024-04-19 18:55:27]	[done]
+	build successfully !
+
+[2024-04-20 00:03:34]	[done]
+	build successfully !
+
+[2024-04-20 03:18:52]	[done]
+	build successfully !
+
+[2024-04-20 03:19:37]	[done]
+	build successfully !
+
+[2024-04-20 14:38:27]	[done]
+	build successfully !
+
+[2024-04-20 14:38:47]	[done]
+	build successfully !
+
+[2024-04-20 14:39:11]	[done]
+	build successfully !
+
+[2024-04-20 14:40:20]	[done]
+	build successfully !
+
+[2024-04-20 14:40:44]	[done]
+	build successfully !
+
+[2024-04-20 14:42:50]	[done]
+	build successfully !
+
+[2024-04-20 14:43:41]	[done]
+	build successfully !
+
+[2024-04-20 14:44:25]	[done]
+	build successfully !
+
+[2024-04-20 14:45:31]	[done]
+	build successfully !
+
+[2024-04-20 15:49:29]	[done]
+	build successfully !
+
+[2024-04-20 15:49:47]	[done]
+	build successfully !
+
+[2024-04-20 15:50:52]	[done]
+	build successfully !
+
+[2024-04-20 15:51:35]	[done]
+	build successfully !
+
+[2024-04-20 15:52:08]	[done]
+	build successfully !
+
+[2024-04-20 15:52:26]	[done]
+	build successfully !
+
+[2024-04-20 15:52:34]	[done]
+	build successfully !
+
+[2024-04-20 15:53:04]	[done]
+	build successfully !
+
+[2024-04-20 15:53:19]	[done]
+	build successfully !
+
+[2024-04-20 15:53:34]	[done]
+	build successfully !
+
+[2024-04-20 15:54:53]	[done]
+	build successfully !
+
+[2024-04-20 15:55:12]	[done]
+	build successfully !
+
+[2024-04-20 15:55:58]	[done]
+	build successfully !
+
+[2024-04-20 15:56:34]	[done]
+	build successfully !
+
+[2024-04-20 15:57:11]	[done]
+	build successfully !
+
+[2024-04-20 15:57:42]	[done]
+	build successfully !
+
+[2024-04-20 16:00:31]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:136:17: error: use of undeclared identifier 'STState'
+  136 |                 STState=Rise;
+      |                 ^
+1 error generated.
+
+[2024-04-20 16:01:57]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\PID.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/PID.o -MMD ./../Core/Src/PID.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/PID.c:136:17: error: use of undeclared identifier 'STState'; did you mean 'STStatel'?
+  136 |                 STState=Rise;
+      |                 ^~~~~~~
+      |                 STStatel
+../Core/Inc\function.h:138:17: note: 'STStatel' declared here
+  138 | extern SState_M STStatel;                                               // 软启状态机
+      |                 ^
+./../Core/Src/PID.c:136:25: warning: implicit conversion from enumeration type 'STATE_M' to different enumeration type 'SState_M' [-Wenum-conversion]
+  136 |                 STState=Rise;
+      |                        ~^~~~
+1 warning and 1 error generated.
+
+[2024-04-20 16:02:29]	[done]
+	build successfully !
+
+[2024-04-20 16:04:07]	[done]
+	build successfully !
+
+[2024-04-20 16:07:25]	[done]
+	build successfully !
+
+[2024-04-20 16:07:54]	[done]
+	build successfully !
+
+[2024-04-20 16:08:04]	[done]
+	build successfully !
+
+[2024-04-20 16:08:20]	[done]
+	build successfully !
+
+[2024-04-20 16:08:41]	[done]
+	build successfully !
+
+[2024-04-20 16:09:53]	[done]
+	build successfully !
+
+[2024-04-20 16:10:06]	[done]
+	build successfully !
+
+[2024-04-20 16:10:49]	[done]
+	build successfully !
+
+[2024-04-20 16:10:56]	[done]
+	build successfully !
+
+[2024-04-20 16:13:14]	[done]
+	build successfully !
+
+[2024-04-20 16:13:42]	[done]
+	build successfully !
+
+[2024-04-20 16:14:17]	[done]
+	build successfully !
+
+[2024-04-20 16:14:32]	[done]
+	build successfully !
+
+[2024-04-20 16:17:15]	[done]
+	build successfully !
+
+[2024-04-20 16:18:13]	[done]
+	build successfully !
+
+[2024-04-20 17:05:36]	[done]
+	build successfully !
+
+[2024-04-20 17:45:46]	[done]
+	build successfully !
+
