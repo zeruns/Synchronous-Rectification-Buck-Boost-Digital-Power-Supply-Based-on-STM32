@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "beforeBuildTasks": [],
+    "afterBuildTasks": [],
+    "global": {
+        "endian-mode": "little",
+        "runtime-lib": "normal",
+        "printf-formatter": "auto",
+        "scanf-formatter": "auto",
+        "output-debug-info": "enable"
+    },
+    "c/cpp-compiler": {
+        "optimization": "no",
+        "destroy-cpp-static-object": true
+    },
+    "asm-compiler": {
+        "case-sensitive-user-symbols": true
+    },
+    "linker": {
+        "output-format": "elf",
+        "auto-search-runtime-lib": true,
+        "perform-cpp-virtual-func-elimination": "enable",
+        "config-defines": []
+    }
+}

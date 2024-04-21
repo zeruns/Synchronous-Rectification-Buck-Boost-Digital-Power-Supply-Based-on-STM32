@@ -1,0 +1,381 @@
+{
+  "name": "Buck-Boost",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [
+    ".eide/deps"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      },
+      {
+        "name": "Application",
+        "files": [],
+        "folders": [
+          {
+            "name": "MDK-ARM",
+            "files": [
+              {
+                "path": "startup_stm32g474xx.s"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "User",
+            "files": [],
+            "folders": [
+              {
+                "name": "Core",
+                "files": [
+                  {
+                    "path": "../Core/Src/adc.c"
+                  },
+                  {
+                    "path": "../Core/Src/dma.c"
+                  },
+                  {
+                    "path": "../Core/Src/function.c"
+                  },
+                  {
+                    "path": "../Core/Src/gpio.c"
+                  },
+                  {
+                    "path": "../Core/Src/hrtim.c"
+                  },
+                  {
+                    "path": "../Core/Src/i2c.c"
+                  },
+                  {
+                    "path": "../Core/Src/iwdg.c"
+                  },
+                  {
+                    "path": "../Core/Src/main.c"
+                  },
+                  {
+                    "path": "../Core/Src/PID.c"
+                  },
+                  {
+                    "path": "../Core/Src/spi.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32g4xx_hal_msp.c"
+                  },
+                  {
+                    "path": "../Core/Src/stm32g4xx_it.c"
+                  },
+                  {
+                    "path": "../Core/Src/tim.c"
+                  },
+                  {
+                    "path": "../Core/Src/usart.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "Hardware",
+                "files": [
+                  {
+                    "path": "../Core/Hardware/Key.c"
+                  },
+                  {
+                    "path": "../Core/Hardware/OLED_Data.c"
+                  },
+                  {
+                    "path": "../Core/Hardware/OLED.c"
+                  },
+                  {
+                    "path": "../Core/Hardware/W25Q64.c"
+                  }
+                ],
+                "folders": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Drivers",
+        "files": [],
+        "folders": [
+          {
+            "name": "CMSIS",
+            "files": [
+              {
+                "path": "../Core/Src/system_stm32g4xx.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "STM32G4xx_HAL_Driver",
+            "files": [
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_hrtim.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_i2c.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_i2c_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_iwdg.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c"
+              },
+              {
+                "path": "../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": "STM32G474RETx",
+  "packDir": ".pack/Keil/STM32G4xx_DFP.1.1.0",
+  "miscInfo": {
+    "uid": "1313590ebfecba6762855204a1f7c153"
+  },
+  "targets": {
+    "Buck-Boost": {
+      "excludeList": [],
+      "toolchain": "AC6",
+      "compileConfig": {
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
+        "scatterFilePath": "",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x20000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x80000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "OpenOCD",
+      "uploadConfig": {
+        "bin": "",
+        "target": "stm32g4x",
+        "interface": "stlink",
+        "baseAddr": "0x08000000"
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        },
+        "STLink": {
+          "bin": "",
+          "proType": "SWD",
+          "resetMode": "default",
+          "runAfterProgram": true,
+          "speed": 4000,
+          "address": "0x8000000",
+          "elFile": "None",
+          "optionBytes": ".eide/buck-boost.st.option.bytes.ini",
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "../Core/Inc",
+          "../Drivers/STM32G4xx_HAL_Driver/Inc",
+          "../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy",
+          "../Drivers/CMSIS/Device/ST/STM32G4xx/Include",
+          "../Drivers/CMSIS/Include",
+          "../Core/Hardware",
+          "RTE/_Buck-Boost",
+          ".eide/deps"
+        ],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_HAL_DRIVER",
+          "STM32G474xx"
+        ]
+      }
+    }
+  },
+  "version": "3.3"
+}
