@@ -90,20 +90,10 @@
             "target": "cortex-m4-sp"
         },
         "c/cpp-compiler": {
-<<<<<<< HEAD
-            "optimization": "level-balanced",
-            "language-c": "c99",
-            "language-cpp": "c++11",
-            "link-time-optimization": false,
-            "one-elf-section-per-function": true,
-            "short-enums#wchar": true,
-            "warnings": "ac5-like-warnings"
-=======
             "optimization": "level-0",
             "language-c": "c99",
             "language-cpp": "c++11",
             "link-time-optimization": false
->>>>>>> b6c965737e55a93ea72aa326992416b28e0addfc
         },
         "asm-compiler": {
             "$use": "asm-auto"
@@ -111,9 +101,6 @@
         "linker": {
             "output-format": "elf",
             "misc-controls": "--diag_suppress=L6329",
-            "xo-base": "",
-            "ro-base": "",
-            "rw-base": "",
             "link-scatter": [
                 "\"e:/Electronic/Project/开关电源/基于STM32的Buck-Boost型数字电源/Buck-Boost/MDK-ARM/build/Buck-Boost/Buck-Boost.sct\""
             ]
@@ -142,12 +129,8 @@
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "d751713988987e9331980363e24189ce",
         "global": "3ae75cac734e7a166338bea4b35ae2e0",
-<<<<<<< HEAD
-        "c/cpp-compiler": "64d2b1676bf86b4e64f1d1d63efd076c",
-=======
         "c/cpp-compiler": "3253f84b801f6481a1ac105d8d16cd4d",
->>>>>>> b6c965737e55a93ea72aa326992416b28e0addfc
         "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
-        "linker": "23236ba0d884f82fc5e0812b32e55b1e"
+        "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
     }
 }
