@@ -1,7 +1,37 @@
 {
     "folders": [
         {
+<<<<<<< HEAD
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "tim.h": "c",
+            "main.h": "c",
+            "oled.h": "c",
+            "stdint.h": "c",
+            "stm32g4xx_hal.h": "c",
+            "function.h": "c",
+            "adc.h": "c",
+            "key.h": "c",
+            "pid.h": "c",
+            "cstddef": "c",
+            "limits": "c",
+            "new": "c",
+            "bit": "c",
+            "compare": "c",
+            "memory": "c",
+            "type_traits": "c",
+            "xmemory": "c",
+            "xutility": "c",
+            "w25q64_ins.h": "c"
+        }
+    },
+    "extensions": {}
+=======
             "path": ".."
         }
     ]
+>>>>>>> 基于STM32的Buck-Boost型数字电源/master
 }

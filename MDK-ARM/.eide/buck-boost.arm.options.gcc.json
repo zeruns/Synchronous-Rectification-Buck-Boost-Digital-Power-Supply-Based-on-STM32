@@ -1,0 +1,29 @@
+{
+    "version": 5,
+    "beforeBuildTasks": [],
+    "afterBuildTasks": [],
+    "global": {
+        "$float-abi-type": "softfp",
+        "output-debug-info": "enable",
+        "misc-control": "--specs=nosys.specs --specs=nano.specs"
+    },
+    "c/cpp-compiler": {
+        "language-c": "c11",
+        "language-cpp": "c++11",
+        "optimization": "level-debug",
+        "warnings": "all-warnings",
+        "one-elf-section-per-function": true,
+        "one-elf-section-per-data": true,
+        "C_FLAGS": "",
+        "CXX_FLAGS": ""
+    },
+    "asm-compiler": {
+        "ASM_FLAGS": ""
+    },
+    "linker": {
+        "output-format": "elf",
+        "remove-unused-input-sections": true,
+        "LD_FLAGS": "",
+        "LIB_FLAGS": "-lm"
+    }
+}
