@@ -7,6 +7,8 @@
 #include "Key.h"
 #include "hrtim.h"
 #include "W25Q64.h"
+#include <stdint.h>
+#include <string.h>
 
 // 数字后面加F表示使用单精度浮点数类型，C语言默认使用双精度浮点数类型，硬件浮点运算只支持单精度浮点数
 
@@ -15,9 +17,9 @@ volatile uint8_t Encoder_Flag = 0;                                 // 编码器�
 volatile uint8_t BUZZER_Short_Flag = 0;                            // 蜂鸣器短叫触发标志位
 volatile uint8_t BUZZER_Middle_Flag = 0;                           // 蜂鸣器中等时间长度鸣叫触发标志位
 volatile uint8_t BUZZER_Flag = 0;                                  // 蜂鸣器当前状态标志位
-volatile float MAX_VOUT_OTP_VAL = 80.0F;                           // 过温保护阈值
-volatile float MAX_VOUT_OVP_VAL = 50.0F;                           // 输出过压保护阈值
-volatile float MAX_VOUT_OCP_VAL = 10.5F;                           // 输出过流保护阈值
+volatile float MAX_OTP_VAL;                                        // 过温保护阈值
+volatile float MAX_VOUT_OVP_VAL;                                   // 输出过压保护阈值
+volatile float MAX_VOUT_OCP_VAL;                                   // 输出过流保护阈值
 #define MAX_SHORT_I 10.1F                                          // 短路电流判据
 #define MIN_SHORT_V 0.5F                                           // 短路电压判据
 struct _Ctr_value CtrValue = {0, 0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
@@ -71,6 +73,18 @@ void Key_Process(void)
                 }
             }
         }
+        else if (Screen_page == SET_page)
+        {
+            // 没有选中位时
+            if (SET_Value.SET_bit == 0)
+            {
+                SET_Value.currentSetting++;       // 切换下一个设置项
+                if (SET_Value.currentSetting > 3) // 如果超过最后一项，则回到第一项
+                {
+                    SET_Value.currentSetting = 0;
+                }
+            }
+        }
 
         USART1_Printf("按键1按下\r\n"); // 串口发送消息
         Key_Flag[1] = 0;                // 按键状态标志位清零
@@ -87,11 +101,13 @@ void Key_Process(void)
         // 当状态机处于软启动状态或运行状态时
         else if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))
         {
-            DF.SMFlag = Wait;                                                            // 进入等待状态
+
             DF.OUTPUT_Flag = 0;                                                          // 输出关闭
             DF.PWMENFlag = 0;                                                            // 关闭PWM
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
             HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+            DF.SMFlag = Wait;                                                            // 进入等待状态
+            DF.BBFlag = NA;                                                              // 切换运行模式
         }
         // 当状态机处于等待状态时
         else if (DF.SMFlag == Wait)
@@ -111,7 +127,7 @@ void Key_Process(void)
             DF.ErrFlag = F_NOERR; // 消除故障状态
         }
         // 当屏幕页面处于电压电流设置页面时
-        else if (Screen_page == VIset_page)
+        else if (Screen_page == VIset_page || Screen_page == SET_page)
         {
             // 当选中设置项时
             if (SET_Value.currentSetting != 0)
@@ -154,7 +170,7 @@ void Encoder(void)
                     }
                 }
                 // 当屏幕页面处于电压电流设置页面时
-                if (Screen_page == VIset_page)
+                else if (Screen_page == VIset_page)
                 {
                     // 选中电压设置时
                     if (SET_Value.currentSetting == 1)
@@ -258,6 +274,157 @@ void Encoder(void)
                             // 将设置值传到参考值
                             CtrValue.Vout_SETref = SET_Value.Vout * (4.7F / 75.0F) / REF_3V3 * ADC_MAX_VALUE;
                             CtrValue.Iout_ref = SET_Value.Iout * 0.005F * (6200.0F / 100.0F) / REF_3V3 * ADC_MAX_VALUE;
+                        }
+                    }
+                }
+                // 当屏幕页面处于设置页面时
+                else if (Screen_page == SET_page)
+                {
+                    // 选中过温保护阈值设置时
+                    if (SET_Value.currentSetting == 1)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_OTP_VAL -= 10;
+                            // 当设置值小于40时限位
+                            if (MAX_OTP_VAL < 40.0)
+                            {
+                                MAX_OTP_VAL += 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_OTP_VAL -= 1;
+                            // 当设置值小于40.0时限位
+                            if (MAX_OTP_VAL < 40.0)
+                            {
+                                MAX_OTP_VAL = 40.0;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_OTP_VAL -= 0.1;
+                            // 当设置值小于40.0时限位
+                            if (MAX_OTP_VAL < 40.0)
+                            {
+                                MAX_OTP_VAL += 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_OTP_VAL -= 0.01;
+                            // 当设置值小于40.0时限位
+                            if (MAX_OTP_VAL < 40.0)
+                            {
+                                MAX_OTP_VAL += 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                        }
+                    }
+                    // 选中过流保护阈值设置时
+                    else if (SET_Value.currentSetting == 2)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_VOUT_OCP_VAL -= 10;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OCP_VAL < 0.01)
+                            {
+                                MAX_VOUT_OCP_VAL += 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_VOUT_OCP_VAL -= 1;
+                            // 当设置值小于0.01时限位
+                            if (MAX_VOUT_OCP_VAL < 0.01)
+                            {
+                                MAX_VOUT_OCP_VAL = 0.01;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_VOUT_OCP_VAL -= 0.1;
+                            // 当设置值小于0.01时限位
+                            if (MAX_VOUT_OCP_VAL < 0.01)
+                            {
+                                MAX_VOUT_OCP_VAL += 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_VOUT_OCP_VAL -= 0.01;
+                            // 当设置值小于0.01时限位
+                            if (MAX_VOUT_OCP_VAL < 0.01)
+                            {
+                                MAX_VOUT_OCP_VAL += 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                        }
+                    }
+                    // 选中过压保护阈值设置时
+                    else if (SET_Value.currentSetting == 3)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_VOUT_OVP_VAL -= 10;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OVP_VAL < 0.5)
+                            {
+                                MAX_VOUT_OVP_VAL += 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_VOUT_OVP_VAL -= 1;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OVP_VAL < 0.5)
+                            {
+                                MAX_VOUT_OVP_VAL = 0.5;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_VOUT_OVP_VAL -= 0.1;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OVP_VAL < 0.5)
+                            {
+                                MAX_VOUT_OVP_VAL += 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_VOUT_OVP_VAL -= 0.01;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OVP_VAL < 0.5)
+                            {
+                                MAX_VOUT_OVP_VAL += 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
                         }
                     }
                 }
@@ -384,6 +551,157 @@ void Encoder(void)
                         }
                     }
                 }
+                // 当屏幕页面处于设置页面时
+                else if (Screen_page == SET_page)
+                {
+                    // 选中过温保护阈值设置时
+                    if (SET_Value.currentSetting == 1)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_OTP_VAL += 10.0;
+                            // 当设置值大于99时限位
+                            if (MAX_OTP_VAL > 99.99)
+                            {
+                                MAX_OTP_VAL -= 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_OTP_VAL += 1.0;
+                            // 当设置值大于99时限位
+                            if (MAX_OTP_VAL > 99.99)
+                            {
+                                MAX_OTP_VAL = 99.99;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_OTP_VAL += 0.1;
+                            // 当设置值大于99时限位
+                            if (MAX_OTP_VAL > 99.99)
+                            {
+                                MAX_OTP_VAL -= 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_OTP_VAL += 0.01;
+                            // 当设置值大于99.99时限位
+                            if (MAX_OTP_VAL > 99.99)
+                            {
+                                MAX_OTP_VAL -= 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                        }
+                    }
+                    // 选中过流保护阈值设置时
+                    else if (SET_Value.currentSetting == 2)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_VOUT_OCP_VAL += 10.0F;
+                            // 当设置值大于10.5时限位
+                            if (MAX_VOUT_OCP_VAL > 10.5)
+                            {
+                                MAX_VOUT_OCP_VAL -= 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_VOUT_OCP_VAL += 1.0F;
+                            // 当设置值大于10.5时限位
+                            if (MAX_VOUT_OCP_VAL > 10.5)
+                            {
+                                MAX_VOUT_OCP_VAL = 10.5;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_VOUT_OCP_VAL += 0.1F;
+                            // 当设置值大于10.5时限位
+                            if (MAX_VOUT_OCP_VAL > 10.5)
+                            {
+                                MAX_VOUT_OCP_VAL -= 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_VOUT_OCP_VAL += 0.01F;
+                            // 当设置值大于10.5时限位
+                            if (MAX_VOUT_OCP_VAL > 10.5)
+                            {
+                                MAX_VOUT_OCP_VAL -= 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                        }
+                    }
+                    // 选中过压保护阈值设置时
+                    else if (SET_Value.currentSetting == 3)
+                    {
+                        // 选中十位时
+                        if (SET_Value.SET_bit == 1)
+                        {
+                            MAX_VOUT_OVP_VAL += 10.0F;
+                            // 当设置值大于50时限位
+                            if (MAX_VOUT_OVP_VAL > 50.0)
+                            {
+                                MAX_VOUT_OVP_VAL -= 10;
+                            }
+                        }
+                        // 选中个位时
+                        else if (SET_Value.SET_bit == 2)
+                        {
+                            MAX_VOUT_OVP_VAL += 1.0F;
+                            // 当设置值大于50时限位
+                            if (MAX_VOUT_OVP_VAL > 50.0)
+                            {
+                                MAX_VOUT_OVP_VAL = 50.0;
+                            }
+                        }
+                        // 选中小数第一位时
+                        else if (SET_Value.SET_bit == 3)
+                        {
+                            MAX_VOUT_OVP_VAL += 0.1F;
+                            // 当设置值大于50时限位
+                            if (MAX_VOUT_OVP_VAL > 50.0)
+                            {
+                                MAX_VOUT_OVP_VAL -= 0.1;
+                            }
+                        }
+                        // 选中小数第二位时
+                        else if (SET_Value.SET_bit == 4)
+                        {
+                            MAX_VOUT_OVP_VAL += 0.01;
+                            // 当设置值小于0.5时限位
+                            if (MAX_VOUT_OVP_VAL > 50.0)
+                            {
+                                MAX_VOUT_OVP_VAL -= 0.01;
+                            }
+                        }
+                        // 当设置被修改时
+                        if (SET_Value.SET_bit != 0)
+                        {
+                            SET_Value.SET_modified_flag = 1; // 设置被修改标志位置1
+                        }
+                    }
+                }
             }
             Encoder_Flag = 0;
         }
@@ -401,6 +719,7 @@ void OLED_Display(void)
         OLED_Clear();                  // 清除OLED屏显示缓冲区
         if (Screen_page == VIset_page) // 电压电流设置页面
         {
+            OLED_Clear();                       // 清除OLED屏显示缓冲区
             OLED_ShowChinese(0, 0, "电压设置"); // 显示中文字
             OLED_ShowChinese(0, 16, "电流设置");
             OLED_ShowChinese(0, 32, "输出电压");
@@ -495,6 +814,7 @@ void OLED_Display(void)
         // 数据显示页面1
         else if (Screen_page == DATA1_page)
         {
+            OLED_Clear();                       // 清除OLED屏显示缓冲区
             OLED_ShowChinese(0, 0, "输入电压"); // 显示中文字
             OLED_ShowChinese(0, 16, "输入电流");
             OLED_ShowChinese(0, 32, "输出电压");
@@ -522,6 +842,7 @@ void OLED_Display(void)
         }
         else if (Screen_page == DATA2_page) // 数据显示页面2
         {
+            OLED_Clear(); // 清除OLED屏显示缓冲区
             OLED_ShowString(0, 0, "MCU", OLED_8X16);
             OLED_ShowChinese(24, 0, "温度"); // 显示中文字
             OLED_ShowChinese(0, 16, "主板温度");
@@ -542,6 +863,108 @@ void OLED_Display(void)
         }
         else if (Screen_page == SET_page) // 设置页面
         {
+            OLED_Clear(); // 清除OLED屏显示缓冲区
+            OLED_ShowChinese(0, 0, "过温保护");
+            OLED_ShowChinese(0, 16, "过流保护");
+            OLED_ShowChinese(0, 32, "过压保护");
+            OLED_ShowChar(64, 0, ':', OLED_8X16);                                                               // 显示冒号
+            OLED_ShowChar(64, 16, ':', OLED_8X16);                                                              // 显示冒号
+            OLED_ShowChar(64, 32, ':', OLED_8X16);                                                              // 显示冒号
+            OLED_ShowNum(72, 0, MAX_OTP_VAL + 0.005F, 2, OLED_8X16);                                            // 显示过温保护阈值整数部分
+            OLED_ShowChar(72 + 8 * 2, 0, '.', OLED_8X16);                                                       // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 0, (uint16_t)((MAX_OTP_VAL + 0.005F) * 100.0F) % 100, 2, OLED_8X16);       // 显示过温保护阈值小数部分,+0.005是为了四舍五入
+            OLED_ShowNum(72, 16, MAX_VOUT_OCP_VAL + 0.005F, 2, OLED_8X16);                                      // 显示过流保护阈值整数部分
+            OLED_ShowChar(72 + 8 * 2, 16, '.', OLED_8X16);                                                      // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 16, (uint16_t)((MAX_VOUT_OCP_VAL + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示过流保护阈值小数部分,+0.005是为了四舍五入
+            OLED_ShowChar(72 + 8 * 5, 16, 'A', OLED_8X16);                                                      // 显示单位符号
+            OLED_ShowNum(72, 32, MAX_VOUT_OVP_VAL + 0.005F, 2, OLED_8X16);                                      // 显示过压保护阈值整数部分
+            OLED_ShowChar(72 + 8 * 2, 32, '.', OLED_8X16);                                                      // 显示小数点
+            OLED_ShowNum(72 + 8 * 3, 32, (uint16_t)((MAX_VOUT_OVP_VAL + 0.005F) * 100.0F) % 100, 2, OLED_8X16); // 显示过压保护阈值小数部分,+0.005是为了四舍五入
+            OLED_ShowChar(72 + 8 * 5, 32, 'V', OLED_8X16);                                                      // 显示单位符号
+            OLED_ShowChinese(72 + 8 * 5, 0, "℃");                                                               // 显示单位符号
+
+            if (SET_Value.currentSetting == 1) // 选中第一个设置项时，过温保护阈值设置
+            {
+                // 没有选中设置位时
+                if (SET_Value.SET_bit == 0)
+                {
+                    OLED_ReverseArea(0, 0, 128, 16); // 反显当前设置项，过温保护阈值设置
+                }
+                // 选中十位时
+                else if (SET_Value.SET_bit == 1)
+                {
+                    OLED_ReverseArea(72, 0, 8, 16); // 反显当前设置位，十位
+                }
+                // 选中个位时
+                else if (SET_Value.SET_bit == 2)
+                {
+                    OLED_ReverseArea(72 + 8 * 1, 0, 8, 16); // 反显当前设置位，个位
+                }
+                // 选中小数第一位时
+                else if (SET_Value.SET_bit == 3)
+                {
+                    OLED_ReverseArea(72 + 8 * 3, 0, 8, 16); // 反显当前设置位，小数第一位
+                }
+                // 选中小数第二位时
+                else if (SET_Value.SET_bit == 4)
+                {
+                    OLED_ReverseArea(72 + 8 * 4, 0, 8, 16); // 反显当前设置位，小数第二位
+                }
+            }
+            else if (SET_Value.currentSetting == 2) // 选中第二个设置项时，过流保护阈值设置
+            {
+                if (SET_Value.SET_bit == 0)
+                {
+                    OLED_ReverseArea(0, 16, 128, 16); // 反显当前设置项，过流保护阈值设置
+                }
+                // 选中十位时
+                else if (SET_Value.SET_bit == 1)
+                {
+                    OLED_ReverseArea(72, 16, 8, 16); // 反显当前设置位，十位
+                }
+                // 选中个位时
+                else if (SET_Value.SET_bit == 2)
+                {
+                    OLED_ReverseArea(72 + 8 * 1, 16, 8, 16); // 反显当前设置位，个位
+                }
+                // 选中小数第一位时
+                else if (SET_Value.SET_bit == 3)
+                {
+                    OLED_ReverseArea(72 + 8 * 3, 16, 8, 16); // 反显当前设置位，小数第一位
+                }
+                // 选中小数第二位时
+                else if (SET_Value.SET_bit == 4)
+                {
+                    OLED_ReverseArea(72 + 8 * 4, 16, 8, 16); // 反显当前设置位，小数第二位
+                }
+            }
+            else if (SET_Value.currentSetting == 3) // 选中第三个设置项时，过压保护阈值设置
+            {
+                if (SET_Value.SET_bit == 0)
+                {
+                    OLED_ReverseArea(0, 32, 128, 16); // 反显当前设置项，过压保护阈值设置
+                }
+                // 选中十位时
+                else if (SET_Value.SET_bit == 1)
+                {
+                    OLED_ReverseArea(72, 32, 8, 16); // 反显当前设置位，十位
+                }
+                // 选中个位时
+                else if (SET_Value.SET_bit == 2)
+                {
+                    OLED_ReverseArea(72 + 8 * 1, 32, 8, 16); // 反显当前设置位，个位
+                }
+                // 选中小数第一位时
+                else if (SET_Value.SET_bit == 3)
+                {
+                    OLED_ReverseArea(72 + 8 * 3, 32, 8, 16); // 反显当前设置位，小数第一位
+                }
+                // 选中小数第二位时
+                else if (SET_Value.SET_bit == 4)
+                {
+                    OLED_ReverseArea(72 + 8 * 4, 32, 8, 16); // 反显当前设置位，小数第二位
+                }
+            }
         }
         OLED_Update(); // 刷新屏幕显示
     }
@@ -581,7 +1004,7 @@ CCMRAM void ADCSample(void)
     SADC.Vin = (uint32_t)ADC1_RESULT[0];
     SADC.Iin = (uint32_t)ADC1_RESULT[1];
     SADC.Vout = (uint32_t)((ADC1_RESULT[2] * CAL_VOUT_K >> 12) + CAL_VOUT_B);
-    SADC.Iout = (uint32_t)ADC1_RESULT[3];
+    SADC.Iout = (uint32_t)((ADC1_RESULT[3] * CAL_IOUT_K >> 12) + CAL_IOUT_B);
 
     if (SADC.Vin < 15) // 采样有零偏离，采样值很小时，直接为0
         SADC.Vin = 0;
@@ -666,6 +1089,7 @@ void ValInit(void)
     DF.PWMENFlag = 0;
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
+    DF.BBFlag = NA;
     // 清除故障标志位
     DF.ErrFlag = 0;
     // 初始化电压参考量
@@ -682,8 +1106,11 @@ void ValInit(void)
     u0 = 0;
     u1 = 0;
     // 设置值初始化
-    SET_Value.Vout = 14.0;
-    SET_Value.Iout = 1.0;
+    SET_Value.Vout = 5.0;
+    SET_Value.Iout = 10.0;
+    MAX_OTP_VAL = 80.0F;      // 过温保护阈值
+    MAX_VOUT_OVP_VAL = 50.0F; // 输出过压保护阈值
+    MAX_VOUT_OCP_VAL = 10.5F; // 输出过流保护阈值
 }
 
 /*
@@ -703,6 +1130,7 @@ void StateMErr(void)
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TD1 | HRTIM_OUTPUT_TD2); // 关闭BUCK电路的PWM输出
     HAL_HRTIM_WaveformOutputStop(&hhrtim1, HRTIM_OUTPUT_TF1 | HRTIM_OUTPUT_TF2); // 关闭BOOST电路的PWM输出
     HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);               // 开启蜂鸣器
+    DF.BBFlag = NA;                                                              // 切换运行模式
     // 若故障消除跳转至等待重新软启
     if (DF.ErrFlag == F_NOERR)
     {
@@ -1013,7 +1441,7 @@ void OCP(void)
 void OTP(void)
 {
     float TEMP = GET_NTC_Temperature(); // 获取NTC温度值
-    if (TEMP >= MAX_VOUT_OTP_VAL)
+    if (TEMP >= MAX_OTP_VAL)
     {
         DF.SMFlag = Wait;
         // 关闭PWM
@@ -1225,21 +1653,100 @@ void FAN_PWM_set(uint16_t dutyCycle)
 }
 
 /**
- * @brief 更新Flash中存储的数据。
- * 将设置电压和电流存储到Flash中。
+ * @brief 初始化Flash。
+ * 检查Flash中存储的数据是否有效，如果不有效则初始化。
  */
-void Update_Flash()
+void Init_Flash(void)
+{
+    uint8_t Flash_flag[1];
+    W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+    if (Flash_flag[0] != 0x00)                // 如果读取的数据不为0，说明FLash中没有存储数据，需要初始化
+    {
+        W25Q64_SectorErase(0x000000); // 擦除0x000000地址处的扇区
+        uint8_t Flash_data[21];
+        uint8_t VSETtemp[4], ISETtemp[4], OTPtemp[4], OCPtemp[4], OVPtemp[4];
+        Flash_data[0] = 0x00;                     // 设置标志位
+        float_to_bytes(SET_Value.Vout, VSETtemp); // 将浮点数转换为字节序列
+        float_to_bytes(SET_Value.Iout, ISETtemp); // 将浮点数转换为字节序列
+        float_to_bytes(MAX_OTP_VAL, OTPtemp);
+        float_to_bytes(MAX_VOUT_OCP_VAL, OCPtemp);
+        float_to_bytes(MAX_VOUT_OVP_VAL, OVPtemp);
+        for (uint8_t i = 0; i < 4; i++)
+        {
+            Flash_data[i + 1] = VSETtemp[i];
+            Flash_data[i + 5] = ISETtemp[i];
+            Flash_data[i + 9] = OTPtemp[i];
+            Flash_data[i + 13] = OCPtemp[i];
+            Flash_data[i + 17] = OVPtemp[i];
+        }
+        W25Q64_PageProgram(0x000000, Flash_data, 21); // 将设置数据写入Flash中
+    }
+}
+
+/**
+ * @brief 更新Flash中存储的数据。
+ * 将设置信息存储到Flash中。
+ */
+void Update_Flash(void)
 {
     if (SET_Value.SET_modified_flag == 1)
     {
+        W25Q64_SectorErase(0x000000); // 擦除0x000000地址处的扇区
+        uint8_t Flash_data[21];
+        uint8_t VSETtemp[4], ISETtemp[4], OTPtemp[4], OCPtemp[4], OVPtemp[4];
+        Flash_data[0] = 0x00;                     // 设置标志位
+        float_to_bytes(SET_Value.Vout, VSETtemp); // 将浮点数转换为字节序列
+        float_to_bytes(SET_Value.Iout, ISETtemp); // 将浮点数转换为字节序列
+        float_to_bytes(MAX_OTP_VAL, OTPtemp);
+        float_to_bytes(MAX_VOUT_OCP_VAL, OCPtemp);
+        float_to_bytes(MAX_VOUT_OVP_VAL, OVPtemp);
+        for (uint8_t i = 0; i < 4; i++)
+        {
+            Flash_data[i + 1] = VSETtemp[i];
+            Flash_data[i + 5] = ISETtemp[i];
+            Flash_data[i + 9] = OTPtemp[i];
+            Flash_data[i + 13] = OCPtemp[i];
+            Flash_data[i + 17] = OVPtemp[i];
+        }
+        W25Q64_PageProgram(0x000000, Flash_data, 21); // 将设置数据写入Flash中
         SET_Value.SET_modified_flag = 0;
     }
 }
 
 /**
  * @brief 读取Flash中存储的数据。
- * 将设置电压和电流存储从Flash中读取出来。
+ * 将设置信息从Flash中读取出来。
  */
-void Read_Flash()
+void Read_Flash(void)
 {
+    uint8_t Flash_data[20];
+    W25Q64_ReadData(0x000001, Flash_data, 20); // 读取Flash中0x000001地址处开始的8字节数据
+    uint8_t VSETtemp[4], ISETtemp[4], OTPtemp[4], OCPtemp[4], OVPtemp[4];
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        VSETtemp[i] = Flash_data[i];
+        ISETtemp[i] = Flash_data[i + 4];
+        OTPtemp[i] = Flash_data[i + 8];
+        OCPtemp[i] = Flash_data[i + 12];
+        OVPtemp[i] = Flash_data[i + 16];
+    }
+    SET_Value.Vout = bytes_to_float(VSETtemp); // 将字节序列转换为浮点数
+    SET_Value.Iout = bytes_to_float(ISETtemp); // 将字节序列转换为浮点数
+    MAX_OTP_VAL = bytes_to_float(OTPtemp);
+    MAX_VOUT_OCP_VAL = bytes_to_float(OCPtemp);
+    MAX_VOUT_OVP_VAL = bytes_to_float(OVPtemp);
+}
+
+// 将浮点数转换为字节序列的辅助函数
+void float_to_bytes(float value, uint8_t *bytes)
+{
+    memcpy(bytes, &value, sizeof(float));
+}
+
+// 将字节序列转换为浮点数的辅助函数
+float bytes_to_float(uint8_t *bytes)
+{
+    float value;
+    memcpy(&value, bytes, sizeof(float));
+    return value;
 }

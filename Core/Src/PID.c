@@ -11,7 +11,7 @@
 
 extern volatile uint16_t ADC1_RESULT[4];          // ADC1通道1~4采样结果
 volatile int32_t VErr0 = 0, VErr1 = 0, VErr2 = 0; // 电压误差
-volatile int32_t IErr0 = 0, IErr1 = 0, IErr2 = 0; // 电流误差
+volatile int32_t IErr0 = 0, IErr1 = 0;            // 电流误差
 volatile int32_t u0 = 0, u1 = 0;                  // 电压环输出量
 volatile int32_t i0 = 0, i1 = 0;                  // 电流环输出量
 volatile _CVCC_Mode CVCC_Mode = CV;               // 恒流恒压模式标志位
@@ -48,12 +48,11 @@ void PID_Init(void)
 CCMRAM void BuckBoostVILoopCtlPID(void)
 {
     static int32_t I_Integral = 0; // 电流环路积分量
-    static int32_t IoutTemp = 0;   // 输出电流
 
     CtrValue.Vout_ref = CtrValue.Vout_SETref; // 输出参考电压设置为设置电压
 
     int32_t VoutTemp = (ADC1_RESULT[2] * CAL_VOUT_K >> 12) + CAL_VOUT_B; // 获取矫正后的输出电压
-    IoutTemp = (int32_t)ADC1_RESULT[3];                                  // 获取输出电流
+    int32_t IoutTemp = (ADC1_RESULT[3] * CAL_IOUT_K >> 12) + CAL_IOUT_B; // 获取矫正后的输出电流
 
     // 计算电流误差量，当输出电流小于参考电流，输出量增加
     IErr0 = CtrValue.Iout_ref - IoutTemp;
@@ -118,6 +117,10 @@ CCMRAM void BuckBoostVILoopCtlPID(void)
         VErr2 = 0;
         u0 = 0;
         u1 = 0;
+        i0 = 0;
+        I_Integral = 0;
+        IErr0 = 0;
+        IErr1 = 0;
         break;
     }
     case Buck: // BUCK模式

@@ -117,7 +117,7 @@ extern  I2C_HandleTypeDef   hi2c3;	//HAL库使用，指定硬件IIC接口
  * 随后调用OLED_Update函数或OLED_UpdateArea函数
  * 才会将显存数组的数据发送到OLED硬件，进行显示
  */
-uint8_t OLED_DisplayBuf[8][128];
+volatile uint8_t OLED_DisplayBuf[8][128];
 /*********************全局变量*/
 
 #ifdef OLED_USE_SW_I2C

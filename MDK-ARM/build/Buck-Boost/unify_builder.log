@@ -1426,3 +1426,485 @@ command:
 [2024-04-21 03:43:31]	[done]
 	build successfully !
 
+[2024-04-21 14:16:51]	[done]
+	build successfully !
+
+[2024-04-21 14:26:20]	[done]
+	build successfully !
+
+[2024-04-21 14:27:18]	[done]
+	build successfully !
+
+[2024-04-21 14:27:41]	[done]
+	build successfully !
+
+[2024-04-21 14:28:12]	[done]
+	build successfully !
+
+[2024-04-21 14:30:43]	[done]
+	build successfully !
+
+[2024-04-21 14:30:56]	[done]
+	build successfully !
+
+[2024-04-21 14:31:17]	[done]
+	build successfully !
+
+[2024-04-21 14:32:12]	[done]
+	build successfully !
+
+[2024-04-21 14:33:20]	[done]
+	build successfully !
+
+[2024-04-21 14:33:51]	[done]
+	build successfully !
+
+[2024-04-21 14:36:04]	[done]
+	build successfully !
+
+[2024-04-21 14:37:06]	[done]
+	build successfully !
+
+[2024-04-21 15:42:16]	[done]
+	build successfully !
+
+[2024-04-21 17:06:39]	[done]
+	build successfully !
+
+[2024-04-21 17:12:36]	[done]
+	build successfully !
+
+[2024-04-21 17:13:16]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Hardware\OLED_Data.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Hardware/OLED_Data.o -MMD ./../Core/Hardware/OLED_Data.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Hardware/OLED_Data.c:335:30: error: redefinition of 'OLED_CF16x16' with a different type: 'const volatile ChineseCell_t[]' vs 'const ChineseCell_t[]'
+  335 | const volatile ChineseCell_t OLED_CF16x16[] = {
+      |                              ^
+./../Core/Hardware/OLED_Data.h:21:28: note: previous declaration is here
+   21 | extern const ChineseCell_t OLED_CF16x16[];
+      |                            ^
+1 error generated.
+
+[2024-04-21 17:13:55]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:399:27: warning: function cannot return qualified void type 'volatile void' [-Wqualified-void-return-type]
+  399 | volatile void OLED_Display(void)
+      |                           ^
+./../Core/Src/function.c:399:15: error: conflicting types for 'OLED_Display'
+  399 | volatile void OLED_Display(void)
+      |               ^
+../Core/Inc\function.h:185:6: note: previous declaration is here
+  185 | void OLED_Display(void);
+      |      ^
+1 warning and 1 error generated.
+
+[2024-04-21 17:14:06]	[done]
+	build successfully !
+
+[2024-04-21 17:14:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:399:10: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+  399 | volatile OLED_Display(void)
+      | ~~~~~~~~ ^
+      | int
+./../Core/Src/function.c:399:10: error: conflicting types for 'OLED_Display'
+../Core/Inc\function.h:185:6: note: previous declaration is here
+  185 | void OLED_Display(void);
+      |      ^
+2 errors generated.
+
+[2024-04-21 17:14:21]	[done]
+	build successfully !
+
+[2024-04-21 17:16:10]	[done]
+	build successfully !
+
+[2024-04-21 17:16:55]	[done]
+	build successfully !
+
+[2024-04-21 17:17:44]	[done]
+	build successfully !
+
+[2024-04-21 17:21:30]	[done]
+	build successfully !
+
+[2024-04-21 17:22:30]	[done]
+	build successfully !
+
+[2024-04-21 17:22:45]	[done]
+	build successfully !
+
+[2024-04-21 19:24:33]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:23:28: error: redefinition of 'CtrValue' with a different type: 'volatile struct _Ctr_value' vs 'struct _Ctr_value'
+   23 | volatile struct _Ctr_value CtrValue = {0, 0, 0, 0, MIN_BUKC_DUTY, 0, 0, 0}; // 控制参数
+      |                            ^
+../Core/Inc\function.h:138:26: note: previous declaration is here
+  138 | extern struct _Ctr_value CtrValue;                              // 控制参数
+      |                          ^
+1 error generated.
+
+[2024-04-21 19:24:58]	[done]
+	build successfully !
+
+[2024-04-21 19:26:17]	[done]
+	build successfully !
+
+[2024-04-21 19:31:09]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1270:5: error: call to undeclared library function 'memcpy' with type 'void *(void *, const void *, unsigned int)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1270 |     memcpy(bytes, &value, sizeof(float));
+      |     ^
+./../Core/Src/function.c:1270:5: note: include the header <string.h> or explicitly provide a declaration for 'memcpy'
+1 error generated.
+
+[2024-04-21 19:31:47]	[done]
+	build successfully !
+
+[2024-04-21 19:33:35]	[done]
+	build successfully !
+
+[2024-04-21 19:45:44]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+./../Core/Src/function.c:1284:30: warning: passing 'volatile float *' to parameter of type 'float *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+ 1284 |     bytes_to_float(VSETtemp, &SET_Value.Vout); // 将字节序列转换为浮点数
+      |                              ^~~~~~~~~~~~~~~
+../Core/Inc\function.h:208:44: note: passing argument to parameter 'value' here
+  208 | void bytes_to_float(uint8_t *bytes, float *value);
+      |                                            ^
+./../Core/Src/function.c:1285:30: warning: passing 'volatile float *' to parameter of type 'float *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+ 1285 |     bytes_to_float(ISETtemp, &SET_Value.Iout); // 将字节序列转换为浮点数
+      |                              ^~~~~~~~~~~~~~~
+../Core/Inc\function.h:208:44: note: passing argument to parameter 'value' here
+  208 | void bytes_to_float(uint8_t *bytes, float *value);
+      |                                            ^
+2 warnings and 1 error generated.
+
+[2024-04-21 19:47:52]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+./../Core/Src/function.c:1284:30: error: too many arguments to function call, expected single argument 'bytes', have 2 arguments
+ 1284 |     bytes_to_float(VSETtemp, &SET_Value.Vout); // 将字节序列转换为浮点数
+      |     ~~~~~~~~~~~~~~           ^~~~~~~~~~~~~~~
+../Core/Inc\function.h:208:6: note: 'bytes_to_float' declared here
+  208 | void bytes_to_float(uint8_t *bytes);
+      |      ^              ~~~~~~~~~~~~~~
+./../Core/Src/function.c:1285:30: error: too many arguments to function call, expected single argument 'bytes', have 2 arguments
+ 1285 |     bytes_to_float(ISETtemp, &SET_Value.Iout); // 将字节序列转换为浮点数
+      |     ~~~~~~~~~~~~~~           ^~~~~~~~~~~~~~~
+../Core/Inc\function.h:208:6: note: 'bytes_to_float' declared here
+  208 | void bytes_to_float(uint8_t *bytes);
+      |      ^              ~~~~~~~~~~~~~~
+./../Core/Src/function.c:1295:7: error: conflicting types for 'bytes_to_float'
+ 1295 | float bytes_to_float(uint8_t *bytes)
+      |       ^
+../Core/Inc\function.h:208:6: note: previous declaration is here
+  208 | void bytes_to_float(uint8_t *bytes);
+      |      ^
+4 errors generated.
+
+[2024-04-21 19:48:24]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+./../Core/Src/function.c:1284:19: error: assigning to 'volatile float' from incompatible type 'void'
+ 1284 |     SET_Value.Vout=bytes_to_float(VSETtemp); // 将字节序列转换为浮点数
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+./../Core/Src/function.c:1285:19: error: assigning to 'volatile float' from incompatible type 'void'
+ 1285 |     SET_Value.Iout=bytes_to_float(ISETtemp); // 将字节序列转换为浮点数
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+./../Core/Src/function.c:1295:7: error: conflicting types for 'bytes_to_float'
+ 1295 | float bytes_to_float(uint8_t *bytes)
+      |       ^
+../Core/Inc\function.h:208:6: note: previous declaration is here
+  208 | void bytes_to_float(uint8_t *bytes);
+      |      ^
+4 errors generated.
+
+[2024-04-21 19:48:53]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+1 error generated.
+
+[2024-04-21 19:49:13]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+1 error generated.
+
+[2024-04-21 19:52:55]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:1240:31: error: incompatible integer to pointer conversion passing 'uint8_t' (aka 'unsigned char') to parameter of type 'uint8_t *' (aka 'unsigned char *'); take the address with & [-Wint-conversion]
+ 1240 |     W25Q64_ReadData(0x000000, Flash_flag, 1); // 读取Flash中0x000000地址处的数据，这个地址存储标志位，0x00表示已经有数据
+      |                               ^~~~~~~~~~
+      |                               &
+../Core/Hardware\W25Q64.h:9:49: note: passing argument to parameter 'DataArray' here
+    9 | void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
+      |                                                 ^
+1 error generated.
+
+[2024-04-21 19:53:55]	[done]
+	build successfully !
+
+[2024-04-21 19:54:42]	[done]
+	build successfully !
+
+[2024-04-21 19:57:29]	[done]
+	build successfully !
+
+[2024-04-21 19:57:42]	[done]
+	build successfully !
+
+[2024-04-21 19:59:08]	[done]
+	build successfully !
+
+[2024-04-21 19:59:59]	[done]
+	build successfully !
+
+[2024-04-21 20:01:04]	[done]
+	build successfully !
+
+[2024-04-21 20:15:02]	[done]
+	build successfully !
+
+[2024-04-21 20:16:26]	[done]
+	build successfully !
+
+[2024-04-21 20:17:16]	[done]
+	build successfully !
+
+[2024-04-21 20:18:55]	[done]
+	build successfully !
+
+[2024-04-21 20:19:11]	[done]
+	build successfully !
+
+[2024-04-21 20:19:34]	[done]
+	build successfully !
+
+[2024-04-21 20:21:47]	[done]
+	build successfully !
+
+[2024-04-21 20:22:25]	[done]
+	build successfully !
+
+[2024-04-21 20:22:54]	[done]
+	build successfully !
+
+[2024-04-21 20:23:16]	[done]
+	build successfully !
+
+[2024-04-21 20:23:33]	[done]
+	build successfully !
+
+[2024-04-21 20:25:00]	[done]
+	build successfully !
+
+[2024-04-21 20:26:44]	[done]
+	build successfully !
+
+[2024-04-21 20:27:03]	[done]
+	build successfully !
+
+[2024-04-21 20:27:45]	[done]
+	build successfully !
+
+[2024-04-21 20:28:22]	[done]
+	build successfully !
+
+[2024-04-21 20:29:23]	[done]
+	build successfully !
+
+[2024-04-21 20:29:55]	[done]
+	build successfully !
+
+[2024-04-21 20:31:06]	[done]
+	build successfully !
+
+[2024-04-21 20:31:32]	[done]
+	build successfully !
+
+[2024-04-21 20:32:09]	[done]
+	build successfully !
+
+[2024-04-21 20:33:06]	[done]
+	build successfully !
+
+[2024-04-21 20:33:34]	[done]
+	build successfully !
+
+[2024-04-21 20:33:57]	[done]
+	build successfully !
+
+[2024-04-21 20:54:01]	compilation failed at : "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\Core\Src\function.c", exit code: 1
+command: 
+  "D:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Core/Hardware -IRTE/_Buck-Boost -DUSE_HAL_DRIVER -DSTM32G474xx -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mlittle-endian -Os -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/Buck-Boost/.obj/__/Core/Src/function.o -MMD ./../Core/Src/function.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/function.c:715:1: error: function definition is not allowed here
+  715 | {
+      | ^
+./../Core/Src/function.c:998:1: error: function definition is not allowed here
+  998 | {
+      | ^
+./../Core/Src/function.c:1031:1: error: function definition is not allowed here
+ 1031 | {
+      | ^
+./../Core/Src/function.c:1044:1: error: function definition is not allowed here
+ 1044 | {
+      | ^
+./../Core/Src/function.c:1075:1: error: function definition is not allowed here
+ 1075 | {
+      | ^
+./../Core/Src/function.c:1086:1: error: function definition is not allowed here
+ 1086 | {
+      | ^
+./../Core/Src/function.c:1116:1: error: function definition is not allowed here
+ 1116 | {
+      | ^
+./../Core/Src/function.c:1123:1: error: function definition is not allowed here
+ 1123 | {
+      | ^
+./../Core/Src/function.c:1142:1: error: function definition is not allowed here
+ 1142 | {
+      | ^
+./../Core/Src/function.c:1173:1: error: function definition is not allowed here
+ 1173 | {
+      | ^
+./../Core/Src/function.c:1277:1: error: function definition is not allowed here
+ 1277 | {
+      | ^
+./../Core/Src/function.c:1332:1: error: function definition is not allowed here
+ 1332 | {
+      | ^
+./../Core/Src/function.c:1366:1: error: function definition is not allowed here
+ 1366 | {
+      | ^
+./../Core/Src/function.c:1438:1: error: function definition is not allowed here
+ 1438 | {
+      | ^
+./../Core/Src/function.c:1460:1: error: function definition is not allowed here
+ 1460 | {
+      | ^
+./../Core/Src/function.c:1540:1: error: function definition is not allowed here
+ 1540 | {
+      | ^
+./../Core/Src/function.c:1560:1: error: function definition is not allowed here
+ 1560 | {
+      | ^
+./../Core/Src/function.c:1582:1: error: function definition is not allowed here
+ 1582 | {
+      | ^
+./../Core/Src/function.c:1596:1: error: function definition is not allowed here
+ 1596 | {
+      | ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+
+[2024-04-21 20:54:13]	[done]
+	build successfully !
+
+[2024-04-21 20:56:56]	[done]
+	build successfully !
+
+[2024-04-21 21:01:47]	[done]
+	build successfully !
+
+[2024-04-21 21:04:39]	[done]
+	build successfully !
+
+[2024-04-21 21:06:36]	[done]
+	build successfully !
+
+[2024-04-21 21:07:39]	[done]
+	build successfully !
+
+[2024-04-21 21:12:28]	[done]
+	build successfully !
+
+[2024-04-21 21:15:46]	[done]
+	build successfully !
+
+[2024-04-21 21:18:15]	[done]
+	build successfully !
+
+[2024-04-21 21:20:32]	[done]
+	build successfully !
+
+[2024-04-21 21:22:52]	[done]
+	build successfully !
+
+[2024-04-21 21:24:25]	[done]
+	build successfully !
+
+[2024-04-21 21:25:21]	[done]
+	build successfully !
+
+[2024-04-21 21:27:21]	[done]
+	build successfully !
+
+[2024-04-21 21:28:49]	[done]
+	build successfully !
+

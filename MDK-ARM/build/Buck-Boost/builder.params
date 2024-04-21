@@ -83,14 +83,13 @@
         "afterBuildTasks": [],
         "global": {
             "output-debug-info": "enable",
-            "use-microLIB": true,
             "microcontroller-cpu": "cortex-m4-sp",
             "microcontroller-fpu": "cortex-m4-sp",
             "microcontroller-float": "cortex-m4-sp",
             "target": "cortex-m4-sp"
         },
         "c/cpp-compiler": {
-            "optimization": "level-3",
+            "optimization": "level-balanced",
             "language-c": "c99",
             "language-cpp": "c++14",
             "one-elf-section-per-function": true,
@@ -130,8 +129,8 @@
         "c/cpp-defines": "30065415386b899f98409ccb9eb4b144",
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "d751713988987e9331980363e24189ce",
-        "global": "76b18e7c6a3f72e7563f6c5d729643cb",
-        "c/cpp-compiler": "076dd526fb97535fb49a45e51a3d43aa",
+        "global": "81d1ffc9e8caa8b65f598e4ed7e43ba0",
+        "c/cpp-compiler": "1e1f5924b30c08c1d9a7b4c57cb19b2d",
         "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
         "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
     }
