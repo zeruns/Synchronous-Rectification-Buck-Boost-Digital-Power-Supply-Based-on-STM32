@@ -6,7 +6,11 @@
         "output-debug-info": "enable"
     },
     "c/cpp-compiler": {
+<<<<<<< HEAD
         "optimization": "level-3",
+=======
+        "optimization": "level-balanced",
+>>>>>>> 79baf198f49d31722f46c7ee56ab26e25cf23d98
         "language-c": "c99",
         "language-cpp": "c++14",
         "one-elf-section-per-function": true,
