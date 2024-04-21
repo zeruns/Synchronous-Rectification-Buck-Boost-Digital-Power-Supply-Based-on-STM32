@@ -18,4 +18,8 @@ Warning: A1950W: The legacy armasm assembler is deprecated. Consider using the a
 
 >>> ld
 
+<<<<<<< HEAD
 Program Size: Code=46752 RO-data=3860 RW-data=56 ZI-data=4008  
+=======
+Program Size: Code=212184 RO-data=4252 RW-data=84 ZI-data=4204  
+>>>>>>> b6c965737e55a93ea72aa326992416b28e0addfc

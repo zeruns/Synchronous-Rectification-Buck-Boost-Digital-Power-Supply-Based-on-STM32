@@ -1946,6 +1946,10 @@ command:
 [2024-04-21 23:54:37]	[done]
 	build successfully !
 
+<<<<<<< HEAD
 [2024-04-22 00:19:34]	[done]
+=======
+[2024-04-22 00:09:44]	[done]
+>>>>>>> b6c965737e55a93ea72aa326992416b28e0addfc
 	build successfully !
 
