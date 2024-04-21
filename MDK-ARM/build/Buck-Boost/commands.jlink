@@ -1,0 +1,6 @@
+r
+halt
+loadfile "e:\Electronic\Project\开关电源\基于STM32的Buck-Boost型数字电源\Buck-Boost\MDK-ARM\build\Buck-Boost\Buck-Boost.hex"
+r
+go
+exit

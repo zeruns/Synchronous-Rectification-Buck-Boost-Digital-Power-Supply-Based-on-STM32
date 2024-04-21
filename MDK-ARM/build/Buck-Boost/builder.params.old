@@ -76,13 +76,12 @@
         "startup_stm32g474xx.s"
     ],
     "sourceParams": {},
-    "sourceParamsMtime": 1713716270532.4084,
+    "sourceParamsMtime": 1710182275738.811,
     "options": {
         "version": 3,
         "beforeBuildTasks": [],
         "afterBuildTasks": [],
         "global": {
-            "use-microLIB": true,
             "output-debug-info": "enable",
             "microcontroller-cpu": "cortex-m4-sp",
             "microcontroller-fpu": "cortex-m4-sp",
@@ -90,10 +89,12 @@
             "target": "cortex-m4-sp"
         },
         "c/cpp-compiler": {
-            "optimization": "level-0",
+            "optimization": "level-balanced",
             "language-c": "c99",
-            "language-cpp": "c++11",
-            "link-time-optimization": false
+            "language-cpp": "c++14",
+            "one-elf-section-per-function": true,
+            "short-enums#wchar": true,
+            "warnings": "ac5-like-warnings"
         },
         "asm-compiler": {
             "$use": "asm-auto"
@@ -128,8 +129,8 @@
         "c/cpp-defines": "30065415386b899f98409ccb9eb4b144",
         "beforeBuildTasks": "d751713988987e9331980363e24189ce",
         "afterBuildTasks": "d751713988987e9331980363e24189ce",
-        "global": "3ae75cac734e7a166338bea4b35ae2e0",
-        "c/cpp-compiler": "3253f84b801f6481a1ac105d8d16cd4d",
+        "global": "81d1ffc9e8caa8b65f598e4ed7e43ba0",
+        "c/cpp-compiler": "1e1f5924b30c08c1d9a7b4c57cb19b2d",
         "asm-compiler": "f16bc066fd83f6b0cf6cd2b7eea65136",
         "linker": "9fd4c7918f94e6326eb8f426cd3ca200"
     }
