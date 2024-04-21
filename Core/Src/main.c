@@ -151,7 +151,7 @@ int main(void)
   HAL_GPIO_WritePin(GPIOC, LED_G_Pin | LED_R_Pin, GPIO_PIN_RESET); // 关闭LED_G和LED_R
   HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET); // 关闭蜂鸣器
 
-  FAN_PWM_set(0); // 设置风扇转速为0
+  FAN_PWM_set(35); // 设置风扇转速为35%
 
   /* USER CODE END 2 */
 
@@ -201,7 +201,6 @@ int main(void)
     {
       ms_cnt_2 = 0;   // 计时清零
       OLED_Display(); // 刷新OLED屏显示内容
-      Auto_FAN();     // 风扇转速控制
     }
 
     if (ms_cnt_1 >= 500) // 判断是否计时到500ms
