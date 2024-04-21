@@ -43,5 +43,4 @@
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.o
 ./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_adc.o
-./build/Buck-Boost/.obj/__/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_hrtim.o
 ./build/Buck-Boost/.obj/startup_stm32g474xx.o

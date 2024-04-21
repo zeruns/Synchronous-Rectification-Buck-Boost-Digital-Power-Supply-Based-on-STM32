@@ -1,10 +1,21 @@
 >>> cc
 
-
-
-
-
+./../Core/Hardware/OLED.c:468:24: warning: passing 'volatile uint8_t[128]' (aka 'volatile unsigned char[128]') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  468 |         OLED_WriteData(OLED_DisplayBuf[j], 128);
+      |                        ^~~~~~~~~~~~~~~~~~
+./../Core/Hardware/OLED.c:274:30: note: passing argument to parameter 'Data' here
+  274 | void OLED_WriteData(uint8_t *Data, uint8_t Count)
+      |                              ^
+./../Core/Hardware/OLED.c:502:24: warning: passing 'volatile uint8_t *' (aka 'volatile unsigned char *') to parameter of type 'uint8_t *' (aka 'unsigned char *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  502 |         OLED_WriteData(&OLED_DisplayBuf[j][X], Width);
+      |                        ^~~~~~~~~~~~~~~~~~~~~~
+./../Core/Hardware/OLED.c:274:30: note: passing argument to parameter 'Data' here
+  274 | void OLED_WriteData(uint8_t *Data, uint8_t Count)
+      |                              ^
+2 warnings generated.
+Warning: A1950W: The legacy armasm assembler is deprecated. Consider using the armclang integrated assembler instead.
+0 Errors, 1 Warning
 
 >>> ld
 
-Program Size: Code=61544 RO-data=4420 RW-data=52 ZI-data=4612  
+Program Size: Code=46752 RO-data=3860 RW-data=56 ZI-data=4008  

@@ -3,12 +3,14 @@
     "beforeBuildTasks": [],
     "afterBuildTasks": [],
     "global": {
+        "use-microLIB": true,
         "output-debug-info": "enable"
     },
     "c/cpp-compiler": {
-        "optimization": "level-3",
+        "optimization": "level-balanced",
         "language-c": "c99",
-        "language-cpp": "c++14",
+        "language-cpp": "c++11",
+        "link-time-optimization": false,
         "one-elf-section-per-function": true,
         "short-enums#wchar": true,
         "warnings": "ac5-like-warnings"
@@ -18,6 +20,9 @@
     },
     "linker": {
         "output-format": "elf",
-        "misc-controls": "--diag_suppress=L6329"
+        "misc-controls": "--diag_suppress=L6329",
+        "xo-base": "",
+        "ro-base": "",
+        "rw-base": ""
     }
 }
