@@ -1,6 +1,7 @@
 {
     "folders": [
         {
+<<<<<<< HEAD
             "path": "."
         }
     ],
@@ -28,4 +29,9 @@
         }
     },
     "extensions": {}
+=======
+            "path": ".."
+        }
+    ]
+>>>>>>> 基于STM32的Buck-Boost型数字电源/master
 }
