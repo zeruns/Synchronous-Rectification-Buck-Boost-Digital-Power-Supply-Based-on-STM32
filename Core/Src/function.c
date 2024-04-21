@@ -505,7 +505,7 @@ void Encoder(void)
                         {
                             SET_Value.Iout += 10.0F;
                             // 当设置值大于48.5时限位
-                            if (SET_Value.Iout > 10.0)
+                            if (SET_Value.Iout > 10.1)
                             {
                                 SET_Value.Iout -= 10.0F;
                             }
@@ -515,9 +515,9 @@ void Encoder(void)
                         {
                             SET_Value.Iout += 1;
                             // 当设置值大于48.5时限位
-                            if (SET_Value.Iout > 10.0)
+                            if (SET_Value.Iout > 10.1)
                             {
-                                SET_Value.Iout = 10.0F;
+                                SET_Value.Iout = 10.1F;
                             }
                         }
                         // 选中小数第一位时
@@ -525,7 +525,7 @@ void Encoder(void)
                         {
                             SET_Value.Iout += 0.1F;
                             // 当设置值大于48.5时限位
-                            if (SET_Value.Iout > 10.0)
+                            if (SET_Value.Iout > 10.1)
                             {
                                 SET_Value.Iout -= 0.1F;
                             }
@@ -535,7 +535,7 @@ void Encoder(void)
                         {
                             SET_Value.Iout += 0.01F;
                             // 当设置值大于48.5时限位
-                            if (SET_Value.Iout > 10.0)
+                            if (SET_Value.Iout > 10.1)
                             {
                                 SET_Value.Iout -= 0.01F;
                             }
@@ -744,7 +744,7 @@ void OLED_Display(void)
             OLED_ShowNum(72, 48, IOUT + 0.005F, 2, OLED_8X16);                                                // 显示输出电流整数部分
             OLED_ShowChar(72 + 8 * 2, 48, '.', OLED_8X16);                                                    // 显示小数点
             OLED_ShowNum(72 + 8 * 3, 48, (uint16_t)((IOUT + 0.005F) * 100.0F) % 100, 2, OLED_8X16);           // 显示输出电流值小数部分,+0.005是为了四舍五入
-            if (DF.OUTPUT_Flag == 1)                                                                          // 当输出开启时
+            if ((DF.SMFlag == Rise) || (DF.SMFlag == Run))                                                    // 当输出开启时
             {
                 if (CVCC_Mode == CV) // 在恒压模式下
                 {
@@ -1737,16 +1737,66 @@ void Read_Flash(void)
     MAX_VOUT_OVP_VAL = bytes_to_float(OVPtemp);
 }
 
-// 将浮点数转换为字节序列的辅助函数
+/**
+ * 将浮点数转换为字节序列的辅助函数。
+ * 该函数将一个浮点数转换为其对应的字节序列，通过内存拷贝的方式将浮点数的二进制表示复制到指定的字节数组中。
+ * @param value 需要转换为字节序列的浮点数。
+ * @param bytes 指向接收浮点数字节序列的字节数组的指针。
+ * @note 该函数依赖于特定平台的浮点数和整数类型大小以及内存对齐规则。
+ */
 void float_to_bytes(float value, uint8_t *bytes)
 {
-    memcpy(bytes, &value, sizeof(float));
+    memcpy(bytes, &value, sizeof(float)); // 将浮点数转换为字节序列
 }
 
-// 将字节序列转换为浮点数的辅助函数
+/**
+ * 将字节序列转换为浮点数的辅助函数
+ * @param bytes 指向包含浮点数的字节序列的指针
+ * @return 转换后的浮点数值
+ */
 float bytes_to_float(uint8_t *bytes)
 {
     float value;
     memcpy(&value, bytes, sizeof(float));
     return value;
+}
+
+/**
+ * @brief 根据主板温度自动控制风扇转速
+ */
+void Auto_FAN(void)
+{
+    float TEMP = GET_NTC_Temperature(); // 获取NTC温度值
+    if (TEMP < 35)
+    {
+        FAN_PWM_set(0); // 设置风扇转速为0
+    }
+    else if (TEMP >= 35)
+    {
+        FAN_PWM_set(35); // 设置风扇转速为35%
+    }
+    else if (TEMP >= 40)
+    {
+        FAN_PWM_set(45);
+    }
+    else if (TEMP >= 45)
+    {
+        FAN_PWM_set(60);
+    }
+    else if (TEMP >= 50)
+    {
+        FAN_PWM_set(70);
+    }
+    else if (TEMP >= 55)
+    {
+        FAN_PWM_set(80);
+    }
+    else if (TEMP >= 60)
+    {
+        FAN_PWM_set(90);
+    }
+    else if (TEMP >= 65)
+    {
+        FAN_PWM_set(100);
+    }
 }

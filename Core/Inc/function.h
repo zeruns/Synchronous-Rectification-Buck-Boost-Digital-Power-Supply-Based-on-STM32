@@ -43,35 +43,35 @@
 struct _SET_Value
 {
 	volatile float SET_modified_flag; // 设置被修改标志位
-	volatile float Vout;				 // 输出电压设置值
-	volatile float Iout;				 // 输出电流设置值
-	volatile uint8_t currentSetting;	 // 当前设置项标志位，0表示没有选中设置项
-	volatile uint8_t SET_bit;		 // 当前设置位标志位，0表示没有选中设置位
+	volatile float Vout;			  // 输出电压设置值
+	volatile float Iout;			  // 输出电流设置值
+	volatile uint8_t currentSetting;  // 当前设置项标志位，0表示没有选中设置项
+	volatile uint8_t SET_bit;		  // 当前设置位标志位，0表示没有选中设置位
 };
 
 // 控制参数结构体
 struct _Ctr_value
 {
-	volatile int32_t Vout_ref;	  // 输出参考电压
-	volatile int32_t Vout_SSref;	  // 软启动时的输出参考电压
+	volatile int32_t Vout_ref;	   // 输出参考电压
+	volatile int32_t Vout_SSref;   // 软启动时的输出参考电压
 	volatile int32_t Vout_SETref;  // 设置的参考电压
-	volatile int32_t Iout_ref;	  // 输出参考电流
-	volatile int32_t I_Limit;	  // 限流参考电流
+	volatile int32_t Iout_ref;	   // 输出参考电流
+	volatile int32_t I_Limit;	   // 限流参考电流
 	volatile int16_t BUCKMaxDuty;  // Buck最大占空比
 	volatile int16_t BoostMaxDuty; // Boost最大占空比
-	volatile int16_t BuckDuty;	  // Buck控制占空比
-	volatile int16_t BoostDuty;	  // Boost控制占空比
-	volatile int32_t Ilimitout;	  // 电流环输出
+	volatile int16_t BuckDuty;	   // Buck控制占空比
+	volatile int16_t BoostDuty;	   // Boost控制占空比
+	volatile int32_t Ilimitout;	   // 电流环输出
 };
 
 // 标志位定义
 struct _FLAG
 {
-	volatile uint16_t SMFlag;	  // 状态机标志位
-	volatile uint16_t CtrFlag;	  // 控制标志位
-	volatile uint16_t ErrFlag;	  // 故障标志位
-	volatile uint8_t BBFlag;		  // 运行模式标志位，BUCK模式，BOOST模式，MIX混合模式
-	volatile uint8_t PWMENFlag;	  // 启动标志位
+	volatile uint16_t SMFlag;	   // 状态机标志位
+	volatile uint16_t CtrFlag;	   // 控制标志位
+	volatile uint16_t ErrFlag;	   // 故障标志位
+	volatile uint8_t BBFlag;	   // 运行模式标志位，BUCK模式，BOOST模式，MIX混合模式
+	volatile uint8_t PWMENFlag;	   // 启动标志位
 	volatile uint8_t BBModeChange; // 工作模式切换标志位
 	volatile uint8_t OUTPUT_Flag;  // 输出开关标志位, 0为关闭，1为开启
 };
@@ -79,13 +79,13 @@ struct _FLAG
 // 采样变量结构体
 struct _ADI
 {
-	volatile uint32_t Iout;	  // 输出电流
+	volatile uint32_t Iout;	   // 输出电流
 	volatile uint32_t IoutAvg; // 输出电流平均值
-	volatile uint32_t Vout;	  // 输出电电压
+	volatile uint32_t Vout;	   // 输出电电压
 	volatile uint32_t VoutAvg; // 输出电电压平均值
-	volatile uint32_t Iin;	  // 输出电流
+	volatile uint32_t Iin;	   // 输出电流
 	volatile uint32_t IinAvg;  // 输出电流平均值
-	volatile uint32_t Vin;	  // 输出电电压
+	volatile uint32_t Vin;	   // 输出电电压
 	volatile uint32_t VinAvg;  // 输出电电压平均值
 };
 
@@ -206,5 +206,6 @@ void Update_Flash(void);
 void Read_Flash(void);
 void float_to_bytes(float value, uint8_t *bytes);
 float bytes_to_float(uint8_t *bytes);
+void Auto_FAN(void);
 
 #endif
