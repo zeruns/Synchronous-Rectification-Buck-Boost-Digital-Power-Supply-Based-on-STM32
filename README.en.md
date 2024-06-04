@@ -385,7 +385,7 @@ The following links include materials such as: EasyEDA project files, schematic 
 
 **项目程序Gitee开源地址：**[https://gitee.com/zeruns/STM32-Buck-Boost](https://gitee.com/zeruns/STM32-Buck-Boost)
 
-项目程序GitHub开源地址：
+项目程序GitHub开源地址：[https://github.com/zeruns/Synchronous-Rectification-Buck-Boost-Digital-Power-Supply-Based-on-STM32](https://github.com/zeruns/Synchronous-Rectification-Buck-Boost-Digital-Power-Supply-Based-on-STM32)
 
 **求点个Star和点个赞。**
 
