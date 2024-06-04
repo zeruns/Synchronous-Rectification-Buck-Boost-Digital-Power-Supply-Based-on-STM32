@@ -3,7 +3,7 @@
     "target": "Buck-Boost",
     "toolchain": "AC6",
     "toolchainLocation": "D:\\Keil_v5\\ARM\\ARMCLANG",
-    "toolchainCfgFile": "c:\\Users\\67667\\.vscode\\extensions\\cl.eide-3.16.0\\res\\data\\models\\win32/arm.v6.model.json",
+    "toolchainCfgFile": "c:\\Users\\67667\\.vscode\\extensions\\cl.eide-3.17.1\\res\\data\\models\\win32/arm.v6.model.json",
     "buildMode": "fast|multhread",
     "showRepathOnLog": true,
     "threadNum": 20,
