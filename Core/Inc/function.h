@@ -11,7 +11,7 @@
 #define CCMRAM __attribute__((section("ccmram")))
 
 #define ADC_MAX_VALUE 8190.0F				   // ADC最大值
-#define REF_3V3 3.2993F						   // VREF参考电压
+#define REF_3V3 3.3006F						   // VREF参考电压
 #define TS_CAL1 *((__IO uint16_t *)0x1FFF75A8) // 内部温度传感器在30度和VREF为3V时的校准数据
 #define TS_CAL2 *((__IO uint16_t *)0x1FFF75CA) // 内部温度传感器在130度和VREF为3V时的校准数据
 #define TS_CAL1_TEMP 30.0F
@@ -25,10 +25,10 @@
 #define MAX_BOOST_DUTY 19500  // BOOST工作模式下最大占空比65%
 #define MAX_BOOST_DUTY1 28200 // BOOST最大占空比94%
 
-#define CAL_VOUT_K 4085 // 输出电压矫正K值
-#define CAL_VOUT_B 3	// 输出电压矫正B值
-#define CAL_IOUT_K 4033 // 输出电流矫正K值
-#define CAL_IOUT_B 3	// 输出电流矫正B值
+#define CAL_VOUT_K 4099 // 输出电压矫正K值
+#define CAL_VOUT_B 1	// 输出电压矫正B值
+#define CAL_IOUT_K 4095 // 输出电流矫正K值
+#define CAL_IOUT_B 1	// 输出电流矫正B值
 
 /***************故障类型*****************/
 #define F_NOERR 0x0000		 // 无故障
